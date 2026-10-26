@@ -35,9 +35,15 @@ Acceso a cuenta ajena; cambio sensible sin verificación; actualización fallida
 
 ### Asociación a pantallas
 
-P12 (PDF 11); P10/P11 al terminar acceso protegido.
+P12 (imagen corregida del 2026-10-26; sustituye la referencia visual de PDF 11); P10/P11 al terminar acceso protegido.
 
-**Brechas observadas:** Teléfono no especificado ni justificado; «Estado de tus datos: Medio» sin regla válida. Faltan edición, eliminación y ajuste de texto. No inferir conservación de resultados.
+**Revisión 2026-10-26:** teléfono retirado del perfil; el usuario confirma que Priva
+no pide número de teléfono. Esta exclusión es una decisión explícita, no un pendiente.
+El diseño nuevo tampoco muestra «Estado de tus datos: Medio».
+
+**Brechas observadas:** permanece una fila vacía cuya función no está definida; no
+interpretarla como resultado ni añadir un campo sin requisito aprobado. Faltan edición,
+solicitud de eliminación y ajuste de texto. No inferir conservación de resultados.
 
 ### Reglas de la fuente aplicables
 

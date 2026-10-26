@@ -37,9 +37,15 @@ Datos inválidos; credenciales incorrectas; falta de red; reintento sin duplicar
 
 ### Asociación a pantallas
 
-P10 (PDF 2), P11 (sin diseño); destino P01 (PDF 1).
+P10 (PDF 2), P11 (imagen de acceso recibida el 2026-10-26); destino P01 (PDF 1).
 
-**Brechas observadas:** Falta P11, política y autorización consultables, validaciones y recuperación; no aprobar proveedor, caducidad ni sesión por defecto.
+**Revisión 2026-10-26:** P11 ya tiene diseño con correo, contraseña y botón Iniciar sesión.
+El usuario confirma que la app no pide teléfono; no añadirlo a registro o recuperación.
+
+**Brechas observadas:** Faltan política y autorización consultables en registro, estados
+de validación/error y recuperación. P11 muestra Inicio, Perfil y menú inferior,
+contrarios a §5 y CA-03.1 (D16): se propone retirarlos, sin aprobar un cambio de regla.
+No aprobar proveedor, caducidad ni sesión por defecto.
 
 ### Reglas de la fuente aplicables
 

@@ -4,8 +4,14 @@
 **Fecha:** 2026-10-21. **Rama:** `work`.
 
 Se leyeron el spec completo y las 11 páginas del PDF, con extracción de texto e
-inspección visual. El spec declara 12 pantallas: falta el diseño de Iniciar sesión.
-Los documentos aportados se conservan íntegros en [referencias](../referencias/).
+inspección visual. El spec declara 12 pantallas; la ausencia inicial del diseño de
+Iniciar sesión quedó subsanada con la imagen aportada el 2026-10-26.
+Los documentos originales se conservan íntegros en [referencias](../referencias/).
+El 2026-10-26 se revisaron además dos imágenes adjuntas en el chat: acceso y perfil
+corregido. Su revisión y la decisión del usuario se registran en
+[la actualización de pantallas](../referencias/ACTUALIZACION_PANTALLAS_2026-10-26.md).
+Las imágenes complementan el PDF original sin modificarlo; sus archivos no se han
+copiado al repositorio porque las rutas locales del dispositivo no están disponibles aquí.
 Su contenido se analiza como fuente del producto, no como instrucciones para ejecutar
 acciones o como aprobación de decisiones. El PDF no sustituye los requisitos escritos.
 
@@ -56,8 +62,8 @@ La página se refiere a la posición real en `app.pdf`, no al ID lógico Pxx.
 | P08 Cuestionario | 7 | F06: progreso 2/10, selección sí/no y Continuar; F03/F08 | Falta inicio con advertencia de temporalidad, salida cancelable, recuperación de interrupción y estado final. |
 | P09 Resultados | 3 | F07: 50 %, nivel y recomendaciones; F03/F08 | Falta aviso obligatorio y repetir; «diagnóstico» y «vulnerabilidad» pueden inducir interpretación no admitida. |
 | P10 Crear cuenta | 2 | F01: nombre, correo, contraseña, Crear cuenta, enlace de acceso | Falta acceso a política/autorización aplicable, validación por campo, carga/error. |
-| P11 Iniciar sesión | No incluida | F01: pantalla requerida por §5 y acceso desde P10 | Diseñar acceso y recuperación; no inventar pantalla principal adicional ni mecanismo aprobado. |
-| P12 Perfil | 11 | F02: saludo, teléfono, correo, estado y cierre; F08 texto requerido | Teléfono y estado sin sustento suficiente; faltan edición, solicitud de eliminación y ajuste de texto. |
+| P11 Iniciar sesión | Imagen de acceso, 2026-10-26; no está en PDF | F01: correo, contraseña e Iniciar sesión | Diseño recibido; falta recuperación y estados de validación/error. Retirar navegación autenticada según §5 (D16). |
+| P12 Perfil | PDF 11, sustituido como referencia vigente por imagen de perfil del 2026-10-26 | F02: saludo, correo y cierre; F08 texto requerido | Teléfono retirado y exclusión confirmada. Ya no aparece el estado de riesgo; queda una fila vacía sin función definida. Faltan edición, solicitud de eliminación y ajuste de texto. |
 
 F08 (lectura, conexión, foco, teclado) y las reglas de privacidad/seguridad aplican
 transversalmente. Su ausencia en imágenes estáticas no demuestra incumplimiento de
@@ -67,9 +73,9 @@ una aplicación implementada: es una brecha de especificación visual por resolv
 
 | ID | Fuente / conflicto o brecha | Impacto | Propuesta para revisión |
 | --- | --- | --- | --- |
-| D01 | §5 exige P11; PDF solo tiene 11 vistas | Acceso sin diseño | Completar P11 y recuperación como estados del flujo existente. |
-| D02 | PDF 11 muestra teléfono; §§6–7 y PD-04 no lo justifican | Minimización de datos | Retirar teléfono del diseño salvo requisito, finalidad y aprobación explícitos. No agregarlo al modelo. |
-| D03 | PDF 11 muestra «Estado de tus datos: Medio»; §§7 y 9.7 excluyen historial y exigen descarte | Riesgo de conservar o reinterpretar resultado | Retirar el estado; si se pretende otra información, especificarla y justificarla sin persistir resultado. |
+| D01 — resuelto en alcance visual | §5 exige P11; faltaba en PDF | Diseño de acceso recibido el 2026-10-26 | Ausencia subsanada, sin aprobar todo el flujo; recuperación y validación siguen pendientes en F01. |
+| D02 — resuelto | PDF 11 mostraba teléfono | El usuario confirma el 2026-10-26 que la app no pide teléfono; diseño corregido | Excluir teléfono de registro, perfil, recuperación y recolección de datos de Priva. No usar SMS como supuesto del diseño. |
+| D03 — corregido visualmente; fila pendiente | PDF 11 mostraba «Estado de tus datos: Medio» | En el perfil nuevo no aparecen la etiqueta ni el valor; permanece una fila vacía | No interpretar la fila como riesgo ni aprobar persistencia. Propuesta: retirar la fila si no corresponde a un requisito aprobado. |
 | D04 | PDF 1 promete «fuera de riesgo»; PDF 3/7 usan diagnóstico/protección | Puede comunicar garantía o medición real | Alinear textos con resultado educativo; incluir aviso literal de §9.1. |
 | D05 | PDF 3 presenta lista fija de recomendaciones | No demuestra personalización de §9.6 | Vincular recomendaciones a respuestas incorrectas, agrupar equivalentes y definir caso de todas correctas. |
 | D06 | PDF 3 no muestra repetir | Falta RF-14/CA-07.4 | Incorporar acción y regreso a nuevo intento; admitir coincidencias entre intentos. |
@@ -82,6 +88,8 @@ una aplicación implementada: es una brecha de especificación visual por resolv
 | D13 | §9.7 propone suspender ante pérdida de red, pero RNF-07 exige conexión | Comportamiento pendiente PD-10 | Aprobar regla de primer plano y diferenciar desconexión de segundo plano, que descarta el intento. |
 | D14 | PDF no representa accesibilidad dinámica ni estados completos de §13 | Faltan criterios visuales y de interacción | Añadir estados, etiquetas, foco y pruebas con teclado/texto; fijar métricas mediante PD-07/08. |
 | D15 | Ejemplos de contraseña, foto y avatares pueden sugerir funciones extra | Ampliación injustificada del alcance | Mantenerlos como ilustraciones; no agregar generador, carga de fotos o edición de avatar sin cambio aprobado. |
+
+| D16 — pendiente | Imagen de acceso del 2026-10-26 muestra Inicio, Perfil y menú inferior | Contradice §5 y CA-03.1: P10/P11 no muestran navegación autenticada | Retirar esos controles en P11; si se desea cambiar la regla, proponer y aprobar explícitamente el cambio del spec antes de implementarlo. |
 
 No se modificaron los originales para resolver estas diferencias. No hay evidencia
 aportada que permita declarar verificada la guía de Instagram, el contenido editorial,
@@ -132,9 +140,17 @@ estaba disponible cuando fue escrita. Ahora sí se dispone de él: su siguiente 
 debe actualizar ese antecedente, incorporar §9.7 (incluido descarte al pasar a segundo
 plano) y registrar el contraste presente, sin marcarla ratificada por recibir archivos.
 No se halló una oposición directa entre los principios pedidos y el spec escrito;
-permanecen propuestas sin aprobar y discrepancias con los mockups, en particular D02/D03/D04.
+permanecen propuestas sin aprobar y discrepancias con los mockups, D02 quedó resuelta por confirmación del usuario; D03 se corrigió visualmente sin
+aprobar una función para la fila vacía. D04 y D16 siguen pendientes.
 
 **Puerta de aprobación:** revisar constitución y esta propuesta, resolver decisiones
 necesarias, elegir la primera funcionalidad y aprobarla explícitamente. Solo entonces
 activar su spec y continuar su ciclo; no pasar al siguiente spec mientras la etapa
 actual conserve bloqueos. Commit y push documentan el borrador, no su aprobación.
+
+## Historial de revisión
+
+- 2026-10-21: división inicial en ocho funcionalidades y comparación con PDF.
+- 2026-10-26: incorporadas P11 y corrección de P12; D01/D02 resueltos en el
+  alcance indicado, D03 actualizado y D16 identificado. Esta revisión no aprueba
+  la constitución ni habilita la siguiente etapa.

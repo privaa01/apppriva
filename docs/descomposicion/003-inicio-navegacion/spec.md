@@ -38,6 +38,10 @@ P01–P09 y P12: PDF 1, 4, 6, 8, 9, 10, 5, 7, 3, 11; exclusión P10/P11.
 
 **Brechas observadas:** Revisar etiquetas accesibles y estado activo. La navegación dibujada no prueba comportamiento ni autorización.
 
+**Revisión visual 2026-10-26:** la nueva P11 sí muestra Inicio, Perfil y menú
+inferior. Esto contradice la exclusión de §5 y CA-03.1 (D16). Se propone retirarlos
+de la vista de acceso; su aparición en la imagen no aprueba navegación sin sesión.
+
 ### Reglas de la fuente aplicables
 
 Los siguientes extractos conservan su estado original: una propuesta o un pendiente
