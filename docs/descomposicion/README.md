@@ -45,21 +45,20 @@ Se tomó la estructura del template activo de Spec Kit: escenarios y aceptación
 requisitos, entidades, resultados medibles y supuestos/dependencias; cada borrador
 incluye checklist separado. Los IDs originales se preservan para no romper trazabilidad.
 No se ejecutó `$speckit-specify` ocho veces ni se cambió `.specify/feature.json`:
-este lote es una propuesta de descomposición, no ocho etapas aprobadas. Por eso vive
-en `docs/descomposicion/`, no en el directorio de funcionalidades activas `specs/`.
-Tras aprobar constitución y división, se promoverá una sola funcionalidad a `specs/`
-por invocación, siguiendo el bloqueo entre etapas solicitado por el usuario.
+las ocho funcionalidades ahora están separadas en `specs/` por solicitud del usuario
+del 2026-10-26. Esta organización no aprueba los documentos ni avanza de etapa.
+El [índice SDD](../../specs/README.md) indica cómo seleccionar cada funcionalidad.
 
 | Funcionalidad propuesta | Historia / criterios | Requisitos | Pantallas | Documento |
 | --- | --- | --- | --- | --- |
-| F01 Cuenta y acceso | HU-01 / CA-01.1–01.4 | RF-01–03; RF-02 solo acceso/recuperación | P10, P11; destino P01 | [F01](001-cuenta-acceso/spec.md) |
-| F02 Gestión de cuenta | HU-02 / CA-02.1–02.3 | RF-02 solo cierre; RF-04 | P12 | [F02](002-perfil-cuenta/spec.md) |
-| F03 Inicio y navegación | HU-03 / CA-03.1–03.3 | RF-05 | Todas; P11 conserva menú, con acceso público solo a Tips | [F03](003-inicio-navegacion/spec.md) |
-| F04 Tips | HU-04 / CA-04.1–04.3 | RF-06 | P02–P06 | [F04](004-tips-educativos/spec.md) |
-| F05 Zyro | HU-05 / CA-05.1–05.6 | RF-07–09 | P07 | [F05](005-zyro-orientacion/spec.md) |
-| F06 Intento del cuestionario | HU-06 / CA-06.1–06.5 | RF-10–11, RF-15 durante intento | P08 | [F06](006-cuestionario-temporal/spec.md) |
-| F07 Resultado y repetición | HU-07 / CA-07.1–07.5 | RF-12–14, RF-15 durante resultado | P09; retorno P08 | [F07](007-resultados-repeticion/spec.md) |
-| F08 Lectura y conexión | HU-08 / CA-08.1–08.3 | RF-16–17 | Todas; control de texto en P12 | [F08](008-accesibilidad-conexion/spec.md) |
+| F01 Cuenta y acceso | HU-01 / CA-01.1–01.4 | RF-01–03; RF-02 solo acceso/recuperación | P10, P11; destino P01 | [F01](../../specs/001-cuenta-acceso/spec.md) |
+| F02 Gestión de cuenta | HU-02 / CA-02.1–02.3 | RF-02 solo cierre; RF-04 | P12 | [F02](../../specs/002-perfil-cuenta/spec.md) |
+| F03 Inicio y navegación | HU-03 / CA-03.1–03.3 | RF-05 | Todas; P11 conserva menú, con acceso público solo a Tips | [F03](../../specs/003-inicio-navegacion/spec.md) |
+| F04 Tips | HU-04 / CA-04.1–04.3 | RF-06 | P02–P06 | [F04](../../specs/004-tips-educativos/spec.md) |
+| F05 Zyro | HU-05 / CA-05.1–05.6 | RF-07–09 | P07 | [F05](../../specs/005-zyro-orientacion/spec.md) |
+| F06 Intento del cuestionario | HU-06 / CA-06.1–06.5 | RF-10–11, RF-15 durante intento | P08 | [F06](../../specs/006-cuestionario-temporal/spec.md) |
+| F07 Resultado y repetición | HU-07 / CA-07.1–07.5 | RF-12–14, RF-15 durante resultado | P09; retorno P08 | [F07](../../specs/007-resultados-repeticion/spec.md) |
+| F08 Lectura y conexión | HU-08 / CA-08.1–08.3 | RF-16–17 | Todas; control de texto en P12 | [F08](../../specs/008-accesibilidad-conexion/spec.md) |
 
 La fórmula, clave, pesos y clasificación pertenecen a F07; el banco, selección,
 opciones y revisión del intento a F06. La sección 9 completa se conserva como contexto
@@ -177,3 +176,6 @@ actual conserve bloqueos. Commit y push documentan el borrador, no su aprobació
 
 - 2026-10-26: el usuario confirma conservar el wireframe y acceso público solo a
   Tips; autenticación habilita toda la app. D16 cerrado por decisión explícita.
+
+- 2026-10-26: los ocho documentos y checklists se trasladaron a `specs/` para
+  trabajar individualmente con Spec Kit, sin duplicar specs activos ni aprobarlos.
