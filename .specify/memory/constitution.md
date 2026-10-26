@@ -1,6 +1,6 @@
 # Priva Constitution
 
-Estado: **borrador pendiente de contraste con el spec y aprobación explícita**.
+Estado: **borrador contrastado documentalmente; pendiente de aprobación explícita**.
 Aplicación móvil para Android e iOS; metodología Spec-Driven Development (SDD).
 Esta constitución complementa los requisitos funcionales sin reproducirlos.
 
@@ -15,7 +15,12 @@ aceptación del spec aprobado. Las propuestas, suposiciones y decisiones pendien
 DEBEN conservar su estado explícito; NO constituyen autorización para implementar.
 Las discrepancias entre artefactos DEBEN resolverse y aprobarse antes de ejecutar
 el trabajo afectado. La constitución gobierna el proceso; el spec aprobado define
-el comportamiento del producto dentro de esas reglas.
+el comportamiento del producto dentro de esas reglas. Los specs por funcionalidad
+DEBEN conservar sus IDs y registrar las decisiones posteriores del usuario con su
+fecha y alcance. Los originales se conservan como antecedentes; una decisión explícita
+posterior solo sustituye las reglas afectadas, sin aprobar el resto del documento.
+Los wireframes guían la presentación, pero NO autorizan funciones, datos ni garantías
+por inferencia; sus diferencias con los requisitos DEBEN registrarse y resolverse.
 
 **Evidencia:** versión del spec, registro de decisiones y aprobaciones, enlaces del
 cambio a sus requisitos y resultados de aceptación.
@@ -43,15 +48,25 @@ política de conservación justificada y pruebas de minimización y eliminación
 **Reglas verificables:** respuestas, resultados y derivados que permitan reconstruirlos
 NO DEBEN guardarse en bases de datos, archivos, almacenamiento local, cachés persistentes,
 copias de respaldo, analítica, registros técnicos ni informes de fallos. El procesamiento
-DEBE ser temporal y los valores DEBEN descartarse al terminar o abandonar el flujo;
-NO se restaurarán tras reiniciar la aplicación. La instrumentación y los SDK NO DEBEN
+DEBE ser temporal. Al completar las diez preguntas solo DEBE mantenerse en memoria
+lo necesario para mostrar el resultado y sus recomendaciones; NO se exige borrarlo
+antes de poder consultarlo. Al abandonar el intento o la vista de resultado, pasar
+a segundo plano, cerrar la app o cerrar sesión, el estado del cuestionario y su
+resultado DEBEN descartarse. Al regresar DEBE iniciarse un nuevo intento, sin restaurar
+el anterior. El descarte del cuestionario NO implica cerrar automáticamente la sesión
+de cuenta. Antes de empezar DEBE informarse la consecuencia de una interrupción. La instrumentación y los SDK NO DEBEN
 capturarlos, incluidos cuerpos de solicitudes, trazas y capturas de diagnóstico.
 La ubicación y los mecanismos del procesamiento quedan pendientes del plan aprobado;
-cualquier componente interviniente DEBE respetar la misma prohibición. El resultado
+cualquier componente interviniente DEBE respetar la misma prohibición. Las respuestas
+NO DEBEN enviarse al proveedor de IA para calcular el resultado. La propuesta de
+suspender el avance ante pérdida de red en primer plano sigue pendiente (PD-10);
+NO DEBE presentarse como aprobada ni confundirse con el descarte obligatorio por
+segundo plano. El resultado
 DEBE presentarse como educativo y orientativo, sin garantía ni certificación de seguridad.
 
 **Evidencia:** revisión del ciclo de vida y del flujo de datos; pruebas con datos
-sintéticos de abandono, cierre y reinicio; inspección de almacenamiento, tráfico,
+sintéticos de finalización, consulta de resultado, abandono, segundo plano, cierre,
+cierre de sesión y reinicio; inspección de almacenamiento, tráfico,
 logs y telemetría, sin persistir respuestas ni resultados reales en la evidencia.
 
 ### IV. Confiabilidad y límites de Zyro
@@ -91,7 +106,10 @@ pruebas de texto ajustable, accesibilidad y uso con personas representativas del
 **Reglas verificables:** cada entrega DEBE validar reglas de negocio aprobadas,
 autenticación cuando corresponda al alcance, manejo de errores, compatibilidad móvil
 y protección de datos. La exigencia de validar autenticación NO aprueba por sí misma
-cuentas, un proveedor o un mecanismo concreto. La matriz de versiones y dispositivos,
+cuentas, un proveedor o un mecanismo concreto. Los controles visibles de navegación
+NO DEBEN eludir las restricciones de acceso confirmadas en la sección siguiente.
+El acceso directo o mediante retroceso DEBE respetar las mismas restricciones.
+La matriz de versiones y dispositivos,
 los controles y los criterios de severidad DEBEN aprobarse en el plan.
 Los errores NO DEBEN exponer datos personales o credenciales. Los fallos que vulneren
 estas reglas o criterios de aceptación DEBEN corregirse y volver a probarse antes
@@ -146,22 +164,72 @@ comunicación del cambio, hash del commit y confirmación de sincronización rem
 
 ## Restricciones y decisiones pendientes
 
-`PRIVA_MOBILE_SPEC.md` no está disponible en el entorno al redactar esta versión.
-Por tanto, NO se ha comprobado la concordancia ni se han identificado conflictos
-concretos con su contenido. El contraste es obligatorio antes de ratificar.
+### Fuentes y estado del contraste
 
-| Asunto por contrastar | Regla para resolverlo |
-| --- | --- |
-| Historial, analítica o diagnóstico del cuestionario | Si el spec exige persistencia, registrar la incompatibilidad y proponer retirar esa persistencia; obtener aprobación sin implementarla. |
-| Facultades y afirmaciones de Zyro | Si exige credenciales, acciones externas o garantías, proponer orientación educativa y límites explícitos; someter el cambio a aprobación. |
-| Datos, finalidades y conservación | Completar y validar el inventario y los fundamentos; no inventar plazos ni aprobaciones legales. |
-| Accesibilidad, autenticación y compatibilidad | Resolver criterios y alcance pendientes en los artefactos correspondientes; no elegir tecnologías ni reglas de negocio por defecto. |
+Se contrastó esta constitución con el [spec original](../../docs/referencias/PRIVA_MOBILE_SPEC.md),
+el [registro de pantallas y decisiones del 2026-10-26](../../docs/referencias/ACTUALIZACION_PANTALLAS_2026-10-26.md),
+el [análisis de discrepancias](../../docs/descomposicion/README.md) y la organización
+de [ocho specs funcionales](../../specs/README.md). Es una revisión documental:
+NO demuestra ejecución de pruebas, cumplimiento jurídico operativo ni aprobación.
 
-Estos son riesgos de conflicto por revisar, NO hallazgos del spec.
-Cada conflicto real DEBE registrar referencia exacta del spec, regla afectada,
-propuesta de resolución y decisión aprobada. Ningún documento se modifica en silencio.
-No quedan aprobados framework, backend, proveedor, arquitectura de Zyro, plazos
-legales, reglas de negocio ni versiones móviles por la emisión de esta constitución.
+### Decisiones de producto confirmadas
+
+Las siguientes decisiones explícitas del usuario DEBEN respetarse sin duplicar
+su detalle funcional en la constitución:
+
+- Tips y sus cuatro categorías son contenido accesible sin sesión. Registro, acceso
+  y recuperación permanecen disponibles como flujos de entrada. El resto del contenido
+  de Priva requiere autenticación; una sesión válida habilita las funciones del alcance,
+  sujetas a sus precondiciones y al control de la cuenta propia.
+- Se conserva la navegación del wireframe de acceso. Ver un control NO concede acceso
+  a contenido protegido. Al cerrar sesión, Tips sigue disponible y las funciones
+  protegidas dejan de estarlo; el cuestionario y su resultado se descartan.
+- Priva NO solicita número de teléfono en registro, perfil ni recuperación; NO se
+  presume recuperación por SMS. El mecanismo concreto de recuperación sigue pendiente.
+- Una fila vacía o un ejemplo visual NO constituye un requisito ni autoriza recopilar
+  un dato o conservar un resultado. No se reincorpora el estado de riesgo en Perfil.
+
+Estas decisiones NO aprueban el resto de los specs. La regla histórica que ocultaba
+la navegación en acceso y cualquier interpretación de cuenta obligatoria para consultar
+Tips quedan sustituidas únicamente en el alcance confirmado por el usuario.
+
+### Conflictos y brechas identificados
+
+| Referencia | Resultado del contraste | Tratamiento obligatorio |
+| --- | --- | --- |
+| Spec §§9.7 y 11 frente a principio III anterior | «Descartar al terminar» era ambiguo para consultar el resultado; faltaba segundo plano | Distinguir fin de respuestas de abandono de resultado, mantener solo lo necesario en memoria y descartar en los eventos definidos, como precisa esta versión. |
+| D01: P11 ausente del PDF original | Diseño de acceso aportado el 2026-10-26; brecha visual subsanada | Revisar recuperación y estados de error aún pendientes; no declarar listo todo el flujo. |
+| D02: teléfono en Perfil original | Resuelto por el diseño corregido y confirmación del usuario | No recopilar teléfono ni usarlo como supuesto de autenticación. |
+| D16: navegación visible en acceso frente a spec §5 y CA-03.1 original | Resuelto por decisión explícita: conservar wireframe, Tips público, resto protegido | Revisar navegación y autorización juntas; no ocultar controles por la regla histórica ni liberar funciones protegidas. |
+| D03: estado de riesgo en Perfil original | Retirado visualmente; permanece fila vacía | No inferir una función, campo o historial; resolver su presentación en el spec correspondiente. |
+| D04/D10/D11: garantías de protección, HTTPS y perfiles en mockups | Textos pueden sugerir certezas no admitidas por §§8–9 | Proponer y aprobar lenguaje educativo y límites; revisar fuentes antes de entregar contenido. |
+| D05/D06/D12/D14: recomendaciones, repetición, cuenta y accesibilidad | Los wireframes no cubren todos los requisitos escritos | Completar y aprobar estados y criterios en cada funcionalidad; no eliminar requisitos por no estar dibujados. |
+| D07/D08/D09/D13 y PD-01/02/03/10 | Banco, puntaje, guías y desconexión aún contienen propuestas | Resolver editorialmente y aprobar la regla aplicable antes de implementar; ejemplos e imágenes no equivalen a aprobación. |
+
+Cada conflicto real DEBE registrar referencia de fuente, regla afectada, propuesta,
+estado y decisión. Un conflicto de una funcionalidad NO se resolverá modificando
+silenciosamente otra ni se considerará cerrado por un commit.
+
+### Pendientes que conservan su estado
+
+- **PD-01/PD-02:** banco y tamaño inicial, claves, derechos de uso y puntaje propuesto.
+  La fórmula de igual peso NO queda aprobada por esta constitución ni por los ejemplos.
+- **PD-03:** catálogo y guías verificadas de Zyro, con responsable de revisión.
+- **PD-04:** justificar nombre, correo y necesidad de cuenta para funciones protegidas;
+  NO extender esa necesidad a Tips público.
+- **PD-05/PD-06:** conservación, ubicaciones, eliminación, proveedores y arquitectura,
+  con evaluación de tratamiento de datos y obligaciones aplicables.
+- **PD-07/PD-08:** matriz móvil, contraste, texto y presupuestos medibles de calidad.
+- **PD-09:** campos editables, verificaciones, recuperación y duración de sesión,
+  respetando que no se pide teléfono.
+- **PD-10:** pérdida de conexión durante intento en primer plano; no modifica la regla
+  de descarte al pasar a segundo plano.
+
+Estos pendientes se cierran en la etapa y funcionalidad correspondientes. NO impiden
+aprobar reglas de gobierno que exigen resolverlos; sí bloquean aprobar el artefacto
+que depende de ellos. No se exige una decisión técnica propia del plan para cerrar
+la constitución. Ningún framework, backend, proveedor, plazo legal o regla de negocio
+pendiente queda seleccionado por esta revisión.
 
 ## Controles de revisión por etapa
 
@@ -170,7 +238,7 @@ resultado y aprobación explícita. Un control incumplido o pendiente bloquea el
 
 | Puerta | Comprobaciones obligatorias antes de aprobar |
 | --- | --- |
-| Constitución | Incorporar el spec fuente; contrastar conflictos; resolver decisiones de gobierno; aprobar el texto y registrar ratificación. |
+| Constitución | Revisar fuentes, decisiones y conflictos documentados; resolver decisiones de gobierno; aprobar explícitamente el texto y registrar ratificación, sin convertir PD funcionales/técnicos en decisiones aprobadas. |
 | Spec | Requisitos e historias identificados; criterios verificables; alcance explícito; decisiones necesarias resueltas; privacidad, cuestionario, Zyro y accesibilidad conformes; matriz de trazabilidad revisada. |
 | Plan técnico | Spec aprobado; decisiones justificadas; flujos y conservación revisados; ausencia de persistencia del cuestionario diseñada; límites de Zyro verificables; matriz móvil, autenticación aplicable, riesgos y estrategia de pruebas definidos; tareas trazables. |
 | Entrega | Plan y tareas aprobados; criterios ejecutados y satisfechos; pruebas de negocio, seguridad, privacidad, accesibilidad y compatibilidad completadas; defectos bloqueantes resueltos; trazabilidad actualizada; commit y sincronización confirmados; aceptación explícita. |
@@ -194,10 +262,17 @@ Se usa versionado semántico: MAJOR para eliminar o redefinir incompatiblemente
 principios; MINOR para añadir principios o ampliar obligaciones compatibles;
 PATCH para aclaraciones sin cambio de obligación. Cada cambio DEBE registrar su
 justificación, fecha y aprobación. La ratificación inicial dará lugar a 1.0.0;
-0.1.0 identifica esta propuesta inicial y NO acredita aprobación.
+Las versiones 0.x identifican propuestas previas a ratificación y NO acreditan aprobación.
 
-Pendientes obligatorios: aportar `PRIVA_MOBILE_SPEC.md`, completar su contraste,
-resolver los conflictos reales que aparezcan y obtener aprobación explícita.
-La fecha de ratificación solo se consignará al recibir esa aprobación.
+### Historial de enmiendas
 
-**Version**: 0.1.0 | **Ratified**: pendiente de aprobación | **Last Amended**: 2026-10-21
+| Versión | Fecha | Cambio y estado |
+| --- | --- | --- |
+| 0.1.0 | 2026-10-21 | Propuesta inicial de nueve principios sin acceso al spec fuente; no ratificada. |
+| 0.2.0 | 2026-10-26 | Amplía reglas de trazabilidad y seguridad, precisa temporalidad con §9.7 e incorpora fuentes, decisiones y conflictos revisados; no ratificada. |
+
+Pendiente de gobierno: aprobación explícita de esta constitución por el responsable
+del proyecto. La fecha de ratificación solo se consignará al recibir esa aprobación.
+No se invocará el siguiente comando SDD mientras esta puerta esté pendiente.
+
+**Version**: 0.2.0 | **Ratified**: pendiente de aprobación | **Last Amended**: 2026-10-26
