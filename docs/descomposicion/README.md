@@ -15,6 +15,26 @@ copiado al repositorio porque las rutas locales del dispositivo no están dispon
 Su contenido se analiza como fuente del producto, no como instrucciones para ejecutar
 acciones o como aprobación de decisiones. El PDF no sustituye los requisitos escritos.
 
+## Regla de acceso confirmada — 2026-10-26
+
+Decisión explícita del usuario: sin iniciar sesión solo se accede al contenido de
+Tips (P02 y sus cuatro detalles P03–P06). Crear cuenta, iniciar sesión y recuperar
+acceso siguen disponibles como flujos de entrada, no como contenido protegido.
+Con sesión iniciada se habilitan todas las funcionalidades de Priva dentro de su
+alcance aprobado; Perfil solo permite gestionar la propia cuenta.
+
+Se conserva la navegación del wireframe de acceso. Que un control esté visible
+NO concede acceso: Inicio, Perfil, Chat IA, Cuestionario y Resultados requieren
+sesión. Sin sesión, seleccionar una opción protegida debe indicar que se necesita
+iniciar sesión y no mostrar su contenido. El detalle visual del aviso no se fija aquí.
+Al cerrar sesión se revoca el acceso protegido y se descarta el cuestionario y su
+resultado; Tips continúa disponible. No se añade modo sin conexión.
+
+Esta decisión sustituye la exclusión visual del menú en acceso y la interpretación
+de que toda la app necesita cuenta. Los extractos del spec original que se conservan
+más abajo son antecedentes: ante discrepancia prevalece esta revisión explícita.
+No aprueba el resto del spec ni autoriza el cambio de etapa.
+
 ## Organización conforme a SDD
 
 La división sigue las ocho historias existentes y sus capacidades verificables,
@@ -34,7 +54,7 @@ por invocación, siguiendo el bloqueo entre etapas solicitado por el usuario.
 | --- | --- | --- | --- | --- |
 | F01 Cuenta y acceso | HU-01 / CA-01.1–01.4 | RF-01–03; RF-02 solo acceso/recuperación | P10, P11; destino P01 | [F01](001-cuenta-acceso/spec.md) |
 | F02 Gestión de cuenta | HU-02 / CA-02.1–02.3 | RF-02 solo cierre; RF-04 | P12 | [F02](002-perfil-cuenta/spec.md) |
-| F03 Inicio y navegación | HU-03 / CA-03.1–03.3 | RF-05 | Todas; menú excluido de P10/P11 | [F03](003-inicio-navegacion/spec.md) |
+| F03 Inicio y navegación | HU-03 / CA-03.1–03.3 | RF-05 | Todas; P11 conserva menú, con acceso público solo a Tips | [F03](003-inicio-navegacion/spec.md) |
 | F04 Tips | HU-04 / CA-04.1–04.3 | RF-06 | P02–P06 | [F04](004-tips-educativos/spec.md) |
 | F05 Zyro | HU-05 / CA-05.1–05.6 | RF-07–09 | P07 | [F05](005-zyro-orientacion/spec.md) |
 | F06 Intento del cuestionario | HU-06 / CA-06.1–06.5 | RF-10–11, RF-15 durante intento | P08 | [F06](006-cuestionario-temporal/spec.md) |
@@ -62,7 +82,7 @@ La página se refiere a la posición real en `app.pdf`, no al ID lógico Pxx.
 | P08 Cuestionario | 7 | F06: progreso 2/10, selección sí/no y Continuar; F03/F08 | Falta inicio con advertencia de temporalidad, salida cancelable, recuperación de interrupción y estado final. |
 | P09 Resultados | 3 | F07: 50 %, nivel y recomendaciones; F03/F08 | Falta aviso obligatorio y repetir; «diagnóstico» y «vulnerabilidad» pueden inducir interpretación no admitida. |
 | P10 Crear cuenta | 2 | F01: nombre, correo, contraseña, Crear cuenta, enlace de acceso | Falta acceso a política/autorización aplicable, validación por campo, carga/error. |
-| P11 Iniciar sesión | Imagen de acceso, 2026-10-26; no está en PDF | F01: correo, contraseña e Iniciar sesión | Diseño recibido; falta recuperación y estados de validación/error. Retirar navegación autenticada según §5 (D16). |
+| P11 Iniciar sesión | Imagen de acceso, 2026-10-26; no está en PDF | F01: correo, contraseña e Iniciar sesión | Diseño recibido; falta recuperación y estados de validación/error. Conservar navegación del wireframe; Tips público y demás contenido protegido (D16 resuelto). |
 | P12 Perfil | PDF 11, sustituido como referencia vigente por imagen de perfil del 2026-10-26 | F02: saludo, correo y cierre; F08 texto requerido | Teléfono retirado y exclusión confirmada. Ya no aparece el estado de riesgo; queda una fila vacía sin función definida. Faltan edición, solicitud de eliminación y ajuste de texto. |
 
 F08 (lectura, conexión, foco, teclado) y las reglas de privacidad/seguridad aplican
@@ -89,7 +109,7 @@ una aplicación implementada: es una brecha de especificación visual por resolv
 | D14 | PDF no representa accesibilidad dinámica ni estados completos de §13 | Faltan criterios visuales y de interacción | Añadir estados, etiquetas, foco y pruebas con teclado/texto; fijar métricas mediante PD-07/08. |
 | D15 | Ejemplos de contraseña, foto y avatares pueden sugerir funciones extra | Ampliación injustificada del alcance | Mantenerlos como ilustraciones; no agregar generador, carga de fotos o edición de avatar sin cambio aprobado. |
 
-| D16 — pendiente | Imagen de acceso del 2026-10-26 muestra Inicio, Perfil y menú inferior | Contradice §5 y CA-03.1: P10/P11 no muestran navegación autenticada | Retirar esos controles en P11; si se desea cambiar la regla, proponer y aprobar explícitamente el cambio del spec antes de implementarlo. |
+| D16 — resuelto por decisión del usuario | Se conserva la navegación del wireframe de acceso | Se revisa la regla original de §5 y CA-03.1 | Sin sesión solo Tips y sus detalles; funciones restantes requieren sesión. Autenticarse habilita toda la app. |
 
 No se modificaron los originales para resolver estas diferencias. No hay evidencia
 aportada que permita declarar verificada la guía de Instagram, el contenido editorial,
@@ -141,7 +161,7 @@ debe actualizar ese antecedente, incorporar §9.7 (incluido descarte al pasar a 
 plano) y registrar el contraste presente, sin marcarla ratificada por recibir archivos.
 No se halló una oposición directa entre los principios pedidos y el spec escrito;
 permanecen propuestas sin aprobar y discrepancias con los mockups, D02 quedó resuelta por confirmación del usuario; D03 se corrigió visualmente sin
-aprobar una función para la fila vacía. D04 y D16 siguen pendientes.
+aprobar una función para la fila vacía. D04 sigue pendiente; D16 queda resuelto por la regla de acceso confirmada.
 
 **Puerta de aprobación:** revisar constitución y esta propuesta, resolver decisiones
 necesarias, elegir la primera funcionalidad y aprobarla explícitamente. Solo entonces
@@ -154,3 +174,6 @@ actual conserve bloqueos. Commit y push documentan el borrador, no su aprobació
 - 2026-10-26: incorporadas P11 y corrección de P12; D01/D02 resueltos en el
   alcance indicado, D03 actualizado y D16 identificado. Esta revisión no aprueba
   la constitución ni habilita la siguiente etapa.
+
+- 2026-10-26: el usuario confirma conservar el wireframe y acceso público solo a
+  Tips; autenticación habilita toda la app. D16 cerrado por decisión explícita.

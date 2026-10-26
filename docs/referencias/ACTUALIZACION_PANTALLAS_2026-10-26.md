@@ -39,3 +39,17 @@ No se copia el correo ilustrativo como dato real o configuración del proyecto.
 Actualización limitada a evidencia visual y decisión de no pedir teléfono.
 No ratifica la constitución ni aprueba todos los specs. No se avanza a planificación,
 tareas ni implementación. El PDF y el spec original se mantienen intactos.
+
+## Decisión posterior que sustituye la propuesta sobre D16
+
+El usuario indicó «mantenlo depende los wireframe» y aclaró:
+«al no iniciar sesion solo se podra acceder a los tips, cuando se inicia sesion
+el usuario tiene derecho a toda la app».
+
+Por tanto, NO se retira la navegación del diseño de acceso. D16 queda resuelto
+mediante acceso público a Tips y sus cuatro detalles, con el resto del contenido
+protegido hasta iniciar sesión. Los flujos de registro/acceso/recuperación siguen
+siendo utilizables sin sesión. Se mantiene el control de la propia cuenta.
+Esta decisión sustituye únicamente las reglas afectadas; no aprueba globalmente
+los borradores ni autoriza avanzar de etapa. Los originales se conservan como
+antecedentes y los borradores funcionales incorporan la revisión y sus criterios.

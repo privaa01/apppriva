@@ -6,6 +6,26 @@
 **Input**: Descomponer el spec aportado y asociarlo a las pantallas del PDF.
 **Fuentes**: [Spec original](../../referencias/PRIVA_MOBILE_SPEC.md), [PDF](../../referencias/app.pdf).
 
+## Regla de acceso confirmada — 2026-10-26
+
+Decisión explícita del usuario: sin iniciar sesión solo se accede al contenido de
+Tips (P02 y sus cuatro detalles P03–P06). Crear cuenta, iniciar sesión y recuperar
+acceso siguen disponibles como flujos de entrada, no como contenido protegido.
+Con sesión iniciada se habilitan todas las funcionalidades de Priva dentro de su
+alcance aprobado; Perfil solo permite gestionar la propia cuenta.
+
+Se conserva la navegación del wireframe de acceso. Que un control esté visible
+NO concede acceso: Inicio, Perfil, Chat IA, Cuestionario y Resultados requieren
+sesión. Sin sesión, seleccionar una opción protegida debe indicar que se necesita
+iniciar sesión y no mostrar su contenido. El detalle visual del aviso no se fija aquí.
+Al cerrar sesión se revoca el acceso protegido y se descarta el cuestionario y su
+resultado; Tips continúa disponible. No se añade modo sin conexión.
+
+Esta decisión sustituye la exclusión visual del menú en acceso y la interpretación
+de que toda la app necesita cuenta. Los extractos del spec original que se conservan
+más abajo son antecedentes: ante discrepancia prevalece esta revisión explícita.
+No aprueba el resto del spec ni autoriza el cambio de etapa.
+
 ## User Scenarios & Testing *(mandatory)*
 
 ### HU-01 — Crear cuenta y acceder (RF-01 a RF-03)
@@ -44,7 +64,7 @@ El usuario confirma que la app no pide teléfono; no añadirlo a registro o recu
 
 **Brechas observadas:** Faltan política y autorización consultables en registro, estados
 de validación/error y recuperación. P11 muestra Inicio, Perfil y menú inferior,
-contrarios a §5 y CA-03.1 (D16): se propone retirarlos, sin aprobar un cambio de regla.
+conservados por decisión del usuario; D16 queda resuelto mediante la nueva regla de acceso.
 No aprobar proveedor, caducidad ni sesión por defecto.
 
 ### Reglas de la fuente aplicables
@@ -97,3 +117,13 @@ Pendientes originales asociados: PD-04, PD-05, PD-06, PD-09.
 Consultar sus condiciones de cierre en §18 del spec fuente. Las brechas de pantalla
 se resuelven en el registro del índice, sin modificar silenciosamente el original.
 No se autoriza `$speckit-plan`, tareas ni implementación con este borrador.
+
+## Criterios de aceptación de acceso añadidos
+
+- **CA-ACC-01:** Sin sesión, abrir Tips y cada una de sus cuatro categorías permite consultar contenido sin exigir cuenta.
+- **CA-ACC-02:** Sin sesión, intentar abrir Inicio, Perfil, Zyro, Cuestionario o Resultados no muestra contenido protegido e informa que se requiere iniciar sesión.
+- **CA-ACC-03:** Con una sesión válida se puede acceder a todas las funciones del alcance, sujeto a sus precondiciones; no se muestran resultados sin completar un intento.
+- **CA-ACC-04:** Tras cerrar sesión, Tips sigue disponible y el contenido protegido deja de estarlo, incluido mediante retroceso; respuestas y resultados se descartan.
+- **CA-ACC-05:** La navegación visible de P11 se conserva conforme al wireframe sin eludir las restricciones anteriores.
+
+Estos criterios documentan la decisión; aún no son pruebas ejecutadas.

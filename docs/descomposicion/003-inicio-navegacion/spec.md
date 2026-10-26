@@ -1,4 +1,4 @@
-# Feature Specification: F03 — Inicio y navegación autenticada
+# Feature Specification: F03 — Inicio y navegación según estado de sesión
 
 **Feature Branch**: `work` (borradores de descomposición; sin rama de implementación)
 **Created**: 2026-10-21
@@ -6,13 +6,33 @@
 **Input**: Descomponer el spec aportado y asociarlo a las pantallas del PDF.
 **Fuentes**: [Spec original](../../referencias/PRIVA_MOBILE_SPEC.md), [PDF](../../referencias/app.pdf).
 
+## Regla de acceso confirmada — 2026-10-26
+
+Decisión explícita del usuario: sin iniciar sesión solo se accede al contenido de
+Tips (P02 y sus cuatro detalles P03–P06). Crear cuenta, iniciar sesión y recuperar
+acceso siguen disponibles como flujos de entrada, no como contenido protegido.
+Con sesión iniciada se habilitan todas las funcionalidades de Priva dentro de su
+alcance aprobado; Perfil solo permite gestionar la propia cuenta.
+
+Se conserva la navegación del wireframe de acceso. Que un control esté visible
+NO concede acceso: Inicio, Perfil, Chat IA, Cuestionario y Resultados requieren
+sesión. Sin sesión, seleccionar una opción protegida debe indicar que se necesita
+iniciar sesión y no mostrar su contenido. El detalle visual del aviso no se fija aquí.
+Al cerrar sesión se revoca el acceso protegido y se descarta el cuestionario y su
+resultado; Tips continúa disponible. No se añade modo sin conexión.
+
+Esta decisión sustituye la exclusión visual del menú en acceso y la interpretación
+de que toda la app necesita cuenta. Los extractos del spec original que se conservan
+más abajo son antecedentes: ante discrepancia prevalece esta revisión explícita.
+No aprueba el resto del spec ni autoriza el cambio de etapa.
+
 ## User Scenarios & Testing *(mandatory)*
 
 ### HU-03 — Navegar (RF-05)
 
 Como usuario, quiero encontrar fácilmente las herramientas.
 
-- **CA-03.1:** Las vistas autenticadas muestran Inicio, Perfil y menú inferior; registro y acceso no los muestran.
+- **CA-03.1 (revisado):** Se conserva la navegación del wireframe de acceso; sin sesión solo se permite consultar Tips y sus detalles. El resto requiere autenticación.
 - **CA-03.2:** Al elegir una sección, se abre su vista y se identifica la opción activa.
 - **CA-03.3:** Al volver desde un detalle, regreso según el historial sin crear bucles de navegación.
 
@@ -24,7 +44,7 @@ sin exigir implementar otras historias durante esta revisión documental.
 
 ### Edge Cases
 
-Registro o acceso con menú protegido; retroceso en bucle; salida accidental del cuestionario; sección activa solo identificada por color.
+Control visible que concede contenido protegido sin sesión; retroceso en bucle; salida accidental del cuestionario; sección activa solo identificada por color.
 
 ## Requirements *(mandatory)*
 
@@ -34,13 +54,13 @@ Registro o acceso con menú protegido; retroceso en bucle; salida accidental del
 
 ### Asociación a pantallas
 
-P01–P09 y P12: PDF 1, 4, 6, 8, 9, 10, 5, 7, 3, 11; exclusión P10/P11.
+P01–P09 y P12: PDF 1, 4, 6, 8, 9, 10, 5, 7, 3, 11; P11 conserva navegación según wireframe; no extender por inferencia ese diseño a P10.
 
 **Brechas observadas:** Revisar etiquetas accesibles y estado activo. La navegación dibujada no prueba comportamiento ni autorización.
 
-**Revisión visual 2026-10-26:** la nueva P11 sí muestra Inicio, Perfil y menú
-inferior. Esto contradice la exclusión de §5 y CA-03.1 (D16). Se propone retirarlos
-de la vista de acceso; su aparición en la imagen no aprueba navegación sin sesión.
+**Revisión visual 2026-10-26:** se conserva la navegación de P11 conforme al
+wireframe y a la decisión del usuario. D16 queda resuelto: Tips es público y los
+controles de las demás funciones no permiten abrir contenido sin autenticación.
 
 ### Reglas de la fuente aplicables
 
@@ -105,3 +125,13 @@ Pendientes originales asociados: ningún PD exclusivo; aplican los controles tra
 Consultar sus condiciones de cierre en §18 del spec fuente. Las brechas de pantalla
 se resuelven en el registro del índice, sin modificar silenciosamente el original.
 No se autoriza `$speckit-plan`, tareas ni implementación con este borrador.
+
+## Criterios de aceptación de acceso añadidos
+
+- **CA-ACC-01:** Sin sesión, abrir Tips y cada una de sus cuatro categorías permite consultar contenido sin exigir cuenta.
+- **CA-ACC-02:** Sin sesión, intentar abrir Inicio, Perfil, Zyro, Cuestionario o Resultados no muestra contenido protegido e informa que se requiere iniciar sesión.
+- **CA-ACC-03:** Con una sesión válida se puede acceder a todas las funciones del alcance, sujeto a sus precondiciones; no se muestran resultados sin completar un intento.
+- **CA-ACC-04:** Tras cerrar sesión, Tips sigue disponible y el contenido protegido deja de estarlo, incluido mediante retroceso; respuestas y resultados se descartan.
+- **CA-ACC-05:** La navegación visible de P11 se conserva conforme al wireframe sin eludir las restricciones anteriores.
+
+Estos criterios documentan la decisión; aún no son pruebas ejecutadas.

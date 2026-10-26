@@ -6,6 +6,26 @@
 **Input**: Descomponer el spec aportado y asociarlo a las pantallas del PDF.
 **Fuentes**: [Spec original](../../referencias/PRIVA_MOBILE_SPEC.md), [PDF](../../referencias/app.pdf).
 
+## Regla de acceso confirmada — 2026-10-26
+
+Decisión explícita del usuario: sin iniciar sesión solo se accede al contenido de
+Tips (P02 y sus cuatro detalles P03–P06). Crear cuenta, iniciar sesión y recuperar
+acceso siguen disponibles como flujos de entrada, no como contenido protegido.
+Con sesión iniciada se habilitan todas las funcionalidades de Priva dentro de su
+alcance aprobado; Perfil solo permite gestionar la propia cuenta.
+
+Se conserva la navegación del wireframe de acceso. Que un control esté visible
+NO concede acceso: Inicio, Perfil, Chat IA, Cuestionario y Resultados requieren
+sesión. Sin sesión, seleccionar una opción protegida debe indicar que se necesita
+iniciar sesión y no mostrar su contenido. El detalle visual del aviso no se fija aquí.
+Al cerrar sesión se revoca el acceso protegido y se descarta el cuestionario y su
+resultado; Tips continúa disponible. No se añade modo sin conexión.
+
+Esta decisión sustituye la exclusión visual del menú en acceso y la interpretación
+de que toda la app necesita cuenta. Los extractos del spec original que se conservan
+más abajo son antecedentes: ante discrepancia prevalece esta revisión explícita.
+No aprueba el resto del spec ni autoriza el cambio de etapa.
+
 ## User Scenarios & Testing *(mandatory)*
 
 ### HU-06 — Responder el cuestionario (RF-10 y RF-11)
