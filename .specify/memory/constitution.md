@@ -1,6 +1,6 @@
 # Priva Constitution
 
-Estado: **borrador contrastado documentalmente; pendiente de aprobación explícita**.
+Estado: **ratificada — versión 1.0.0**.
 Aplicación móvil para Android e iOS; metodología Spec-Driven Development (SDD).
 Esta constitución complementa los requisitos funcionales sin reproducirlos.
 
@@ -244,7 +244,7 @@ resultado y aprobación explícita. Un control incumplido o pendiente bloquea el
 | Entrega | Plan y tareas aprobados; criterios ejecutados y satisfechos; pruebas de negocio, seguridad, privacidad, accesibilidad y compatibilidad completadas; defectos bloqueantes resueltos; trazabilidad actualizada; commit y sincronización confirmados; aceptación explícita. |
 
 Una revisión documental NO sustituye pruebas de implementación. Las pruebas futuras
-se expresan aquí como obligaciones; NO se declaran ejecutadas en este borrador.
+se expresan aquí como obligaciones; NO se declaran ejecutadas por esta ratificación.
 
 ## Governance
 
@@ -261,7 +261,7 @@ su alcance y comprobación DEBEN aprobarse antes de aplicar el cambio.
 Se usa versionado semántico: MAJOR para eliminar o redefinir incompatiblemente
 principios; MINOR para añadir principios o ampliar obligaciones compatibles;
 PATCH para aclaraciones sin cambio de obligación. Cada cambio DEBE registrar su
-justificación, fecha y aprobación. La ratificación inicial dará lugar a 1.0.0;
+justificación, fecha y aprobación. La ratificación inicial se registra como 1.0.0.
 Las versiones 0.x identifican propuestas previas a ratificación y NO acreditan aprobación.
 
 ### Historial de enmiendas
@@ -269,10 +269,18 @@ Las versiones 0.x identifican propuestas previas a ratificación y NO acreditan 
 | Versión | Fecha | Cambio y estado |
 | --- | --- | --- |
 | 0.1.0 | 2026-10-21 | Propuesta inicial de nueve principios sin acceso al spec fuente; no ratificada. |
-| 0.2.0 | 2026-10-26 | Amplía reglas de trazabilidad y seguridad, precisa temporalidad con §9.7 e incorpora fuentes, decisiones y conflictos revisados; no ratificada. |
+| 0.2.0 | 2026-10-26 | Amplía reglas de trazabilidad y seguridad, precisa temporalidad con §9.7 e incorpora fuentes, decisiones y conflictos revisados; propuesta posteriormente aprobada. |
+| 1.0.0 | 2026-10-26 | Ratificación inicial por aprobación explícita del usuario de la propuesta 0.2.0; sin cambios a sus principios. |
 
-Pendiente de gobierno: aprobación explícita de esta constitución por el responsable
-del proyecto. La fecha de ratificación solo se consignará al recibir esa aprobación.
-No se invocará el siguiente comando SDD mientras esta puerta esté pendiente.
+### Registro de ratificación
 
-**Version**: 0.2.0 | **Ratified**: pendiente de aprobación | **Last Amended**: 2026-10-26
+El 2026-10-26, el usuario responsable del proyecto aprobó explícitamente la propuesta
+v0.2.0 mediante el mensaje «si, apruebo», en respuesta a la solicitud de aprobación
+de esa versión. Se registra su adopción inicial como v1.0.0, sin modificar los nueve
+principios ni aprobar decisiones funcionales o técnicas pendientes.
+
+Esta aprobación cierra únicamente la puerta de constitución. Los ocho specs siguen
+pendientes de sus propias revisiones y aprobaciones. No se inicia planificación,
+tareas ni implementación por el hecho de ratificar este documento.
+
+**Version**: 1.0.0 | **Ratified**: 2026-10-26 | **Last Amended**: 2026-10-26
