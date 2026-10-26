@@ -121,3 +121,18 @@ internacional por elegir un servicio disponible.
 Base tecnológica elegida; fuentes y alternativas documentadas. Fase 0 no completada:
 falta cerrar compatibilidad, parámetros y frontera de recuperación con el proveedor.
 Los artefactos de diseño son preliminares y no autorizan tareas ni implementación.
+
+## R08 — Respuestas posteriores del usuario
+
+El 2026-10-26 solicitó compatibilidad con todos los dispositivos. Se conserva el alcance
+móvil Android/iOS y se interpreta como objetivo de máxima cobertura viable, no como
+una capacidad demostrada de Flutter o del producto. Se debe verificar el mínimo común
+del SDK estable y dependencias, arquitecturas y exclusiones. No se inventa un mínimo
+ni se amplía el alcance a escritorio o tablets.
+
+El usuario aceptó, sujeto a validación del proveedor, mínimo de 12 caracteres,
+caducidad de código de 10 minutos, reenvío cada 60 segundos y máximo de 5 fallos
+antes de exigir nuevo desafío. No hay evidencia de enforcement todavía. El límite
+de fallos debe verificarse de forma independiente de la UI; si no es configurable,
+la investigación debe reportarlo y proponer una revisión, sin sustituirlo en silencio.
+Los valores de sesión y demás propuestas siguen sin aprobarse.

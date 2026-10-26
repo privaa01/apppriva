@@ -25,7 +25,7 @@ tratamiento de datos por el hecho de proponerse para autenticación.
 | Primary Dependencies | SDK oficial `supabase_flutter`; navegación central con control por estado; almacenamiento de sesión respaldado por Keychain/Keystore mediante adaptador seguro evaluado. Versiones exactas deberán quedar fijadas y auditadas antes de implementar. |
 | Storage | Identidad/credenciales en Supabase Auth. Perfil mínimo y evidencia de autorización en Postgres con aislamiento por usuario; no crear banco de preguntas, chat ni resultados para F01. |
 | Testing | `flutter_test`, pruebas de widgets y `integration_test`; proyecto de autenticación de pruebas y buzones sintéticos para aceptación real. No simular envío como prueba de entrega de correo. |
-| Target Platform | Android e iOS; versiones mínimas y dispositivos pendientes de aprobación en PD-07. No heredar un mínimo de framework como decisión de producto. |
+| Target Platform | Android e iOS con la mayor cobertura de móviles viable, objetivo confirmado por el usuario. Determinar el mínimo compatible común del SDK estable y las dependencias, documentar exclusiones y validar la matriz; no prometer todos los dispositivos ni elegir aún un mínimo numérico sin comprobarlo. |
 | Project Type | Aplicación móvil; proveedor gestionado de autenticación y correo transaccional. No servidor propio de contraseñas. |
 | Performance Goals | Propuesta: confirmación visual local de envío ≤1 s; resultados de red o aviso de espera/error ≤15 s por operación. Medir en red/dispositivos definidos, sin incluir entrega de correo en ese límite. Son presupuestos propuestos, no resultados ni SLA del proveedor. |
 | Constraints | Internet obligatorio, Tips público, correo verificado para contenido protegido, sin teléfono/SMS, sin credenciales externas ni secretos administrativos en app. |
@@ -110,11 +110,14 @@ plan, no a pruebas creadas o ejecutadas. No se crea esquema de otros módulos.
   `verifyOTP` con `OtpType.recovery`,
   permitir cambio de contraseña solo en ese flujo, cerrar su sesión temporal y pedir
   inicio de sesión normal. No usar un flujo OTP que cree usuarios automáticamente.
-- Propuesta de contraseña: mínimo 12 caracteres, permitir frases largas y pegado,
+- Mínimo de contraseña de 12 caracteres aceptado por el usuario, sujeto a validación
+  del proveedor. Propuesta adicional aún no aprobada: permitir frases largas y pegado,
   sin reglas arbitrarias de mezcla; al menos 64 caracteres aceptados si el proveedor
   lo soporta, nunca truncado silencioso. Verificar límites y políticas del proveedor.
-- Propuesta de códigos: validez 10 minutos, un solo uso, reenvío no antes de 60 segundos;
-  tras 5 fallos de verificación, exigir nuevo desafío y espera. El proveedor debe
+- Parámetros aceptados por el usuario, sujetos a validación del proveedor: validez
+  de código de 10 minutos, reenvío no antes de 60 segundos y, tras 5 fallos de
+  verificación, exigir nuevo desafío. Uso único y espera adicional siguen como
+  controles técnicos del diseño que deben concretarse. El proveedor debe
   imponer el límite real: una cuenta regresiva local no es una defensa suficiente.
   No construir un servicio propio de OTP sin reevaluar complejidad y privacidad.
 - Persistir solo tokens de sesión en almacenamiento seguro del sistema operativo,
@@ -159,10 +162,17 @@ de la funcionalidad en Spec Kit.
 
 1. Flutter + Supabase ya están confirmados. Fijar SDK/dependencias con evidencia
    de compatibilidad antes de cerrar el plan, sin inventar versiones instaladas.
-2. Aprobar versiones mínimas y matriz PD-07; propuesta de cobertura física y simulada
-   en Android/iOS, incluida la versión mínima y la actual elegidas.
-3. Aprobar o ajustar los parámetros propuestos de contraseña, códigos, sesión, tiempos,
-   texto ampliado y protocolo de usabilidad; verificar que el proveedor pueda imponerlos.
+2. El usuario solicita la mayor cobertura de dispositivos. Cerrar PD-07 comprobando
+   el mínimo común del SDK y las dependencias, arquitecturas y una matriz de móviles
+   pequeños/grandes, versiones mínima/actual y capacidades accesibles; presentar
+   exclusiones verificadas antes de aprobar una afirmación de compatibilidad.
+   No interpretar «todos los dispositivos» como tablets, escritorio o plataformas
+   adicionales fuera del alcance móvil Android/iOS aprobado.
+3. Validar que el proveedor imponga los valores aceptados (12 caracteres, código
+   de 10 minutos, reenvío de 60 segundos y máximo de 5 fallos); si no los soporta,
+   documentar la diferencia y proponer corrección antes de modificar la regla.
+   Duración de sesión, presupuestos de tiempos, texto ampliado, política adicional
+   de contraseña y protocolo de usabilidad siguen pendientes de aprobación.
 4. Resolver responsable de datos, región, proveedor de correo, acuerdos, conservación
    y eliminación. No es correcto inventar plazos jurídicos para cerrar esta sección.
 5. **Bloqueo de seguridad por demostrar:** la documentación no garantiza una sesión
@@ -172,8 +182,10 @@ de la funcionalidad en Spec Kit.
 6. Verificar comportamiento real de códigos, sesión de recuperación, anti-enumeración,
    persistencia segura, límites y correo en entorno de pruebas antes de aceptar entrega.
 
-Salvo Flutter + Supabase, las propuestas técnicas son material para aprobación del
-plan, no decisiones ya aprobadas ni recursos desplegados. La investigación y contratos siguientes son un
+Flutter + Supabase y los cuatro parámetros de seguridad indicados tienen aprobación
+expresa en el alcance registrado; los parámetros están condicionados a validación
+del proveedor. El objetivo de cobertura amplia no equivale a una matriz certificada.
+Las demás propuestas siguen siendo material para aprobación del plan, no recursos desplegados. La investigación y contratos siguientes son un
 diseño condicionado por esas decisiones. No pasar a tareas si esta puerta está abierta.
 
 ## Complexity Tracking
@@ -191,3 +203,13 @@ revisar alternativas y aprobar su impacto antes de ampliar esta estructura.
   declarada completa mientras estén abiertos los bloqueos de fase 0.
 - No se generan tareas ni implementación. El plan se guarda como borrador concreto
   para continuar la revisión, no como aprobación ni verificación ejecutada.
+
+## Registro de respuestas del usuario — 2026-10-26
+
+- Compatibilidad: «que sea compatible con todos los dispositivos». Se registra como
+  objetivo de cobertura máxima viable de móviles Android/iOS, sin certificar equipos
+  antiguos o no soportados. Falta comprobar y documentar límites reales.
+- Seguridad: «Sí, sujeto a validación del proveedor» para contraseña mínima de 12
+  caracteres, código de 10 minutos, reenvío cada 60 segundos y máximo de 5 fallos
+  antes de nuevo desafío. No aprueba por extensión todos los otros parámetros.
+- Estas respuestas no aprueban el plan completo ni autorizan tareas o implementación.

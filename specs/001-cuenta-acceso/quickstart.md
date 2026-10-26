@@ -102,3 +102,16 @@ ejecutadas. Entrega solo después de resolver fallos bloqueantes y aprobación e
 
 **Validación actual:** solo resolución de rutas y consistencia documental. Ninguno
 de los recorridos de app o proveedor se ha ejecutado en esta etapa.
+
+## Comprobaciones añadidas tras las respuestas del usuario
+
+- Cobertura: documentar el mínimo común real de Flutter y dependencias; probar la
+  versión mínima y actual y móviles de distintos tamaños, memoria y arquitecturas
+  soportadas. Informar exclusiones; ningún conjunto finito de pruebas permite
+  afirmar funcionamiento en todos los dispositivos existentes.
+- Seguridad: comprobar que una contraseña de menos de 12 caracteres se rechaza por
+  el servicio, que un código fuera de sus 10 minutos no es válido, que el reenvío
+  antes de 60 segundos se limita y que el máximo de 5 fallos se impone también si
+  se llama al proveedor fuera de la app. No considerar aprobado por un contador local.
+- Documentar resultado y limitaciones del proveedor; no ejecutar aún estas pruebas
+  como parte de esta actualización documental ni usar datos reales.
