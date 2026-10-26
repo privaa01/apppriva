@@ -3,7 +3,7 @@
 **Purpose**: comprobar calidad del spec antes de aprobar su planificación.
 **Updated**: 2026-10-26
 **Feature**: [spec.md](../spec.md)
-**Estado**: validación documental; Q1–Q3 resueltas; aprobación del spec pendiente.
+**Estado**: validación documental; Q1–Q3 resueltas; spec aprobado el 2026-10-26.
 
 ## Content Quality
 
@@ -30,7 +30,7 @@
 - [x] SC-001 identifica muestra, denominador y condiciones como preparación obligatoria antes de medir; todavía no aprobados ni ejecutados.
 - [x] Constitución v1.0.0 ratificada y decisiones de Tips público/sin teléfono incorporadas.
 - [x] Q1–Q3 contestadas y respuestas incorporadas.
-- [ ] Spec y prioridad propuestos aprobados explícitamente por el usuario.
+- [x] Spec y prioridad P1 aprobados explícitamente por el usuario el 2026-10-26 (mensaje «apruebo»).
 
 ## Notes
 
@@ -38,6 +38,6 @@
 - Q2 exige verificar correo antes del acceso protegido; el mecanismo se define en el plan.
 - Q3 confirma recuperación por código al correo; no implica SMS, verificación por el mismo mecanismo ni inicio automático de sesión.
 - PD-05/06/08/09 conservan los detalles correspondientes al plan y a la documentación de datos; no impiden solicitar aprobación del alcance funcional ya aclarado.
-- La ratificación constitucional no aprueba este spec; queda pendiente su aprobación y la prioridad propuesta.
+- La aprobación de F01 es independiente de la ratificación constitucional y está registrada en el spec; no aprueba las otras funcionalidades.
 - Ninguna casilla acredita pruebas de implementación ejecutadas ni metas de usabilidad logradas.
-- Resultado: revisión documental satisfactoria; listo para revisión y aprobación del usuario. No iniciar `$speckit-plan` hasta esa aprobación.
+- Resultado: spec funcional aprobado y habilitado para la siguiente etapa cuando se solicite. El plan no se ha iniciado ni aprobado.

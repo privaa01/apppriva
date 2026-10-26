@@ -3,7 +3,7 @@
 **Feature Branch**: `work` (selección por directorio, sin rama nueva)
 **Created**: 2026-10-21
 **Updated**: 2026-10-26
-**Status**: Draft — aclaraciones Q1–Q3 resueltas; pendiente de aprobación explícita.
+**Status**: Approved — alcance funcional aprobado explícitamente el 2026-10-26.
 **SPECIFY_FEATURE_DIRECTORY**: `specs/001-cuenta-acceso`
 **Input**: `/speckit-specify001`, interpretado como revisión de la funcionalidad existente F01.
 **Gobierno**: [constitución v1.0.0 ratificada](../../.specify/memory/constitution.md).
@@ -13,14 +13,14 @@
 
 ## User Scenarios & Testing *(mandatory)*
 
-### HU-01 — Crear cuenta y acceder (prioridad propuesta: P1)
+### HU-01 — Crear cuenta y acceder (prioridad: P1)
 
 Como usuario de Priva, quiero crear una cuenta, iniciar sesión y recuperar el acceso
 para utilizar las funciones protegidas sin perder la posibilidad de consultar Tips
 cuando no tengo sesión.
 
-**Why this priority:** es la entrada a las funciones protegidas. P1 es una propuesta
-de orden funcional, no aprobación del calendario ni de la implementación.
+**Why this priority:** es la entrada a las funciones protegidas. P1 expresa el orden funcional aprobado con este spec, no un calendario
+ni autorización de implementación.
 
 **Independent Test:** con una cuenta de prueba y las precondiciones de autorización
 aprobadas, ejecutar registro, acceso válido e inválido y recuperación; comprobar que
@@ -170,8 +170,8 @@ respuestas ni resultados reales del cuestionario.
 | Q2 / PD-09 | Verificar correo antes de habilitar acceso completo | La creación de cuenta no concede contenido protegido hasta verificar el correo y tener sesión válida; CA-01.2 se revisa y CA-01.11 cubre la restricción. |
 | Q3 / PD-09 | Código de recuperación enviado al correo | Recuperación con código al correo asociado, sin teléfono; CA-01.9/01.12/01.13 cubren el flujo. |
 
-Estas respuestas aprueban únicamente las decisiones indicadas; no equivalen a
-aprobación del spec completo. La verificación de correo y la recuperación son flujos
+Estas respuestas resolvieron las decisiones indicadas; la aprobación posterior
+del spec completo se registra a continuación. La verificación de correo y la recuperación son flujos
 distintos: elegir código para recuperación no elige el mecanismo de verificación.
 
 **Decisiones para el plan y la documentación de datos:** PD-05 exige conservación,
@@ -182,6 +182,14 @@ y uso de códigos, reintentos, duración de sesión y presupuestos de calidad.
 No se inventan plazos legales. SC-001 requiere aprobar muestra, denominador y
 condiciones antes de medir, no un resultado supuesto para poder redactar el spec.
 
-**Puerta de aprobación:** Q1–Q3 están resueltas. El usuario debe revisar y aprobar
-explícitamente este spec antes de `$speckit-plan`. La prioridad P1 permanece propuesta.
-No se inicia otro spec ni se crean plan, tareas o código con esta invocación.
+## Registro de aprobación
+
+El 2026-10-26, el usuario respondió «apruebo» a la solicitud de aprobación del
+spec 001 con Q1–Q3 incorporadas (contenido del commit `626d4b1`). Quedan aprobados
+su alcance funcional, escenarios y prioridad P1. Esta aprobación cierra la puerta
+de especificación de F01 y permite solicitar su planificación como siguiente etapa.
+
+No aprueba proveedores, arquitectura, conservación ni parámetros de seguridad
+reservados al plan y a la documentación de datos. No constituye evidencia de pruebas
+ni aprueba los otros siete specs. Esta operación registra la aprobación; no inicia
+planificación, tareas ni implementación.

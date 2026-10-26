@@ -1,6 +1,6 @@
 # Priva — especificaciones por funcionalidad
 
-**Estado:** ocho specs separados en borrador, sin planificación ni implementación.
+**Estado:** F01 aprobado el 2026-10-26; F02–F08 en borrador. Sin planificación ni implementación.
 **Actualización:** 2026-10-26.
 
 Cada carpeta contiene `spec.md` y `checklists/requirements.md`, conforme a la estructura
