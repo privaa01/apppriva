@@ -25,5 +25,11 @@
   "tasks": {
     "completed": 37,
     "pending": 8
+  },
+  "provider_transition": {
+    "requested_provider": "firebase",
+    "status": "design_revision_pending",
+    "previous_provider": "supabase",
+    "existing_results_apply_to_firebase": false
   }
 }

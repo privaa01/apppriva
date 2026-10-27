@@ -4,6 +4,19 @@
 **Input**: `/specs/001-cuenta-acceso/spec.md` — aprobado; constitución v1.0.0 ratificada.
 **Status**: Approved — base y correcciones del análisis 001 aprobadas explícitamente el 2026-10-27. Evidencia local previa conservada; implementación no iniciada.
 
+## Cambio de proveedor — 2026-10-27
+
+El usuario indicó «vamos a configurarlo con firebase»: queda confirmada la elección
+de Firebase en sustitución de Supabase. Flutter y los requisitos de producto se
+conservan. El diseño dependiente de Supabase que sigue se mantiene como antecedente
+aprobado, no como instrucciones para configurar el nuevo proveedor.
+
+La [revisión de migración](firebase-migration.md) identifica conflictos y validaciones
+pendientes. El diseño Firebase aún no está aprobado ni implementado; no continuar
+con el despliegue Supabase ni trasladar sus resultados a Firebase. La evidencia de
+implementación anterior está en `validation/`; la frase histórica «implementación
+no iniciada» del estado base ya no describe el código existente.
+
 ## Summary
 
 Implementar registro con nombre, correo y contraseña; verificar correo antes del acceso

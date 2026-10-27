@@ -1,3 +1,7 @@
+> Cambio del 2026-10-27: el usuario eligió Firebase. Este documento queda como
+> antecedente de Supabase; no continuar su configuración hospedada. Ver
+> [migración](../firebase-migration.md). No se ha conectado ni validado Firebase.
+
 # Supabase hospedado T039 — pendiente
 
 El usuario confirmó que tiene proyecto de pruebas y responsable/política. Todavía

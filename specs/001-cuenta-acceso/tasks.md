@@ -6,6 +6,14 @@
 **Fecha**: 2026-10-27. **Rama**: work.
 **Estado**: implementación en curso; 37 tareas completadas, 8 pendientes. Sin aceptación de entrega móvil.
 
+## Cambio confirmado a Firebase — 2026-10-27
+
+Las 37 tareas completadas corresponden a la implementación anterior. Sus marcas
+se conservan como historial; no certifican Firebase. La configuración hospedada
+Supabase queda suspendida. Antes de ejecutar tareas dependientes del nuevo proveedor,
+revisar plan, contratos, modelo y tareas según [impacto de migración](firebase-migration.md).
+Los IDs T001–T045 permanecen estables; la revalidación se registrará por proveedor.
+
 ## Format: ID, P y Story
 
 Cada tarea incluye checkbox, ID consecutivo y ruta relativa a la raíz del repositorio.
