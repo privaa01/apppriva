@@ -1,7 +1,7 @@
 # Guía de validación — F01
 
-**Estado:** guía para la implementación futura. No hay aplicación, SDK Flutter,
-manifest, pruebas ni proyecto de Auth configurados todavía. No ejecutar comandos
+**Estado:** guía para la implementación futura. No hay aplicación, SDK Flutter ni manifest. Existe una sonda local del proveedor
+ya ejecutada; no equivale a un proyecto Supabase alojado o pruebas de la app. No ejecutar comandos
 de app como si esos archivos existieran. El [plan](plan.md) sigue sin aprobar.
 
 ## 1. Revisión documental disponible ahora
@@ -100,8 +100,8 @@ Guardar resumen por CA con fecha, commit, plataforma, resultado y defectos, sin
 códigos, contraseñas ni tokens. Separar pruebas pasadas, fallidas, omitidas y no
 ejecutadas. Entrega solo después de resolver fallos bloqueantes y aprobación explícita.
 
-**Validación actual:** solo resolución de rutas y consistencia documental. Ninguno
-de los recorridos de app o proveedor se ha ejecutado en esta etapa.
+**Validación actual:** documentación y sonda local de Auth/SQL/correo simulado.
+Los recorridos de app y el proyecto hospedado todavía no se han ejecutado.
 
 ## Comprobaciones añadidas tras las respuestas del usuario
 
@@ -111,7 +111,30 @@ de los recorridos de app o proveedor se ha ejecutado en esta etapa.
   afirmar funcionamiento en todos los dispositivos existentes.
 - Seguridad: comprobar que una contraseña de menos de 12 caracteres se rechaza por
   el servicio, que un código fuera de sus 10 minutos no es válido, que el reenvío
-  antes de 60 segundos se limita y que el máximo de 5 fallos se impone también si
-  se llama al proveedor fuera de la app. No considerar aprobado por un contador local.
-- Documentar resultado y limitaciones del proveedor; no ejecutar aún estas pruebas
-  como parte de esta actualización documental ni usar datos reales.
+  antes de 60 segundos se limita y que el rate limit nativo limita solicitudes de verificación con HTTP 429. El máximo
+  exacto de cinco se retiró por decisión explícita; no exigirlo ni simularlo con un contador local.
+- Documentar resultado y limitaciones del proveedor; repetir las pruebas de entrega en el entorno hospedado, sin usar datos reales
+  hasta cumplir las puertas de privacidad. La sonda local ya está documentada abajo.
+
+## 6. Sonda local ejecutada — 2026-10-27
+
+[Informe](validation/README.md), [resultados](validation/results-native-limits.json)
+y [sonda reproducible](validation/auth_provider_probe.py).
+Desde la raíz del proyecto, con Python 3, Docker y las imágenes fijadas disponibles:
+
+```bash
+python specs/001-cuenta-acceso/validation/auth_provider_probe.py
+```
+
+La sonda crea solo contenedores/red de prueba, cuentas sintéticas y un buzón local,
+los elimina al terminar y devuelve estado distinto de cero si falla una comprobación.
+No crea un proyecto externo ni envía correo a personas. Rechaza nombres de contenedores
+preexistentes para no sobrescribir trabajo ajeno. Los resultados nuevos quedan en
+`/tmp/priva-auth-validation/results.json`; revisar antes de reemplazar la evidencia
+versionada. Los correos, códigos y tokens de prueba no se copian al repositorio.
+
+Se probaron 21 condiciones con el criterio de límites nativos aceptado, todas pasaron.
+La evidencia original del máximo de cinco fallido se conserva por separado. La política
+SQL se ejercita con claims reales inyectados: aún no valida el middleware JWT/PostgREST
+desplegado. Los tiempos de expiración/reenvío se prueban envejeciendo timestamps de
+la base de pruebas, no esperando diez minutos de reloj.

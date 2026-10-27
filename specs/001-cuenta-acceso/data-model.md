@@ -1,6 +1,6 @@
 # Modelo de datos y estados — F01
 
-**Estado:** diseño preliminar condicionado a cierre de investigación y aprobación del
+**Estado:** diseño revisado, sujeto a aprobación del
 [plan](plan.md). No es una migración ni evidencia de almacenamiento desplegado.
 
 ## Entidades propuestas
@@ -28,7 +28,7 @@ validarse también del lado del servicio; una casilla de UI no prueba enforcemen
   cliente; evaluar una operación controlada de registro y su vínculo verificable con
   la versión de política aprobada antes de fijar migración.
 - Validar que usuario no verificado y sesión emitida en recuperación no eludan las
-  reglas aprobadas; ese segundo punto es investigación pendiente, no garantía de RLS.
+  reglas aprobadas; la prueba local valida la condición SQL con claims de sesiones reales; falta probar la política desplegada por HTTP.
 - F02 definirá eliminación; este diseño debe permitirla sin imponer retención infinita
   ni borrar evidencia sujeta a obligación antes de revisar el fundamento.
 
@@ -46,9 +46,11 @@ validarse también del lado del servicio; una casilla de UI no prueba enforcemen
 | Recuperación restringida | Cambio confirmado | Visitante | Terminar sesión de recuperación y pedir acceso normal. |
 | Autenticado | Cierre de sesión / sesión inválida | Visitante | Limpiar tokens y revocar acceso local; descarte de cuestionario integrado por F02/F06/F07. |
 
-La restricción de recuperación en esta tabla es un requisito del diseño, no una
-capacidad de servidor ya demostrada. Si no se puede imponer con Supabase, revisar
-el diseño y su aprobación antes de avanzar, sin presentar guardas de UI como solución.
+La política propuesta exige identidad propia y `amr` firmado con método `password`
+para datos privados. Las sesiones de código observadas tienen método `otp`; deben
+completar el flujo y volver al acceso por contraseña. La sonda prueba la condición
+SQL con claims reales inyectados para la prueba, no el despliegue HTTP de RLS.
+Ver [informe](validation/README.md). No presentar guardas de UI como autorización.
 
 ## Conservación — PD-05
 
@@ -62,3 +64,11 @@ el diseño y su aprobación antes de avanzar, sin presentar guardas de UI como s
 
 Ningún plazo legal queda inventado. Una configuración temporal de pruebas con cuentas
 sintéticas no aprueba la operación con datos de usuarios reales.
+
+## Límites y revisión del 2026-10-27
+
+Se mantienen 12 caracteres de contraseña, código de 600 segundos y reenvío mínimo de
+60 segundos. El usuario retiró explícitamente el máximo exacto de cinco fallos y
+eligió límites nativos del proveedor; un rate limit por IP no es un bloqueo por código.
+La configuración alojada debe revisarse y probarse antes de entrega. No se registran
+códigos ni tokens en la evidencia persistida.

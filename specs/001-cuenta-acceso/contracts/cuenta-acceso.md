@@ -1,6 +1,6 @@
 # Contratos de interacción y autenticación — F01
 
-**Estado:** diseño preliminar, no API pública nueva ni código. Los métodos pertenecen
+**Estado:** diseño revisado para aprobación, no API pública nueva ni código. Los métodos pertenecen
 al SDK oficial; se confirmarán firmas contra las versiones fijadas antes de implementar.
 
 ## Contrato del adaptador de cuenta
@@ -32,8 +32,9 @@ editables. Los límites de intentos deben poder imponerse fuera de la UI.
 La aplicación conserva el menú de P11. Pulsar un destino protegido sin cumplir
 condiciones informa que debe iniciar sesión, sin abrirlo. Rutas directas y retroceso
 respetan la misma política. La autorización de servidor debe probarse con llamadas
-que eludan el cliente; el aislamiento de una sesión recovery es un bloqueo abierto
-hasta comprobarlo. No se garantiza esa propiedad con un estado en Flutter.
+que eludan el cliente; exigir `password` en el `amr` firmado y usuario propio; la sesión recovery por código
+observada contiene `otp`. La sonda valida localmente la condición SQL; aún debe probarse
+el despliegue RLS real. No se garantiza esa propiedad con un estado en Flutter.
 
 ## Errores y observabilidad
 
@@ -53,3 +54,11 @@ cabecera y menú según wireframe. Verificación y recuperación se representan 
 estados/subvistas del flujo, sin añadir una pantalla principal por inferencia.
 No teléfono, login social, SMS ni funciones fuera de F01. Teclado, foco y lectura
 ampliada se validan como parte de cada estado, no solo con una captura estática.
+
+## Límites y revisión del 2026-10-27
+
+Se mantienen 12 caracteres de contraseña, código de 600 segundos y reenvío mínimo de
+60 segundos. El usuario retiró explícitamente el máximo exacto de cinco fallos y
+eligió límites nativos del proveedor; un rate limit por IP no es un bloqueo por código.
+La configuración alojada debe revisarse y probarse antes de entrega. No se registran
+códigos ni tokens en la evidencia persistida.

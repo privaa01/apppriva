@@ -136,3 +136,53 @@ antes de exigir nuevo desafío. No hay evidencia de enforcement todavía. El lí
 de fallos debe verificarse de forma independiente de la UI; si no es configurable,
 la investigación debe reportarlo y proponer una revisión, sin sustituirlo en silencio.
 Los valores de sesión y demás propuestas siguen sin aprobarse.
+
+## R09 — Validación completada y cambio aprobado — 2026-10-27
+
+[Informe y evidencia](validation/README.md): Auth v2.197.0 local con imágenes fijadas
+por digest, Postgres y buzón local. El requisito exacto de cinco fallos falló en la
+primera sonda completa. Se consultó al usuario y eligió «Usar límites nativos y retirar
+el máximo exacto de cinco». No se sustituye el requisito sin autorización ni se borra
+el resultado anterior. Se repite con límites nativos y prueba de HTTP 429.
+
+La sesión de recuperación por `verifyOTP` emitió `amr` con método `otp`; la sesión de
+contraseña emitió `password`. El refresh mantuvo la distinción. Una política SQL que
+exige `password` y usuario propio rechaza claims de recovery y de otra identidad.
+No se probó PostgREST ni un proyecto alojado: ese despliegue sigue como requisito de entrega.
+
+Configuraciones contrastadas en código oficial y ejercitadas localmente:
+`password_min_length=12`, `mailer_otp_exp=600`, `smtp_max_frequency=60`.
+Código de Auth consultado: `c3348e8f1cb31454e9783e4eb9eab1e71ad9652f`:
+[validación OTP](https://github.com/supabase/auth/blob/c3348e8f1cb31454e9783e4eb9eab1e71ad9652f/internal/api/verify.go),
+[frecuencia de correo](https://github.com/supabase/auth/blob/c3348e8f1cb31454e9783e4eb9eab1e71ad9652f/internal/api/mail.go),
+[configuración](https://github.com/supabase/auth/blob/c3348e8f1cb31454e9783e4eb9eab1e71ad9652f/internal/conf/configuration.go).
+
+## R10 — Baseline de SDK y paquetes — 2026-10-27
+
+Metadatos y archivos de paquetes oficiales verificados, sin ejecutar Flutter ni compilar:
+
+| Componente | Pin candidato | Evidencia |
+| --- | --- | --- |
+| Flutter | 3.47.8 | stable/tag en commit `737ba8f885dc774b53b442759999a312c9461e4e` |
+| Dart incluido | 3.13.7 | DEPS fija `416e33b0ffaef062a60ec966bb8c82ed2b83f128`; `tools/VERSION` de Dart |
+| supabase_flutter | 2.18.3 | pub.dev; Dart ≥3.9, Flutter ≥3.35 |
+| flutter_secure_storage | 11.2.0 | pub.dev; Android API24; implementación Darwin compatible |
+
+Mínimo común candidato: Android 7.0/API24 e iOS15. Los archivos de Flutter, almacenamiento
+seguro y transitivos revisados soportan ese piso por metadatos. Se excluyen API23 y
+anteriores e iOS14 y anteriores; no se promete compatibilidad universal. La resolución
+real del lockfile y ejecución en la matriz siguen siendo obligatorias antes de entrega.
+
+Fuentes: [Flutter pin](https://github.com/flutter/flutter/tree/737ba8f885dc774b53b442759999a312c9461e4e),
+[DEPS](https://github.com/flutter/flutter/blob/737ba8f885dc774b53b442759999a312c9461e4e/DEPS),
+[Supabase package](https://pub.dev/api/packages/supabase_flutter),
+[secure storage package](https://pub.dev/api/packages/flutter_secure_storage).
+SHA-256 de archivos descargados y verificados:
+
+- supabase_flutter 2.18.3: `48bbde226e68bdb293020859a1bfa42d0f3bd2239992fba0ec4f9194cbb842e6`.
+- flutter_secure_storage 11.2.0: `d4e1fb6b2cb524868929e78dc0282fa000554b22060fb53789dc481c9fc95bb8`.
+
+Los apartados anteriores conservan la investigación inicial; R09/R10 y el plan
+revisado sustituyen únicamente las incertidumbres resueltas y el límite retirado.
+La selección tecnológica está confirmada; pins, mínimos y demás diseño se someten
+a aprobación del plan. No se afirma instalación o prueba de una app inexistente.

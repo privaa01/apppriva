@@ -1,0 +1,115 @@
+[
+  {
+    "check": "local_auth_health",
+    "pass": true
+  },
+  {
+    "check": "min_12_rejects_11_characters",
+    "pass": true,
+    "http_status": 422
+  },
+  {
+    "check": "signup_requires_confirmation",
+    "pass": true,
+    "http_status": 200
+  },
+  {
+    "check": "unconfirmed_password_login_denied",
+    "pass": true,
+    "http_status": 400
+  },
+  {
+    "check": "signup_code_valid",
+    "pass": true,
+    "http_status": 200
+  },
+  {
+    "check": "password_login_amr",
+    "pass": true,
+    "methods": [
+      "password"
+    ]
+  },
+  {
+    "check": "normal_refresh_preserves_password_amr",
+    "pass": true
+  },
+  {
+    "check": "request_recovery_local_mail",
+    "pass": true,
+    "http_status": 200
+  },
+  {
+    "check": "resend_under_60s_denied",
+    "pass": true,
+    "http_status": 429
+  },
+  {
+    "check": "five_wrong_codes_denied",
+    "pass": true,
+    "http_statuses": [
+      403,
+      403,
+      403,
+      403,
+      403
+    ]
+  },
+  {
+    "check": "native_code_not_invalidated_by_five_failures",
+    "pass": true,
+    "http_status": 200,
+    "note": "Observed native behavior; exact five-failure requirement withdrawn explicitly by user on 2026-10-27."
+  },
+  {
+    "check": "recovery_refresh_remains_without_password_amr",
+    "pass": true
+  },
+  {
+    "check": "recovery_code_session_amr",
+    "pass": true,
+    "methods": [
+      "otp"
+    ]
+  },
+  {
+    "check": "recovery_code_single_use",
+    "pass": true,
+    "http_status": 403
+  },
+  {
+    "check": "recovery_can_change_password",
+    "pass": true,
+    "http_status": 200
+  },
+  {
+    "check": "rls_password_session_reads_own_row",
+    "pass": true
+  },
+  {
+    "check": "rls_other_identity_denied",
+    "pass": true
+  },
+  {
+    "check": "rls_otp_recovery_session_denied",
+    "pass": true
+  },
+  {
+    "check": "resend_after_60s_allowed",
+    "pass": true,
+    "http_status": 200,
+    "method": "Test database timestamp aged 61 seconds."
+  },
+  {
+    "check": "server_600s_expiry_rejects_aged_code",
+    "pass": true,
+    "http_status": 403,
+    "method": "Test database timestamp advanced; no wall-clock ten-minute wait."
+  },
+  {
+    "check": "native_verify_rate_limit_enforced",
+    "pass": true,
+    "requests_in_probe": 22,
+    "last_http_status": 429
+  }
+]

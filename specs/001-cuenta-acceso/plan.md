@@ -1,8 +1,8 @@
 # Implementation Plan: F01 — Cuenta y acceso
 
-**Branch**: `work` | **Date**: 2026-10-26 | **Spec**: [spec.md](spec.md)
+**Branch**: `work` | **Date**: 2026-10-27 | **Spec**: [spec.md](spec.md)
 **Input**: `/specs/001-cuenta-acceso/spec.md` — aprobado; constitución v1.0.0 ratificada.
-**Status**: Propuesta de plan técnico, no aprobada. No habilita tareas ni implementación.
+**Status**: Plan técnico revisado para aprobación; validación local del proveedor y documental completadas en el alcance del [informe](validation/README.md). No habilita implementación ni está aprobado por inferencia.
 
 ## Summary
 
@@ -21,11 +21,11 @@ tratamiento de datos por el hecho de proponerse para autenticación.
 
 | Campo | Propuesta / estado |
 | --- | --- |
-| Language/Version | Flutter estable y su Dart incluido; fijar versión exacta y lockfile al preparar implementación, tras verificar soporte de la matriz aprobada. No se declara SDK instalado. |
-| Primary Dependencies | SDK oficial `supabase_flutter`; navegación central con control por estado; almacenamiento de sesión respaldado por Keychain/Keystore mediante adaptador seguro evaluado. Versiones exactas deberán quedar fijadas y auditadas antes de implementar. |
+| Language/Version | Baseline propuesta y verificada por metadatos: Flutter 3.47.8 (commit 737ba8f885dc774b53b442759999a312c9461e4e), Dart 3.13.7 incluido. SDK no instalado; resolución y lockfile en implementación. |
+| Primary Dependencies | `supabase_flutter` 2.18.3 y `flutter_secure_storage` 11.2.0 como pins directos propuestos y contrastados; navegación central por estado. Revisar adaptación de Keychain/Keystore y generar lockfile al implementar. |
 | Storage | Identidad/credenciales en Supabase Auth. Perfil mínimo y evidencia de autorización en Postgres con aislamiento por usuario; no crear banco de preguntas, chat ni resultados para F01. |
 | Testing | `flutter_test`, pruebas de widgets y `integration_test`; proyecto de autenticación de pruebas y buzones sintéticos para aceptación real. No simular envío como prueba de entrega de correo. |
-| Target Platform | Android e iOS con la mayor cobertura de móviles viable, objetivo confirmado por el usuario. Determinar el mínimo compatible común del SDK estable y las dependencias, documentar exclusiones y validar la matriz; no prometer todos los dispositivos ni elegir aún un mínimo numérico sin comprobarlo. |
+| Target Platform | Mayor cobertura móvil viable: baseline Android 7.0/API24 e iOS15 o posteriores, obtenida de metadatos del SDK y dependencias. Excluye Android API23 e inferiores e iOS14 e inferiores; no es compatibilidad ejecutada ni garantía universal. Matriz propuesta: mínimo y actual, pantalla pequeña/grande, emulador y dispositivo, TalkBack/VoiceOver. |
 | Project Type | Aplicación móvil; proveedor gestionado de autenticación y correo transaccional. No servidor propio de contraseñas. |
 | Performance Goals | Propuesta: confirmación visual local de envío ≤1 s; resultados de red o aviso de espera/error ≤15 s por operación. Medir en red/dispositivos definidos, sin incluir entrega de correo en ese límite. Son presupuestos propuestos, no resultados ni SLA del proveedor. |
 | Constraints | Internet obligatorio, Tips público, correo verificado para contenido protegido, sin teléfono/SMS, sin credenciales externas ni secretos administrativos en app. |
@@ -50,10 +50,12 @@ prueba de iOS requerirán macOS/Xcode y acceso a dispositivos o simuladores comp
 | VIII — simplicidad | Proyecto sin app | Un cliente móvil y autenticación gestionada; sin microservicios ni backend propio injustificado. |
 | IX — aprobación | Constitución y F01 aprobados | Este plan sigue pendiente; no crear `tasks.md` ni código antes de aprobación. |
 
-**Resultado:** diseño documental revisable, sin excepción constitucional autorizada.
-No se declara plan cerrado mientras sigan pendientes matriz móvil y decisiones de seguridad indicadas a continuación. No se afirma validación
-operativa del proveedor ni cumplimiento jurídico. No se deben esconder estos bloqueos
-mediante un estado «listo para implementar».
+**Resultado:** diseño preparado para aprobación con evidencia documental y prueba local.
+La prueba inicial falló el máximo exacto de cinco; el usuario retiró expresamente esa
+regla y eligió límites nativos el 2026-10-27. No se aprueba una excepción en silencio.
+La aprobación de este plan no certifica móviles ni configura un servicio hospedado.
+Los requisitos de datos reales, SMTP, dispositivos y pruebas de entrega siguen siendo
+puertas posteriores obligatorias, no resultados ya logrados.
 
 ## Project Structure
 
@@ -114,12 +116,18 @@ plan, no a pruebas creadas o ejecutadas. No se crea esquema de otros módulos.
   del proveedor. Propuesta adicional aún no aprobada: permitir frases largas y pegado,
   sin reglas arbitrarias de mezcla; al menos 64 caracteres aceptados si el proveedor
   lo soporta, nunca truncado silencioso. Verificar límites y políticas del proveedor.
-- Parámetros aceptados por el usuario, sujetos a validación del proveedor: validez
-  de código de 10 minutos, reenvío no antes de 60 segundos y, tras 5 fallos de
-  verificación, exigir nuevo desafío. Uso único y espera adicional siguen como
-  controles técnicos del diseño que deben concretarse. El proveedor debe
-  imponer el límite real: una cuenta regresiva local no es una defensa suficiente.
-  No construir un servicio propio de OTP sin reevaluar complejidad y privacidad.
+- Parámetros confirmados: contraseña mínima de 12, código de 10 minutos y reenvío
+  no antes de 60 segundos. Probados contra Auth local con configuración explícita.
+  El 2026-10-27 el usuario retiró el máximo exacto de cinco fallos: usar el rate limit
+  nativo de verificación, no un contador local. La prueba observó HTTP 429 al agotar
+  la cuota; no equivale a bloqueo por identidad o por código. Documentar y revisar
+  la cuota concreta del proyecto alojado antes de usuarios reales.
+- Autorización privada del lado del servicio: exigir `sub` propio y un método firmado
+  `password` en `amr`, además del flujo de correo verificado. El código de recuperación
+  produce método `otp`, no necesariamente `recovery`; negar solo `recovery` es incorrecto.
+  Tras confirmar alta por OTP, pedir acceso normal por contraseña antes de la app.
+  Las tablas y funciones privadas deben aplicar la misma política; no basarse en
+  metadatos editables. El informe distingue prueba SQL de despliegue RLS real.
 - Persistir solo tokens de sesión en almacenamiento seguro del sistema operativo,
   nunca la contraseña o los códigos. No depender de persistencia local insegura
   predeterminada del SDK. TLS obligatorio; no desactivar validación de certificados.
@@ -154,39 +162,41 @@ plan, no a pruebas creadas o ejecutadas. No se crea esquema de otros módulos.
 | CA-ACC-01–05 | Tips público; controles protegidos no eluden sesión; recuperación tampoco habilita app | Pruebas de navegación y autorización negativa. |
 | SC-001 | Meta ≥80 % de registro | Protocolo propuesto de 10 participantes de 40–65 años, éxito ≥8; muestra y condiciones deben aprobarse, no generalizar estadísticamente. |
 
-**No ejecutado:** instalación de SDK, compilación, pruebas de app, correo, proveedor,
-accesibilidad y usabilidad. Solo se verificó organización de documentos y resolución
-de la funcionalidad en Spec Kit.
+**Ejecutado:** sonda local reproducible de Auth/Postgres/correo simulado y política SQL;
+verificación de metadatos, checksums de paquetes, documentos y rutas de Spec Kit.
+[Resultados y límites](validation/README.md).
+**No ejecutado:** instalación del SDK, compilación, app, correo externo, proyecto
+Supabase alojado, despliegue de RLS/PostgREST, accesibilidad y usabilidad en móviles.
 
-## Decisiones necesarias para cerrar el plan
+## Cierre del diseño y puertas posteriores
 
-1. Flutter + Supabase ya están confirmados. Fijar SDK/dependencias con evidencia
-   de compatibilidad antes de cerrar el plan, sin inventar versiones instaladas.
-2. El usuario solicita la mayor cobertura de dispositivos. Cerrar PD-07 comprobando
-   el mínimo común del SDK y las dependencias, arquitecturas y una matriz de móviles
-   pequeños/grandes, versiones mínima/actual y capacidades accesibles; presentar
-   exclusiones verificadas antes de aprobar una afirmación de compatibilidad.
-   No interpretar «todos los dispositivos» como tablets, escritorio o plataformas
-   adicionales fuera del alcance móvil Android/iOS aprobado.
-3. Validar que el proveedor imponga los valores aceptados (12 caracteres, código
-   de 10 minutos, reenvío de 60 segundos y máximo de 5 fallos); si no los soporta,
-   documentar la diferencia y proponer corrección antes de modificar la regla.
-   Duración de sesión, presupuestos de tiempos, texto ampliado, política adicional
-   de contraseña y protocolo de usabilidad siguen pendientes de aprobación.
-4. Resolver responsable de datos, región, proveedor de correo, acuerdos, conservación
-   y eliminación. No es correcto inventar plazos jurídicos para cerrar esta sección.
-5. **Bloqueo de seguridad por demostrar:** la documentación no garantiza una sesión
-   recovery-only a nivel de servidor. Validar que una sesión emitida en recuperación
-   no pueda saltarse la frontera del contrato mediante llamadas directas; si no se
-   puede imponer, revisar el diseño y aprobar la corrección antes de tareas.
-6. Verificar comportamiento real de códigos, sesión de recuperación, anti-enumeración,
-   persistencia segura, límites y correo en entorno de pruebas antes de aceptar entrega.
+**Decisiones consolidadas:** Flutter + Supabase, finalidades Q1, confirmación Q2,
+recuperación por código Q3, 12 caracteres/600 s/60 s y sustitución explícita del máximo
+exacto de cinco por límites nativos. El informe registra resultados y el fallo inicial.
 
-Flutter + Supabase y los cuatro parámetros de seguridad indicados tienen aprobación
-expresa en el alcance registrado; los parámetros están condicionados a validación
-del proveedor. El objetivo de cobertura amplia no equivale a una matriz certificada.
-Las demás propuestas siguen siendo material para aprobación del plan, no recursos desplegados. La investigación y contratos siguientes son un
-diseño condicionado por esas decisiones. No pasar a tareas si esta puerta está abierta.
+**Material concreto que se somete a aprobación del plan:** pins y mínimos técnicos,
+verificación de alta por código seguida de acceso normal con contraseña, política AMR
+para recursos privados, sesión propuesta de 30 días inactiva/90 absolutos si se contrata
+un plan que lo soporte, presupuestos de 1/15 segundos, texto hasta 200 % y protocolo
+piloto de 10 participantes con meta de al menos 8 registros completos. Son propuestas
+revisables, no decisiones ya aprobadas ni promesas de servicio.
+
+**Puertas antes de aceptación/usuarios reales:**
+
+1. Resolver dependencias con Flutter fijado, registrar lockfile y verificar builds
+   Android/iOS y dispositivos de la matriz; si un transitorio eleva mínimos, detener
+   el cambio y revisar la compatibilidad en lugar de ampliar exclusiones en silencio.
+2. Configurar y probar Supabase hospedado: límites, plantillas, SMTP, verificación,
+   refresh, sesiones y aislamiento con solicitudes HTTP directas a tablas/funciones.
+   La prueba local no sustituye pruebas en la versión/configuración desplegadas.
+3. Definir responsable, región, proveedor SMTP, acuerdos, textos de autorización,
+   conservación y eliminación con revisión competente antes de tratar datos reales.
+   No se fijan plazos jurídicos ni se aceptan términos por el usuario en esta etapa.
+4. Ejecutar los CA, accesibilidad, compatibilidad, seguridad y usabilidad de la guía;
+   no declarar cumplimiento de SC-001 sin la muestra y condiciones aprobadas.
+
+La revisión de diseño puede aprobarse sin declarar cumplidas esas puertas de entrega.
+No se crean tareas ni implementación sin aprobación explícita de este plan.
 
 ## Complexity Tracking
 
@@ -196,13 +206,14 @@ revisar alternativas y aprobar su impacto antes de ampliar esta estructura.
 
 ## Artefactos y estado de las fases
 
-- [Investigación](research.md): documentación oficial contrastada y decisiones registradas;
-  quedan comprobaciones del proveedor y parámetros pendientes. Fase 0 no cerrada.
+- [Investigación](research.md): mecanismos y restricciones contrastados, pins propuestos
+  fijados y decisión de límite nativo registrada. Investigación de diseño cerrada con
+  las limitaciones de validación operacional explícitas.
 - [Modelo](data-model.md), [contratos](contracts/cuenta-acceso.md) y
-  [guía de validación](quickstart.md): diseños preliminares para revisión, no fase 1
-  declarada completa mientras estén abiertos los bloqueos de fase 0.
-- No se generan tareas ni implementación. El plan se guarda como borrador concreto
-  para continuar la revisión, no como aprobación ni verificación ejecutada.
+  [guía](quickstart.md): diseño revisado para aprobación, no implementación ni pruebas
+  finales del producto. [Informe](validation/README.md) y sonda reproducible adjuntos.
+- `tasks.md` no creado. No se registra aprobación por la frase «completa validaciones
+  y damos aprobación»: se entrega primero este resultado revisable.
 
 ## Registro de respuestas del usuario — 2026-10-26
 
@@ -213,3 +224,9 @@ revisar alternativas y aprobar su impacto antes de ampliar esta estructura.
   caracteres, código de 10 minutos, reenvío cada 60 segundos y máximo de 5 fallos
   antes de nuevo desafío. No aprueba por extensión todos los otros parámetros.
 - Estas respuestas no aprueban el plan completo ni autorizan tareas o implementación.
+
+## Cambio confirmado — 2026-10-27
+
+El usuario eligió «Usar límites nativos y retirar el máximo exacto de cinco» después
+de conocer la limitación del proveedor. Se conserva evidencia de la prueba inicial
+fallida y se repite la sonda con el criterio revisado, sin ocultar el cambio de regla.
