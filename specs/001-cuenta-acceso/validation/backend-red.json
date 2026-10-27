@@ -1,0 +1,6 @@
+{
+  "phase": "before_migrations",
+  "exit_code": 3,
+  "expected_failure": "profiles relation missing: migrations not implemented",
+  "observed_expected_failure": true
+}

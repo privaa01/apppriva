@@ -1,0 +1,16 @@
+.env
+.env.*
+!.env.example
+**/__pycache__/
+*.pyc
+*.log
+.DS_Store
+.vscode/
+.idea/
+mobile/config/local.json
+mobile/config/hosted.json
+supabase/.temp/
+supabase/.branches/
+*.keystore
+*.jks
+key.properties

@@ -1,0 +1,18 @@
+{
+  "phase": "after_migrations",
+  "exit_code": 0,
+  "sql_regressions_passed": true,
+  "checks": [
+    "atomic_signup",
+    "invalid_authorization_rolls_back",
+    "inactive_policy_rejected",
+    "blank_name_rejected",
+    "evidence_failure_rolls_back",
+    "metadata_cannot_rewrite_evidence",
+    "public_active_policy_only",
+    "otp_cannot_read_private",
+    "own_password_can_read",
+    "other_identity_denied",
+    "client_evidence_update_denied"
+  ]
+}

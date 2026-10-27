@@ -1,0 +1,144 @@
+{
+  "scope": "local_auth_postgres_postgrest_http",
+  "images": {
+    "postgres": "postgres@sha256:54e0dd8e8cddcdbb9156c2486eed5a43eccb7214d7c6828097d41ce049fb3984",
+    "auth": "supabase/gotrue@sha256:1736a63078f5922b198c4cbe50f80ab9a2d3b54fe8b7b6cfb2e9dc5dbbc12c6b",
+    "mail": "axllent/mailpit@sha256:986b14ff7b253e62883ea19fd3112806f116e5e2f221e03f12fb81c7312ff532",
+    "template": "python@sha256:5789aa194f757888f41fa3d48e14b6feaa1b57c0af0b56fcb1372d6474d3bff0",
+    "rest": "postgrest/postgrest@sha256:d09618df2b7b9547c80a076c2f4045b326be8d7ac06060d263caefec1334e3c9"
+  },
+  "checks": [
+    {
+      "check": "sql_regression_suite",
+      "passed": true
+    },
+    {
+      "check": "active_policy_public",
+      "passed": true
+    },
+    {
+      "check": "visitor_private_denied",
+      "passed": true
+    },
+    {
+      "check": "visitor_policy_write_denied",
+      "passed": true
+    },
+    {
+      "check": "missing_acceptance_rolls_back",
+      "passed": true
+    },
+    {
+      "check": "string_acceptance_rolls_back",
+      "passed": true
+    },
+    {
+      "check": "unknown_policy_rolls_back",
+      "passed": true
+    },
+    {
+      "check": "auth_api_evidence_failure_rolls_back",
+      "passed": true
+    },
+    {
+      "check": "signup_without_session",
+      "passed": true
+    },
+    {
+      "check": "auth_profile_evidence_atomic",
+      "passed": true
+    },
+    {
+      "check": "unverified_password_login_denied",
+      "passed": true
+    },
+    {
+      "check": "signup_confirmation_by_code",
+      "passed": true
+    },
+    {
+      "check": "confirmation_otp_cannot_read_private_http",
+      "passed": true
+    },
+    {
+      "check": "password_login_success",
+      "passed": true
+    },
+    {
+      "check": "own_password_profile_http",
+      "passed": true
+    },
+    {
+      "check": "own_immutable_evidence_read_http",
+      "passed": true
+    },
+    {
+      "check": "client_evidence_update_denied_http",
+      "passed": true
+    },
+    {
+      "check": "metadata_change_does_not_rewrite_evidence",
+      "passed": true
+    },
+    {
+      "check": "duplicate_signup_no_duplicate_records",
+      "passed": true
+    },
+    {
+      "check": "password_refresh_preserves_private_access_http",
+      "passed": true
+    },
+    {
+      "check": "other_identity_denied_http",
+      "passed": true
+    },
+    {
+      "check": "tampered_jwt_denied_http",
+      "passed": true
+    },
+    {
+      "check": "recovery_request_local_email",
+      "passed": true
+    },
+    {
+      "check": "native_recovery_cooldown_60s",
+      "passed": true
+    },
+    {
+      "check": "wrong_recovery_code_denied",
+      "passed": true
+    },
+    {
+      "check": "recovery_code_valid",
+      "passed": true
+    },
+    {
+      "check": "recovery_otp_cannot_read_private_http",
+      "passed": true
+    },
+    {
+      "check": "recovery_otp_cannot_read_evidence_http",
+      "passed": true
+    },
+    {
+      "check": "recovery_refresh_stays_restricted_http",
+      "passed": true
+    },
+    {
+      "check": "recovery_changes_password",
+      "passed": true
+    },
+    {
+      "check": "recovery_code_single_use",
+      "passed": true
+    },
+    {
+      "check": "normal_login_after_recovery",
+      "passed": true
+    },
+    {
+      "check": "recovery_expiry_600s",
+      "passed": true
+    }
+  ]
+}
