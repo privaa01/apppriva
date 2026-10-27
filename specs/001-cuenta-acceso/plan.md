@@ -2,7 +2,7 @@
 
 **Branch**: `work` | **Date**: 2026-10-27 | **Spec**: [spec.md](spec.md)
 **Input**: `/specs/001-cuenta-acceso/spec.md` — aprobado; constitución v1.0.0 ratificada.
-**Status**: Base aprobada el 2026-10-27; correcciones del análisis 001 redactadas con autorización del usuario, pendientes de ratificación. Evidencia local previa conservada; implementación no iniciada.
+**Status**: Approved — base y correcciones del análisis 001 aprobadas explícitamente el 2026-10-27. Evidencia local previa conservada; implementación no iniciada.
 
 ## Summary
 
@@ -319,3 +319,11 @@ Cualquier exceso es un fallo del presupuesto, no una media que oculte casos lent
 **Dependencia final:** T045 precede a la consolidación T043 y al cierre T044; no
 cambia sus IDs estables. Las cinco correcciones se someten a revisión/ratificación
 antes de implementar. El mensaje «si» autorizó editar y repetir análisis, no ejecutar tareas.
+
+## Ratificación de correcciones — 2026-10-27
+
+El usuario respondió «lo apruebo» a la solicitud de aprobación de las correcciones
+y las 45 tareas del commit a7b99a4. Quedan ratificadas C1, U1, G1, A1 e I1, incluidos
+criterios de calidad, diseño transaccional de autorización, mensajes uniformes y
+medición de tiempos. Las pruebas y condiciones de entrega continúan obligatorias;
+esta aprobación no acredita implementación ni validaciones nuevas ejecutadas.

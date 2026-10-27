@@ -46,6 +46,5 @@
 
 La base del spec sigue aprobada; la precisión de CA-01.11 ahora evita confirmar el
 estado de una cuenta en acceso fallido. Los tres casos usan el mismo aviso, con
-pruebas previstas en T015/T027/T031/T039. La ratificación de esta precisión y las
-correcciones del plan/lista de tareas sigue pendiente; no se presume por autorizar
-la edición. No se ha ejecutado implementación ni pruebas de esta enmienda.
+pruebas previstas en T015/T027/T031/T039. Esta precisión y las correcciones del plan y de las 45 tareas fueron ratificadas
+explícitamente el 2026-10-27 mediante «lo apruebo»; no se presume por autorizar la edición. No se ha ejecutado implementación ni pruebas de esta enmienda.

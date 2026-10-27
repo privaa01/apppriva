@@ -46,6 +46,7 @@ ni cambios de UI aún inexistentes. La implementación debe ejecutar las pruebas
 Las dependencias reales de dispositivos, macOS, SMTP, responsable y conservación
 siguen vigentes; no se inventa evidencia para cerrar esas puertas.
 
-El usuario debe revisar y ratificar las correcciones del spec/plan y aprobar las 45
-tareas antes de implementar. No se marca aprobada una enmienda por haber autorizado
-corregirla. Commit y sincronización preservan este estado de revisión.
+El usuario ratificó explícitamente las correcciones del spec/plan y aprobó las 45
+tareas el 2026-10-27 mediante «lo apruebo», en respuesta a la solicitud relativa al
+commit a7b99a4. La aprobación no se deduce de la autorización previa para editar.
+No se ejecutaron tareas ni se amplía la evidencia de pruebas por registrar aprobación.

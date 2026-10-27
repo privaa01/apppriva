@@ -3,7 +3,7 @@
 **Feature Branch**: `work` (selección por directorio, sin rama nueva)
 **Created**: 2026-10-21
 **Updated**: 2026-10-27
-**Status**: Base funcional aprobada el 2026-10-26; aclaración de mensajes del análisis 001 pendiente de ratificación, sin cambio de alcance.
+**Status**: Approved — base aprobada el 2026-10-26 y aclaración del análisis 001 ratificada explícitamente el 2026-10-27.
 **SPECIFY_FEATURE_DIRECTORY**: `specs/001-cuenta-acceso`
 **Input**: `/speckit-specify001`, interpretado como revisión de la funcionalidad existente F01.
 **Gobierno**: [constitución v1.0.0 ratificada](../../.specify/memory/constitution.md).
@@ -203,3 +203,9 @@ Un flujo iniciado de registro/confirmación puede explicar el siguiente paso sin
 certificar a terceros que un correo pertenece a una cuenta. Los errores de formato
 siguen siendo por campo y no deben consultar existencia de cuentas.
 Esta aclaración documental no aprueba las tareas ni autoriza implementación.
+
+## Ratificación de correcciones — 2026-10-27
+
+El usuario respondió «lo apruebo» a la solicitud de aprobar las correcciones del
+spec/plan y las 45 tareas del commit a7b99a4. Queda ratificada la aclaración de
+CA-01.11. No se modifica el alcance ni se inicia implementación con este registro.

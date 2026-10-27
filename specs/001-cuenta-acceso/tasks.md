@@ -4,7 +4,7 @@
 [modelo](data-model.md), [contratos](contracts/cuenta-acceso.md),
 [guía](quickstart.md) y [constitución](../../.specify/memory/constitution.md).
 **Fecha**: 2026-10-27. **Rama**: work.
-**Estado**: tareas propuestas para revisión, con correcciones autorizadas del análisis 001; ninguna ejecutada ni aprobada por inferencia.
+**Estado**: Approved — las 45 tareas y correcciones del análisis 001 aprobadas explícitamente el 2026-10-27; ninguna ejecutada.
 
 ## Format: ID, P y Story
 
@@ -189,6 +189,13 @@ Todas permanecen sin marcar. No se ejecuta implementación en esta invocación.
 macOS/dispositivos, recurso Supabase/SMTP, revisión de datos y participantes son
 dependencias reales; no fabricar evidencia para cerrar casillas.
 El máximo exacto de cinco fallos se retiró explícitamente el 2026-10-27.
-El commit/push de esta lista no equivale a aprobación. Antes de implementar, revisar
-consistencia con $speckit-analyze y aprobar explícitamente las tareas; no invocar
-el siguiente comando ni otro spec automáticamente.
+El análisis de coherencia se repitió tras las correcciones y el usuario aprobó
+explícitamente esta lista el 2026-10-27. El commit/push conserva esa decisión; no
+ejecuta tareas ni invoca automáticamente implementación u otro spec.
+
+## Registro de aprobación — 2026-10-27
+
+El usuario respondió «lo apruebo» a la solicitud de aprobar las correcciones del
+spec/plan y las 45 tareas del commit a7b99a4. Se cierra la puerta documental de tareas
+y correcciones de F01. La implementación puede iniciarse cuando se solicite; este
+registro no la inicia ni marca tareas realizadas. F02–F08 no quedan aprobados.
