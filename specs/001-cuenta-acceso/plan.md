@@ -2,7 +2,7 @@
 
 **Branch**: `work` | **Date**: 2026-10-27 | **Spec**: [spec.md](spec.md)
 **Input**: `/specs/001-cuenta-acceso/spec.md` — aprobado; constitución v1.0.0 ratificada.
-**Status**: Plan técnico revisado para aprobación; validación local del proveedor y documental completadas en el alcance del [informe](validation/README.md). No habilita implementación ni está aprobado por inferencia.
+**Status**: Approved — aprobación explícita del usuario registrada el 2026-10-27. Validación local y límites documentados en el [informe](validation/README.md); implementación no iniciada.
 
 ## Summary
 
@@ -230,3 +230,19 @@ revisar alternativas y aprobar su impacto antes de ampliar esta estructura.
 El usuario eligió «Usar límites nativos y retirar el máximo exacto de cinco» después
 de conocer la limitación del proveedor. Se conserva evidencia de la prueba inicial
 fallida y se repite la sonda con el criterio revisado, sin ocultar el cambio de regla.
+
+## Registro de aprobación — 2026-10-27
+
+El usuario respondió «apruebo el pan 001» a la solicitud de aprobación del plan 001
+revisado del commit `fcefa6a`. Por el contexto, «pan» se interpreta como «plan».
+Queda aprobado el diseño técnico revisado de F01, incluida la baseline propuesta,
+los mínimos Android 7.0/API24 e iOS15 y los límites nativos de verificación aceptados.
+
+La aprobación incluye el alcance y las condiciones del plan, no afirma builds,
+compatibilidad ejecutada o configuración hospedada inexistentes; tampoco acepta
+contratos comerciales o legales ni aporta credenciales. Se mantienen todas las
+puertas de datos reales y de aceptación del producto indicadas arriba.
+
+Se cierra la puerta de planificación. La siguiente etapa puede generar tareas
+para este plan aprobado cuando se solicite. Este registro no crea `tasks.md`,
+no inicia implementación ni aprueba las otras funcionalidades.

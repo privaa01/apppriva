@@ -1,7 +1,6 @@
 # Modelo de datos y estados — F01
 
-**Estado:** diseño revisado, sujeto a aprobación del
-[plan](plan.md). No es una migración ni evidencia de almacenamiento desplegado.
+**Estado:** diseño revisado como parte del [plan](plan.md), aprobado el 2026-10-27. No es una migración ni evidencia de almacenamiento desplegado.
 
 ## Entidades propuestas
 

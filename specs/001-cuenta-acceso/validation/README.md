@@ -74,8 +74,8 @@ arbitraria enviada por el cliente. La plataforma hospedada debe revisarse por se
 
 ## Puerta de aprobación
 
-La revisión técnica del plan está completada en el alcance anterior y se entrega
-para aprobación explícita. Las pruebas finales del producto y la configuración con
+La revisión técnica del plan está completada en el alcance anterior. El usuario
+aprobó explícitamente el plan revisado el 2026-10-27; véase su registro en [plan.md](../plan.md). Las pruebas finales del producto y la configuración con
 datos reales corresponden a puertas posteriores; no se marcan ejecutadas.
 No se crearon tareas ni se implementó la app. Esta sonda es un experimento aislado
 de validación del proveedor, no código de producción.

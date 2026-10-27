@@ -2,7 +2,7 @@
 
 **Estado:** guía para la implementación futura. No hay aplicación, SDK Flutter ni manifest. Existe una sonda local del proveedor
 ya ejecutada; no equivale a un proyecto Supabase alojado o pruebas de la app. No ejecutar comandos
-de app como si esos archivos existieran. El [plan](plan.md) sigue sin aprobar.
+de app como si esos archivos existieran. El [plan](plan.md) fue aprobado el 2026-10-27; tareas e implementación no iniciadas.
 
 ## 1. Revisión documental disponible ahora
 

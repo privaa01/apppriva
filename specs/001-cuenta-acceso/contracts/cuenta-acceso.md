@@ -1,6 +1,6 @@
 # Contratos de interacción y autenticación — F01
 
-**Estado:** diseño revisado para aprobación, no API pública nueva ni código. Los métodos pertenecen
+**Estado:** diseño incluido en el plan aprobado el 2026-10-27; no API pública nueva ni código. Los métodos pertenecen
 al SDK oficial; se confirmarán firmas contra las versiones fijadas antes de implementar.
 
 ## Contrato del adaptador de cuenta

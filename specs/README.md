@@ -1,7 +1,7 @@
 # Priva — especificaciones por funcionalidad
 
-**Estado:** F01 aprobado el 2026-10-26; F02–F08 en borrador. Sin planificación ni implementación.
-**Actualización:** 2026-10-26.
+**Estado:** spec F01 aprobado el 2026-10-26 y [plan F01](001-cuenta-acceso/plan.md) aprobado el 2026-10-27; F02–F08 en borrador. Tareas e implementación no iniciadas.
+**Actualización:** 2026-10-27.
 
 Cada carpeta contiene `spec.md` y `checklists/requirements.md`, conforme a la estructura
 de Spec Kit. Los documentos se trasladaron desde `docs/descomposicion/` para mantener
