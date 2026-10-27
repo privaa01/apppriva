@@ -24,8 +24,9 @@ validarse también del lado del servicio; una casilla de UI no prueba enforcemen
   en cliente. Los recursos de Tips serán públicos por un contrato de F04, no por abrir
   tablas de cuenta.
 - Las modificaciones de la evidencia de autorización no se conceden libremente al
-  cliente; evaluar una operación controlada de registro y su vínculo verificable con
-  la versión de política aprobada antes de fijar migración.
+  cliente; el trigger de alta escribe perfil y evidencia en la misma transacción de
+  auth.users, valida versión de política publicada y toma NEW.id/fecha del servidor.
+  Cualquier fallo de evidencia revierte el alta. Véase la corrección U1 del plan.
 - Validar que usuario no verificado y sesión emitida en recuperación no eludan las
   reglas aprobadas; la prueba local valida la condición SQL con claims de sesiones reales; falta probar la política desplegada por HTTP.
 - F02 definirá eliminación; este diseño debe permitirla sin imponer retención infinita
@@ -71,3 +72,14 @@ Se mantienen 12 caracteres de contraseña, código de 600 segundos y reenvío m�
 eligió límites nativos del proveedor; un rate limit por IP no es un bloqueo por código.
 La configuración alojada debe revisarse y probarse antes de entrega. No se registran
 códigos ni tokens en la evidencia persistida.
+
+## Integridad de alta — corrección U1 para ratificación
+
+Tabla de políticas: versión publicada, finalidades, estado y documento aprobado;
+escritura solo administrativa. La declaración de aceptación recibida en signUp no
+se usa como permiso y no basta para dar acceso privado. Trigger de alta con esquema
+fijo, privilegios mínimos y sin RPC pública: inserta perfil/evidencia, o revierte
+la transacción completa. Clave única de evidencia inicial por usuario/versión/acción.
+Cambiar metadata o reintentar no altera evidencia existente. No persiste solicitudes
+anónimas de autorización ni añade IP/dispositivo. El texto real y la conservación
+siguen sujetos a la puerta de datos; aquí no se fija retención legal.

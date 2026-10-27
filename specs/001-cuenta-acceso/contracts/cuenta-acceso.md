@@ -7,7 +7,7 @@ al SDK oficial; se confirmarán firmas contra las versiones fijadas antes de imp
 
 | Operación conceptual | Entrada | Resultado visible / estado | SDK o integración propuesta | CA |
 | --- | --- | --- | --- | --- |
-| Registrar | Nombre, correo, contraseña y autorización aplicable | Confirmación pendiente; no conceder sesión por recibir objeto user | `signUp`; Confirm email activo; registrar evidencia coherente con la política | 01.1/01.2/01.5/01.6/01.8 |
+| Registrar | Nombre, correo, contraseña y autorización aplicable | Confirmación pendiente; no conceder sesión por recibir objeto user | `signUp`; Confirm email activo; trigger transaccional de alta valida política y registra evidencia o revierte toda el alta | 01.1/01.2/01.5/01.6/01.8 |
 | Confirmar correo | Datos del mecanismo de confirmación aprobado | Correo confirmado; habilitar solo sesión normal válida | Propuesta OTP de alta con plantilla apropiada, distinto de recovery | 01.2/01.11 |
 | Iniciar sesión | Correo y contraseña | Acceso normal solo si identidad verificada; error seguro si falla | `signInWithPassword` y comprobación de estado | 01.3/01.7/01.11 |
 | Solicitar recuperación | Correo | Mensaje uniforme; código a correo autorizado, sin teléfono | `resetPasswordForEmail`; template Reset password con `{{ .Token }}` | 01.4/01.9/01.10 |
@@ -62,3 +62,17 @@ Se mantienen 12 caracteres de contraseña, código de 600 segundos y reenvío m�
 eligió límites nativos del proveedor; un rate limit por IP no es un bloqueo por código.
 La configuración alojada debe revisarse y probarse antes de entrega. No se registran
 códigos ni tokens en la evidencia persistida.
+
+## Precisiones para ratificación — U1 y A1
+
+El alta recibe nombre y declaración explícita de autorización/versión; no recibe
+ID de titular ni fecha autoritativa del cliente. El servidor comprueba política
+publicada y crea perfil/evidencia en la misma transacción que auth.users. Fallo o
+versión inválida revierte el alta. Sin permiso de cliente para reescribir evidencia
+ni RPC pública del trigger; reintentos no duplican ni autorizan una versión nueva.
+
+El acceso fallido muestra el mismo aviso público para correo inexistente, contraseña
+incorrecta y correo no verificado: «No pudimos iniciar sesión. Revisa tus datos o
+verifica el correo con el que te registraste». Los errores por formato no consultan
+existencia. La implementación prueba mensajes y respuestas sin pasar errores crudos
+ni datos de cuentas. No se afirma aquí que el proveedor hospedado ya cumpla esa propiedad.

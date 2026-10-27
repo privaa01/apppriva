@@ -2,7 +2,7 @@
 
 **Branch**: `work` | **Date**: 2026-10-27 | **Spec**: [spec.md](spec.md)
 **Input**: `/specs/001-cuenta-acceso/spec.md` — aprobado; constitución v1.0.0 ratificada.
-**Status**: Approved — aprobación explícita del usuario registrada el 2026-10-27. Validación local y límites documentados en el [informe](validation/README.md); implementación no iniciada.
+**Status**: Base aprobada el 2026-10-27; correcciones del análisis 001 redactadas con autorización del usuario, pendientes de ratificación. Evidencia local previa conservada; implementación no iniciada.
 
 ## Summary
 
@@ -44,13 +44,13 @@ prueba de iOS requerirán macOS/Xcode y acceso a dispositivos o simuladores comp
 | II — privacidad | Finalidades Q1 confirmadas; PD-05/06 pendientes | Modelo mínimo y aislamiento propuestos; despliegue real bloqueado hasta aprobar conservación, responsable, región y acuerdos. |
 | III — cuestionario | F01 no procesa respuestas | Ninguna entidad ni contrato persiste respuestas/resultados; cierre futuro integra descarte sin logs. |
 | IV — Zyro | Fuera del alcance de F01 | Sin proveedor de IA ni petición de credenciales externas. |
-| V — accesibilidad | RNF aplicables identificados | Pruebas de texto, lector, foco y teclado exigidas; criterios numéricos propuestos sujetos a aprobación. |
+| V — accesibilidad | RNF aplicables identificados | Pruebas de texto, lector, foco y teclado exigidas; criterios definidos abajo; adiciones de esta corrección pendientes de ratificación. |
 | VI — seguridad | Verificación obligatoria y código de recuperación aprobados | Estado restringido de recuperación, control de acceso y pruebas negativas; proveedor/correo aún por validar en proyecto de pruebas. |
 | VII — trazabilidad | RF-01/02/03 y CA existentes | Contratos y guía enlazan CA; no se inventan tareas o pruebas ejecutadas. |
 | VIII — simplicidad | Proyecto sin app | Un cliente móvil y autenticación gestionada; sin microservicios ni backend propio injustificado. |
-| IX — aprobación | Constitución y F01 aprobados | Este plan sigue pendiente; no crear `tasks.md` ni código antes de aprobación. |
+| IX — aprobación | Constitución, spec base y plan base aprobados | Tareas generadas sin ejecutar; correcciones de esta revisión pendientes de ratificación antes de implementar. |
 
-**Resultado:** diseño preparado para aprobación con evidencia documental y prueba local.
+**Resultado:** diseño base aprobado con evidencia documental y prueba local; esta enmienda corrige el análisis y se somete a ratificación.
 La prueba inicial falló el máximo exacto de cinco; el usuario retiró expresamente esa
 regla y eligió límites nativos el 2026-10-27. No se aprueba una excepción en silencio.
 La aprobación de este plan no certifica móviles ni configura un servicio hospedado.
@@ -106,14 +106,14 @@ plan, no a pruebas creadas o ejecutadas. No se crea esquema de otros módulos.
 - Confirmación de correo activada en proveedor; una respuesta con usuario pero sin
   sesión no concede acceso. Propuesta para verificación de alta:
   código por correo dentro del flujo, evitando un requisito de enlaces profundos;
-  esta decisión técnica no estaba fijada por Q2 y requiere aprobación del plan.
+  esta decisión se incluyó en el plan base aprobado; los cambios de esta enmienda se identifican por separado.
 - Recuperación: solicitar código al correo mediante `resetPasswordForEmail`, personalizar el template
   Reset password con `{{ .Token }}` en lugar del enlace, validar mediante
   `verifyOTP` con `OtpType.recovery`,
   permitir cambio de contraseña solo en ese flujo, cerrar su sesión temporal y pedir
   inicio de sesión normal. No usar un flujo OTP que cree usuarios automáticamente.
 - Mínimo de contraseña de 12 caracteres aceptado por el usuario, sujeto a validación
-  del proveedor. Propuesta adicional aún no aprobada: permitir frases largas y pegado,
+  del proveedor. Decisión incluida en el diseño base: permitir frases largas y pegado,
   sin reglas arbitrarias de mezcla; al menos 64 caracteres aceptados si el proveedor
   lo soporta, nunca truncado silencioso. Verificar límites y políticas del proveedor.
 - Parámetros confirmados: contraseña mínima de 12, código de 10 minutos y reenvío
@@ -174,12 +174,12 @@ Supabase alojado, despliegue de RLS/PostgREST, accesibilidad y usabilidad en mó
 recuperación por código Q3, 12 caracteres/600 s/60 s y sustitución explícita del máximo
 exacto de cinco por límites nativos. El informe registra resultados y el fallo inicial.
 
-**Material concreto que se somete a aprobación del plan:** pins y mínimos técnicos,
+**Material incluido en la aprobación del plan base:** pins y mínimos técnicos,
 verificación de alta por código seguida de acceso normal con contraseña, política AMR
 para recursos privados, sesión propuesta de 30 días inactiva/90 absolutos si se contrata
 un plan que lo soporte, presupuestos de 1/15 segundos, texto hasta 200 % y protocolo
-piloto de 10 participantes con meta de al menos 8 registros completos. Son propuestas
-revisables, no decisiones ya aprobadas ni promesas de servicio.
+piloto de 10 participantes con meta de al menos 8 registros completos. La aprobación de diseño no demuestra operación ni constituye promesa de servicio;
+las condiciones dependientes del proveedor deben comprobarse antes de entrega.
 
 **Puertas antes de aceptación/usuarios reales:**
 
@@ -210,10 +210,11 @@ revisar alternativas y aprobar su impacto antes de ampliar esta estructura.
   fijados y decisión de límite nativo registrada. Investigación de diseño cerrada con
   las limitaciones de validación operacional explícitas.
 - [Modelo](data-model.md), [contratos](contracts/cuenta-acceso.md) y
-  [guía](quickstart.md): diseño revisado para aprobación, no implementación ni pruebas
+  [guía](quickstart.md): diseño base aprobado y correcciones pendientes de ratificar, no implementación ni pruebas
   finales del producto. [Informe](validation/README.md) y sonda reproducible adjuntos.
-- `tasks.md` no creado. No se registra aprobación por la frase «completa validaciones
-  y damos aprobación»: se entrega primero este resultado revisable.
+- [Tareas](tasks.md) generadas y no ejecutadas; su aprobación sigue pendiente. La
+  aprobación expresa del plan base se registra abajo y no se extiende por inferencia
+  a las correcciones actuales, tareas o implementación.
 
 ## Registro de respuestas del usuario — 2026-10-26
 
@@ -246,3 +247,75 @@ puertas de datos reales y de aceptación del producto indicadas arriba.
 Se cierra la puerta de planificación. La siguiente etapa puede generar tareas
 para este plan aprobado cuando se solicite. Este registro no crea `tasks.md`,
 no inicia implementación ni aprueba las otras funcionalidades.
+
+## Correcciones propuestas del análisis 001 — 2026-10-27
+
+### C1 — Severidad y controles verificables
+
+| Severidad | Criterio | Regla de cierre |
+| --- | --- | --- |
+| Crítica | Acceso a cuenta/datos ajenos, bypass de autenticación, exposición de secretos o incumplimiento de una prohibición de privacidad | Bloquea entrega; corregir, repetir pruebas y revisar alcance del incidente. |
+| Alta | Imposibilidad de completar registro, verificación o recuperación; enumeración de cuentas; pérdida/corrupción de evidencia de autorización | Bloquea entrega; corregir y repetir los CA afectados. |
+| Media | Problema recuperable sin exposición que degrada uso o incumple un umbral medible | Corregir antes de entregar si incumple un CA/umbral; no rebajarlo de categoría para declarar éxito. |
+| Baja | Defecto cosmético sin afectar comprensión, accesibilidad, seguridad ni CA | Registrar y someter cualquier aplazamiento a aceptación explícita; no equivale a prueba satisfactoria. |
+
+Todo CA incumplido bloquea aceptación, independientemente de su etiqueta de severidad.
+No se autoriza una excepción constitucional. Como criterio medible adicional para
+la revisión: contraste mínimo 4,5:1 para texto normal y 3:1 para texto grande según
+definición WCAG 2.2 AA y para componentes/estados visuales significativos; texto 200 %
+sin recortes ni acciones inaccesibles. Registrar mediciones por estado en T037.
+Estos criterios son reglas de calidad propuestas en esta corrección, no cumplimiento
+normativo ya medido ni requisitos aprobados por publicar el documento.
+
+### U1 — Alta y evidencia de autorización en una transacción
+
+Usar el mismo Postgres de Supabase: un trigger AFTER INSERT sobre auth.users crea
+perfil mínimo y evidencia inmutable dentro de la transacción de alta del proveedor.
+La migración T021 completa la función creada por T020 antes de habilitar el registro.
+No se requiere una sesión cliente para esa escritura ni un servicio de contraseñas propio.
+
+La solicitud signUp lleva nombre y una declaración explícita de autorización con
+versión de política/acción. El trigger valida esa declaración frente a una versión
+publicada en una tabla de políticas controlada por el servidor, obtiene el ID desde
+NEW.id y asigna fecha en servidor. Estos datos de entrada no conceden permisos ni
+prueban identidad o comprensión por sí mismos; la verificación de correo sigue siendo
+obligatoria. No aceptar un ID de titular o fecha de evidencia elegidos por el cliente.
+
+La función tiene privilegios mínimos, búsqueda de esquema fija y escritura reservada
+al alta; no exponerla como RPC pública ni permitir que la edición de user_metadata
+modifique evidencia existente. Una política ausente/inactiva, falta de declaración
+o fallo al insertar evidencia hace fallar toda la transacción: sin cuenta o perfil
+huérfanos. En pruebas sintéticas se publica una política de prueba, nunca una política
+provisional presentada como definitiva para usuarios reales.
+
+La identidad única por correo y una clave única de evidencia inicial por usuario,
+versión y acción evitan duplicados. Reintentar tras respuesta perdida no sobrescribe
+la evidencia ni añade autorizaciones: el cliente reconcilia por el flujo seguro de
+confirmación/acceso con mensaje uniforme. Un cambio posterior de política requiere
+su propio procedimiento, fuera de esta alta inicial; no inferir nueva autorización.
+T018/T031 deben probar rollback, reintento, versión inválida, modificación de metadata
+y escritura directa no permitida; T033 repite autorización por HTTP en el entorno final.
+La sonda local previa NO probó este trigger: se mantiene como validación de implementación.
+
+### A1 — Mensajes sin enumeración
+
+CA-01.11 usa el mismo aviso de acceso fallido para correo inexistente, contraseña
+incorrecta y correo no verificado. No revelar ese último estado por recibir un error
+crudo de Auth. T015/T027/T031/T039 comparan textos y resultados públicos entre casos;
+el servicio no debe ofrecer datos identificadores o una vía pública alternativa para
+consultar existencia. Tiempos y respuestas del proveedor se revisan en el entorno real,
+sin afirmar indistinguibilidad de red demostrada por una prueba de widgets.
+
+### G1 — Medición de tiempos, no solo builds
+
+T045 mide con reloj monotónico feedback local desde pulsación (≤1 s) y respuesta de
+red o aviso de espera/error (≤15 s). Preparar 20 repeticiones por operación y perfil de
+red, con dispositivo/OS y condiciones definidos en la matriz; validar también una
+respuesta artificialmente lenta para comprobar el aviso y el manejo de respuestas tardías.
+No incluir la entrega del correo dentro de 15 s ni usar un timeout para afirmar que
+Auth completó la operación. Guardar duraciones/resultados sin nombres, correos o tokens.
+Cualquier exceso es un fallo del presupuesto, no una media que oculte casos lentos.
+
+**Dependencia final:** T045 precede a la consolidación T043 y al cierre T044; no
+cambia sus IDs estables. Las cinco correcciones se someten a revisión/ratificación
+antes de implementar. El mensaje «si» autorizó editar y repetir análisis, no ejecutar tareas.

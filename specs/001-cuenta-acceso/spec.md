@@ -2,8 +2,8 @@
 
 **Feature Branch**: `work` (selección por directorio, sin rama nueva)
 **Created**: 2026-10-21
-**Updated**: 2026-10-26
-**Status**: Approved — alcance funcional aprobado explícitamente el 2026-10-26.
+**Updated**: 2026-10-27
+**Status**: Base funcional aprobada el 2026-10-26; aclaración de mensajes del análisis 001 pendiente de ratificación, sin cambio de alcance.
 **SPECIFY_FEATURE_DIRECTORY**: `specs/001-cuenta-acceso`
 **Input**: `/speckit-specify001`, interpretado como revisión de la funcionalidad existente F01.
 **Gobierno**: [constitución v1.0.0 ratificada](../../.specify/memory/constitution.md).
@@ -43,7 +43,7 @@ de acceso. Este documento define pruebas futuras, no declara resultados ejecutad
 - **CA-01.8:** Dado un fallo o envío repetido de registro, el reintento no crea cuentas duplicadas; el mensaje no expone datos de otras personas.
 - **CA-01.9:** Dado un intento de recuperación, se utiliza un código enviado al correo asociado. No se permite cambiar credenciales sin validar el código y el control de ese medio; los mensajes no permiten identificar cuentas ajenas. No se solicita teléfono.
 - **CA-01.10:** Dado un fallo recuperable, se informa qué ocurrió y qué puede hacer el usuario, sin mostrar credenciales ni detalles técnicos internos.
-- **CA-01.11:** Dada una cuenta con correo no verificado, un intento de acceso no habilita contenido protegido e informa que es necesario verificar el correo; Tips continúa disponible.
+- **CA-01.11:** Dada una cuenta con correo no verificado, un intento de acceso no habilita contenido protegido. El mensaje público es el mismo para correo inexistente, contraseña incorrecta y correo no verificado: «No pudimos iniciar sesión. Revisa tus datos o verifica el correo con el que te registraste». No confirma que la cuenta exista o esté pendiente de verificación; Tips continúa disponible.
 - **CA-01.12:** Dado un código de recuperación incorrecto o vencido según la configuración aprobada del plan, no se cambian credenciales; se ofrece una acción recuperable sin revelar datos de otras cuentas.
 - **CA-01.13:** Dada la recuperación mediante código válido, puedo completar el cambio de credenciales y volver a iniciar sesión conforme a las reglas de verificación; no se presupone inicio automático de sesión por recuperar acceso.
 
@@ -193,3 +193,13 @@ No aprueba proveedores, arquitectura, conservación ni parámetros de seguridad
 reservados al plan y a la documentación de datos. No constituye evidencia de pruebas
 ni aprueba los otros siete specs. Esta operación registra la aprobación; no inicia
 planificación, tareas ni implementación.
+
+## Aclaración propuesta tras análisis 001 — 2026-10-27
+
+Corrección autorizada por el usuario: precisar CA-01.11 para cumplir RF-03 sin
+revelar estado de cuentas. El aviso de acceso fallido se comparte entre los tres
+casos indicados; no se usa un error crudo de Auth como señal pública de existencia.
+Un flujo iniciado de registro/confirmación puede explicar el siguiente paso sin
+certificar a terceros que un correo pertenece a una cuenta. Los errores de formato
+siguen siendo por campo y no deben consultar existencia de cuentas.
+Esta aclaración documental no aprueba las tareas ni autoriza implementación.

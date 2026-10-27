@@ -41,3 +41,11 @@
 - La aprobación de F01 es independiente de la ratificación constitucional y está registrada en el spec; no aprueba las otras funcionalidades.
 - Ninguna casilla acredita pruebas de implementación ejecutadas ni metas de usabilidad logradas.
 - Resultado: spec funcional aprobado y habilitado para la siguiente etapa cuando se solicite. El plan no se ha iniciado ni aprobado.
+
+## Enmienda de mensajes tras análisis 001
+
+La base del spec sigue aprobada; la precisión de CA-01.11 ahora evita confirmar el
+estado de una cuenta en acceso fallido. Los tres casos usan el mismo aviso, con
+pruebas previstas en T015/T027/T031/T039. La ratificación de esta precisión y las
+correcciones del plan/lista de tareas sigue pendiente; no se presume por autorizar
+la edición. No se ha ejecutado implementación ni pruebas de esta enmienda.

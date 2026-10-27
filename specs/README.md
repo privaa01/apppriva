@@ -1,6 +1,6 @@
 # Priva — especificaciones por funcionalidad
 
-**Estado:** spec F01 aprobado el 2026-10-26 y [plan F01](001-cuenta-acceso/plan.md) aprobado el 2026-10-27; F02–F08 en borrador. [Tareas F01](001-cuenta-acceso/tasks.md) generadas para revisión; implementación no iniciada.
+**Estado:** spec F01 aprobado el 2026-10-26 y [plan F01](001-cuenta-acceso/plan.md) aprobado el 2026-10-27; F02–F08 en borrador. [Tareas F01](001-cuenta-acceso/tasks.md) actualizadas a 45 tareas para revisión; correcciones del análisis 001 pendientes de ratificación. Implementación no iniciada.
 **Actualización:** 2026-10-27.
 
 Cada carpeta contiene `spec.md` y `checklists/requirements.md`, conforme a la estructura

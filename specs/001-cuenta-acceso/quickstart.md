@@ -138,3 +138,22 @@ La evidencia original del máximo de cinco fallido se conserva por separado. La 
 SQL se ejercita con claims reales inyectados: aún no valida el middleware JWT/PostgREST
 desplegado. Los tiempos de expiración/reenvío se prueban envejeciendo timestamps de
 la base de pruebas, no esperando diez minutos de reloj.
+
+## Correcciones documentales del análisis 001 — pendientes de ratificación
+
+- Probar alta con política inválida, autorización ausente y fallo de escritura de
+  evidencia: la transacción completa de Auth/perfil/evidencia debe revertir. Reintentar
+  tras respuesta perdida no duplica ni sustituye evidencia. Cambiar metadata no modifica
+  autorizaciones. Esta prueba se añade a T018/T031; aún no está ejecutada.
+- Comparar aviso de acceso para inexistente, contraseña incorrecta y no verificado:
+  idéntico texto CA-01.11, sin confirmar existencia/estado. Probar también respuestas
+  directas del proveedor: la UI uniforme no acredita por sí sola anti-enumeración HTTP.
+- T045 mide 1/15 segundos con reloj monotónico y 20 repeticiones por operación/perfil de
+  red; respuesta demorada controlada debe producir aviso sin afirmar operación completada.
+  Entrega del correo excluida; guardar duraciones sin datos personales ni tokens.
+- Aplicar severidades C1 y umbrales de contraste propuestos en el plan. Una violación
+  de CA o umbral impide aceptación, cualquiera que sea su etiqueta de severidad.
+
+Las 21 comprobaciones locales existentes no se volvieron a ejecutar porque solo se
+corrigieron documentos; tampoco prueban el trigger, rendimiento o nuevas condiciones
+que se implementarán después de aprobar estas correcciones y tareas.
