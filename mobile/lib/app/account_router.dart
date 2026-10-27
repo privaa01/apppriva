@@ -53,8 +53,9 @@ class _GuardedDestination extends StatelessWidget {
   Widget build(BuildContext context) => AnimatedBuilder(
     animation: controller,
     builder: (context, _) {
-      if (!canOpenDestination(path, controller.state))
+      if (!canOpenDestination(path, controller.state)) {
         return SigninScreen(controller: controller, accessRequired: true);
+      }
       final title = switch (path) {
         '/tips' => 'Tips',
         '/home' => 'Inicio',

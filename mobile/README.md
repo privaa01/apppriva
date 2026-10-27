@@ -19,3 +19,19 @@ la producción permanece bloqueada sin documento, responsable y conservación re
 
 F01 implementa la entrada a la app. Inicio, Perfil, Tips, Zyro y cuestionario son
 interfaces de integración de otros specs; no se entregan sus funcionalidades aquí.
+
+## Validación reproducible
+
+Desde la raíz del repositorio, después de flutter pub get:
+
+- bash mobile/tool/analyze.sh: analizador oficial Dart en contenedor Ubuntu fijado,
+  sin red durante el análisis y sin sobrescribir HOME; necesita Docker y SDK/caché en las rutas indicadas.
+- python mobile/tool/run_local_integration.py: nueve escenarios contra Auth,
+  PostgREST, Postgres y buzón reales pero locales y efímeros. No crea servicios alojados.
+- flutter test --no-pub desde mobile/: 42 pruebas unitarias/widgets y accesibilidad.
+
+El runner local usa una entrada bajo tool/ para Flutter tester: no es una ejecución
+sobre teléfono. Los archivos integration_test/ contienen los recorridos y las pruebas
+nativas correspondientes siguen pendientes en la matriz. No se trasladan los endpoints
+/__test al producto: existen solo en el fixture efímero enlazado a localhost.
+El ejemplo de configuración no contiene un proyecto autorizado ni habilita datos reales.

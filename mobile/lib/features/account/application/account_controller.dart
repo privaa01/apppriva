@@ -78,7 +78,7 @@ class AccountController extends ChangeNotifier {
       RegExp(r'^\d{6}$').hasMatch(value.trim());
 
   bool _reject(String message) {
-    if (!_state.busy)
+    if (!_state.busy) {
       _set(
         AccountState(
           phase: _state.phase,
@@ -87,6 +87,7 @@ class AccountController extends ChangeNotifier {
           error: message,
         ),
       );
+    }
     return false;
   }
 
@@ -120,7 +121,7 @@ class AccountController extends ChangeNotifier {
                 /* Remain unprivileged. */
               }
             }
-          }, onError: (Object _, StackTrace __) {})
+          }, onError: (Object _, StackTrace _) {})
           .whenComplete(() {
             _inFlight = false;
           }),
@@ -165,17 +166,20 @@ class AccountController extends ChangeNotifier {
     required bool accepted,
   }) async {
     if (_inFlight) return false;
-    if (name.trim().isEmpty || !validEmail(email) || !validPassword(password))
+    if (name.trim().isEmpty || !validEmail(email) || !validPassword(password)) {
       return _reject(
         'Revisa los campos y usa una contraseña de al menos 12 caracteres.',
       );
-    if (!accepted)
+    }
+    if (!accepted) {
       return _reject(
         'Consulta la política y autoriza el tratamiento antes de crear tu cuenta.',
       );
+    }
     final selected = _policy;
-    if (selected == null || (selected.isTest && !allowTestPolicy))
+    if (selected == null || (selected.isTest && !allowTestPolicy)) {
       return _reject('El registro no está disponible en este momento.');
+    }
     return _perform(() async {
       await repository.signUp(
         name: name.trim(),
@@ -192,8 +196,9 @@ class AccountController extends ChangeNotifier {
   }
 
   Future<bool> confirm(String code) async {
-    if (_state.phase != AccountPhase.pendingVerification || !validCode(code))
+    if (_state.phase != AccountPhase.pendingVerification || !validCode(code)) {
       return _reject(codeFailureMessage);
+    }
     final email = _state.email;
     return _perform(
       () async {
@@ -212,8 +217,9 @@ class AccountController extends ChangeNotifier {
   Future<bool> resendConfirmation() async {
     if (_state.phase != AccountPhase.pendingVerification) return false;
     if (_confirmationResentAt != null &&
-        DateTime.now().difference(_confirmationResentAt!).inSeconds < 60)
+        DateTime.now().difference(_confirmationResentAt!).inSeconds < 60) {
       return _reject('Espera un minuto antes de pedir otro código.');
+    }
     final before = _state;
     return _perform(() async {
       await repository.resendConfirmation(before.email);
@@ -227,8 +233,9 @@ class AccountController extends ChangeNotifier {
   }
 
   Future<bool> signIn({required String email, required String password}) async {
-    if (!validEmail(email) || password.isEmpty)
+    if (!validEmail(email) || password.isEmpty) {
       return _reject(signInFailureMessage);
+    }
     return _perform(
       () async {
         final session = await repository.signIn(
@@ -250,11 +257,13 @@ class AccountController extends ChangeNotifier {
   }
 
   Future<bool> requestRecovery(String email) async {
-    if (!validEmail(email))
+    if (!validEmail(email)) {
       return _reject('Escribe un correo electrónico válido.');
+    }
     if (_recoveryRequestedAt != null &&
-        DateTime.now().difference(_recoveryRequestedAt!).inSeconds < 60)
+        DateTime.now().difference(_recoveryRequestedAt!).inSeconds < 60) {
       return _reject('Espera un minuto antes de pedir otro código.');
+    }
     return _perform(() async {
       await repository.requestRecovery(email.trim());
       _recoveryRequestedAt = DateTime.now();
@@ -266,8 +275,9 @@ class AccountController extends ChangeNotifier {
   }
 
   Future<bool> verifyRecovery(String code) async {
-    if (!validEmail(_state.email) || !validCode(code))
+    if (!validEmail(_state.email) || !validCode(code)) {
       return _reject(codeFailureMessage);
+    }
     final email = _state.email;
     return _perform(
       () async {
@@ -280,8 +290,9 @@ class AccountController extends ChangeNotifier {
   }
 
   Future<bool> changePassword(String password) async {
-    if (_state.phase != AccountPhase.recovering || !validPassword(password))
+    if (_state.phase != AccountPhase.recovering || !validPassword(password)) {
       return _reject('Usa una contraseña de al menos 12 caracteres.');
+    }
     return _perform(() async {
       await repository.changePassword(password);
       await repository.signOut();

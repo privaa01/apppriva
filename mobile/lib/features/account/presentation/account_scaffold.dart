@@ -12,8 +12,9 @@ void openAccountDestination(
     ScaffoldMessenger.of(context).showSnackBar(
       const SnackBar(content: Text('Inicia sesión para continuar.')),
     );
-    if (ModalRoute.of(context)?.settings.name != '/signin')
+    if (ModalRoute.of(context)?.settings.name != '/signin') {
       Navigator.of(context).pushNamed('/signin');
+    }
     return;
   }
   Navigator.of(context).pushNamed(path);

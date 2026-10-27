@@ -13,3 +13,8 @@ flutter create Android/iOS ejecutado; flutter pub get resolvió los pins directo
 supabase_flutter2.18.3 y flutter_secure_storage11.2.0. mobile/pubspec.lock retiene
 la resolución reproducible. Se verificará análisis, pruebas y builds por separado.
 No hay Xcode en Linux; Android toolchain se prepara independientemente.
+
+El análisis Dart se ejecuta ahora con éxito mediante mobile/tool/analyze.sh en un
+contenedor con HOME propio estándar, sin modificar la variable HOME. Las pruebas
+se ejecutan en el host con el helper de toolchain. Build Android aún bloqueado
+por el archivo android-arm-profile del engine; iOS requiere macOS.

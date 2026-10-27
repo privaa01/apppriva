@@ -4,7 +4,7 @@
 [modelo](data-model.md), [contratos](contracts/cuenta-acceso.md),
 [guía](quickstart.md) y [constitución](../../.specify/memory/constitution.md).
 **Fecha**: 2026-10-27. **Rama**: work.
-**Estado**: implementación en curso; 32 tareas completadas, 13 pendientes. Validación móvil y de entrega sin completar.
+**Estado**: implementación en curso; 37 tareas completadas, 8 pendientes. Sin aceptación de entrega móvil.
 
 ## Format: ID, P y Story
 
@@ -91,18 +91,18 @@ externos sin implementar F02–F08 ni presentar esos destinos como producto term
 
 ### Integration & Story Acceptance
 
-- [ ] T031 [US1] Crear y ejecutar integración real local en mobile/integration_test/account_access_test.dart con buzón sintético: registro, confirmación, acceso y CA-01.1–01.8/CA-01.10/CA-01.11; mocks no prueban entrega del correo; agregar alta con evidencia fallida y reintento tras respuesta perdida, sin cuenta/perfil/evidencia huérfanos.
-- [ ] T032 [US1] Crear y ejecutar mobile/integration_test/account_recovery_test.dart para CA-01.4/CA-01.9/CA-01.12/CA-01.13: mínimo 12, código 600 s, reenvío 60 s, uso único, límites nativos, cambio y regreso al acceso; no registrar códigos/tokens.
+- [X] T031 [US1] Crear y ejecutar integración real local en mobile/integration_test/account_access_test.dart con buzón sintético: registro, confirmación, acceso y CA-01.1–01.8/CA-01.10/CA-01.11; mocks no prueban entrega del correo; agregar alta con evidencia fallida y reintento tras respuesta perdida, sin cuenta/perfil/evidencia huérfanos.
+- [X] T032 [US1] Crear y ejecutar mobile/integration_test/account_recovery_test.dart para CA-01.4/CA-01.9/CA-01.12/CA-01.13: mínimo 12, código 600 s, reenvío 60 s, uso único, límites nativos, cambio y regreso al acceso; no registrar códigos/tokens.
 - [X] T033 [US1] Crear prueba HTTP en supabase/tests/account_access_http.py con tokens reales de visitante, alta OTP, recovery OTP, contraseña y refresh: acceso propio normal y rechazo de otra identidad/OTP, sin inyectar claims ni usar service key como usuario; ampliar la sonda SQL anterior.
-- [ ] T034 [US1] Crear y ejecutar mobile/integration_test/account_permissions_test.dart para CA-ACC-01–05, RF-17 y SC-002–SC-004: ausencia de sesión, red, duplicación, menú persistente y sesión invalidada; limpieza real de cuestionario queda a F02/F06/F07.
-- [ ] T035 [US1] Consolidar T014–T034 por CA/plataforma/commit en specs/001-cuenta-acceso/validation/account-acceptance.md, exigiendo resultados satisfactorios para declarar HU-01 completa y registrando integraciones externas aún pendientes.
+- [X] T034 [US1] Crear y ejecutar mobile/integration_test/account_permissions_test.dart para CA-ACC-01–05, RF-17 y SC-002–SC-004: ausencia de sesión, red, duplicación, menú persistente y sesión invalidada; limpieza real de cuestionario queda a F02/F06/F07.
+- [X] T035 [US1] Consolidar T014–T034 por CA/plataforma/commit en specs/001-cuenta-acceso/validation/account-acceptance.md, exigiendo resultados satisfactorios para declarar HU-01 completa y registrando integraciones externas aún pendientes.
 
 **Checkpoint:** HU-01 no está entregada solo por existir formularios o sesión válida.
 Faltan calidad, entorno final y aceptación; no afirmar que toda la app está implementada.
 
 ## Phase 4: Polish & Cross-Cutting Concerns
 
-- [ ] T036 [P] Revisar almacenamiento, logs, crash reports y configuración en specs/001-cuenta-acceso/validation/privacy-review.md: sin contraseña/código/token expuesto, teléfono o datos del cuestionario; sesión solo en almacén nativo protegido, distinguiendo app/proveedor.
+- [X] T036 [P] Revisar almacenamiento, logs, crash reports y configuración en specs/001-cuenta-acceso/validation/privacy-review.md: sin contraseña/código/token expuesto, teléfono o datos del cuestionario; sesión solo en almacén nativo protegido, distinguiendo app/proveedor.
 - [ ] T037 [P] Ejecutar TalkBack/VoiceOver, foco, etiquetas, teclado, contraste 4,5:1 texto normal y 3:1 texto grande según WCAG 2.2 AA/componentes significativos, y texto 200 % sin recortes ni controles inaccesibles en formularios/errores y registrar dispositivos/defectos en specs/001-cuenta-acceso/validation/accessibility.md; corregir presentación antes de aceptación.
 - [ ] T038 Ejecutar análisis, pruebas y builds Android API 24+/iOS 15+ con SDK/lockfile fijados y guardar comandos/resultados en specs/001-cuenta-acceso/validation/builds.md; no declarar iOS probado desde Linux ni bajar verificaciones TLS/firma/checksum.
 - [ ] T039 Configurar proyecto Supabase de pruebas y SMTP autorizados, repetir flujos y T033 por HTTP y registrar versión, AMR, cuotas, anti-enumeración y sesión 30/90 días en specs/001-cuenta-acceso/validation/hosted-auth.md; comprobar también mensajes/respuestas públicas de inexistente, contraseña incorrecta y no verificado; si el plan comercial no soporta lo aprobado, detener y revisar, no usar temporizadores UI como sustituto.
@@ -212,5 +212,11 @@ requiere aplicarla antes de reintentar. No cambia la aprobación del alcance.
 
 T001–T030 implementadas con pruebas locales disponibles; T033 probó autorización
 por HTTP local con tokens reales y PostgREST. Evidencia en validation/implementation.md.
-T031/T032/T034 requieren integración móvil; T035 y T036–T045 no están completadas.
+T031/T032/T034 ahora tienen integración local real y T035/T036 registran revisión; pruebas nativas y entrega permanecen pendientes.
 No se declara terminada HU-01 ni se avanza a otro spec.
+
+## Continuación de validación
+
+37 tareas completadas; T037/T038/T039/T041/T042/T043/T044/T045 abiertas.
+Las integraciones locales corren en Flutter tester Linux, no en un teléfono. El
+análisis estático ya pasó en contenedor. No se declara lista la entrega móvil.

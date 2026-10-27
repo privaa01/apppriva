@@ -17,7 +17,7 @@ productivo. No se crearon proyectos hospedados ni enviaron correos a personas.
 
 - Flutter3.47.8/Dart3.13.7 instalados desde checkout/artefactos oficiales. Bloqueo
   inicial de Dart resuelto. Dependencias exactas resueltas en mobile/pubspec.lock.
-- 39 pruebas Flutter unitarias/widgets/bootstrap satisfactorias. El controlador
+- 42 pruebas Flutter unitarias/widgets/bootstrap/accesibilidad satisfactorias. El controlador
   tuvo primero cinco fallos funcionales esperados y luego pasó sus nueve escenarios.
 - 33 comprobaciones SQL/Auth/PostgREST HTTP locales satisfactorias, incluidas firma
   JWT alterada, visitante, otra identidad, OTP y recuperación, transacción de alta,
@@ -29,10 +29,9 @@ productivo. No se crearon proyectos hospedados ni enviaron correos a personas.
 
 ## Pendiente / bloqueado
 
-- flutter analyze falla antes de analizar: intenta crear /home/agent/.dartServer
-  en filesystem de solo lectura. El permiso específico fue concedido pero no volvió
-  escribible el montaje; --cache tampoco resuelve la inicialización del driver.
-  No se reporta análisis satisfactorio ni se desactiva ninguna regla.
+- El análisis estático ya se resolvió con el analizador Dart oficial dentro de un
+  contenedor cuyo directorio personal es escribible: sin diagnósticos. El comando
+  reproducible es bash mobile/tool/analyze.sh, sin desactivar reglas.
 - flutter build apk --debug falla descargando android-arm-profile del engine fijado:
   storage.googleapis.com devuelve CONNECT403 para ese artefacto. Android SDK/NDK se
   descargaron oficialmente con verificación de sus hashes, pero no hay APK generado.
@@ -41,6 +40,17 @@ productivo. No se crearon proyectos hospedados ni enviaron correos a personas.
 - Supabase hospedado/SMTP, región, responsable, política real, conservación y acuerdos
   siguen sin configurar/aprobar para datos reales.
 
-32 tareas completadas; 13 pendientes. No hay aceptación de entrega ni publicación.
+37 tareas completadas; 8 pendientes. No hay aceptación de entrega ni publicación.
 La evidencia local no sustituye esas validaciones. Continuar desde las tareas abiertas
 cuando estén disponibles el entorno de compilación y los recursos externos necesarios.
+
+## Continuación verificada
+
+Nueve escenarios de integración SDK/controlador/widgets contra servicios locales
+reales pasaron; incluyen correo capturado, rollback de evidencia, respuesta perdida,
+caída de red y sesión tardía revocada. Veinte registros medidos quedaron en
+performance-local.json. La revisión de código minimiza el payload local de sesión
+y conserva la recuperación compatible con SDK, comprobada por test.
+
+No se marcan completas T037/T038/T039/T041/T042/T043/T044/T045. Sus evidencias
+parciales y dependencias están en los informes específicos de validación.

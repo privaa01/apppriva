@@ -40,8 +40,9 @@ class _SignupScreenState extends State<SignupScreen> {
       accepted: _accepted,
     );
     _password.clear();
-    if (success && mounted)
+    if (success && mounted) {
       Navigator.of(context).pushReplacementNamed('/confirm');
+    }
   }
 
   @override

@@ -1,0 +1,165 @@
+{
+  "scope": "local_headless_registration_only",
+  "samples": [
+    {
+      "operation": "registration",
+      "profile": "local_headless",
+      "sample": 1,
+      "feedback_us": 386,
+      "response_us": 126050,
+      "passed": true
+    },
+    {
+      "operation": "registration",
+      "profile": "local_headless",
+      "sample": 2,
+      "feedback_us": 151,
+      "response_us": 106721,
+      "passed": true
+    },
+    {
+      "operation": "registration",
+      "profile": "local_headless",
+      "sample": 3,
+      "feedback_us": 198,
+      "response_us": 114629,
+      "passed": true
+    },
+    {
+      "operation": "registration",
+      "profile": "local_headless",
+      "sample": 4,
+      "feedback_us": 285,
+      "response_us": 106633,
+      "passed": true
+    },
+    {
+      "operation": "registration",
+      "profile": "local_headless",
+      "sample": 5,
+      "feedback_us": 156,
+      "response_us": 110146,
+      "passed": true
+    },
+    {
+      "operation": "registration",
+      "profile": "local_headless",
+      "sample": 6,
+      "feedback_us": 142,
+      "response_us": 107660,
+      "passed": true
+    },
+    {
+      "operation": "registration",
+      "profile": "local_headless",
+      "sample": 7,
+      "feedback_us": 179,
+      "response_us": 107589,
+      "passed": true
+    },
+    {
+      "operation": "registration",
+      "profile": "local_headless",
+      "sample": 8,
+      "feedback_us": 190,
+      "response_us": 101679,
+      "passed": true
+    },
+    {
+      "operation": "registration",
+      "profile": "local_headless",
+      "sample": 9,
+      "feedback_us": 127,
+      "response_us": 109795,
+      "passed": true
+    },
+    {
+      "operation": "registration",
+      "profile": "local_headless",
+      "sample": 10,
+      "feedback_us": 128,
+      "response_us": 104991,
+      "passed": true
+    },
+    {
+      "operation": "registration",
+      "profile": "local_headless",
+      "sample": 11,
+      "feedback_us": 164,
+      "response_us": 101965,
+      "passed": true
+    },
+    {
+      "operation": "registration",
+      "profile": "local_headless",
+      "sample": 12,
+      "feedback_us": 125,
+      "response_us": 98713,
+      "passed": true
+    },
+    {
+      "operation": "registration",
+      "profile": "local_headless",
+      "sample": 13,
+      "feedback_us": 135,
+      "response_us": 108840,
+      "passed": true
+    },
+    {
+      "operation": "registration",
+      "profile": "local_headless",
+      "sample": 14,
+      "feedback_us": 256,
+      "response_us": 100539,
+      "passed": true
+    },
+    {
+      "operation": "registration",
+      "profile": "local_headless",
+      "sample": 15,
+      "feedback_us": 159,
+      "response_us": 102060,
+      "passed": true
+    },
+    {
+      "operation": "registration",
+      "profile": "local_headless",
+      "sample": 16,
+      "feedback_us": 344,
+      "response_us": 104184,
+      "passed": true
+    },
+    {
+      "operation": "registration",
+      "profile": "local_headless",
+      "sample": 17,
+      "feedback_us": 128,
+      "response_us": 109986,
+      "passed": true
+    },
+    {
+      "operation": "registration",
+      "profile": "local_headless",
+      "sample": 18,
+      "feedback_us": 156,
+      "response_us": 105889,
+      "passed": true
+    },
+    {
+      "operation": "registration",
+      "profile": "local_headless",
+      "sample": 19,
+      "feedback_us": 146,
+      "response_us": 101839,
+      "passed": true
+    },
+    {
+      "operation": "registration",
+      "profile": "local_headless",
+      "sample": 20,
+      "feedback_us": 136,
+      "response_us": 96979,
+      "passed": true
+    }
+  ]
+}

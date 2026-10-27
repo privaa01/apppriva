@@ -17,3 +17,7 @@ inyectadas por nombre en la máquina o configuración disponible.
 
 El cliente exige política activa y rechaza política de prueba fuera del modo local
 sintético. Los secretos privilegiados se suministran solo al servicio/gestor seguro.
+
+El usuario confirmó tener proyecto de pruebas y responsable/política. Se solicitó
+URL pública y ubicación del documento aprobado; aún no se recibieron ni se validaron.
+T042 no se cierra por esa confirmación: faltan datos y revisión de conservación real.

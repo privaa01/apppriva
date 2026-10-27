@@ -28,8 +28,9 @@ class _PasswordRecoveryViewState extends State<PasswordRecoveryView> {
     _code.dispose();
     _password.clear();
     _password.dispose();
-    if (widget.controller.state.phase == AccountPhase.recovering)
+    if (widget.controller.state.phase == AccountPhase.recovering) {
       unawaited(widget.controller.signOut());
+    }
     super.dispose();
   }
 

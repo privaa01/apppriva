@@ -1,0 +1,29 @@
+{
+  "scope": "local_headless_and_documented_limitations",
+  "unit_widget_tests": {
+    "passed": 42,
+    "failed": 0
+  },
+  "local_service_integration": {
+    "passed": 9,
+    "failed": 0,
+    "native_device": false
+  },
+  "static_analysis": {
+    "completed": true,
+    "diagnostics": 0,
+    "command": "bash mobile/tool/analyze.sh"
+  },
+  "android_build": {
+    "completed": false,
+    "blocker": "engine artifact HTTP CONNECT403"
+  },
+  "ios_build": {
+    "completed": false,
+    "blocker": "macOS/Xcode unavailable"
+  },
+  "tasks": {
+    "completed": 37,
+    "pending": 8
+  }
+}

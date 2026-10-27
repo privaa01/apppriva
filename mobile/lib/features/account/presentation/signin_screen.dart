@@ -35,8 +35,9 @@ class _SigninScreenState extends State<SigninScreen> {
       password: _password.text,
     );
     _password.clear();
-    if (success && mounted)
+    if (success && mounted) {
       Navigator.of(context).pushNamedAndRemoveUntil('/home', (_) => false);
+    }
   }
 
   @override

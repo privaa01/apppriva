@@ -21,8 +21,9 @@ class AppConfig {
         publishableKey.isEmpty ||
         uri.userInfo.isNotEmpty ||
         uri.hasQuery ||
-        uri.hasFragment)
+        uri.hasFragment) {
       return false;
+    }
     final local = {
       'localhost',
       '127.0.0.1',

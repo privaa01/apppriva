@@ -66,11 +66,12 @@ void main() {
   setUp(() {
     requests = [];
     handle = (request) async {
-      if (request.url.path.endsWith('/profiles'))
+      if (request.url.path.endsWith('/profiles')) {
         return jsonResponse([
           {'id': testId, 'name': 'Mariana'},
         ]);
-      if (request.url.path.endsWith('/treatment_policies'))
+      }
+      if (request.url.path.endsWith('/treatment_policies')) {
         return jsonResponse([
           {
             'version': 'synthetic-v1',
@@ -79,10 +80,13 @@ void main() {
             'is_test': true,
           },
         ]);
-      if (request.url.path.endsWith('/signup'))
+      }
+      if (request.url.path.endsWith('/signup')) {
         return jsonResponse(user(confirmed: false));
-      if (request.url.path.endsWith('/verify'))
+      }
+      if (request.url.path.endsWith('/verify')) {
         return jsonResponse(session(method: 'otp'));
+      }
       if (request.url.path.endsWith('/token')) return jsonResponse(session());
       if (request.url.path.endsWith('/user')) return jsonResponse(user());
       return jsonResponse({});

@@ -25,8 +25,9 @@ class _EmailConfirmationViewState extends State<EmailConfirmationView> {
     if (!_form.currentState!.validate()) return;
     final success = await widget.controller.confirm(_code.text.trim());
     _code.clear();
-    if (success && mounted)
+    if (success && mounted) {
       Navigator.of(context).pushNamedAndRemoveUntil('/signin', (_) => false);
+    }
   }
 
   @override
