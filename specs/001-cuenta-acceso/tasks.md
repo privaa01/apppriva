@@ -4,7 +4,7 @@
 [modelo](data-model.md), [contratos](contracts/cuenta-acceso.md),
 [guía](quickstart.md) y [constitución](../../.specify/memory/constitution.md).
 **Fecha**: 2026-10-27. **Rama**: work.
-**Estado**: Approved — las 45 tareas y correcciones del análisis 001 aprobadas explícitamente el 2026-10-27; ninguna ejecutada.
+**Estado**: Approved — 45 tareas aprobadas; 0 completadas. Preparación T001 intentada y bloqueada por red el 2026-10-27.
 
 ## Format: ID, P y Story
 
@@ -199,3 +199,11 @@ El usuario respondió «lo apruebo» a la solicitud de aprobar las correcciones 
 spec/plan y las 45 tareas del commit a7b99a4. Se cierra la puerta documental de tareas
 y correcciones de F01. La implementación puede iniciarse cuando se solicite; este
 registro no la inicia ni marca tareas realizadas. F02–F08 no quedan aprobados.
+
+## Ejecución iniciada — 2026-10-27
+
+Se verificó el checklist completo y el checkout oficial de Flutter. T001 no pudo
+completarse: la descarga de Dart recibió 403 desde storage.googleapis.com. Véase
+[toolchain.md](validation/toolchain.md). No hay tareas marcadas completas ni se
+ejecutaron T002–T045. Se guardó la adición de red en el borrador del entorno y se
+requiere aplicarla antes de reintentar. No cambia la aprobación del alcance.
