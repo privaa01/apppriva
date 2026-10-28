@@ -22,7 +22,7 @@ class FirebaseConfig {
 
   bool get isConfigured =>
       RegExp(r'^[a-z][a-z0-9-]{4,28}[a-z0-9]$').hasMatch(projectId) &&
-      RegExp(r'^1:[0-9]+:(android|ios):[a-zA-Z0-9]+$').hasMatch(appId) &&
+      RegExp(r'^1:[0-9]+:android:[a-zA-Z0-9]+$').hasMatch(appId) &&
       RegExp(r'^[0-9]+$').hasMatch(messagingSenderId) &&
       appId.split(':')[1] == messagingSenderId &&
       apiKey.trim().isNotEmpty;

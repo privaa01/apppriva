@@ -209,3 +209,11 @@ Esta aclaración documental no aprueba las tareas ni autoriza implementación.
 El usuario respondió «lo apruebo» a la solicitud de aprobar las correcciones del
 spec/plan y las 45 tareas del commit a7b99a4. Queda ratificada la aclaración de
 CA-01.11. No se modifica el alcance ni se inicia implementación con este registro.
+
+## Alcance de plataforma vigente — 2026-10-28
+
+Decisión explícita del usuario: «solo preparala para android». Esta entrega se
+prepara únicamente para Android (mínimo API24 del plan); iOS, VoiceOver y Xcode
+quedan fuera del alcance actual. Las menciones anteriores a ambas plataformas
+son históricas. Se mantienen todos los requisitos funcionales, de privacidad y
+seguridad aplicables a Android. No implica aprobación de otros specs ni entrega.

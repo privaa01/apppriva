@@ -161,3 +161,11 @@ Pendientes originales asociados: PD-01, PD-02, PD-10.
 Consultar sus condiciones de cierre en §18 del spec fuente. Las brechas de pantalla
 se resuelven en el registro del índice, sin modificar silenciosamente el original.
 Antes de `$speckit-plan`, resolver los pendientes aplicables y obtener aprobación explícita de la constitución y de este spec. Separar el documento no constituye esa aprobación.
+
+## Alcance de plataforma vigente — 2026-10-28
+
+Decisión explícita del usuario: «solo preparala para android». Esta entrega se
+prepara únicamente para Android (mínimo API24 del plan); iOS, VoiceOver y Xcode
+quedan fuera del alcance actual. Las menciones anteriores a ambas plataformas
+son históricas. Se mantienen todos los requisitos funcionales, de privacidad y
+seguridad aplicables a Android. No implica aprobación de otros specs ni entrega.

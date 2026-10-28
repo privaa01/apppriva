@@ -1,7 +1,7 @@
 # Priva Constitution
 
-Estado: **ratificada — versión 1.0.0**.
-Aplicación móvil para Android e iOS; metodología Spec-Driven Development (SDD).
+Estado: **ratificada — versión 1.1.0**.
+Aplicación móvil para Android; metodología Spec-Driven Development (SDD).
 Esta constitución complementa los requisitos funcionales sin reproducirlos.
 
 ## Core Principles
@@ -284,3 +284,18 @@ pendientes de sus propias revisiones y aprobaciones. No se inicia planificación
 tareas ni implementación por el hecho de ratificar este documento.
 
 **Version**: 1.0.0 | **Ratified**: 2026-10-26 | **Last Amended**: 2026-10-26
+
+## Cambio de alcance ratificado — 2026-10-28 — v1.1.0
+
+El responsable del proyecto indicó explícitamente «solo preparala para android».
+La preparación, implementación, compatibilidad y aceptación actuales se limitan a
+Android. Esta decisión sustituye las exigencias de validar ambas plataformas de
+esta constitución y de los artefactos anteriores: iOS/VoiceOver/Xcode quedan fuera
+del alcance actual, sin calificarse como pruebas aprobadas. Se mantienen TalkBack,
+texto ajustable y las demás reglas de privacidad, seguridad, trazabilidad y calidad.
+
+Motivo: reducción explícita de plataformas solicitada por el usuario. Impacto:
+actualizar specs, plan, matriz y tareas F01; no borrar evidencias ni originales.
+Los archivos iOS existentes son scaffolding histórico, sin entrega ni mantenimiento
+prometidos. Reintroducir iOS requerirá control de cambios. Versión menor por reducción
+de alcance sin eliminar principios. Se comunica mediante documentación, commit y push.

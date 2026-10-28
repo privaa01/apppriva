@@ -20,7 +20,7 @@
   },
   "ios_build": {
     "completed": false,
-    "blocker": "macOS/Xcode unavailable"
+    "status": "out_of_scope_by_user_decision_2026_10_28"
   },
   "tasks": {
     "completed": 37,
@@ -33,5 +33,8 @@
     "existing_results_apply_to_firebase": false,
     "firebase_sdk_double_tests_passed": 5,
     "hosted_validation_completed": false
-  }
+  },
+  "target_platforms": [
+    "android"
+  ]
 }

@@ -111,8 +111,8 @@ Faltan calidad, entorno final y aceptación; no afirmar que toda la app está im
 ## Phase 4: Polish & Cross-Cutting Concerns
 
 - [X] T036 [P] Revisar almacenamiento, logs, crash reports y configuración en specs/001-cuenta-acceso/validation/privacy-review.md: sin contraseña/código/token expuesto, teléfono o datos del cuestionario; sesión solo en almacén nativo protegido, distinguiendo app/proveedor.
-- [ ] T037 [P] Ejecutar TalkBack/VoiceOver, foco, etiquetas, teclado, contraste 4,5:1 texto normal y 3:1 texto grande según WCAG 2.2 AA/componentes significativos, y texto 200 % sin recortes ni controles inaccesibles en formularios/errores y registrar dispositivos/defectos en specs/001-cuenta-acceso/validation/accessibility.md; corregir presentación antes de aceptación.
-- [ ] T038 Ejecutar análisis, pruebas y builds Android API 24+/iOS 15+ con SDK/lockfile fijados y guardar comandos/resultados en specs/001-cuenta-acceso/validation/builds.md; no declarar iOS probado desde Linux ni bajar verificaciones TLS/firma/checksum.
+- [ ] T037 [P] Ejecutar TalkBack en Android, foco, etiquetas, teclado, contraste 4,5:1 texto normal y 3:1 texto grande según WCAG 2.2 AA/componentes significativos, y texto 200 % sin recortes ni controles inaccesibles en formularios/errores y registrar dispositivos/defectos en specs/001-cuenta-acceso/validation/accessibility.md; corregir presentación antes de aceptación.
+- [ ] T038 Ejecutar análisis, pruebas y build Android API 24+ con SDK/lockfile fijados y guardar comandos/resultados en specs/001-cuenta-acceso/validation/builds.md; iOS queda fuera de alcance por decisión explícita del usuario; no bajar verificaciones TLS/firma/checksum.
 - [ ] T039 Configurar Firebase de pruebas `priva-785cb` y correo autorizado, resolver diseño de alta/evidencia y recuperación por código, probar reglas y acceso directo, cuotas, anti-enumeración, verificación y sesiones; registrar resultados reales en specs/001-cuenta-acceso/validation/firebase-results.md. La formulación Supabase previa queda sustituida por decisión de proveedor; sus pruebas no acreditan Firebase. Sin configuración pública de apps ni acceso autenticado, esta tarea permanece pendiente.
 - [X] T040 [P] Preparar piloto SC-001 en specs/001-cuenta-acceso/validation/usability-protocol.md: diez participantes 40–65 años, denominador/condiciones, meta ≥8 registros completos y datos sintéticos; no inventar personas ni resultados.
 - [ ] T041 Ejecutar piloto autorizado de T040 y registrar completitud, comprensión y ayuda en specs/001-cuenta-acceso/validation/usability-results.md; no guardar respuestas de cuestionario ni generalizar estadísticamente diez casos.
@@ -235,3 +235,11 @@ Solicitud explícita del usuario: revisar, adaptar y validar. [Estado parcial y
 evidencia](validation/firebase-results.md). Firebase sustituye al proveedor en el arranque;
 el diseño Supabase anterior queda como antecedente. Registro, evidencia y códigos
 siguen pendientes de diseño validado; no se cambia el comportamiento aprobado.
+
+## Alcance de plataforma vigente — 2026-10-28
+
+Decisión explícita del usuario: «solo preparala para android». Esta entrega se
+prepara únicamente para Android (mínimo API24 del plan); iOS, VoiceOver y Xcode
+quedan fuera del alcance actual. Las menciones anteriores a ambas plataformas
+son históricas. Se mantienen todos los requisitos funcionales, de privacidad y
+seguridad aplicables a Android. No implica aprobación de otros specs ni entrega.

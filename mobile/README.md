@@ -1,5 +1,24 @@
 # Priva móvil — F01
 
+## Alcance de plataforma vigente — 2026-10-28
+
+Decisión explícita del usuario: «solo preparala para android». Esta entrega se
+prepara únicamente para Android (mínimo API24 del plan); iOS, VoiceOver y Xcode
+quedan fuera del alcance actual. Las menciones anteriores a ambas plataformas
+son históricas. Se mantienen todos los requisitos funcionales, de privacidad y
+seguridad aplicables a Android. No implica aprobación de otros specs ni entrega.
+
+Configuración Android ya importada localmente para `priva-785cb` / `com.priva`.
+Ejecutar desde `mobile/`:
+
+```bash
+flutter run --dart-define-from-file=config/firebase-android.local.json
+flutter build apk --debug --dart-define-from-file=config/firebase-android.local.json
+```
+
+No se requiere plist ni macOS para esta entrega. El APK sigue pendiente por el
+bloqueo de descarga del SDK; registro y recuperación Firebase siguen pendientes.
+
 Flutter 3.47.8 / Dart 3.13.7. Android API24+, iOS15+. Los identificadores dev.priva.*
 son de desarrollo, no identificadores de publicación aprobados. No se publica ni firma distribución.
 

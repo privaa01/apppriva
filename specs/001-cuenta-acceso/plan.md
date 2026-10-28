@@ -1,5 +1,13 @@
 # Implementation Plan: F01 — Cuenta y acceso
 
+## Alcance de plataforma vigente — 2026-10-28
+
+Decisión explícita del usuario: «solo preparala para android». Esta entrega se
+prepara únicamente para Android (mínimo API24 del plan); iOS, VoiceOver y Xcode
+quedan fuera del alcance actual. Las menciones anteriores a ambas plataformas
+son históricas. Se mantienen todos los requisitos funcionales, de privacidad y
+seguridad aplicables a Android. No implica aprobación de otros specs ni entrega.
+
 **Branch**: `work` | **Date**: 2026-10-27 | **Spec**: [spec.md](spec.md)
 **Input**: `/specs/001-cuenta-acceso/spec.md` — aprobado; constitución v1.0.0 ratificada.
 **Status**: Approved — base y correcciones del análisis 001 aprobadas explícitamente el 2026-10-27. Evidencia local previa conservada; implementación no iniciada.

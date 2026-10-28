@@ -1,5 +1,13 @@
 # Guía de validación — F01
 
+## Alcance de plataforma vigente — 2026-10-28
+
+Decisión explícita del usuario: «solo preparala para android». Esta entrega se
+prepara únicamente para Android (mínimo API24 del plan); iOS, VoiceOver y Xcode
+quedan fuera del alcance actual. Las menciones anteriores a ambas plataformas
+son históricas. Se mantienen todos los requisitos funcionales, de privacidad y
+seguridad aplicables a Android. No implica aprobación de otros specs ni entrega.
+
 **Estado:** guía para la implementación futura. No hay aplicación, SDK Flutter ni manifest. Existe una sonda local del proveedor
 ya ejecutada; no equivale a un proyecto Supabase alojado o pruebas de la app. No ejecutar comandos
 de app como si esos archivos existieran. El [plan](plan.md) fue aprobado el 2026-10-27; tareas e implementación no iniciadas.
