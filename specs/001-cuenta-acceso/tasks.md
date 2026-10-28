@@ -228,3 +228,10 @@ No se declara terminada HU-01 ni se avanza a otro spec.
 37 tareas completadas; T037/T038/T039/T041/T042/T043/T044/T045 abiertas.
 Las integraciones locales corren en Flutter tester Linux, no en un teléfono. El
 análisis estático ya pasó en contenedor. No se declara lista la entrega móvil.
+
+## Adaptación Firebase — 2026-10-28
+
+Solicitud explícita del usuario: revisar, adaptar y validar. [Estado parcial y
+evidencia](validation/firebase-results.md). Firebase sustituye al proveedor en el arranque;
+el diseño Supabase anterior queda como antecedente. Registro, evidencia y códigos
+siguen pendientes de diseño validado; no se cambia el comportamiento aprobado.

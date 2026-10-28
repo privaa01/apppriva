@@ -83,3 +83,10 @@ la transacción completa. Clave única de evidencia inicial por usuario/versión
 Cambiar metadata o reintentar no altera evidencia existente. No persiste solicitudes
 anónimas de autorización ni añade IP/dispositivo. El texto real y la conservación
 siguen sujetos a la puerta de datos; aquí no se fija retención legal.
+
+## Adaptación Firebase — 2026-10-28
+
+Solicitud explícita del usuario: revisar, adaptar y validar. [Estado parcial y
+evidencia](validation/firebase-results.md). Firebase sustituye al proveedor en el arranque;
+el diseño Supabase anterior queda como antecedente. Registro, evidencia y códigos
+siguen pendientes de diseño validado; no se cambia el comportamiento aprobado.

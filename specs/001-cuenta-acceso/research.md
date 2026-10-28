@@ -186,3 +186,10 @@ Los apartados anteriores conservan la investigación inicial; R09/R10 y el plan
 revisado sustituyen únicamente las incertidumbres resueltas y el límite retirado.
 La selección tecnológica está confirmada; pins, mínimos y demás diseño se someten
 a aprobación del plan. No se afirma instalación o prueba de una app inexistente.
+
+## Adaptación Firebase — 2026-10-28
+
+Solicitud explícita del usuario: revisar, adaptar y validar. [Estado parcial y
+evidencia](validation/firebase-results.md). Firebase sustituye al proveedor en el arranque;
+el diseño Supabase anterior queda como antecedente. Registro, evidencia y códigos
+siguen pendientes de diseño validado; no se cambia el comportamiento aprobado.

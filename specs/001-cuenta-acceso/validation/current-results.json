@@ -1,7 +1,7 @@
 {
   "scope": "local_headless_and_documented_limitations",
   "unit_widget_tests": {
-    "passed": 42,
+    "passed": 47,
     "failed": 0
   },
   "local_service_integration": {
@@ -28,8 +28,10 @@
   },
   "provider_transition": {
     "requested_provider": "firebase",
-    "status": "design_revision_pending",
+    "status": "partial_client_adaptation",
     "previous_provider": "supabase",
-    "existing_results_apply_to_firebase": false
+    "existing_results_apply_to_firebase": false,
+    "firebase_sdk_double_tests_passed": 5,
+    "hosted_validation_completed": false
   }
 }

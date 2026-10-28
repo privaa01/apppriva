@@ -35,3 +35,15 @@ sobre teléfono. Los archivos integration_test/ contienen los recorridos y las p
 nativas correspondientes siguen pendientes en la matriz. No se trasladan los endpoints
 /__test al producto: existen solo en el fixture efímero enlazado a localhost.
 El ejemplo de configuración no contiene un proyecto autorizado ni habilita datos reales.
+
+## Firebase: adaptación parcial
+
+El arranque utiliza Firebase. Copia `config/firebase.example.json` a
+`config/hosted.json` (ignorado) y completa identificadores públicos de la app
+registrada para cada plataforma. Nunca cuentas de servicio. Ejecuta
+`flutter run --dart-define-from-file=config/hosted.json`.
+
+Sin proyecto real conectado. Registro y recuperación siguen bloqueados hasta resolver
+códigos y evidencia de autorización. El acceso requiere correo verificado y claim
+de servidor `priva_account_ready`; su emisor está pendiente. No habilitar manualmente
+para simular aceptación. No usar datos reales. Instrucciones Supabase previas son históricas.

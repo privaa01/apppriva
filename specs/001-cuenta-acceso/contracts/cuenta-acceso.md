@@ -76,3 +76,10 @@ incorrecta y correo no verificado: «No pudimos iniciar sesión. Revisa tus dato
 verifica el correo con el que te registraste». Los errores por formato no consultan
 existencia. La implementación prueba mensajes y respuestas sin pasar errores crudos
 ni datos de cuentas. No se afirma aquí que el proveedor hospedado ya cumpla esa propiedad.
+
+## Adaptación Firebase — 2026-10-28
+
+Solicitud explícita del usuario: revisar, adaptar y validar. [Estado parcial y
+evidencia](../validation/firebase-results.md). Firebase sustituye al proveedor en el arranque;
+el diseño Supabase anterior queda como antecedente. Registro, evidencia y códigos
+siguen pendientes de diseño validado; no se cambia el comportamiento aprobado.

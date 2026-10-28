@@ -157,3 +157,10 @@ la base de pruebas, no esperando diez minutos de reloj.
 Las 21 comprobaciones locales existentes no se volvieron a ejecutar porque solo se
 corrigieron documentos; tampoco prueban el trigger, rendimiento o nuevas condiciones
 que se implementarán después de aprobar estas correcciones y tareas.
+
+## Adaptación Firebase — 2026-10-28
+
+Solicitud explícita del usuario: revisar, adaptar y validar. [Estado parcial y
+evidencia](validation/firebase-results.md). Firebase sustituye al proveedor en el arranque;
+el diseño Supabase anterior queda como antecedente. Registro, evidencia y códigos
+siguen pendientes de diseño validado; no se cambia el comportamiento aprobado.

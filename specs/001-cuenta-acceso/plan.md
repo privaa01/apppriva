@@ -340,3 +340,10 @@ y las 45 tareas del commit a7b99a4. Quedan ratificadas C1, U1, G1, A1 e I1, incl
 criterios de calidad, diseño transaccional de autorización, mensajes uniformes y
 medición de tiempos. Las pruebas y condiciones de entrega continúan obligatorias;
 esta aprobación no acredita implementación ni validaciones nuevas ejecutadas.
+
+## Adaptación Firebase — 2026-10-28
+
+Solicitud explícita del usuario: revisar, adaptar y validar. [Estado parcial y
+evidencia](validation/firebase-results.md). Firebase sustituye al proveedor en el arranque;
+el diseño Supabase anterior queda como antecedente. Registro, evidencia y códigos
+siguen pendientes de diseño validado; no se cambia el comportamiento aprobado.
