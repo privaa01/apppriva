@@ -37,3 +37,16 @@ seguro autenticado al proyecto para revisar Auth, reglas y pruebas del servicio.
 No se han creado recursos ni habilitado facturación. El acceso privado permanece
 condicionado al diseño de autorización; registro y recuperación por código aún no
 se han completado. No emitir manualmente claims para dar por superadas esas pruebas.
+
+## Android incorporado — 2026-10-28
+
+Archivo del usuario validado para `priva-785cb`, paquete `com.priva`.
+`applicationId` Android ajustado; namespace Kotlin se conserva para MainActivity.
+Configuración importada en `mobile/config/firebase-android.local.json` y copia del
+archivo original en `mobile/android/app/google-services.json`, ambos ignorados por Git.
+El arranque usa FirebaseOptions explícitos mediante el comando Android anterior;
+no necesita procesar google-services.json con Gradle para Core/Auth. No se añaden
+Analytics ni servicios no solicitados. Para otro entorno, volver a importar el archivo.
+
+Esto configura el cliente Android, no acredita conexión Auth, cuentas de servicio,
+reglas, registro/recuperación completos ni build. iOS necesita su propio plist.
