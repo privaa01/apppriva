@@ -14,3 +14,8 @@ supabase/.branches/
 *.keystore
 *.jks
 key.properties
+
+mobile/config/firebase-*.local.json
+**/google-services.json
+**/GoogleService-Info.plist
+**/*service-account*.json

@@ -33,3 +33,15 @@ de alta/evidencia y códigos; reglas del servicio y pruebas HTTP/emulador/hosted
 política, región, retención y acuerdos revisados; builds Android/iOS, dispositivos,
 accesibilidad nativa y piloto. Sin despliegue, facturación ni aceptación final.
 37 tareas previas son evidencia histórica Supabase: no se marcan nuevas como completas.
+
+## Continuación — proyecto confirmado
+
+Proyecto `priva-785cb` confirmado por el usuario. No hay configuraciones públicas
+Android/iOS disponibles ni Firebase CLI autenticado; el archivo señalado por
+GOOGLE_APPLICATION_CREDENTIALS contiene un objeto vacío (sin secretos inspeccionados).
+Se preparó importador JSON/plist con validación de proyecto y rechazo de cuentas
+de servicio: cuatro verificaciones sintéticas aprobadas. No equivalen a Auth real.
+Se repitió build Android: bloqueado antes de compilación por CONNECT403 al descargar
+android-arm-profile del motor Flutter. iOS sigue requiriendo macOS/Xcode.
+Ver `firebase/README.md` para obtener e importar la configuración pública pendiente.
+No se pueden cerrar T037–T045 por estas comprobaciones de configuración.
