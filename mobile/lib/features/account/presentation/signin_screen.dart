@@ -121,7 +121,12 @@ class _SigninScreenState extends State<SigninScreen> {
               child: const Text('Crear cuenta'),
             ),
             const SizedBox(height: 24),
-            const Icon(Icons.smart_toy_outlined, size: 64),
+            Image.asset(
+              'assets/images/zyro/zyro.png',
+              height: 240,
+              fit: BoxFit.contain,
+              excludeFromSemantics: true,
+            ),
             const SizedBox(height: 12),
             const Text(
               'Bienvenido a Priva. Aprende a cuidar tu privacidad.',

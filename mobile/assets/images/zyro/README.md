@@ -49,6 +49,6 @@ que existe y que corresponde al diseño. Mantener textos como widgets ajustables
 proporciones de imagen y una descripción accesible cuando aporte información;
 excluir de semántica las ilustraciones meramente decorativas.
 
-Estado inicial: carpeta preparada, sin ilustraciones originales subidas ni vínculos
-visuales implementados. No sustituir la imagen de Zyro por una captura completa ni
+Imagen disponible: `zyro.png`, conectada a P11 (Iniciar sesión). Las demás
+asociaciones visuales siguen pendientes de su diseño. No sustituir la imagen de Zyro por una captura completa ni
 implementar otras funcionalidades para incorporar un asset.
