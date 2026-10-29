@@ -138,3 +138,13 @@ análisis sin diagnósticos, cuatro pantallas Firebase con checks automatizados 
 accesibilidad y dos escenarios texto200%/teclado. Se reprodujo y corrigió rechazo
 por mayúsculas en confirmación/reenvío. Seguridad y evidencia revisadas en código
 y dobles; reglas/emulador y APK continúan bloqueados por descargas.
+
+## Casos negativos confirmados manualmente por el usuario
+
+Tras enumerar las comprobaciones, el usuario confirmó «si, todo esto funciona»:
+contraseña incorrecta rechazada; correo sin verificar sin acceso privado; visitante
+solo accede a Tips; retroceso después de cerrar sesión sin acceso privado; enlace
+de recuperación vencido o ya utilizado no permite cambiar contraseña.
+Se registran como pruebas satisfactorias comunicadas por el usuario. No se inventan
+dispositivo/OS, tiempos, capturas o inspección independiente. No demuestra inspección
+de evidencia Firestore, conservación/eliminación, piloto ni rendimiento completo.

@@ -62,7 +62,14 @@
     "device_os_recorded": false,
     "full_spec_accepted": false,
     "password_recovery": "successful",
-    "talkback": "successful"
+    "talkback": "successful",
+    "negative_access_cases": {
+      "incorrect_password": "passed",
+      "unverified_email_private_access_denied": "passed",
+      "visitor_only_tips_content": "passed",
+      "back_after_signout_private_access_denied": "passed",
+      "expired_or_used_recovery_link_rejected": "passed"
+    }
   },
   "automated_accessibility": {
     "firebase_screens_checked": 4,
