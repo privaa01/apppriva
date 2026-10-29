@@ -115,3 +115,11 @@ análisis estático sin diagnósticos. Integración hospedada aún no acreditada
 El usuario confirmó posteriormente que la base Firestore ya existe y publicó las
 reglas. Se registra como confirmación del usuario, sin sustituir pruebas hospedadas
 ni afirmar que el contenido desplegado se verificó desde este entorno.
+
+## Validación manual comunicada por el usuario
+
+El usuario confirmó: «ya pude iniciar sesion y crear una cuenta». Se registra como
+resultado satisfactorio comunicado para esos dos recorridos. No se presume método
+de ejecución, dispositivo/Android, verificación de correo probada por separado,
+contenido de evidencia Firestore inspeccionado ni recuperación validada.
+No equivale a aceptación de todos los criterios del spec001 ni a aprobación del002.

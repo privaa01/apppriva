@@ -46,5 +46,12 @@
     "blocker": "Official emulator JAR download blocked; administrative access unavailable",
     "deployment_reported_by_user": true,
     "deployment_independently_verified": false
+  },
+  "user_reported_validation": {
+    "signup": "successful",
+    "signin": "successful",
+    "independently_observed": false,
+    "device_os_recorded": false,
+    "full_spec_accepted": false
   }
 }
