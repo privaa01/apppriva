@@ -355,3 +355,9 @@ Solicitud explícita del usuario: revisar, adaptar y validar. [Estado parcial y
 evidencia](validation/firebase-results.md). Firebase sustituye al proveedor en el arranque;
 el diseño Supabase anterior queda como antecedente. Registro, evidencia y códigos
 siguen pendientes de diseño validado; no se cambia el comportamiento aprobado.
+
+## Propuesta de cierre Firebase
+
+Ver [diseño candidato completo](firebase-completion-plan.md). La compensación de
+identidad Auth deshabilitada y transacción Firestore sustituiría la atomicidad U1:
+requiere aprobación expresa, no se considera aprobada por una prueba o commit.

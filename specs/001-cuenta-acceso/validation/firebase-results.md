@@ -45,3 +45,14 @@ Se repitió build Android: bloqueado antes de compilación por CONNECT403 al des
 android-arm-profile del motor Flutter. iOS sigue requiriendo macOS/Xcode.
 Ver `firebase/README.md` para obtener e importar la configuración pública pendiente.
 No se pueden cerrar T037–T045 por estas comprobaciones de configuración.
+
+## Revisión de cierre
+
+Configuración Android ya recibida e importada; este dato corrige las notas anteriores
+que la marcaban ausente. Consulta de API pública Firebase intentada con datos locales:
+fallo de conectividad antes de respuesta; no se prueba el proveedor habilitado.
+El registro/recuperación siguen siendo carencias de implementación. Ver la propuesta
+`../firebase-completion-plan.md`, con sustitución U1 pendiente de aprobación.
+
+Revalidación de esta revisión: `flutter test --no-pub` 47/47 aprobadas;
+`bash mobile/tool/analyze.sh` sin diagnósticos. No son pruebas hosted ni nativas.
