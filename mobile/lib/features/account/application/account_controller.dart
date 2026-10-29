@@ -24,6 +24,7 @@ class AccountController extends ChangeNotifier {
   bool _inFlight = false;
   DateTime? _confirmationResentAt;
   DateTime? _recoveryRequestedAt;
+  bool get usesEmailLinkRecovery => repository is EmailLinkRecovery;
   AccountState get state => _state;
   TreatmentPolicy? get policy => _policy;
 
@@ -262,14 +263,20 @@ class AccountController extends ChangeNotifier {
     }
     if (_recoveryRequestedAt != null &&
         DateTime.now().difference(_recoveryRequestedAt!).inSeconds < 60) {
-      return _reject('Espera un minuto antes de pedir otro código.');
+      return _reject(
+        usesEmailLinkRecovery
+            ? 'Espera un minuto antes de pedir otro enlace.'
+            : 'Espera un minuto antes de pedir otro código.',
+      );
     }
     return _perform(() async {
       await repository.requestRecovery(email.trim());
       _recoveryRequestedAt = DateTime.now();
       return AccountState(
         email: email.trim(),
-        notice: 'Si corresponde, recibirás un código para recuperar el acceso.',
+        notice: usesEmailLinkRecovery
+            ? 'Si corresponde, recibirás un enlace por correo para cambiar tu contraseña. Después vuelve a iniciar sesión.'
+            : 'Si corresponde, recibirás un código para recuperar el acceso.',
       );
     });
   }

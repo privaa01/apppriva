@@ -22,3 +22,6 @@ abstract interface class AccountRepository {
   Future<void> changePassword(String password);
   Future<void> signOut();
 }
+
+/// Recovery is completed in the provider-hosted email-link flow.
+abstract interface class EmailLinkRecovery {}

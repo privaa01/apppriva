@@ -1,4 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/material.dart';
+import 'package:priva_mobile/app/priva_app.dart';
+import 'package:priva_mobile/features/account/application/account_controller.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:priva_mobile/app/account_errors.dart';
 import 'package:priva_mobile/app/firebase_config.dart';
@@ -36,6 +39,22 @@ class Credential extends Fake implements UserCredential {
 class Auth extends Fake implements FirebaseAuth {
   Auth(this.user);
   User? user;
+  String? resetEmail;
+  String? resetFailure;
+  @override
+  Future<void> sendPasswordResetEmail({
+    required String email,
+    ActionCodeSettings? actionCodeSettings,
+  }) async {
+    resetEmail = email;
+    if (resetFailure != null) {
+      throw FirebaseAuthException(
+        code: resetFailure!,
+        message: "private provider details",
+      );
+    }
+  }
+
   @override
   User? get currentUser => user;
   @override
@@ -52,6 +71,51 @@ class Auth extends Fake implements FirebaseAuth {
 }
 
 void main() {
+  testWidgets('native recovery shows link instructions without code fields', (
+    tester,
+  ) async {
+    final auth = Auth(null);
+    final controller = AccountController(FirebaseAccountRepository(auth));
+    await controller.initialize();
+    await tester.pumpWidget(
+      PrivaApp(controller: controller, initialRoute: '/recovery'),
+    );
+    await tester.pumpAndSettle();
+    await tester.enterText(
+      find.byKey(const Key('recovery.email')),
+      'test@example.test',
+    );
+    await tester.ensureVisible(find.byKey(const Key('recovery.submit')));
+    await tester.tap(find.byKey(const Key('recovery.submit')));
+    await tester.pumpAndSettle();
+    expect(auth.resetEmail, 'test@example.test');
+    expect(find.byKey(const Key('recovery.code')), findsNothing);
+    expect(find.byKey(const Key('recovery.password')), findsNothing);
+    expect(find.text('Reenviar enlace'), findsOneWidget);
+    expect(controller.state.canAccessPrivate, isFalse);
+    await tester.tap(find.text('Reenviar enlace'));
+    await tester.pumpAndSettle();
+    expect(
+      find.text('Espera un minuto antes de pedir otro enlace.'),
+      findsOneWidget,
+    );
+    await tester.pumpWidget(const SizedBox());
+    controller.dispose();
+  });
+  test('native reset sends email without granting a session', () async {
+    final auth = Auth(null);
+    final repo = FirebaseAccountRepository(auth);
+    await repo.requestRecovery('test@example.test');
+    expect(auth.resetEmail, 'test@example.test');
+    expect(repo.currentSession, isNull);
+    auth.resetFailure = 'user-not-found';
+    await repo.requestRecovery('missing@example.test');
+    auth.resetFailure = 'network-request-failed';
+    await expectLater(
+      repo.requestRecovery('test@example.test'),
+      throwsA(isA<AccountFailure>()),
+    );
+  });
   test('missing Firebase configuration fails closed', () {
     expect(FirebaseConfig.fromEnvironment().isConfigured, isFalse);
     expect(
@@ -96,15 +160,12 @@ void main() {
     });
   }
   test(
-    'SDK event never grants access and code recovery stays blocked',
+    'SDK events grant no access; legacy code validation stays blocked',
     () async {
       final repo = FirebaseAccountRepository(Auth(Identity()));
       expect(await repo.sessionChanges.first, isNull);
       expect(await repo.loadPolicy(), isNull);
-      await expectLater(
-        repo.requestRecovery('test@example.test'),
-        throwsA(isA<AccountFailure>()),
-      );
+      await repo.requestRecovery('test@example.test');
       await expectLater(
         repo.verifyRecovery(email: 'test@example.test', code: '000000'),
         throwsA(isA<AccountFailure>()),

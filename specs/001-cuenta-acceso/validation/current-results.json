@@ -1,7 +1,7 @@
 {
   "scope": "local_headless_and_documented_limitations",
   "unit_widget_tests": {
-    "passed": 47,
+    "passed": 49,
     "failed": 0
   },
   "local_service_integration": {
@@ -31,8 +31,9 @@
     "status": "partial_client_adaptation",
     "previous_provider": "supabase",
     "existing_results_apply_to_firebase": false,
-    "firebase_sdk_double_tests_passed": 5,
-    "hosted_validation_completed": false
+    "firebase_sdk_double_tests_passed": 7,
+    "hosted_validation_completed": false,
+    "recovery": "native_email_link_implemented_hosted_validation_pending"
   },
   "target_platforms": [
     "android"

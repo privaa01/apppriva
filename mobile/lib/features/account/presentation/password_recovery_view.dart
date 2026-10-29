@@ -36,6 +36,13 @@ class _PasswordRecoveryViewState extends State<PasswordRecoveryView> {
 
   Future<void> _submit() async {
     if (!_form.currentState!.validate()) return;
+    if (widget.controller.usesEmailLinkRecovery) {
+      final success = await widget.controller.requestRecovery(
+        _email.text.trim(),
+      );
+      if (success && mounted) setState(() => _step = 1);
+      return;
+    }
     bool success;
     if (_step == 0) {
       success = await widget.controller.requestRecovery(_email.text.trim());
@@ -65,11 +72,16 @@ class _PasswordRecoveryViewState extends State<PasswordRecoveryView> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            Text(switch (_step) {
-              0 => 'Escribe el correo con el que te registraste.',
-              1 => 'Si la solicitud procede, recibirás un código en tu correo. Usa el más reciente.',
-              _ => 'Elige una nueva contraseña de al menos 12 caracteres.',
-            }),
+            Text(
+              widget.controller.usesEmailLinkRecovery && _step == 1
+                  ? 'Revisa tu correo y abre el enlace para cambiar tu contraseña. Luego vuelve a iniciar sesión. Si no llega, revisa la carpeta de correo no deseado.'
+                  : switch (_step) {
+                      0 => 'Escribe el correo con el que te registraste.',
+                      1 => 'Si la solicitud procede, recibirás un código en tu correo. Usa el más reciente.',
+                      _ =>
+                        'Elige una nueva contraseña de al menos 12 caracteres.',
+                    },
+            ),
             const SizedBox(height: 20),
             AccountMessages(controller: widget.controller),
             if (_step == 0)
@@ -84,7 +96,7 @@ class _PasswordRecoveryViewState extends State<PasswordRecoveryView> {
                 validator: accountEmailValidator,
                 enabled: !widget.controller.state.busy,
               ),
-            if (_step == 1)
+            if (_step == 1 && !widget.controller.usesEmailLinkRecovery)
               TextFormField(
                 key: const Key('recovery.code'),
                 controller: _code,
@@ -127,15 +139,19 @@ class _PasswordRecoveryViewState extends State<PasswordRecoveryView> {
             const SizedBox(height: 24),
             AccountSubmit(
               key: const Key('recovery.submit'),
-              label: switch (_step) {
-                0 => 'Solicitar código',
-                1 => 'Validar código',
-                _ => 'Guardar contraseña',
-              },
+              label: widget.controller.usesEmailLinkRecovery
+                  ? (_step == 0
+                        ? 'Enviar enlace de recuperación'
+                        : 'Reenviar enlace')
+                  : switch (_step) {
+                      0 => 'Solicitar código',
+                      1 => 'Validar código',
+                      _ => 'Guardar contraseña',
+                    },
               busy: widget.controller.state.busy,
               onPressed: _submit,
             ),
-            if (_step == 1)
+            if (_step == 1 && !widget.controller.usesEmailLinkRecovery)
               TextButton(
                 key: const Key('recovery.resend'),
                 onPressed: widget.controller.state.busy

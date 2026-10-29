@@ -83,3 +83,17 @@ Solicitud explícita del usuario: revisar, adaptar y validar. [Estado parcial y
 evidencia](../validation/firebase-results.md). Firebase sustituye al proveedor en el arranque;
 el diseño Supabase anterior queda como antecedente. Registro, evidencia y códigos
 siguen pendientes de diseño validado; no se cambia el comportamiento aprobado.
+
+## Recuperación por enlace — cambio aprobado
+
+El usuario aprobó sustituir el código de recuperación por enlace por correo,
+utilizando directamente firebase_auth; rechazó Cloud Functions/Firestore. Usar
+sendPasswordResetEmail: cambiar contraseña en el formulario alojado de Firebase
+y volver a iniciar sesión en Priva. Solicitar enlace no crea usuarios ni concede
+acceso. No ingresar código ni nueva contraseña en la app. Enlaces inválidos,
+vencidos o usados deben rechazarse en Firebase y permiten solicitar otro en Priva.
+Esto sustituye el requisito de código de CA-01.9/01.12/01.13 y sus contratos.
+No cambia confirmación de alta, autorización de datos ni evidencia de consentimiento.
+La caducidad de 600 segundos anterior NO se atribuye al enlace: comprobar política
+y caducidad reales en Firebase. Reenvío cliente mínimo 60 s, sin afirmar límite
+de servidor probado. Validación de correo/servicio real sigue pendiente.

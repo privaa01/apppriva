@@ -1,6 +1,7 @@
 # F01 — Propuesta concreta para completar Firebase
 
-Estado: propuesta pendiente de aprobación; no desplegada. Fecha: 2026-10-29 UTC.
+Estado: RECHAZADA por el usuario; no implementar Cloud Functions/Firestore.
+Recuperación nativa por enlace aprobada: ver spec/plan vigentes. Fecha: 2026-10-29 UTC.
 Alcance: Android, proyecto priva-785cb, aplicación com.priva.
 
 ## Problema y decisión necesaria

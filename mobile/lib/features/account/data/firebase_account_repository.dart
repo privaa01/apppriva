@@ -3,10 +3,12 @@ import 'package:firebase_auth/firebase_auth.dart';
 import '../../../app/account_errors.dart';
 import '../application/account_state.dart';
 import 'unavailable_account_repository.dart';
+import 'account_repository.dart';
 
-/// Partial migration. Enrollment and code recovery deliberately remain disabled
-/// until server-side authorization evidence and email-code flows are validated.
-class FirebaseAccountRepository extends UnavailableAccountRepository {
+/// Native email-link recovery. Enrollment remains disabled until authorization
+/// evidence has a validated implementation.
+class FirebaseAccountRepository extends UnavailableAccountRepository
+    implements EmailLinkRecovery {
   FirebaseAccountRepository(this.auth);
   final FirebaseAuth auth;
   AccountSession? _session;
@@ -71,6 +73,18 @@ class FirebaseAccountRepository extends UnavailableAccountRepository {
       } catch (_) {
         // No raw provider exceptions or credentials leave this adapter.
       }
+      throw const AccountFailure();
+    }
+  }
+
+  @override
+  Future<void> requestRecovery(String email) async {
+    try {
+      await auth.sendPasswordResetEmail(email: email);
+    } on FirebaseAuthException catch (error) {
+      // Preserve the same public outcome for an unknown email address.
+      if (error.code != 'user-not-found') throw const AccountFailure();
+    } catch (_) {
       throw const AccountFailure();
     }
   }

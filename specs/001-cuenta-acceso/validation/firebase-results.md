@@ -56,3 +56,13 @@ El registro/recuperación siguen siendo carencias de implementación. Ver la pro
 
 Revalidación de esta revisión: `flutter test --no-pub` 47/47 aprobadas;
 `bash mobile/tool/analyze.sh` sin diagnósticos. No son pruebas hosted ni nativas.
+
+## Recuperación nativa por enlace aprobada e implementada
+
+Se utiliza sendPasswordResetEmail de firebase_auth, sin Cloud Functions/Firestore.
+UI muestra solicitud/reenvío y regreso a acceso, sin código ni nueva contraseña.
+Usuario inexistente mantiene respuesta pública uniforme; errores técnicos se sanitizan.
+No concede acceso privado ni crea cuentas. 49 pruebas locales aprobadas, incluidas
+solicitud SDK, correo inexistente, error de red, UI sin código y espera de reenvío.
+No se ha probado envío real, enlace vencido/usado, formulario alojado ni configuración
+de contraseña: no se declara aceptación final. Registro/evidencia siguen pendientes.

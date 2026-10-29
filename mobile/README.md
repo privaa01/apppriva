@@ -66,3 +66,12 @@ Sin proyecto real conectado. Registro y recuperación siguen bloqueados hasta re
 códigos y evidencia de autorización. El acceso requiere correo verificado y claim
 de servidor `priva_account_ready`; su emisor está pendiente. No habilitar manualmente
 para simular aceptación. No usar datos reales. Instrucciones Supabase previas son históricas.
+
+## Recuperación vigente con Firebase Auth
+
+Olvidé mi contraseña envía enlace al correo con sendPasswordResetEmail. La nueva
+contraseña se define en la página alojada de Firebase y después se vuelve a Priva
+para iniciar sesión. No requiere servidor adicional ni campos de código. Deben
+validarse entrega, caducidad y política de contraseña en el proyecto real.
+Las notas anteriores de recuperación bloqueada o por código quedan sustituidas.
+Registro y evidencia de autorización siguen pendientes; esto no completa F01.
