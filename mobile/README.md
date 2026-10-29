@@ -103,3 +103,31 @@ cuenta que aún no tiene evidencia sigue denegado, según el spec.
 Actualizar/recompilar la app para incorporar estos cambios; una instalación vieja
 no se actualiza por hacer push. La base Firestore y las reglas deben estar listas
 en Firebase: incluir la configuración cliente no las crea ni despliega.
+
+## Perfil y cuenta — F02
+
+La ruta Perfil ahora consulta nombre/correo reales y permite editar exclusivamente
+el nombre, cancelar y cerrar sesión. La solicitud de eliminación abre un borrador
+a priva202611@gmail.com o permite copiar el correo; no envía mensajes ni borra datos.
+
+**Para habilitar edición remota:** validar y publicar las reglas actualizadas de
+`firebase/firestore.rules` siguiendo `../firebase/README.md`. Las del001 negaban
+update de perfiles. No abrir permisos globales si falla el guardado. Configuración
+Android predeterminada y APIs de Auth/evidencia del001 se conservan.
+
+Regresión/Perfil: `flutter test --no-pub`. Análisis desde raíz:
+`bash mobile/tool/analyze.sh`. Prueba hospedada controlada en Android:
+
+```bash
+flutter test integration_test/profile_account_test.dart --dart-define-from-file=config/profile-test.local.json -d DEVICE_ID
+flutter test integration_test/profile_performance_test.dart --dart-define-from-file=config/profile-test.local.json -d DEVICE_ID
+```
+
+Copiar `config/profile-test.example.json` al archivo local ignorado y completar
+solo con una cuenta sintética propia verificada y su UID; activar el flag únicamente
+para ejecutar esa prueba. No enviar contraseñas por chat ni versionar el archivo.
+El recorrido cambia temporalmente y restaura el nombre de ese perfil, nunca crea
+usuarios ni envía correos. No se ha ejecutado desde este runner sin dispositivo.
+
+Resultados/límites: `../specs/002-perfil-cuenta/validation/`. No declarar F02 aceptado
+por disponer de pruebas locales; reglas, TalkBack, correo nativo y matriz pendientes.

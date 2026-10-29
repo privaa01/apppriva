@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 
 import '../features/account/application/account_controller.dart';
 import 'account_router.dart';
+import '../features/profile/data/profile_repository.dart';
+import '../features/profile/data/deletion_contact_service.dart';
 
-class PrivaApp extends StatelessWidget {
+class PrivaApp extends StatefulWidget {
   const PrivaApp({
     super.key,
     required this.controller,
@@ -11,17 +13,31 @@ class PrivaApp extends StatelessWidget {
     this.initialRoute = '/signin',
     this.destinationBuilder,
     this.builder,
+    this.profileRepository,
+    this.deletionContactService,
   });
   final AccountController controller;
   final bool testMode;
   final String initialRoute;
   final AccountDestinationBuilder? destinationBuilder;
   final TransitionBuilder? builder;
+  final ProfileRepository? profileRepository;
+  final DeletionContactService? deletionContactService;
+  @override
+  State<PrivaApp> createState() => _PrivaAppState();
+}
+
+class _PrivaAppState extends State<PrivaApp> {
+  final _profileObserver = RouteObserver<PageRoute<dynamic>>();
   @override
   Widget build(BuildContext context) {
     final router = AccountRouter(
-      controller: controller,
-      destinationBuilder: destinationBuilder,
+      controller: widget.controller,
+      destinationBuilder: widget.destinationBuilder,
+      profileRepository: widget.profileRepository,
+      deletionContactService:
+          widget.deletionContactService ?? PlatformDeletionContactService(),
+      profileObserver: _profileObserver,
     );
     return MaterialApp(
       title: 'Priva',
@@ -53,15 +69,16 @@ class PrivaApp extends StatelessWidget {
           style: TextButton.styleFrom(minimumSize: const Size(48, 48)),
         ),
       ),
-      initialRoute: initialRoute,
+      initialRoute: widget.initialRoute,
+      navigatorObservers: [_profileObserver],
       onGenerateInitialRoutes: (route) => [
         router.onGenerateRoute(RouteSettings(name: route)),
       ],
       onGenerateRoute: router.onGenerateRoute,
       builder: (context, child) {
         final built =
-            builder?.call(context, child) ?? child ?? const SizedBox();
-        if (!testMode) return built;
+            widget.builder?.call(context, child) ?? child ?? const SizedBox();
+        if (!widget.testMode) return built;
         return Column(
           children: [
             Material(

@@ -322,6 +322,28 @@ class AccountController extends ChangeNotifier {
     }, revokeLateSession: true);
   }
 
+  void updateProfileName({required String uid, required String name}) {
+    final session = _state.session;
+    if (!_state.canAccessPrivate || session == null || session.userId != uid) {
+      return;
+    }
+    _set(
+      AccountState(
+        phase: _state.phase,
+        busy: _state.busy,
+        email: _state.email,
+        error: _state.error,
+        notice: _state.notice,
+        session: AccountSession(
+          userId: session.userId,
+          emailVerified: session.emailVerified,
+          passwordAuthenticated: session.passwordAuthenticated,
+          displayName: name,
+        ),
+      ),
+    );
+  }
+
   Future<void> signOut() async {
     _generation++;
     _set(const AccountState());

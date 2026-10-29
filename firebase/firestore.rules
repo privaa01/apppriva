@@ -29,7 +29,13 @@ service cloud.firestore {
         request.resource.data.keys().hasOnly(['name']) &&
         request.resource.data.name is string && request.resource.data.name.size() > 0 &&
         validEvidence(evidence(uid), uid) && evidence(uid).authorized_at == request.time;
-      allow list, update, delete: if false;
+      allow update: if ownPassword(uid) && request.auth.token.email_verified == true &&
+        validEvidence(get(/databases/$(database)/documents/authorization_evidence/$(uid)).data, uid) &&
+        request.resource.data.diff(resource.data).affectedKeys().hasOnly(['name']) &&
+        request.resource.data.keys().hasOnly(['name']) &&
+        request.resource.data.name is string &&
+        request.resource.data.name.matches('(?s).*[^\\s\\p{Z}\\x{FEFF}].*');
+      allow list, delete: if false;
     }
     match /{document=**} {
       allow read, write: if false;

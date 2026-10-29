@@ -116,3 +116,18 @@ cuenta que aún no tiene evidencia sigue denegado, según el spec.
 Actualizar/recompilar la app para incorporar estos cambios; una instalación vieja
 no se actualiza por hacer push. La base Firestore y las reglas deben estar listas
 en Firebase: incluir la configuración cliente no las crea ni despliega.
+
+## Edición de nombre F02 — reglas nuevas
+
+Se añadió autorización restrictiva para update de `profiles/{uid}`: solo name propio,
+correo verificado, password y evidencia válida; rechaza vacío/solo espacios y campos
+extra. No permite modificar/borrar evidencia, email o cuestionario. Las reglas
+anteriores del001 bloquean la edición, por lo que necesitan actualización.
+
+`npm test` ahora incluye `tests/profile.test.mjs` y la suite anterior, de forma
+secuencial. Seis escenarios nuevos,13 totales; no ejecutados aquí por bloqueo de
+descarga oficial del emulador. No se publicó nada desde este runner.
+Antes de publicar reglas nuevas, ejecutar las pruebas en entorno con emulador y
+acceso apropiados; después usar Firebase Console o el comando de despliegue
+exclusivo de reglas ya documentado. No usar modo público/de prueba como solución.
+La postergación de tests del001 no equivale a validación de la escritura nueva.

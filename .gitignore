@@ -22,3 +22,5 @@ mobile/config/firebase-*.local.json
 
 node_modules/
 firebase/.firebase/
+
+mobile/config/profile-test.local.json

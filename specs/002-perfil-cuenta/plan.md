@@ -187,3 +187,10 @@ a plan pendiente describen el estado previo a esta aprobación.
 Se creó [tasks.md](tasks.md) con34 tareas pendientes,18 asociadas a HU-02.
 Ninguna ha sido ejecutada. Esta lista requiere su propia aprobación antes de
 implementar; los estados previos de este documento se conservan como historial.
+
+## Implementación autorizada y estado actual
+
+El usuario indicó «inicia la implementación» sobre las tareas de5611047. Se
+implementaron los componentes y pruebas locales; ver validation/current-results.json.
+Los estados anteriores se conservan como historia de diseño. Sin entrega final,
+reglas publicadas por el asistente o avance al003;8 validaciones finales pendientes.

@@ -1,0 +1,32 @@
+{
+  "scope": "F02 local implementation and F01 regression",
+  "unit_widget_tests": {
+    "passed": 103,
+    "failed": 0,
+    "f01_baseline": 69,
+    "f02": 34
+  },
+  "static_analysis": {
+    "diagnostics": 0
+  },
+  "rules_tests": {
+    "prepared": 13,
+    "f02_new": 6,
+    "executed": false,
+    "deployed_by_assistant": false,
+    "blocker": "official emulator JAR download blocked"
+  },
+  "native_tests": {
+    "prepared": true,
+    "executed": false
+  },
+  "android_build": {
+    "completed": false,
+    "blocker": "engine artifact CONNECT403"
+  },
+  "tasks": {
+    "completed": 26,
+    "pending": 8
+  },
+  "accepted": false
+}

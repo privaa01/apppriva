@@ -4,8 +4,9 @@
 **Input**: [spec](spec.md), [plan aprobado](plan.md), [investigación](research.md),
 [modelo](data-model.md), [contratos](contracts/perfil-cuenta.md),
 [guía](quickstart.md), [constitución](../../.specify/memory/constitution.md).
-**Estado**: 34 tareas propuestas; ninguna ejecutada. Aprobación del plan sobre
-1d01d98 registrada; aprobación de esta lista e implementación todavía pendientes.
+**Estado**: implementación en curso;26 tareas de desarrollo/preparación y pruebas
+locales completadas,8 validaciones finales pendientes. Tareas e implementación
+autorizadas explícitamente mediante «inicia la implementación» sobre5611047.
 
 ## Format: `[ID] [P?] [Story?] descripción con ruta`
 
@@ -21,9 +22,9 @@ de SDK, dependencia o emulador es bloqueo de entorno, no prueba funcional válid
 
 ## Phase 1: Setup — base existente
 
-- [ ] T001 Comprobar baseline Flutter3.47.8/Dart3.13.7, estado limpio y regresión F01; registrar versiones, comandos y resultados reales en specs/002-perfil-cuenta/validation/baseline.md, sin trasladar los69 resultados anteriores como nueva ejecución.
-- [ ] T002 Añadir url_launcher6.3.3 a mobile/pubspec.yaml y resolver mobile/pubspec.lock manteniendo Firebase y API24; registrar el transitivo Android real y detener cambios que eleven mínimos sin revisión. Depende de T001.
-- [ ] T003 [P] Registrar entorno sintético, matriz Android API24/actual y pequeña/grande, cliente de correo y límites de acceso/emulador en specs/002-perfil-cuenta/validation/environment.md; no afirmar hardware, despliegues o pruebas disponibles sin comprobar. Depende de T001; independiente de T002.
+- [X] T001 Comprobar baseline Flutter3.47.8/Dart3.13.7, estado limpio y regresión F01; registrar versiones, comandos y resultados reales en specs/002-perfil-cuenta/validation/baseline.md, sin trasladar los69 resultados anteriores como nueva ejecución.
+- [X] T002 Añadir url_launcher6.3.3 a mobile/pubspec.yaml y resolver mobile/pubspec.lock manteniendo Firebase y API24; registrar el transitivo Android real y detener cambios que eleven mínimos sin revisión. Depende de T001.
+- [X] T003 [P] Registrar entorno sintético, matriz Android API24/actual y pequeña/grande, cliente de correo y límites de acceso/emulador en specs/002-perfil-cuenta/validation/environment.md; no afirmar hardware, despliegues o pruebas disponibles sin comprobar. Depende de T001; independiente de T002.
 
 **Checkpoint:** completar T001–T003 antes de contratos compartidos. No inicializar
 otra app, proveedor, backend o colecciones. No modificar el spec durante implementación
@@ -31,10 +32,10 @@ para ocultar incumplimientos.
 
 ## Phase 2: Foundational — contratos y datos transitorios
 
-- [ ] T004 Definir ProfileDetails en mobile/lib/features/profile/data/profile_details.dart con uid, name confirmado y email de identidad: «Email no se almacena de nuevo en Firestore ni se modifica en F02» y «El DTO y borrador solo viven en memoria». No inventar campos o defaults personales.
-- [ ] T005 [P] Definir ProfileRepository.loadCurrent/updateName en mobile/lib/features/profile/data/profile_repository.dart; contrato de identidad derivada de Auth, consulta servidor y resultado confirmado, nunca UID editable. Depende de T004.
-- [ ] T006 [P] Definir estados confirmados/cargando/editando/guardando/error/desconocido y borrador ligado a UID/generación en mobile/lib/features/profile/application/profile_state.dart; «Cambiar de identidad nunca traslada datos/borrador/errores personales a otra sesión». Depende de T004.
-- [ ] T007 [P] Definir interfaz comprobable de apertura de borrador/copia de dirección en mobile/lib/features/profile/data/deletion_contact_service.dart; resultados abierto/fallback, nunca enviado/recibido/eliminado. Sin datos de cuenta en URI. Depende de T004.
+- [X] T004 Definir ProfileDetails en mobile/lib/features/profile/data/profile_details.dart con uid, name confirmado y email de identidad: «Email no se almacena de nuevo en Firestore ni se modifica en F02» y «El DTO y borrador solo viven en memoria». No inventar campos o defaults personales.
+- [X] T005 [P] Definir ProfileRepository.loadCurrent/updateName en mobile/lib/features/profile/data/profile_repository.dart; contrato de identidad derivada de Auth, consulta servidor y resultado confirmado, nunca UID editable. Depende de T004.
+- [X] T006 [P] Definir estados confirmados/cargando/editando/guardando/error/desconocido y borrador ligado a UID/generación en mobile/lib/features/profile/application/profile_state.dart; «Cambiar de identidad nunca traslada datos/borrador/errores personales a otra sesión». Depende de T004.
+- [X] T007 [P] Definir interfaz comprobable de apertura de borrador/copia de dirección en mobile/lib/features/profile/data/deletion_contact_service.dart; resultados abierto/fallback, nunca enviado/recibido/eliminado. Sin datos de cuenta en URI. Depende de T004.
 
 **Checkpoint:** T004 precede T005/T006/T007; estos tres archivos son independientes.
 Los contratos preparan dobles de pruebas; no conceden permisos ni generan envíos.
@@ -50,30 +51,30 @@ sin enviar correo real ni borrar datos. No requiere implementar F03–F08.
 
 ### Pruebas primero
 
-- [ ] T008 [P] [US1] Crear mobile/test/features/profile/profile_repository_test.dart para C1/C2: servidor frente a caché, correo Auth, identidad/confirmación/password/evidencia, perfil ausente, nombre vacío/espacios/legítimo, transacción exclusiva name y cambio de UID en espera/reintento; evidencia sin cambios (CA-02.1/02.4–02.9).
-- [ ] T009 [P] [US1] Crear mobile/test/features/profile/profile_controller_test.dart para consulta, borrador/cancelar, guardado confirmado/fallido, doble envío, timeout desconocido y reconciliación, respuesta tardía tras salida/cierre/cambio UID y sincronización de nombre sin crear permisos (C1–C3).
-- [ ] T010 [P] [US1] Crear mobile/test/features/profile/profile_screen_test.dart para P12: saludo/correo real de lectura, carga/error sin ejemplos/teléfono/historial, edición/cancelación, cierre y retroceso, información de eliminación y ausencia de mensajes enviados/eliminados (CA-02.1–02.17).
-- [ ] T011 [P] [US1] Crear mobile/test/features/profile/deletion_contact_service_test.dart para destinatario y escape de URI, apertura false/excepción, copia/fallo de copia bajo pulsación, cancelación sin mutación y exclusión de UID/credenciales/cuestionario (C4).
-- [ ] T012 [P] [US1] Crear firebase/tests/profile.test.mjs para actualización name propia verificada/password con evidencia; denegar visitante/otra cuenta/no verificado/sin evidencia, nombre vacío/solo espacios, correo/UID/campos extra/borrado y cambios de autorización; conservar pruebas de alta F01 y comparar evidencia antes/después (C2).
+- [X] T008 [P] [US1] Crear mobile/test/features/profile/profile_repository_test.dart para C1/C2: servidor frente a caché, correo Auth, identidad/confirmación/password/evidencia, perfil ausente, nombre vacío/espacios/legítimo, transacción exclusiva name y cambio de UID en espera/reintento; evidencia sin cambios (CA-02.1/02.4–02.9).
+- [X] T009 [P] [US1] Crear mobile/test/features/profile/profile_controller_test.dart para consulta, borrador/cancelar, guardado confirmado/fallido, doble envío, timeout desconocido y reconciliación, respuesta tardía tras salida/cierre/cambio UID y sincronización de nombre sin crear permisos (C1–C3).
+- [X] T010 [P] [US1] Crear mobile/test/features/profile/profile_screen_test.dart para P12: saludo/correo real de lectura, carga/error sin ejemplos/teléfono/historial, edición/cancelación, cierre y retroceso, información de eliminación y ausencia de mensajes enviados/eliminados (CA-02.1–02.17).
+- [X] T011 [P] [US1] Crear mobile/test/features/profile/deletion_contact_service_test.dart para destinatario y escape de URI, apertura false/excepción, copia/fallo de copia bajo pulsación, cancelación sin mutación y exclusión de UID/credenciales/cuestionario (C4).
+- [X] T012 [P] [US1] Crear firebase/tests/profile.test.mjs para actualización name propia verificada/password con evidencia; denegar visitante/otra cuenta/no verificado/sin evidencia, nombre vacío/solo espacios, correo/UID/campos extra/borrado y cambios de autorización; conservar pruebas de alta F01 y comparar evidencia antes/después (C2).
 
 T008–T012 dependen de Phase2, trabajan en archivos distintos y pueden prepararse en
 paralelo. Sus fallos deben corresponder al comportamiento aún no implementado.
 
 ### Implementación e integración
 
-- [ ] T013 [US1] Implementar loadCurrent en mobile/lib/features/profile/data/firestore_profile_repository.dart: derivar UID/email de Auth, exigir sesión normal y evidencia, leer perfil de servidor y verificar contexto al resolver; no usar email del formulario, caché, displayName como fuente ni datos de ejemplo. Satisfacer T008 de consulta.
-- [ ] T014 [US1] Implementar updateName en mobile/lib/features/profile/data/firestore_profile_repository.dart con transacción de perfil existente y guardas por UID en cada intento: «Normalizar extremos con trim, rechazar vacío/solo espacios y permitir caracteres legítimos»; actualizar solo name, sin upsert, Auth.updateDisplayName o escritura de evidencia. Depende de T013/T008.
-- [ ] T015 [US1] Implementar consulta/edición/cancelación y confirmado frente a borrador en mobile/lib/features/profile/application/profile_controller.dart; fallo conserva confirmado anterior y borrador de esa identidad; cancelar antes de enviar produce cero escrituras. Depende de T005/T006/T009/T013/T014.
-- [ ] T016 [US1] Completar generaciones, UID, operación única, timeout≤15s y reconciliación en mobile/lib/features/profile/application/profile_controller.dart; descartar respuestas tardías y vaciar datos al invalidar sesión/salir. No afirmar cancelación remota ni habilitar otro guardado antes de resolver/reconciliar el anterior. Depende de T015/T009.
-- [ ] T017 [P] [US1] Implementar apertura externa mailto mediante url_launcher y copia con Clipboard en mobile/lib/features/profile/data/deletion_contact_service.dart; destinatario fijo priva202611@gmail.com, asunto/cuerpo genéricos escapados, false/excepción con fallback y sin canLaunchUrl obligatorio. Depende de T002/T007/T011; independiente de T013–T016.
-- [ ] T018 [US1] Añadir sincronización de nombre confirmado protegida por UID en mobile/lib/features/account/application/account_controller.dart y, si hace falta, copia inmutable en mobile/lib/features/account/application/account_state.dart; no alterar identidad, verificación o fase de acceso. Probar que una respuesta antigua no crea sesión ni cambia otra cuenta. Depende de T009/T016.
-- [ ] T019 [US1] Implementar consulta y editor P12 en mobile/lib/features/profile/presentation/profile_screen.dart usando AccountScaffold, nombre confirmado/correo de lectura, guardar/cancelar y mensajes sanitizados accesibles; sin teléfono, estado de riesgo, fotos, fila vacía o historial. Depende de T010/T015/T016/T018.
-- [ ] T020 [US1] Inyectar repositorio/servicio y conectar /profile dentro de la guarda existente en mobile/lib/main.dart, mobile/lib/app/priva_app.dart y mobile/lib/app/account_router.dart; preservar destinationBuilder de pruebas y no habilitar otros módulos ni perfiles de otra identidad. Depende de T013–T019.
-- [ ] T021 [US1] Conectar cierre en mobile/lib/features/profile/presentation/profile_screen.dart y limpieza en mobile/lib/features/profile/application/profile_controller.dart: limpiar local antes de esperar Auth, eliminar historial privado y conservar Tips público aun con error remoto. Reutilizar AccountController.signOut; no prometer cierre global o eliminación. Depende de T016/T019/T020.
-- [ ] T022 [US1] Integrar explicación, botón de borrador y fallback Copiar correo en mobile/lib/features/profile/presentation/profile_screen.dart; instruir envío desde correo de cuenta y no mostrar solicitud recibida/enviada/borrado. No crear expedientes o datos nuevos. Depende de T017/T019/T021.
-- [ ] T023 [US1] Ajustar firebase/firestore.rules para update exclusivo name en perfil propio con correo verificado/password/evidencia válida, nombre no vacío/solo espacios y claves afectadas permitidas; mantener create F01, autorización inmutable y denegación de otros datos. Satisfacer T012 sin reglas públicas ni permitir borrar evidencia.
-- [ ] T024 [US1] Crear mobile/integration_test/profile_account_test.dart para consulta/edición real, cancelación, fallos y cambio de sesión, cierre/retroceso y solicitud sin envío automático; no sustituir servidor/Android por dobles sin declarar alcance. Depende de T020–T023.
-- [ ] T025 [US1] Ejecutar T008–T011 y regresión de mobile/test/features/account/ y mobile/test/bootstrap_test.dart; corregir conflictos en los archivos responsables antes de avanzar y registrar estados reales en specs/002-perfil-cuenta/validation/local-results.md. Depende de T024; T012 se valida en T028 y cualquier bloqueo de emulador se registra por separado, nunca como aprobado.
+- [X] T013 [US1] Implementar loadCurrent en mobile/lib/features/profile/data/firestore_profile_repository.dart: derivar UID/email de Auth, exigir sesión normal y evidencia, leer perfil de servidor y verificar contexto al resolver; no usar email del formulario, caché, displayName como fuente ni datos de ejemplo. Satisfacer T008 de consulta.
+- [X] T014 [US1] Implementar updateName en mobile/lib/features/profile/data/firestore_profile_repository.dart con transacción de perfil existente y guardas por UID en cada intento: «Normalizar extremos con trim, rechazar vacío/solo espacios y permitir caracteres legítimos»; actualizar solo name, sin upsert, Auth.updateDisplayName o escritura de evidencia. Depende de T013/T008.
+- [X] T015 [US1] Implementar consulta/edición/cancelación y confirmado frente a borrador en mobile/lib/features/profile/application/profile_controller.dart; fallo conserva confirmado anterior y borrador de esa identidad; cancelar antes de enviar produce cero escrituras. Depende de T005/T006/T009/T013/T014.
+- [X] T016 [US1] Completar generaciones, UID, operación única, timeout≤15s y reconciliación en mobile/lib/features/profile/application/profile_controller.dart; descartar respuestas tardías y vaciar datos al invalidar sesión/salir. No afirmar cancelación remota ni habilitar otro guardado antes de resolver/reconciliar el anterior. Depende de T015/T009.
+- [X] T017 [P] [US1] Implementar apertura externa mailto mediante url_launcher y copia con Clipboard en mobile/lib/features/profile/data/deletion_contact_service.dart; destinatario fijo priva202611@gmail.com, asunto/cuerpo genéricos escapados, false/excepción con fallback y sin canLaunchUrl obligatorio. Depende de T002/T007/T011; independiente de T013–T016.
+- [X] T018 [US1] Añadir sincronización de nombre confirmado protegida por UID en mobile/lib/features/account/application/account_controller.dart y, si hace falta, copia inmutable en mobile/lib/features/account/application/account_state.dart; no alterar identidad, verificación o fase de acceso. Probar que una respuesta antigua no crea sesión ni cambia otra cuenta. Depende de T009/T016.
+- [X] T019 [US1] Implementar consulta y editor P12 en mobile/lib/features/profile/presentation/profile_screen.dart usando AccountScaffold, nombre confirmado/correo de lectura, guardar/cancelar y mensajes sanitizados accesibles; sin teléfono, estado de riesgo, fotos, fila vacía o historial. Depende de T010/T015/T016/T018.
+- [X] T020 [US1] Inyectar repositorio/servicio y conectar /profile dentro de la guarda existente en mobile/lib/main.dart, mobile/lib/app/priva_app.dart y mobile/lib/app/account_router.dart; preservar destinationBuilder de pruebas y no habilitar otros módulos ni perfiles de otra identidad. Depende de T013–T019.
+- [X] T021 [US1] Conectar cierre en mobile/lib/features/profile/presentation/profile_screen.dart y limpieza en mobile/lib/features/profile/application/profile_controller.dart: limpiar local antes de esperar Auth, eliminar historial privado y conservar Tips público aun con error remoto. Reutilizar AccountController.signOut; no prometer cierre global o eliminación. Depende de T016/T019/T020.
+- [X] T022 [US1] Integrar explicación, botón de borrador y fallback Copiar correo en mobile/lib/features/profile/presentation/profile_screen.dart; instruir envío desde correo de cuenta y no mostrar solicitud recibida/enviada/borrado. No crear expedientes o datos nuevos. Depende de T017/T019/T021.
+- [X] T023 [US1] Ajustar firebase/firestore.rules para update exclusivo name en perfil propio con correo verificado/password/evidencia válida, nombre no vacío/solo espacios y claves afectadas permitidas; mantener create F01, autorización inmutable y denegación de otros datos. Satisfacer T012 sin reglas públicas ni permitir borrar evidencia.
+- [X] T024 [US1] Crear mobile/integration_test/profile_account_test.dart para consulta/edición real, cancelación, fallos y cambio de sesión, cierre/retroceso y solicitud sin envío automático; no sustituir servidor/Android por dobles sin declarar alcance. Depende de T020–T023.
+- [X] T025 [US1] Ejecutar T008–T011 y regresión de mobile/test/features/account/ y mobile/test/bootstrap_test.dart; corregir conflictos en los archivos responsables antes de avanzar y registrar estados reales en specs/002-perfil-cuenta/validation/local-results.md. Depende de T024; T012 se valida en T028 y cualquier bloqueo de emulador se registra por separado, nunca como aprobado.
 
 **Checkpoint US1:** consulta/edición/cierre/solicitud integradas y pruebas pertinentes
 satisfactorias o bloqueo explícito registrado. Este checkpoint no acepta una entrega
@@ -81,7 +82,7 @@ con CA incumplido ni autoriza despliegue o avance al003.
 
 ## Phase 4: Validación y cierre transversal
 
-- [ ] T026 Ejecutar y completar pruebas automáticas de etiquetas, objetivos Android≥48dp, contraste≥4.5:1 normal/≥3:1 grande/componentes y texto200%/teclado en mobile/test/features/profile/profile_accessibility_test.dart; registrar estados de consulta/edición/error/correo en specs/002-perfil-cuenta/validation/accessibility.md. Depende de T025.
+- [X] T026 Ejecutar y completar pruebas automáticas de etiquetas, objetivos Android≥48dp, contraste≥4.5:1 normal/≥3:1 grande/componentes y texto200%/teclado en mobile/test/features/profile/profile_accessibility_test.dart; registrar estados de consulta/edición/error/correo en specs/002-perfil-cuenta/validation/accessibility.md. Depende de T025.
 - [ ] T027 Ejecutar TalkBack, foco, teclado y texto200% en la matriz Android mínima/actual y pequeña/grande y registrar dispositivo/OS/recorridos/defectos/repruebas en specs/002-perfil-cuenta/validation/accessibility.md; no inferir que el reporte del001 cubre P12. Depende de T026/T003.
 - [ ] T028 Validar firebase/tests/profile.test.mjs y reglas por solicitudes directas del entorno autorizado y comparar autorización sintética antes/después de editar en specs/002-perfil-cuenta/validation/firestore.md; preparar publicación de reglas revisadas solo con acceso autorizado y tras validación. La postergación del001 no aprueba la nueva escritura; registrar bloqueos sin abrir permisos. Depende de T023/T025.
 - [ ] T029 Ejecutar apertura/cancelación real de correo en Android API24/actual, con/sin cliente y fallback/copia, registrando URI sanitizada, dispositivo y resultado en specs/002-perfil-cuenta/validation/mail-contact.md; no enviar mensajes reales automáticamente ni afirmar eliminación. Depende de T022/T025/T003.
@@ -142,3 +143,10 @@ incrementalmente, pero ninguno se declara producto terminado antes de validar el
 **Resultado de esta generación:**34 tareas,18 de HU-02 ([US1]),7 de Setup/Foundation
 y9 de validación/cierre;10 oportunidades [P] señaladas. No se creó código, dependencias,
 reglas nuevas ni pruebas ejecutadas. No hay hooks configurados en `.specify/extensions.yml`.
+
+## Registro de autorización y ejecución
+
+El usuario indicó «inicia la implementación» después de las tareas del5611047,
+autorizando su ejecución. Se conservan abiertas las8 validaciones finales; ver
+validation/current-results.json y delivery-review.md para estados reales. No
+modificar el checklist de calidad documental ni afirmar pruebas nativas ejecutadas.
