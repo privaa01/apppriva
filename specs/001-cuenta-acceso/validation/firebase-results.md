@@ -111,3 +111,7 @@ La publicación de reglas y base Firestore sigue siendo un requisito independien
 
 Revalidación tras corregir arranque y reconciliación: 58/58 pruebas locales;
 análisis estático sin diagnósticos. Integración hospedada aún no acreditada.
+
+El usuario confirmó posteriormente que la base Firestore ya existe y publicó las
+reglas. Se registra como confirmación del usuario, sin sustituir pruebas hospedadas
+ni afirmar que el contenido desplegado se verificó desde este entorno.

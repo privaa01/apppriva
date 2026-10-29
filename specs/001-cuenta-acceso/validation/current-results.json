@@ -43,6 +43,8 @@
     "tests_prepared": 7,
     "tests_executed": false,
     "deployed": false,
-    "blocker": "Official emulator JAR download blocked; administrative access unavailable"
+    "blocker": "Official emulator JAR download blocked; administrative access unavailable",
+    "deployment_reported_by_user": true,
+    "deployment_independently_verified": false
   }
 }
