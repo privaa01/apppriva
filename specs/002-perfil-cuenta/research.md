@@ -81,3 +81,9 @@ postergación de reglas del001 no equivale a aprobación automática de este cam
 Firestore real, lector, correo nativo y matriz requieren acceso/dispositivo; el bloqueo
 conocido de descargas del runner no se resuelve modificando certificados o saltando
 pruebas. No hay aprobación del plan, tareas o implementación en esta investigación.
+
+## Estado de aprobación actualizado
+
+Este artefacto quedó incluido en el plan aprobado explícitamente por el usuario
+el2026-10-29 sobre1d01d98. Sus advertencias de diseño pendiente describen el estado
+previo; no existe implementación ni validación de F02 por esa aprobación.

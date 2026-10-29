@@ -65,3 +65,9 @@ modificadas o escenarios nativos nuevos.
 Solicitar aceptación de F02 solo tras resolver criterios y bloqueos aplicables,
 registrar commit/push y no avanzar al003 automáticamente. No ampliar eliminación
 por SDK: el equipo atiende la solicitud por su canal y procedimiento aprobado.
+
+## Estado de aprobación actualizado
+
+Este artefacto quedó incluido en el plan aprobado explícitamente por el usuario
+el2026-10-29 sobre1d01d98. Sus advertencias de diseño pendiente describen el estado
+previo; no existe implementación ni validación de F02 por esa aprobación.

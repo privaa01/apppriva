@@ -60,3 +60,9 @@ aceptación no se alteran al editar perfil. La evidencia de pruebas compara docu
 sintéticos antes/después, sin guardar credenciales ni contenidos del cuestionario.
 La solicitud al equipo se gestiona fuera de F02; no se inventa calendario ni se
 aplican eliminaciones automáticamente desde el dispositivo.
+
+## Estado de aprobación actualizado
+
+Este artefacto quedó incluido en el plan aprobado explícitamente por el usuario
+el2026-10-29 sobre1d01d98. Sus advertencias de diseño pendiente describen el estado
+previo; no existe implementación ni validación de F02 por esa aprobación.

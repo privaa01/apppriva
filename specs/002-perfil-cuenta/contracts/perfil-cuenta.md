@@ -79,3 +79,9 @@ TalkBack real, sin presentar dobles como validación de plataforma o lectores.
 
 Todas las pruebas del001 deben permanecer satisfactorias; F02 no habilita datos o
 funcionalidades de otros módulos para cumplir estos contratos.
+
+## Estado de aprobación actualizado
+
+Este artefacto quedó incluido en el plan aprobado explícitamente por el usuario
+el2026-10-29 sobre1d01d98. Sus advertencias de diseño pendiente describen el estado
+previo; no existe implementación ni validación de F02 por esa aprobación.

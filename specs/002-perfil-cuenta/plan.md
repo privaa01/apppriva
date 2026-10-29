@@ -2,7 +2,7 @@
 
 **Branch**: `work` | **Date**: 2026-10-29 | **Spec**: [spec.md](spec.md).
 **Input**: `specs/002-perfil-cuenta/spec.md`, aprobado sobre a6c68a4.
-**Status**: Draft — diseño para aprobación; sin tareas ni implementación F02.
+**Status**: Approved — aprobado explícitamente por el usuario el 2026-10-29.
 
 ## Summary
 
@@ -172,3 +172,18 @@ Diseño y contratos preparados. No se han añadido dependencias al proyecto, cam
 reglas, desplegado, creado tareas, implementado pantallas ni ejecutado pruebas F02.
 El código de F01 sirve de baseline; sus69 pruebas no acreditan F02. Hooks: no existe
 `.specify/extensions.yml`, sin hooks que ejecutar antes/después. Plan pendiente de aprobación.
+
+## Registro de aprobación del plan — 2026-10-29
+
+El usuario respondió «lo apruebo» a la solicitud de aprobar el plan002 del commit
+1d01d98 para generar tareas. Quedan aprobados diseño, modelo, contratos, guía y
+criterios de validación de esa revisión. Se autoriza generar tasks.md, no ejecutarlo
+ni iniciar implementación. La aprobación no demuestra reglas desplegadas, pruebas
+nativas realizadas o nueva aceptación de datos reales. Las referencias anteriores
+a plan pendiente describen el estado previo a esta aprobación.
+
+## Generación de tareas posterior a la aprobación
+
+Se creó [tasks.md](tasks.md) con34 tareas pendientes,18 asociadas a HU-02.
+Ninguna ha sido ejecutada. Esta lista requiere su propia aprobación antes de
+implementar; los estados previos de este documento se conservan como historial.
