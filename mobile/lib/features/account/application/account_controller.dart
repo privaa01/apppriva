@@ -24,6 +24,7 @@ class AccountController extends ChangeNotifier {
   bool _inFlight = false;
   DateTime? _confirmationResentAt;
   DateTime? _recoveryRequestedAt;
+  bool get usesEmailLinkVerification => repository is EmailLinkVerification;
   bool get usesEmailLinkRecovery => repository is EmailLinkRecovery;
   AccountState get state => _state;
   TreatmentPolicy? get policy => _policy;
@@ -188,16 +189,20 @@ class AccountController extends ChangeNotifier {
         password: password,
         policyVersion: selected.version,
       );
+      _confirmationResentAt = DateTime.now();
       return AccountState(
         phase: AccountPhase.pendingVerification,
         email: email.trim(),
-        notice: 'Si el registro puede completarse, recibirás un código en tu correo.',
+        notice: usesEmailLinkVerification
+            ? 'Si el registro puede completarse, recibirás un enlace para verificar el correo. Revisa también el correo no deseado.'
+            : 'Si el registro puede completarse, recibirás un código en tu correo.',
       );
     });
   }
 
   Future<bool> confirm(String code) async {
-    if (_state.phase != AccountPhase.pendingVerification || !validCode(code)) {
+    if (_state.phase != AccountPhase.pendingVerification ||
+        (!usesEmailLinkVerification && !validCode(code))) {
       return _reject(codeFailureMessage);
     }
     final email = _state.email;
@@ -210,7 +215,9 @@ class AccountController extends ChangeNotifier {
           notice: 'Correo confirmado. Inicia sesión para continuar.',
         );
       },
-      errorMessage: codeFailureMessage,
+      errorMessage: usesEmailLinkVerification
+          ? 'No pudimos confirmar tu correo. Abre el enlace recibido y vuelve a intentarlo.'
+          : codeFailureMessage,
       revokeLateSession: true,
     );
   }
@@ -219,7 +226,11 @@ class AccountController extends ChangeNotifier {
     if (_state.phase != AccountPhase.pendingVerification) return false;
     if (_confirmationResentAt != null &&
         DateTime.now().difference(_confirmationResentAt!).inSeconds < 60) {
-      return _reject('Espera un minuto antes de pedir otro código.');
+      return _reject(
+        usesEmailLinkVerification
+            ? 'Espera un minuto antes de pedir otro enlace.'
+            : 'Espera un minuto antes de pedir otro código.',
+      );
     }
     final before = _state;
     return _perform(() async {
@@ -228,7 +239,9 @@ class AccountController extends ChangeNotifier {
       return AccountState(
         phase: before.phase,
         email: before.email,
-        notice: 'Si corresponde, recibirás un nuevo código en tu correo.',
+        notice: usesEmailLinkVerification
+            ? 'Si corresponde, recibirás un nuevo enlace en tu correo.'
+            : 'Si corresponde, recibirás un nuevo código en tu correo.',
       );
     });
   }

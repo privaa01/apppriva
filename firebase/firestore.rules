@@ -1,0 +1,38 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    function ownPassword(uid) {
+      return request.auth != null && request.auth.uid == uid &&
+        request.auth.token.firebase.sign_in_provider == 'password';
+    }
+    function evidence(uid) {
+      return getAfter(/databases/$(database)/documents/authorization_evidence/$(uid)).data;
+    }
+    function validEvidence(data, uid) {
+      return data.keys().hasOnly(['user_id', 'policy_version', 'purposes', 'action', 'accepted', 'authorized_at']) &&
+        data.keys().hasAll(['user_id', 'policy_version', 'purposes', 'action', 'accepted', 'authorized_at']) &&
+        data.user_id == uid && data.policy_version == 'priva-1.0.0' &&
+        data.action == 'account_signup' && data.accepted == true &&
+        data.purposes == ['personalized_greeting', 'account_access_recovery'];
+    }
+    match /authorization_evidence/{uid} {
+      allow get: if ownPassword(uid);
+      allow create: if ownPassword(uid) && validEvidence(request.resource.data, uid) &&
+        request.resource.data.authorized_at == request.time &&
+        getAfter(/databases/$(database)/documents/profiles/$(uid)).data.name is string;
+      allow list, update, delete: if false;
+    }
+    match /profiles/{uid} {
+      allow get: if ownPassword(uid) && request.auth.token.email_verified == true &&
+        validEvidence(get(/databases/$(database)/documents/authorization_evidence/$(uid)).data, uid);
+      allow create: if ownPassword(uid) &&
+        request.resource.data.keys().hasOnly(['name']) &&
+        request.resource.data.name is string && request.resource.data.name.size() > 0 &&
+        validEvidence(evidence(uid), uid) && evidence(uid).authorized_at == request.time;
+      allow list, update, delete: if false;
+    }
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}

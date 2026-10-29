@@ -58,3 +58,42 @@ Analytics ni servicios no solicitados. Para otro entorno, volver a importar el a
 
 Esto configura el cliente Android, no acredita conexión Auth, cuentas de servicio,
 reglas, registro/recuperación completos ni build. iOS necesita su propio plist.
+
+## Activar el registro implementado
+
+Se autorizó Cloud Firestore para la evidencia, sin Cloud Functions. La app crea:
+
+- `profiles/{uid}`: nombre para saludo.
+- `authorization_evidence/{uid}`: ID, versión/finalidades aceptadas, acción,
+  aceptación y `authorized_at` con fecha de servidor. Sin correo duplicado, IP,
+  dispositivo, contraseña, enlaces o datos del cuestionario.
+
+No crear manualmente documentos ni marcar una autorización por el usuario.
+Firestore necesita existir como base `(default)` del proyecto `priva-785cb`.
+La región y las condiciones se eligen tras revisión del responsable; este trabajo
+no ha creado base ni aceptado contratos por el usuario.
+
+Con acceso autenticado autorizado a Firebase, validar y publicar exclusivamente
+las reglas versionadas (desde `firebase/`):
+
+```bash
+npm ci
+npm test
+npx firebase deploy --only firestore:rules --project priva-785cb
+```
+
+Alternativa: Firebase Console → Firestore Database → Reglas, copiar
+`firestore.rules` y publicar tras validarlas. No habilitar reglas públicas o modo
+de prueba. Este entorno no tiene credencial administrativa válida: el archivo
+Android público no autoriza desplegar reglas. La publicación real sigue pendiente.
+
+En Authentication, comprobar Email/Password, verificación y plantillas de correo;
+configurar/exigir política de contraseña mínima de 12 también en Firebase para
+el formulario alojado de recuperación. La validación del cliente no la sustituye.
+Probar con correo sintético propio el enlace, verificación, registro duplicado,
+recuperación y acceso denegado sin evidencia o con correo sin verificar.
+
+El emulador usa proyecto `demo-priva`, sin datos reales, requiere Java y descargar
+el JAR oficial. En este entorno esa descarga está bloqueada por la red: las siete
+pruebas de reglas están preparadas pero no se han ejecutado. No declarar las reglas
+validadas ni el registro hospedado listo antes de esos controles.

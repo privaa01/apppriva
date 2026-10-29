@@ -41,29 +41,34 @@ class _EmailConfirmationViewState extends State<EmailConfirmationView> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            const Text(
-              'Si el registro puede completarse, recibirás un código en tu correo. Después podrás iniciar sesión con tu contraseña.',
+            Text(
+              widget.controller.usesEmailLinkVerification
+                  ? 'Abre el enlace que recibiste por correo. Después pulsa «Ya verifiqué mi correo» o vuelve a iniciar sesión.'
+                  : 'Si el registro puede completarse, recibirás un código en tu correo. Después podrás iniciar sesión con tu contraseña.',
             ),
             const SizedBox(height: 20),
             AccountMessages(controller: widget.controller),
-            TextFormField(
-              key: const Key('confirm.code'),
-              controller: _code,
-              decoration: const InputDecoration(
-                labelText: 'Código de verificación',
+            if (!widget.controller.usesEmailLinkVerification)
+              TextFormField(
+                key: const Key('confirm.code'),
+                controller: _code,
+                decoration: const InputDecoration(
+                  labelText: 'Código de verificación',
+                ),
+                keyboardType: TextInputType.number,
+                inputFormatters: [FilteringTextInputFormatter.digitsOnly],
+                autofillHints: const [AutofillHints.oneTimeCode],
+                validator: (v) => v == null || v.trim().isEmpty
+                    ? 'Escribe el código que recibiste.'
+                    : null,
+                enabled: !widget.controller.state.busy,
               ),
-              keyboardType: TextInputType.number,
-              inputFormatters: [FilteringTextInputFormatter.digitsOnly],
-              autofillHints: const [AutofillHints.oneTimeCode],
-              validator: (v) => v == null || v.trim().isEmpty
-                  ? 'Escribe el código que recibiste.'
-                  : null,
-              enabled: !widget.controller.state.busy,
-            ),
             const SizedBox(height: 24),
             AccountSubmit(
               key: const Key('confirm.submit'),
-              label: 'Verificar correo',
+              label: widget.controller.usesEmailLinkVerification
+                  ? 'Ya verifiqué mi correo'
+                  : 'Verificar correo',
               busy: widget.controller.state.busy,
               onPressed: widget.controller.state.email.isEmpty ? null : _submit,
             ),
@@ -74,7 +79,11 @@ class _EmailConfirmationViewState extends State<EmailConfirmationView> {
                       widget.controller.state.email.isEmpty
                   ? null
                   : () => widget.controller.resendConfirmation(),
-              child: const Text('Solicitar otro código'),
+              child: Text(
+                widget.controller.usesEmailLinkVerification
+                    ? 'Solicitar otro enlace'
+                    : 'Solicitar otro código',
+              ),
             ),
             TextButton(
               onPressed: () =>

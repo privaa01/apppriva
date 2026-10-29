@@ -113,7 +113,7 @@ Faltan calidad, entorno final y aceptación; no afirmar que toda la app está im
 - [X] T036 [P] Revisar almacenamiento, logs, crash reports y configuración en specs/001-cuenta-acceso/validation/privacy-review.md: sin contraseña/código/token expuesto, teléfono o datos del cuestionario; sesión solo en almacén nativo protegido, distinguiendo app/proveedor.
 - [ ] T037 [P] Ejecutar TalkBack en Android, foco, etiquetas, teclado, contraste 4,5:1 texto normal y 3:1 texto grande según WCAG 2.2 AA/componentes significativos, y texto 200 % sin recortes ni controles inaccesibles en formularios/errores y registrar dispositivos/defectos en specs/001-cuenta-acceso/validation/accessibility.md; corregir presentación antes de aceptación.
 - [ ] T038 Ejecutar análisis, pruebas y build Android API 24+ con SDK/lockfile fijados y guardar comandos/resultados en specs/001-cuenta-acceso/validation/builds.md; iOS queda fuera de alcance por decisión explícita del usuario; no bajar verificaciones TLS/firma/checksum.
-- [ ] T039 Configurar Firebase de pruebas `priva-785cb` y correo autorizado, resolver diseño de alta/evidencia y recuperación por código, probar reglas y acceso directo, cuotas, anti-enumeración, verificación y sesiones; registrar resultados reales en specs/001-cuenta-acceso/validation/firebase-results.md. La formulación Supabase previa queda sustituida por decisión de proveedor; sus pruebas no acreditan Firebase. Sin configuración pública de apps ni acceso autenticado, esta tarea permanece pendiente.
+- [ ] T039 Configurar Firebase de pruebas `priva-785cb` y correo autorizado, resolver diseño de alta/evidencia y recuperación por código, probar reglas y acceso directo, cuotas, anti-enumeración, verificación y sesiones; registrar resultados reales en specs/001-cuenta-acceso/validation/firebase-results.md. La formulación Supabase previa queda sustituida por decisión de proveedor; sus pruebas no acreditan Firebase. Configuración pública Android recibida e importada; quedan pendientes acceso administrativo, publicación/validación de reglas y pruebas hospedadas.
 - [X] T040 [P] Preparar piloto SC-001 en specs/001-cuenta-acceso/validation/usability-protocol.md: diez participantes 40–65 años, denominador/condiciones, meta ≥8 registros completos y datos sintéticos; no inventar personas ni resultados.
 - [ ] T041 Ejecutar piloto autorizado de T040 y registrar completitud, comprensión y ayuda en specs/001-cuenta-acceso/validation/usability-results.md; no guardar respuestas de cuestionario ni generalizar estadísticamente diez casos.
 - [ ] T042 Cerrar con responsable competente región, acuerdos, conservación y supresión Auth/SMTP/logs/backups en specs/001-cuenta-acceso/validation/environment.md antes de usuarios reales; no aceptar contratos, comprar servicios o inventar retenciones como efecto de la tarea.
@@ -257,3 +257,30 @@ No cambia confirmación de alta, autorización de datos ni evidencia de consenti
 La caducidad de 600 segundos anterior NO se atribuye al enlace: comprobar política
 y caducidad reales en Firebase. Reenvío cliente mínimo 60 s, sin afirmar límite
 de servidor probado. Validación de correo/servicio real sigue pendiente.
+
+## Alta nativa y evidencia Firestore autorizadas
+
+El usuario identificó al equipo de Priva como responsable, indicó
+priva202611@gmail.com para eliminación y autorizó expresamente implementar el
+alta y conservar evidencia en una colección Firebase. Se usa Cloud Firestore, sin
+Cloud Functions. Política cliente versionada `priva-1.0.0`, perfil mínimo y evidencia
+en `authorization_evidence/{uid}`: UID, versión, finalidades, acción, aceptación y
+fecha de servidor. Sin contraseña, correo duplicado, IP ni dispositivo en evidencia.
+Perfil y evidencia se escriben en un batch atómico Firestore; Auth NO comparte
+transacción: si el batch falla se intenta eliminar la cuenta recién creada. Si esa
+compensación falla, sigue denegado el acceso por ausencia de evidencia; requiere
+reconciliación del responsable. No se afirma rollback atómico entre servicios.
+Se sustituye el diseño U1/Postgres por este flujo dependiente del proveedor elegido.
+
+Confirmación de alta usa enlace nativo de Firebase Auth, con pantalla de reenvío
+y comprobación mediante reload antes de volver al acceso normal; no código.
+La creación/confirmación no concede acceso a contenido protegido. El inicio exige
+correo verificado, método password y evidencia leída del servidor; se retira el
+claim priva_account_ready porque la evidencia y reglas lo sustituyen. Firestore
+sin caché persistente en cliente. Las reglas niegan escritura/modificación/borrado
+cliente de evidencia salvo creación propia validada, y niegan datos del cuestionario.
+
+Implementación local probada, reglas preparadas pero sin ejecutar emulador por
+descarga bloqueada. No están desplegadas; faltan validación del proyecto real,
+región/acuerdos/calendario revisados, APK, dispositivos y piloto. No se declara
+aceptación final de política/servicio ni cierre de T039/T042 por este cambio.

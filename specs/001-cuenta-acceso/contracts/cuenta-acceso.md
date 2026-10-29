@@ -97,3 +97,30 @@ No cambia confirmación de alta, autorización de datos ni evidencia de consenti
 La caducidad de 600 segundos anterior NO se atribuye al enlace: comprobar política
 y caducidad reales en Firebase. Reenvío cliente mínimo 60 s, sin afirmar límite
 de servidor probado. Validación de correo/servicio real sigue pendiente.
+
+## Alta nativa y evidencia Firestore autorizadas
+
+El usuario identificó al equipo de Priva como responsable, indicó
+priva202611@gmail.com para eliminación y autorizó expresamente implementar el
+alta y conservar evidencia en una colección Firebase. Se usa Cloud Firestore, sin
+Cloud Functions. Política cliente versionada `priva-1.0.0`, perfil mínimo y evidencia
+en `authorization_evidence/{uid}`: UID, versión, finalidades, acción, aceptación y
+fecha de servidor. Sin contraseña, correo duplicado, IP ni dispositivo en evidencia.
+Perfil y evidencia se escriben en un batch atómico Firestore; Auth NO comparte
+transacción: si el batch falla se intenta eliminar la cuenta recién creada. Si esa
+compensación falla, sigue denegado el acceso por ausencia de evidencia; requiere
+reconciliación del responsable. No se afirma rollback atómico entre servicios.
+Se sustituye el diseño U1/Postgres por este flujo dependiente del proveedor elegido.
+
+Confirmación de alta usa enlace nativo de Firebase Auth, con pantalla de reenvío
+y comprobación mediante reload antes de volver al acceso normal; no código.
+La creación/confirmación no concede acceso a contenido protegido. El inicio exige
+correo verificado, método password y evidencia leída del servidor; se retira el
+claim priva_account_ready porque la evidencia y reglas lo sustituyen. Firestore
+sin caché persistente en cliente. Las reglas niegan escritura/modificación/borrado
+cliente de evidencia salvo creación propia validada, y niegan datos del cuestionario.
+
+Implementación local probada, reglas preparadas pero sin ejecutar emulador por
+descarga bloqueada. No están desplegadas; faltan validación del proyecto real,
+región/acuerdos/calendario revisados, APK, dispositivos y piloto. No se declara
+aceptación final de política/servicio ni cierre de T039/T042 por este cambio.

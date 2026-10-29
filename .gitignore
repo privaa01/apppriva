@@ -19,3 +19,6 @@ mobile/config/firebase-*.local.json
 **/google-services.json
 **/GoogleService-Info.plist
 **/*service-account*.json
+
+node_modules/
+firebase/.firebase/

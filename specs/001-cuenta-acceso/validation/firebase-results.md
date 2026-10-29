@@ -66,3 +66,28 @@ No concede acceso privado ni crea cuentas. 49 pruebas locales aprobadas, incluid
 solicitud SDK, correo inexistente, error de red, UI sin código y espera de reenvío.
 No se ha probado envío real, enlace vencido/usado, formulario alojado ni configuración
 de contraseña: no se declara aceptación final. Registro/evidencia siguen pendientes.
+
+## Alta y evidencia autorizadas por el usuario e implementadas
+
+Responsable informado: equipo de Priva. Canal: priva202611@gmail.com. El usuario
+autorizó expresamente evidencia en una colección Firebase: se incorpora Firestore
+7.1.0 con perfil/evidencia en batch atómico, sin persistencia local. Auth no comparte
+transacción; compensación intentada en fallo y denegación sin evidencia. No se usa
+el claim priva_account_ready ni Cloud Functions. Confirmación nativa por enlace.
+Política versionada incluida; no se afirma revisión jurídica/operativa cerrada.
+
+Pruebas locales: 55 aprobadas (13 específicas Firebase con dobles). Incluyen recorrido
+Crear cuenta → política → autorización → evidencia → confirmación por enlace →
+volver a acceso, fallo de evidencia con eliminación compensatoria, respuesta perdida
+y duplicados sin reescribir evidencia. Análisis estático sin diagnósticos.
+
+Siete pruebas de reglas preparadas para alta atómica, timestamp/política/campos
+inválidos, escritura parcial, inmutabilidad, visitante/otra identidad, listados y
+persistencia de cuestionario. No ejecutadas: Firebase CLI no puede descargar el JAR
+oficial cloud-firestore-emulator-v1.22.0.jar. No se infiere validación de reglas.
+Dependencias Node fijadas y lockfile; comandos reproducibles en firebase/README.md.
+
+Publicación de reglas, creación/configuración de base default y pruebas con Firebase
+real siguen pendientes. El archivo google-services.json solo configura cliente,
+no da permisos administrativos. No se habilitan reglas públicas para evitar este
+bloqueo. No hay aceptación final, APK, dispositivos ni piloto completados.

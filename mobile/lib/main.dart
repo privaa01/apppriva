@@ -3,6 +3,9 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+
+import 'features/account/data/firebase_registration_store.dart';
 
 import 'app/firebase_config.dart';
 import 'app/priva_app.dart';
@@ -18,7 +21,12 @@ Future<void> main() async {
   if (config.isConfigured) {
     try {
       await Firebase.initializeApp(options: config.options);
-      repository = FirebaseAccountRepository(FirebaseAuth.instance);
+      final database = FirebaseFirestore.instance;
+      database.settings = const Settings(persistenceEnabled: false);
+      repository = FirebaseAccountRepository(
+        FirebaseAuth.instance,
+        registrationStore: FirestoreRegistrationStore(database),
+      );
     } catch (_) {
       // No provider details or credentials are rendered or logged.
     }

@@ -32,3 +32,11 @@ El adaptador Firebase aún debe implementar alta y verificación; el bloqueo de
 registro no se resuelve exclusivamente con publicar un documento. La recuperación
 por enlace sí se ha implementado, con validación hospedada pendiente. No se considera
 completo el spec001 ni resuelto el mecanismo de evidencia por este trabajo documental.
+
+## Datos confirmados y texto incorporado
+
+El usuario identificó al equipo de Priva como responsable y
+priva202611@gmail.com para eliminación; autorizó guardar evidencia en una colección
+Firebase. `politica-priva.md` reproduce la versión incluida en la app. El borrador
+anterior se conserva como antecedente. La revisión jurídica/operativa de proveedores,
+conservación y eliminación sigue pendiente; no se asume certificación normativa.

@@ -25,3 +25,5 @@ abstract interface class AccountRepository {
 
 /// Recovery is completed in the provider-hosted email-link flow.
 abstract interface class EmailLinkRecovery {}
+
+abstract interface class EmailLinkVerification {}

@@ -75,3 +75,12 @@ para iniciar sesión. No requiere servidor adicional ni campos de código. Deben
 validarse entrega, caducidad y política de contraseña en el proyecto real.
 Las notas anteriores de recuperación bloqueada o por código quedan sustituidas.
 Registro y evidencia de autorización siguen pendientes; esto no completa F01.
+
+## Registro nativo y evidencia Firestore
+
+El registro ya carga la política priva-1.0.0 y utiliza createUserWithEmailAndPassword.
+Tras aceptar se guarda perfil/evidencia en un batch Firestore y se envía enlace de
+confirmación. Volver al acceso con contraseña después de verificar. No se usa el
+claim provisional priva_account_ready. Necesita Cloud Firestore creado y reglas
+publicadas: ver `../firebase/README.md`. Las notas previas de alta sin implementar
+son históricas; no sustituir las reglas por modo de prueba para habilitar registro.
