@@ -61,11 +61,13 @@
     "independently_observed": false,
     "device_os_recorded": false,
     "full_spec_accepted": false,
-    "password_recovery": "successful"
+    "password_recovery": "successful",
+    "talkback": "successful"
   },
   "automated_accessibility": {
     "firebase_screens_checked": 4,
     "large_text_keyboard_scenarios_passed": 2,
-    "talkback_executed": false
+    "talkback_executed": false,
+    "talkback_reported_by_user": true
   }
 }

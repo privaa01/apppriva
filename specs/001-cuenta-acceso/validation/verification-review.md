@@ -70,3 +70,11 @@ El usuario autorizó dejar pendientes las pruebas de reglas durante la fase de
 prueba. Es aplazamiento explícito, no resultado satisfactorio, permiso para reglas
 públicas ni aceptación de entrega con datos reales. Se mantienen reglas restrictivas.
 TalkBack y demás pruebas de dispositivos siguen sin ejecución registrada.
+
+## Confirmación manual de TalkBack
+
+Tras explicar la prueba de Priva con el lector de pantalla Android, el usuario
+confirmó «funciona». Se registra como resultado satisfactorio comunicado de
+TalkBack. No se inventan modelo, versión Android, recorridos detallados ni mediciones
+de contraste. Esta confirmación no constituye ejecución independiente del asistente
+ni aceptación automática de todos los criterios de T037 o del spec001.

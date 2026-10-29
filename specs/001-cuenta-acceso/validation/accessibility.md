@@ -19,3 +19,11 @@ con texto200%, 320×720 y teclado simulado conservan botón alcanzable y sin exc
 Se usa la política/flujo Firebase real del cliente con SDK doblado, no solo la suite
 legacy. TalkBack, foco nativo, hardware y contraste de todos los estados siguen
 pendientes; iOS/VoiceOver están fuera de alcance por decisión del usuario.
+
+## Confirmación manual de TalkBack
+
+Tras explicar la prueba de Priva con el lector de pantalla Android, el usuario
+confirmó «funciona». Se registra como resultado satisfactorio comunicado de
+TalkBack. No se inventan modelo, versión Android, recorridos detallados ni mediciones
+de contraste. Esta confirmación no constituye ejecución independiente del asistente
+ni aceptación automática de todos los criterios de T037 o del spec001.
