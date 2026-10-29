@@ -20,7 +20,8 @@ Future<void> main() async {
   AccountRepository repository = UnavailableAccountRepository();
   if (config.isConfigured) {
     try {
-      await Firebase.initializeApp(options: config.options);
+      await Firebase.initializeApp(options: config.options)
+          .timeout(const Duration(seconds: 15));
       final database = FirebaseFirestore.instance;
       database.settings = const Settings(persistenceEnabled: false);
       repository = FirebaseAccountRepository(

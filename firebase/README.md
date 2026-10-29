@@ -97,3 +97,22 @@ El emulador usa proyecto `demo-priva`, sin datos reales, requiere Java y descarg
 el JAR oficial. En este entorno esa descarga está bloqueada por la red: las siete
 pruebas de reglas están preparadas pero no se han ejecutado. No declarar las reglas
 validadas ni el registro hospedado listo antes de esos controles.
+
+## Corrección del arranque normal
+
+La configuración pública Android aportada por el usuario ahora se incluye en
+`mobile/lib/app/firebase_android_options.dart`. No son credenciales administrativas.
+Ya no depende de copiar archivos ignorados por Git ni de dart-define para iniciar
+el cliente de priva-785cb. Un `flutter run` normal usa esa configuración. Los
+overrides siguen disponibles, completos; una configuración parcial se rechaza
+sin mezclar proyectos. El manifiesto referencia MainActivity por su nombre completo.
+
+Para cuentas existentes sin evidencia, Crear cuenta permite aceptar la política
+y registrar evidencia tras comprobar su correo/contraseña con Firebase; no borra
+cuentas existentes ni sobrescribe autorizaciones anteriores. Sin prueba de control
+no escribe evidencia y nunca concede acceso privado. El acceso directo con una
+cuenta que aún no tiene evidencia sigue denegado, según el spec.
+
+Actualizar/recompilar la app para incorporar estos cambios; una instalación vieja
+no se actualiza por hacer push. La base Firestore y las reglas deben estar listas
+en Firebase: incluir la configuración cliente no las crea ni despliega.

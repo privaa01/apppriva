@@ -59,6 +59,8 @@ class Credential extends Fake implements UserCredential {
 class Auth extends Fake implements FirebaseAuth {
   Auth(this.user);
   User? user;
+  User? existingIdentity;
+  bool signinFails = false;
   String? signupFailure;
   Identity? created;
   @override
@@ -98,7 +100,12 @@ class Auth extends Fake implements FirebaseAuth {
   Future<UserCredential> signInWithEmailAndPassword({
     required String email,
     required String password,
-  }) async => Credential(user);
+  }) async {
+    if (signinFails) throw FirebaseAuthException(code: 'invalid-credential');
+    user ??= existingIdentity;
+    return Credential(user);
+  }
+
   @override
   Future<void> signOut() async {
     user = null;
@@ -226,6 +233,67 @@ void main() {
       expect(repo.currentSession, isNull);
     },
   );
+  test(
+    'existing account can record accepted consent after password proof',
+    () async {
+      final user = Identity();
+      final auth = Auth(null)
+        ..signupFailure = 'email-already-in-use'
+        ..existingIdentity = user;
+      final store = Store();
+      final repo = FirebaseAccountRepository(auth, registrationStore: store);
+      await repo.signUp(
+        name: 'Prueba',
+        email: 'test@example.test',
+        password: 'synthetic-password',
+        policyVersion: privaPolicyVersion,
+      );
+      expect(store.recorded, isTrue);
+      expect(user.deleted, isFalse);
+      expect(repo.currentSession, isNull);
+      expect(
+        (await repo.signIn(
+          email: 'test@example.test',
+          password: 'synthetic-password',
+        ))?.canAccessPrivate,
+        isTrue,
+      );
+    },
+  );
+  test(
+    'wrong credentials never create consent for an existing account',
+    () async {
+      final auth = Auth(null)
+        ..signupFailure = 'email-already-in-use'
+        ..signinFails = true;
+      final store = Store();
+      final repo = FirebaseAccountRepository(auth, registrationStore: store);
+      await repo.signUp(
+        name: 'Prueba',
+        email: 'test@example.test',
+        password: 'synthetic-password',
+        policyVersion: privaPolicyVersion,
+      );
+      expect(store.recorded, isFalse);
+      expect(repo.currentSession, isNull);
+    },
+  );
+  test('existing consent is preserved when registration is repeated', () async {
+    final auth = Auth(null)
+      ..signupFailure = 'email-already-in-use'
+      ..existingIdentity = Identity();
+    final store = Store()
+      ..recorded = true
+      ..name = 'Original';
+    final repo = FirebaseAccountRepository(auth, registrationStore: store);
+    await repo.signUp(
+      name: 'Changed',
+      email: 'test@example.test',
+      password: 'synthetic-password',
+      policyVersion: privaPolicyVersion,
+    );
+    expect(store.name, 'Original');
+  });
   test('evidence failure compensates identity and denies access', () async {
     final auth = Auth(null);
     final store = Store()..failWrite = true;
@@ -316,8 +384,20 @@ void main() {
       throwsA(isA<AccountFailure>()),
     );
   });
-  test('missing Firebase configuration fails closed', () {
-    expect(FirebaseConfig.fromEnvironment().isConfigured, isFalse);
+  test('normal startup has Android Firebase defaults; partial overrides fail closed', () {
+    expect(FirebaseConfig.fromEnvironment().isConfigured, isTrue);
+    expect(FirebaseConfig.fromEnvironment().projectId, 'priva-785cb');
+    expect(
+      FirebaseConfig.resolve(
+        const FirebaseConfig(
+          apiKey: '',
+          appId: '',
+          projectId: 'other-project',
+          messagingSenderId: '',
+        ),
+      ).isConfigured,
+      isFalse,
+    );
     expect(
       const FirebaseConfig(
         apiKey: 'test',

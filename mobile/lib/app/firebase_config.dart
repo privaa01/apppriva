@@ -1,5 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 
+import 'firebase_android_options.dart';
+
 /// Public app identifiers only. Never accepts an administrative credential.
 class FirebaseConfig {
   const FirebaseConfig({
@@ -13,12 +15,32 @@ class FirebaseConfig {
   final String projectId;
   final String messagingSenderId;
 
-  factory FirebaseConfig.fromEnvironment() => const FirebaseConfig(
-    apiKey: String.fromEnvironment('FIREBASE_API_KEY'),
-    appId: String.fromEnvironment('FIREBASE_APP_ID'),
-    projectId: String.fromEnvironment('FIREBASE_PROJECT_ID'),
-    messagingSenderId: String.fromEnvironment('FIREBASE_MESSAGING_SENDER_ID'),
+  factory FirebaseConfig.fromEnvironment() => resolve(
+    const FirebaseConfig(
+      apiKey: String.fromEnvironment('FIREBASE_API_KEY'),
+      appId: String.fromEnvironment('FIREBASE_APP_ID'),
+      projectId: String.fromEnvironment('FIREBASE_PROJECT_ID'),
+      messagingSenderId: String.fromEnvironment('FIREBASE_MESSAGING_SENDER_ID'),
+    ),
   );
+
+  /// All-or-nothing overrides avoid mixing identifiers from two projects.
+  static FirebaseConfig resolve(FirebaseConfig overrides) {
+    if ([
+      overrides.apiKey,
+      overrides.appId,
+      overrides.projectId,
+      overrides.messagingSenderId,
+    ].any((value) => value.isNotEmpty)) {
+      return overrides;
+    }
+    return FirebaseConfig(
+      apiKey: defaultFirebaseAndroidOptions.apiKey,
+      appId: defaultFirebaseAndroidOptions.appId,
+      projectId: defaultFirebaseAndroidOptions.projectId,
+      messagingSenderId: defaultFirebaseAndroidOptions.messagingSenderId,
+    );
+  }
 
   bool get isConfigured =>
       RegExp(r'^[a-z][a-z0-9-]{4,28}[a-z0-9]$').hasMatch(projectId) &&

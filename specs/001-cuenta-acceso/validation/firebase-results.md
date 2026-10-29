@@ -91,3 +91,23 @@ Publicación de reglas, creación/configuración de base default y pruebas con F
 real siguen pendientes. El archivo google-services.json solo configura cliente,
 no da permisos administrativos. No se habilitan reglas públicas para evitar este
 bloqueo. No hay aceptación final, APK, dispositivos ni piloto completados.
+
+## Corrección tras reporte de registro no disponible
+
+Causa concreta en código: el arranque sin dart-define usaba un repositorio
+Unavailable porque la configuración solo existía en archivos locales ignorados.
+Ahora los identificadores públicos Android recibidos se incluyen en el código,
+con override completo opcional. Inicio Firebase limitado a 15 s para evitar bloqueo
+indefinido de arranque. Nombre MainActivity explícito acorde al paquete Kotlin.
+
+Se implementa reconciliación de cuenta existente sin evidencia exclusivamente tras
+aceptación en Crear cuenta y prueba de contraseña. No modifica autorizaciones
+anteriores ni elimina identidades existentes. Esto corrige un segundo callejón
+sin salida posible durante la migración. No habilita acceso sin correo verificado
+y sin evidencia servida por Firestore.
+
+No se demuestra conexión hospedada, reglas publicadas o APK desde estos cambios.
+La publicación de reglas y base Firestore sigue siendo un requisito independiente.
+
+Revalidación tras corregir arranque y reconciliación: 58/58 pruebas locales;
+análisis estático sin diagnósticos. Integración hospedada aún no acreditada.

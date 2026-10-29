@@ -118,10 +118,51 @@ class FirebaseAccountRepository extends UnavailableAccountRepository
       await created.sendEmailVerification();
     } on FirebaseAuthException catch (error) {
       // A repeated signup must not disclose whether another account exists.
-      if (created == null && error.code == 'email-already-in-use') return;
+      if (created == null && error.code == 'email-already-in-use') {
+        await _completeExistingRegistration(
+          name: name,
+          email: email,
+          password: password,
+        );
+        return;
+      }
       await _handleFailedSignup(created, recorded);
     } catch (_) {
       await _handleFailedSignup(created, recorded);
+    }
+  }
+
+  Future<void> _completeExistingRegistration({
+    required String name,
+    required String email,
+    required String password,
+  }) async {
+    User? existing;
+    try {
+      // The caller already read and explicitly accepted the current policy.
+      // Prove ownership before recording consent for an existing account.
+      existing = (await auth.signInWithEmailAndPassword(
+        email: email,
+        password: password,
+      )).user;
+    } catch (_) {
+      try {
+        await auth.signOut();
+      } catch (_) {}
+      return; // Same public signup outcome; no account-existence disclosure.
+    }
+    if (existing == null) return;
+    try {
+      if (!await registrationStore!.hasAuthorization(existing.uid)) {
+        await registrationStore!.create(uid: existing.uid, name: name.trim());
+      }
+      if (!existing.emailVerified) await existing.sendEmailVerification();
+    } catch (_) {
+      // Never delete a pre-existing identity during reconciliation.
+      try {
+        await auth.signOut();
+      } catch (_) {}
+      throw const AccountFailure();
     }
   }
 
