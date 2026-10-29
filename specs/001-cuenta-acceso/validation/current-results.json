@@ -52,6 +52,7 @@
     "signin": "successful",
     "independently_observed": false,
     "device_os_recorded": false,
-    "full_spec_accepted": false
+    "full_spec_accepted": false,
+    "password_recovery": "successful"
   }
 }

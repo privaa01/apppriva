@@ -123,3 +123,10 @@ resultado satisfactorio comunicado para esos dos recorridos. No se presume méto
 de ejecución, dispositivo/Android, verificación de correo probada por separado,
 contenido de evidencia Firestore inspeccionado ni recuperación validada.
 No equivale a aceptación de todos los criterios del spec001 ni a aprobación del002.
+
+## Recuperación confirmada por el usuario
+
+El usuario indicó: «la recuperacion de contraseña funciona». Se registra como
+recorrido satisfactorio comunicado de recuperación por enlace. No se presume
+prueba separada de enlaces vencidos/usados, límites, política de contraseña,
+dispositivos o inspección de permisos/evidencia. No cierra por sí sola el spec001.
