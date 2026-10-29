@@ -16,3 +16,16 @@
 
 T043 depende de T045 completa; este registro anticipa estados para no perder evidencia,
 pero no marca la tarea final como cumplida. Pasado no equivale a omitido/no ejecutado.
+
+## Cobertura Firebase de esta revisión
+
+| Criterios | Pruebas y evidencia | Estado |
+| --- | --- | --- |
+| CA-01.1/01.2/01.5/01.6 | firebase_account_test: alta, política/aceptación, perfil/evidencia, compensación y duplicados | Local satisfactorio; seguridad hospedada pendiente |
+| CA-01.9/01.12/01.13 revisados a enlace | Solicitud SDK, cuenta inexistente, errores y UI de enlace | Local satisfactorio + recuperación confirmada por usuario; enlace vencido/usado pendiente |
+| CA-01.7 / RNF accesibilidad | Cuatro pantallas Firebase y dos recorridos texto200%/teclado | Automatizado satisfactorio; TalkBack/dispositivo pendiente |
+| CA-01.11 / CA-ACC | Correo no verificado, falta de evidencia, fallo de lectura, revocación y rutas | Local satisfactorio; HTTP/reglas pendientes |
+| T020/T021/T033/T039 | firebase/tests/firestore.test.mjs, siete escenarios | No ejecutados: descarga del emulador bloqueada |
+
+Ver verification-review.md para resultados, defecto corregido y límites. T043 no
+se cierra mientras T045 y dependencias sigan pendientes.

@@ -14,7 +14,6 @@ import 'features/account/data/account_repository.dart';
 import 'features/account/data/firebase_account_repository.dart';
 import 'features/account/data/unavailable_account_repository.dart';
 
-
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   final config = FirebaseConfig.fromEnvironment();

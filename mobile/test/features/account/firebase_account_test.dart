@@ -114,6 +114,7 @@ class Auth extends Fake implements FirebaseAuth {
 
 class Store implements AccountRegistrationStore {
   bool recorded = false;
+  bool failRead = false;
   bool failWrite = false;
   bool loseAcknowledgement = false;
   String? name;
@@ -126,12 +127,142 @@ class Store implements AccountRegistrationStore {
   }
 
   @override
-  Future<bool> hasAuthorization(String uid) async => recorded;
+  Future<bool> hasAuthorization(String uid) async {
+    if (failRead) throw StateError('synthetic server failure');
+    return recorded;
+  }
+
   @override
   Future<String?> profileName(String uid) async => name ?? 'Prueba';
 }
 
 void main() {
+  test('missing server evidence revokes an existing private session', () async {
+    final store = Store()..recorded = true;
+    final repo = FirebaseAccountRepository(
+      Auth(Identity()),
+      registrationStore: store,
+    );
+    expect(
+      (await repo.signIn(
+        email: 'test@example.test',
+        password: 'synthetic',
+      ))?.canAccessPrivate,
+      isTrue,
+    );
+    store.recorded = false;
+    expect(await repo.sessionChanges.first, isNull);
+    expect(repo.currentSession, isNull);
+  });
+  test('Firestore read failure cannot grant private access or leak provider details', () async {
+    final store = Store()
+      ..recorded = true
+      ..failRead = true;
+    final auth = Auth(Identity());
+    final repo = FirebaseAccountRepository(auth, registrationStore: store);
+    await expectLater(
+      repo.signIn(email: 'test@example.test', password: 'synthetic'),
+      throwsA(isA<AccountFailure>()),
+    );
+    expect(repo.currentSession, isNull);
+    expect(auth.currentUser, isNull);
+  });
+  test('a different email cannot confirm the active identity', () async {
+    final repo = FirebaseAccountRepository(
+      Auth(Identity()),
+      registrationStore: Store()..recorded = true,
+    );
+    await expectLater(
+      repo.confirmEmail(email: 'other@example.test', code: ''),
+      throwsA(isA<AccountFailure>()),
+    );
+    expect(repo.currentSession, isNull);
+  });
+  for (final route in ['/signup', '/signin', '/confirm', '/recovery']) {
+    testWidgets(
+      'Firebase accessibility labels, Android targets and contrast: $route',
+      (tester) async {
+        final semantics = tester.ensureSemantics();
+        final controller = AccountController(
+          FirebaseAccountRepository(Auth(null), registrationStore: Store()),
+        );
+        await controller.initialize();
+        await tester.pumpWidget(
+          PrivaApp(controller: controller, initialRoute: route),
+        );
+        await tester.pumpAndSettle();
+        await expectLater(tester, meetsGuideline(labeledTapTargetGuideline));
+        await expectLater(tester, meetsGuideline(androidTapTargetGuideline));
+        await expectLater(tester, meetsGuideline(textContrastGuideline));
+        await tester.pumpWidget(const SizedBox());
+        controller.dispose();
+        semantics.dispose();
+      },
+    );
+  }
+  for (final route in ['/signup', '/recovery']) {
+    testWidgets(
+      'Firebase text 200 percent and keyboard leave submit accessible: $route',
+      (tester) async {
+        tester.view.physicalSize = const Size(320, 720);
+        tester.view.devicePixelRatio = 1;
+        addTearDown(tester.view.resetPhysicalSize);
+        addTearDown(tester.view.resetDevicePixelRatio);
+        final controller = AccountController(
+          FirebaseAccountRepository(Auth(null), registrationStore: Store()),
+        );
+        await controller.initialize();
+        await tester.pumpWidget(
+          PrivaApp(
+            controller: controller,
+            initialRoute: route,
+            builder: (context, child) => MediaQuery(
+              data: MediaQuery.of(context).copyWith(
+                textScaler: TextScaler.linear(2),
+                viewInsets: const EdgeInsets.only(bottom: 240),
+              ),
+              child: child!,
+            ),
+          ),
+        );
+        await tester.pumpAndSettle();
+        final field = route == '/signup' ? 'signup.email' : 'recovery.email';
+        final button = route == '/signup' ? 'signup.submit' : 'recovery.submit';
+        await tester.ensureVisible(find.byKey(Key(field)));
+        await tester.tap(find.byKey(Key(field)));
+        await tester.pumpAndSettle();
+        await tester.ensureVisible(find.byKey(Key(button)));
+        await tester.pumpAndSettle();
+        expect(find.byKey(Key(button)).hitTestable(), findsOneWidget);
+        expect(tester.takeException(), isNull);
+        await tester.pumpWidget(const SizedBox());
+        controller.dispose();
+      },
+    );
+  }
+
+  test(
+    'confirmation accepts the same Firebase email regardless of casing',
+    () async {
+      final auth = Auth(Identity());
+      final repo = FirebaseAccountRepository(
+        auth,
+        registrationStore: Store()..recorded = true,
+      );
+      await repo.confirmEmail(email: 'TEST@EXAMPLE.TEST', code: '');
+      expect(auth.currentUser, isNull);
+    },
+  );
+  test('verification resend accepts equivalent email casing', () async {
+    final user = Identity(verified: false);
+    final repo = FirebaseAccountRepository(
+      Auth(user),
+      registrationStore: Store()..recorded = true,
+    );
+    await repo.resendConfirmation('TEST@EXAMPLE.TEST');
+    expect(user.verificationEmails, 1);
+  });
+
   testWidgets(
     'native signup is available and confirmation uses an email link',
     (tester) async {

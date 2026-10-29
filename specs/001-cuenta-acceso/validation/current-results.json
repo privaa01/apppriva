@@ -1,13 +1,16 @@
 {
   "scope": "local_headless_and_documented_limitations",
   "unit_widget_tests": {
-    "passed": 58,
+    "passed": 69,
     "failed": 0
   },
   "local_service_integration": {
     "passed": 9,
     "failed": 0,
-    "native_device": false
+    "native_device": false,
+    "provider": "supabase",
+    "historical": true,
+    "rerun_in_this_review": false
   },
   "static_analysis": {
     "completed": true,
@@ -24,16 +27,17 @@
   },
   "tasks": {
     "completed": 37,
-    "pending": 8
+    "pending": 8,
+    "basis": "Historical 45-task list; completed flags do not certify Firebase"
   },
   "provider_transition": {
     "requested_provider": "firebase",
-    "status": "registration_and_evidence_implemented_rules_deployment_pending",
+    "status": "client_implemented_user_reports_happy_paths_security_validation_pending",
     "previous_provider": "supabase",
     "existing_results_apply_to_firebase": false,
-    "firebase_sdk_double_tests_passed": 16,
+    "firebase_sdk_double_tests_passed": 27,
     "hosted_validation_completed": false,
-    "recovery": "native_email_link_implemented_hosted_validation_pending",
+    "recovery": "implemented_user_reports_success_edge_cases_pending",
     "android_public_config_bundled": true
   },
   "target_platforms": [
@@ -42,7 +46,7 @@
   "firestore_rules": {
     "tests_prepared": 7,
     "tests_executed": false,
-    "deployed": false,
+    "deployed": null,
     "blocker": "Official emulator JAR download blocked; administrative access unavailable",
     "deployment_reported_by_user": true,
     "deployment_independently_verified": false
@@ -54,5 +58,10 @@
     "device_os_recorded": false,
     "full_spec_accepted": false,
     "password_recovery": "successful"
+  },
+  "automated_accessibility": {
+    "firebase_screens_checked": 4,
+    "large_text_keyboard_scenarios_passed": 2,
+    "talkback_executed": false
   }
 }

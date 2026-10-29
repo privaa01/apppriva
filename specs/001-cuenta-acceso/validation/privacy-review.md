@@ -21,3 +21,13 @@ del JWT que debe permanecer íntegro. No se usa esta identidad local como sustit
 No se leyó almacenamiento físico de Keychain/Keystore ni registros/backups de un
 proyecto alojado. Esas comprobaciones y la matriz de conservación siguen abiertas
 antes de datos reales. T036 registra una revisión del código, no una aceptación jurídica.
+
+## Revisión del modelo Firebase
+
+Se inspeccionó FirestoreRegistrationStore: evidencia con UID, versión, finalidades,
+acción, aceptación y timestamp servidor; perfil con nombre. No replica contraseña,
+correo, IP, teléfono o respuestas. Reglas inmutables preparadas y revisadas, sin
+prueba de ejecución por bloqueo del emulador. Se prueban denegación de acceso cuando
+falta evidencia o falla lectura y consentimiento previo en el cliente. Ver
+verification-review.md. Conservación, eliminación y sesión nativa requieren pruebas
+y revisión del servicio real; la revisión histórica Supabase no acredita esos puntos.

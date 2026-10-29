@@ -130,3 +130,11 @@ El usuario indicó: «la recuperacion de contraseña funciona». Se registra com
 recorrido satisfactorio comunicado de recuperación por enlace. No se presume
 prueba separada de enlaces vencidos/usados, límites, política de contraseña,
 dispositivos o inspección de permisos/evidencia. No cierra por sí sola el spec001.
+
+## Verificación adicional solicitada
+
+Resultados actualizados en verification-review.md: 69 pruebas locales aprobadas,
+análisis sin diagnósticos, cuatro pantallas Firebase con checks automatizados de
+accesibilidad y dos escenarios texto200%/teclado. Se reprodujo y corrigió rechazo
+por mayúsculas en confirmación/reenvío. Seguridad y evidencia revisadas en código
+y dobles; reglas/emulador y APK continúan bloqueados por descargas.

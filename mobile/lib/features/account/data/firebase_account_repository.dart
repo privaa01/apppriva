@@ -192,7 +192,10 @@ class FirebaseAccountRepository extends UnavailableAccountRepository
   }) async {
     try {
       final user = auth.currentUser;
-      if (user == null || user.email != email) throw const AccountFailure();
+      if (user == null ||
+          user.email?.trim().toLowerCase() != email.trim().toLowerCase()) {
+        throw const AccountFailure();
+      }
       await user.reload();
       if (auth.currentUser?.emailVerified != true) throw const AccountFailure();
       await signOut();
@@ -205,7 +208,10 @@ class FirebaseAccountRepository extends UnavailableAccountRepository
   Future<void> resendConfirmation(String email) async {
     try {
       final user = auth.currentUser;
-      if (user == null || user.email != email) throw const AccountFailure();
+      if (user == null ||
+          user.email?.trim().toLowerCase() != email.trim().toLowerCase()) {
+        throw const AccountFailure();
+      }
       await user.sendEmailVerification();
     } catch (_) {
       throw const AccountFailure();
