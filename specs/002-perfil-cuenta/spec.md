@@ -2,7 +2,7 @@
 
 **Feature Branch**: `work` (selección por directorio).
 **Created**: 2026-10-21. **Updated**: 2026-10-29.
-**Status**: Draft — revisado, aclaraciones resueltas y listo para aprobación del usuario.
+**Status**: Approved — usuario aprobó explícitamente esta revisión el 2026-10-29.
 **SPECIFY_FEATURE_DIRECTORY**: `specs/002-perfil-cuenta`.
 **Input**: «continua con el 002»; decisiones previas del usuario y wireframe P12.
 **Gobierno**: [constitución v1.1.0](../../.specify/memory/constitution.md).
@@ -189,7 +189,7 @@ inventados. El plan fijará la matriz y métodos de evaluación con trazabilidad
 **Q1:** El usuario eligió «Editar nombre; correo de lectura (recomendado)».
 Se permite editar solo el nombre de saludo; CA-02.6/02.7 y SC-02.3 forman parte del
 alcance propuesto. La respuesta aprueba esa decisión, no el spec completo ni su plan.
-No hay aclaraciones funcionales pendientes; falta la aprobación de esta revisión.
+No hay aclaraciones funcionales pendientes. La aprobación completa posterior se registra abajo.
 
 ## Gobierno y trazabilidad
 
@@ -204,3 +204,11 @@ como antecedentes del001. PD-09 se concreta aquí en la edición del nombre conf
 conservación: la solicitud remite al procedimiento del responsable.
 
 Antes de planificar: aprobar explícitamente este spec revisado y su prioridad. Commit/push conserva borradores, no reemplaza aprobación.
+
+## Aprobación del spec — 2026-10-29
+
+El usuario respondió «lo apruebo» a la solicitud de aprobar el spec002 revisado
+del commit a6c68a4 para elaborar el plan técnico. Quedan aprobados el alcance,
+CA-02.1–02.19 y prioridad P1 propuestos, incluida la edición exclusiva del nombre.
+Se autoriza preparar el plan, no generar/ejecutar tareas ni implementar F02.
+La aprobación no modifica los resultados o aplazamientos registrados del001.

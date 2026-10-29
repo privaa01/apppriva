@@ -38,6 +38,6 @@ Esta revisión sustituye el checklist inicial que mezclaba calidad de especifica
 con ejecución de pruebas posterior. Una casilla aquí no acredita aceptación del
 producto, implementación ni conservación/eliminación efectivas.
 
-**Puerta de etapa:** aprobación explícita del spec revisado y prioridad propuesta P1
-pendiente. No iniciar plan, tareas o implementación antes de esa aprobación. No hay
-plan.md/tasks.md creados para F02 en esta revisión.
+**Puerta de etapa:** spec y prioridad P1 aprobados explícitamente el 2026-10-29
+mediante «lo apruebo», sobre el commit a6c68a4. Se permite preparar el plan técnico.
+Su aprobación y la de las tareas serán posteriores; este checklist no las sustituye.
