@@ -1,167 +1,206 @@
-# Feature Specification: F02 — Gestionar perfil, cerrar sesión y solicitar eliminación
+# Feature Specification: F02 — Perfil y cuenta
 
-**Feature Branch**: `work` (rama actual; la funcionalidad se selecciona por directorio)
-**Created**: 2026-10-21
-**Status**: Draft — especificación funcional separada; pendiente de aprobación.
-**Separated**: 2026-10-26
-**Input**: Especificar esta funcionalidad a partir de PRIVA_MOBILE_SPEC.md, sus pantallas y las decisiones explícitas del usuario.
-**Fuentes**: [Spec original](../../docs/referencias/PRIVA_MOBILE_SPEC.md), [PDF](../../docs/referencias/app.pdf).
-
-## Regla de acceso confirmada — 2026-10-26
-
-Decisión explícita del usuario: sin iniciar sesión solo se accede al contenido de
-Tips (P02 y sus cuatro detalles P03–P06). Crear cuenta, iniciar sesión y recuperar
-acceso siguen disponibles como flujos de entrada, no como contenido protegido.
-Con sesión iniciada se habilitan todas las funcionalidades de Priva dentro de su
-alcance aprobado; Perfil solo permite gestionar la propia cuenta.
-
-Se conserva la navegación del wireframe de acceso. Que un control esté visible
-NO concede acceso: Inicio, Perfil, Chat IA, Cuestionario y Resultados requieren
-sesión. Sin sesión, seleccionar una opción protegida debe indicar que se necesita
-iniciar sesión y no mostrar su contenido. El detalle visual del aviso no se fija aquí.
-Al cerrar sesión se revoca el acceso protegido y se descarta el cuestionario y su
-resultado; Tips continúa disponible. No se añade modo sin conexión.
-
-Esta decisión sustituye la exclusión visual del menú en acceso y la interpretación
-de que toda la app necesita cuenta. Los extractos del spec original que se conservan
-más abajo son antecedentes: ante discrepancia prevalece esta revisión explícita.
-No aprueba el resto del spec ni autoriza el cambio de etapa.
+**Feature Branch**: `work` (selección por directorio).
+**Created**: 2026-10-21. **Updated**: 2026-10-29.
+**Status**: Draft — revisado, aclaraciones resueltas y listo para aprobación del usuario.
+**SPECIFY_FEATURE_DIRECTORY**: `specs/002-perfil-cuenta`.
+**Input**: «continua con el 002»; decisiones previas del usuario y wireframe P12.
+**Gobierno**: [constitución v1.1.0](../../.specify/memory/constitution.md).
+**Fuentes**: [spec original](../../docs/referencias/PRIVA_MOBILE_SPEC.md),
+[referencia de P12](../../docs/referencias/ACTUALIZACION_PANTALLAS_2026-10-26.md),
+[F01](../001-cuenta-acceso/spec.md),
+[política vigente](../../docs/privacidad/politica-priva.md).
 
 ## User Scenarios & Testing *(mandatory)*
 
-### HU-02 — Gestionar mi cuenta (RF-02 y RF-04)
+### HU-02 — Gestionar mi cuenta (RF-02 y RF-04; prioridad propuesta P1)
 
-Como usuario, quiero gestionar mi cuenta para controlar mi información en Priva.
+Como usuario de Priva, quiero consultar mi perfil, controlar mi sesión y conocer
+cómo solicitar la eliminación de mis datos para gestionar mi propia cuenta.
 
-- **CA-02.1:** Al entrar en Perfil solo consulto y modifico información de mi propia cuenta, con las verificaciones necesarias.
-- **CA-02.2:** Al cerrar sesión, deja de estar disponible el contenido protegido hasta un nuevo acceso.
-- **CA-02.3:** Al solicitar eliminación, recibo información sobre alcance, procedimiento y conservación aplicable.
+**Por qué esta prioridad:** el perfil utiliza la cuenta de F01 y permite ejercer
+control sobre su uso. P1 se propone para esta funcionalidad; no fija fechas ni
+prioridad de los otros specs.
 
-**Prioridad:** pendiente de aprobación; la numeración es identificación, no orden de entrega.
-**Independent Test:** ejecutar los criterios CA anteriores en las pantallas asignadas,
-con sus precondiciones de sesión y contenido, comprobando el resultado funcional
-sin exigir implementar otras historias conforme a esta especificación; las pruebas aún no se han ejecutado.
-**Recorrido:** Perfil → consulta/gestión propia → confirmación o error; cerrar sesión; solicitud de eliminación con alcance informado.
+**Prueba independiente:** con dos cuentas de prueba distintas, abrir Perfil,
+consultar datos propios, ejecutar las acciones permitidas, cerrar sesión e intentar
+volver mediante retroceso/ruta directa. Comprobar solicitud de eliminación y salida
+sin enviar correos reales automáticamente. No exige implementar Tips, chat,
+cuestionario o resultados: se comprueban sus fronteras de acceso.
+
+**Recorrido:** sesión válida → Perfil P12 → consulta → gestión permitida →
+confirmación/error; o información de eliminación → redacción de solicitud por correo;
+o cerrar sesión → acceso sin contenido privado.
+
+**Criterios de aceptación:**
+
+- **CA-02.1:** Dada una sesión válida, Perfil muestra nombre y correo de esa cuenta;
+  otra identidad o un visitante no puede consultar ni modificar esos datos.
+- **CA-02.2:** Al cerrar sesión desaparece inmediatamente el contenido protegido;
+  retroceso, ruta directa y reapertura de Perfil no lo recuperan sin nuevo acceso.
+- **CA-02.3:** Al consultar eliminación, se informa el canal
+  `priva202611@gmail.com`, que debe enviarse la solicitud, el alcance a revisar y
+  que cualquier conservación requiere fundamento; no se afirma eliminación realizada.
+- **CA-02.4:** Nombre y correo coinciden con la cuenta activa. Carga o error no
+  muestran valores de ejemplo como «Mariana» o datos de la sesión anterior.
+- **CA-02.5:** No aparece teléfono, estado de riesgo ni historial del cuestionario.
+  La fila vacía del wireframe no representa un campo ni una función nuevos.
+- **CA-02.6:** El usuario puede
+  cambiar únicamente el nombre de saludo. Guardar muestra éxito solo tras confirmar
+  la actualización; al reabrir Perfil aparece el valor guardado.
+- **CA-02.7:** En edición, cancelar no cambia el nombre. Un nombre
+  vacío o compuesto solo por espacios no se guarda. Error/red caída conserva el
+  nombre confirmado anterior y permite reintentar sin duplicar efectos.
+- **CA-02.8:** El correo se muestra de solo lectura. No se ofrecen cambios de correo,
+  contraseña, teléfono o identidad desde Perfil en este alcance.
+- **CA-02.9:** Si la sesión deja de ser válida mientras se muestra o gestiona Perfil,
+  no se concede acceso ni se acepta una modificación como otra identidad.
+- **CA-02.10:** Cerrar sesión descarta datos de perfil visibles y datos temporales
+  sensibles. No se conserva contenido privado accesible mediante retroceso.
+- **CA-02.11:** Tras cerrar sesión, Tips sigue disponible sin cuenta. Los demás
+  contenidos requieren nuevo acceso, aunque sus botones sean visibles.
+- **CA-02.12:** Si falla la conexión al cerrar sesión, la app deja de mostrar datos
+  privados. Informa el problema sin prometer revocación de todas las sesiones remotas.
+- **CA-02.13:** La opción de eliminación prepara un correo dirigido al canal indicado;
+  no lo envía automáticamente. Cancelar la redacción no elimina cuenta ni datos.
+- **CA-02.14:** Si no hay app de correo o no puede abrirse, se muestra el destinatario
+  y se permite copiarlo, con instrucciones para enviar desde el correo asociado.
+- **CA-02.15:** Abrir el redactor no se presenta como solicitud enviada, recibida,
+  tramitada o completada; el envío lo realiza el usuario en su aplicación de correo.
+- **CA-02.16:** El correo preparado no incluye automáticamente contraseña, tokens,
+  códigos, respuestas/resultados, datos de otras personas ni información técnica.
+- **CA-02.17:** La solicitud de eliminación no borra ni reescribe la evidencia de
+  autorización por una acción directa del cliente. La supresión efectiva se tramita
+  por el equipo de Priva con verificación proporcional de identidad y obligaciones.
+- **CA-02.18:** Con texto al 200% y teclado abierto cuando corresponda, todas las
+  acciones esenciales siguen alcanzables sin recortes ni desbordamientos.
+- **CA-02.19:** Con el lector de pantalla de Android, datos, acciones, carga, errores
+  y confirmaciones se identifican en un orden comprensible; los controles tienen
+  nombre accesible y el estado no depende solo del color.
 
 ### Edge Cases
 
-Acceso a cuenta ajena; cambio sensible sin verificación; actualización fallida; conservación legal sin fundamento definido; cierre de sesión con cuestionario activo.
+- Visitante, cuenta no verificada, sesión vencida/revocada o cambio de identidad.
+- Carga lenta, datos incompletos o error al consultar perfil.
+- Pulsaciones repetidas, salida durante guardado y respuesta tardía.
+- Nombre con espacios, acentos o caracteres legítimos: no añadir reglas de identidad
+  no justificadas ni modificar el correo por interpretar el nombre.
+- Cierre de sesión con red caída o intento de volver a la pantalla privada.
+- Dispositivo sin app de correo, cancelación o fallo al abrir redactor/copiar dirección.
+- Cuestionario activo en módulos futuros: cierre descarta respuestas/resultados,
+  pero este spec no crea ni persiste un cuestionario para demostrar esa frontera.
 
 ## Requirements *(mandatory)*
 
 ### Functional Requirements
 
-- **RF-02**: Permitir iniciar y cerrar sesión y recuperar el acceso mediante un mecanismo seguro. Cierre de sesión corresponde a F02; acceso y recuperación a F01.
-- **RF-04**: Permitir consultar y gestionar datos de la propia cuenta y solicitar su eliminación.
+- **RF-02:** Permitir iniciar/cerrar sesión y recuperar acceso de forma segura.
+  F02 implementa la presentación y comportamiento de cierre en Perfil, reutilizando
+  las reglas aprobadas; registro, acceso y recuperación pertenecen a F01.
+- **RF-04:** Consultar y gestionar la propia cuenta y solicitar eliminación.
+  En F02 comprende nombre/correo, edición del nombre, cierre e información/redacción
+  de solicitud por correo. No incluye eliminación instantánea ni administración de
+  cuentas ajenas.
+- **RF-04.a:** Mostrar los estados de carga, ausencia de datos, error recuperable
+  y éxito sin exponer errores internos o credenciales.
+- **RF-04.b:** Mantener aislamiento entre cuentas tanto en pantalla como al acceder
+  a sus datos; cambiar una ruta o identificador no habilita datos ajenos.
+- **RF-04.c:** Requerir autorización de sesión en cualquier gestión. Una casilla de
+  consentimiento o un control visible no sustituye autenticación.
+- **RF-04.d:** Equipo de Priva como responsable y `priva202611@gmail.com` como canal
+  de eliminación, según decisión explícita del usuario. No inventar plazos de
+  conservación, promesas de borrado inmediato ni garantías de cumplimiento jurídico.
+- **RF-04.e:** No recoger datos nuevos para solicitar eliminación desde la app.
+  Informar que la solicitud debe enviarse desde el correo de la cuenta; verificación
+  adicional proporcional y tratamiento del caso corresponden al equipo responsable.
+- **RF-04.f:** Las finalidades existentes se conservan: nombre para saludo y correo
+  para identificación/recuperación. La evidencia de autorización de alta no se
+  modifica por consultar Perfil o cambiar el nombre.
 
-### Asociación a pantallas
+### Pantalla y límites visuales
 
-P12 (imagen corregida del 2026-10-26; sustituye la referencia visual de PDF 11); P10/P11 al terminar acceso protegido.
+P12 usa el wireframe corregido recibido el 2026-10-26: cabecera Inicio/Perfil,
+saludo, correo y Cerrar sesión; menú Tips/Chat IA/Cuestionario según las fronteras
+existentes. No añadir avatar personalizable, carga de fotos, teléfono, puntuación
+de riesgo o historial por inferencia. Icono de perfil genérico, sin pedir permisos.
 
-**Revisión 2026-10-26:** teléfono retirado del perfil; el usuario confirma que Priva
-no pide número de teléfono. Esta exclusión es una decisión explícita, no un pendiente.
-El diseño nuevo tampoco muestra «Estado de tus datos: Medio».
+Los controles nuevos necesarios para RF-04 se revisan en el plan; no convertir la
+fila vacía en dato. El usuario confirmó edición únicamente del nombre. La información de
+eliminación debe ser accesible desde Perfil sin ocultar los controles esenciales.
+El ajuste de tamaño propio de la app pertenece a F08; F02 respeta el tamaño del
+sistema y no añade una preferencia incompleta o un botón sin función.
 
-**Brechas observadas:** permanece una fila vacía cuya función no está definida; no
-interpretarla como resultado ni añadir un campo sin requisito aprobado. Faltan edición,
-solicitud de eliminación y ajuste de texto. No inferir conservación de resultados.
+### Acceso y ciclo de datos
 
-### Reglas de la fuente aplicables
+Solo una sesión válida con correo verificado puede gestionar Perfil; recuperación
+o verificación pendiente no equivalen a acceso completo. Sin sesión, Tips y sus
+cuatro categorías siguen públicos, además de los flujos de entrada de F01.
 
-Los siguientes extractos conservan su estado original: una propuesta o un pendiente
-NO se convierte en decisión por copiarse aquí. Las secciones compartidas son contexto,
-no duplicación de responsabilidad; véase [el índice SDD](../README.md) para el reparto F06/F07.
-
-### 7. Cuenta y ciclo de uso
-
-### Registro
-
-La vista incluye nombre, correo, contraseña, Crear cuenta y acceso a Iniciar sesión. Debe identificar campos obligatorios, mostrar validaciones por campo y permitir consultar la política de tratamiento antes de autorizar lo que corresponda. La justificación de cada dato se incorporará antes del cierre del spec.
-
-Al completar el registro correctamente, el usuario accede al inicio. No se almacenan contraseñas en texto legible. La política de contraseñas, verificación de correo y duración de sesión se concretan en el plan técnico.
-
-### Acceso y recuperación
-
-El usuario puede iniciar sesión, cerrar sesión y solicitar recuperación de acceso. El mecanismo de recuperación debe verificar el control del medio de recuperación y evitar revelar datos de otras cuentas. Deben definirse caducidad, reintentos y mensajes en el plan técnico.
-
-### Perfil y eliminación
-
-El perfil permite consultar y gestionar los datos de cuenta, ajustar texto, cerrar sesión y solicitar eliminación. Cambiar información relevante requiere las verificaciones de identidad correspondientes. La eliminación debe indicar qué se suprime y si existe una obligación de conservación, con su fundamento y plazo. El perfil no muestra historial del cuestionario.
-
-### 11. Privacidad, seguridad y conservación
-
-### Marco y obligaciones
-
-La política se fundamentará en la Ley 1581 de 2012 y su reglamentación aplicable, incluido el capítulo 25 del Decreto 1074 de 2015. La ley no fija una tabla universal de años para todos los datos. Los plazos deben responder a finalidades y obligaciones justificadas; una tabla por sí sola no acredita cumplimiento.
-
-Antes de recoger datos, definir al responsable, finalidades, datos necesarios, autorizaciones aplicables, canales de atención y procedimientos para ejercer derechos. Conservar la prueba de autorización conforme a la normativa. Distinguir la supresión solicitada de las excepciones de conservación legal o contractual aplicables.
-
-### Matriz inicial de conservación
-
-| Categoría | Finalidad | Conservación y eliminación |
-| --- | --- | --- |
-| Nombre y correo | Identificación y acceso; justificación detallada pendiente | Durante la finalidad de cuenta, con evento y plazo final por aprobar. No asumir conservación indefinida. |
-| Credenciales protegidas | Autenticación | Según sistema elegido y ciclo de cuenta; nunca contraseña legible. |
-| Evidencia de autorización | Acreditar tratamiento autorizado | Plazo y fundamento por definir según obligaciones aplicables. |
-| Respuestas y resultados | Autoevaluación educativa | Solo memoria temporal; eliminación según sección 9.7. |
-| Mensajes del chat | Responder consultas | Plazo, ubicación y eliminación por definir tanto en Priva como en el proveedor. |
-| Registros técnicos | Seguridad y operación | Minimizar datos; plazo justificado pendiente. Excluir respuestas y resultados del cuestionario. |
-| Solicitudes de derechos | Atender consultas y reclamos | Plazo y fundamento por definir. |
-
-La matriz definitiva debe incluir ubicación, responsable, método de eliminación, copias de seguridad y fundamento. No afirmar «el chat no guarda datos» hasta verificar los servicios utilizados. Si el proveedor trata datos fuera de Colombia, evaluar el régimen aplicable a la transferencia o transmisión y los acuerdos necesarios.
-
-### Controles mínimos
-
-- Conexiones cifradas y control de acceso a datos de cuenta.
-- Contraseñas gestionadas mediante mecanismos seguros de autenticación.
-- Credenciales de servicios protegidas, sin secretos embebidos en la app.
-- Minimización de mensajes, analítica y registros; evitar información sensible innecesaria.
-- Procesos verificables de eliminación y atención de incidentes.
-- No enviar las respuestas del cuestionario al proveedor de IA para calcular resultados.
+El cierre de F02 debe respetar el descarte obligatorio del cuestionario cuando se
+integre F06/F07. La evidencia de pruebas usa datos sintéticos; nunca conservar
+respuestas/resultados reales para demostrar descarte.
 
 ### Key Entities
 
-Datos de la cuenta, solicitud de eliminación y obligaciones de conservación por definir; ningún historial del cuestionario.
+- **Perfil propio:** identificador de cuenta y nombre de saludo. Nombre editable, correo solo lectura.
+- **Identidad de acceso:** correo de la cuenta, solo lectura en F02.
+- **Sesión actual:** concede o deniega gestión propia; cerrar aquí no promete cerrar
+  automáticamente otros dispositivos.
+- **Intención de solicitar eliminación:** información y borrador de correo controlado
+  por la persona; abrir el redactor no crea un expediente recibido.
+- **Evidencia de autorización:** antecedente de F01, sin escritura/modificación por
+  las acciones de este perfil. Su conservación y supresión se gestionan por separado.
+
+No se crea entidad de teléfono, historial del cuestionario, imagen personal, buzón
+interno de solicitudes, chatbot de soporte ni lista de contactos.
 
 ## Success Criteria *(mandatory)*
 
-### Measurable Outcomes
+- **SC-02.1:** En todos los casos de aislamiento aprobados, cero accesos o cambios a
+  datos ajenos, sin sesión o después de cerrar sesión.
+- **SC-02.2:** Todas las consultas muestran los datos de la identidad activa o un
+  estado recuperable, sin datos de ejemplo o de la identidad anterior.
+- **SC-02.3:** Todos los casos de edición aprobados distinguen
+  guardar/cancelar/error; ningún guardado fallido se informa como exitoso.
+- **SC-02.4:** En las pruebas con/sin aplicación de correo, el destinatario es correcto
+  y siempre existe una vía de conocer/copiar el canal. Cero envíos automáticos o
+  afirmaciones falsas de eliminación completada.
+- **SC-02.5:** Consulta, cierre y solicitud por correo pueden completarse con texto200%
+  y lector de pantalla Android; cero acciones esenciales inaccesibles en la matriz
+  y estados definidos por el plan.
 
-CA-02.1 a CA-02.3 satisfechos; ningún acceso a datos ajenos ni contenido protegido tras cerrar sesión en los casos de prueba aprobados.
-
-La evidencia de implementación y las mediciones aún no existen. Las metas del §15
-no son resultados obtenidos. Toda prueba usará datos sintéticos cuando corresponda;
-no se guardarán respuestas ni resultados reales para demostrar cumplimiento.
+Estos resultados son objetivos, no pruebas ejecutadas ni una nueva muestra/plazo
+inventados. El plan fijará la matriz y métodos de evaluación con trazabilidad.
 
 ## Assumptions
 
-- Se conserva Android/iOS, público de 40–65 años e internet obligatorio (§§1–3).
-- Las imágenes son referencia visual: sus ejemplos y textos no aprueban reglas nuevas.
-- Depende funcionalmente del acceso F01; ajuste de texto pertenece a F08.
-- Aplican §§11–17 del spec: minimización, conservación justificada, seguridad,
-  accesibilidad, estados de error y trazabilidad. No se presumen proveedores ni plazos.
+- Android únicamente, público de 40–65 años; internet para operaciones de cuenta.
+- F01 aporta identidad, verificación, política y evidencia; F02 no vuelve a elegir
+  proveedor ni sustituye su modelo de autorización.
+- F03/F04/F05/F06/F07/F08 conservan sus propios alcances y puertas de aprobación.
+- No hay cambios de correo o contraseña en Perfil. La contraseña se recupera por
+  enlace en F01. El nombre no es un identificador para autenticar.
+- La eliminación es una solicitud por correo al equipo, no borrado automático.
+  La revisión operativa/jurídica de conservación del001 sigue registrada por separado;
+  este spec no la declara ejecutada ni fija un plazo legal.
 
-## Decisiones y aprobación pendientes
+## Decisión confirmada — 2026-10-29
 
-Pendientes originales asociados: PD-04, PD-05, PD-06, PD-09.
-Consultar sus condiciones de cierre en §18 del spec fuente. Las brechas de pantalla
-se resuelven en el registro del índice, sin modificar silenciosamente el original.
-Antes de `$speckit-plan`, resolver los pendientes aplicables y obtener aprobación explícita de la constitución y de este spec. Separar el documento no constituye esa aprobación.
+**Q1:** El usuario eligió «Editar nombre; correo de lectura (recomendado)».
+Se permite editar solo el nombre de saludo; CA-02.6/02.7 y SC-02.3 forman parte del
+alcance propuesto. La respuesta aprueba esa decisión, no el spec completo ni su plan.
+No hay aclaraciones funcionales pendientes; falta la aprobación de esta revisión.
 
-## Criterios de aceptación de acceso añadidos
+## Gobierno y trazabilidad
 
-- **CA-ACC-01:** Sin sesión, abrir Tips y cada una de sus cuatro categorías permite consultar contenido sin exigir cuenta.
-- **CA-ACC-02:** Sin sesión, intentar abrir Inicio, Perfil, Zyro, Cuestionario o Resultados no muestra contenido protegido e informa que se requiere iniciar sesión.
-- **CA-ACC-03:** Con una sesión válida se puede acceder a todas las funciones del alcance, sujeto a sus precondiciones; no se muestran resultados sin completar un intento.
-- **CA-ACC-04:** Tras cerrar sesión, Tips sigue disponible y el contenido protegido deja de estarlo, incluido mediante retroceso; respuestas y resultados se descartan.
-- **CA-ACC-05:** La navegación visible de P11 se conserva conforme al wireframe sin eludir las restricciones anteriores.
+El usuario confirmó que verificó los flujos del001 y luego indicó «continua con el
+002». Esto autoriza revisar F02, sin afirmar nuevas pruebas independientes del001
+ni aprobar por extensión este borrador, el plan o la implementación del002.
 
-Estos criterios documentan la decisión; aún no son pruebas ejecutadas.
+Se conservan HU-02, RF-02/RF-04 y CA-02.1–02.3. Los criterios adicionales concretan
+consulta, errores, aislamiento y solicitud sin duplicar el detalle del001. PD-04
+usa las finalidades confirmadas; proveedores y recuperación ya decididos se tratan
+como antecedentes del001. PD-09 se concreta aquí en la edición del nombre confirmada. PD-05 no se cierra inventando
+conservación: la solicitud remite al procedimiento del responsable.
 
-## Alcance de plataforma vigente — 2026-10-28
-
-Decisión explícita del usuario: «solo preparala para android». Esta entrega se
-prepara únicamente para Android (mínimo API24 del plan); iOS, VoiceOver y Xcode
-quedan fuera del alcance actual. Las menciones anteriores a ambas plataformas
-son históricas. Se mantienen todos los requisitos funcionales, de privacidad y
-seguridad aplicables a Android. No implica aprobación de otros specs ni entrega.
+Antes de planificar: aprobar explícitamente este spec revisado y su prioridad. Commit/push conserva borradores, no reemplaza aprobación.

@@ -78,3 +78,11 @@ confirmó «funciona». Se registra como resultado satisfactorio comunicado de
 TalkBack. No se inventan modelo, versión Android, recorridos detallados ni mediciones
 de contraste. Esta confirmación no constituye ejecución independiente del asistente
 ni aceptación automática de todos los criterios de T037 o del spec001.
+
+## Transición autorizada al002 — 2026-10-29
+
+El usuario indicó que había verificado todo y expresó conformidad con el resultado;
+a continuación autorizó «continua con el 002». Se registra autorización explícita
+para avanzar a la revisión de ese spec. Se conservan las limitaciones de evidencia
+independiente y el aplazamiento de reglas: no se convierten en mediciones ejecutadas
+ni se cambian retrospectivamente sus resultados. No aprueba el alcance del002.

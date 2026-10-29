@@ -8,8 +8,12 @@ quedan fuera del alcance actual. Las menciones anteriores a ambas plataformas
 son históricas. Se mantienen todos los requisitos funcionales, de privacidad y
 seguridad aplicables a Android. No implica aprobación de otros specs ni entrega.
 
-**Estado:** spec F01 aprobado el 2026-10-26 y [plan F01](001-cuenta-acceso/plan.md) aprobado el 2026-10-27; F02–F08 en borrador. [Tareas F01](001-cuenta-acceso/tasks.md) y correcciones del análisis 001 aprobadas explícitamente el 2026-10-27: 45 tareas sin ejecutar. Implementación F01 en curso: 37 tareas completadas y 8 pendientes; builds y entrega no completados.
-**Actualización:** 2026-10-27.
+**Estado:** F01 cuenta con conformidad funcional comunicada por el usuario,
+69 pruebas locales satisfactorias y limitaciones de evidencia técnica conservadas;
+pruebas de reglas aplazadas explícitamente. El usuario autorizó avanzar a F02 el
+2026-10-29. F02 revisado y aclarado, pendiente de aprobación de su spec antes del
+plan. F03–F08 siguen en borrador. No se declara ejecución de mediciones no realizadas.
+**Actualización:** 2026-10-29.
 
 Cada carpeta contiene `spec.md` y `checklists/requirements.md`, conforme a la estructura
 de Spec Kit. Los documentos se trasladaron desde `docs/descomposicion/` para mantener
