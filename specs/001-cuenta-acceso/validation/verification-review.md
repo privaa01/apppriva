@@ -59,3 +59,14 @@ Supabase como sustituto de validación Firebase.
 Desde mobile/: flutter test --no-pub.
 Desde raíz: bash mobile/tool/analyze.sh.
 Desde firebase/: npm ci y npm test (requiere descarga oficial del emulador y Java).
+
+## Aclaración posterior del usuario
+
+El usuario informó que ya obtuvo el APK. Se registra como artefacto obtenido en
+su entorno, sin inspección independiente de versión, firma o compatibilidad.
+El fallo de build documentado corresponde solo al runner cloud, no niega ese APK.
+
+El usuario autorizó dejar pendientes las pruebas de reglas durante la fase de
+prueba. Es aplazamiento explícito, no resultado satisfactorio, permiso para reglas
+públicas ni aceptación de entrega con datos reales. Se mantienen reglas restrictivas.
+TalkBack y demás pruebas de dispositivos siguen sin ejecución registrada.

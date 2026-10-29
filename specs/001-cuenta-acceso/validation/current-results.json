@@ -19,7 +19,9 @@
   },
   "android_build": {
     "completed": false,
-    "blocker": "engine artifact HTTP CONNECT403"
+    "blocker": "engine artifact HTTP CONNECT403",
+    "apk_obtained_reported_by_user": true,
+    "artifact_independently_inspected": false
   },
   "ios_build": {
     "completed": false,
@@ -49,7 +51,9 @@
     "deployed": null,
     "blocker": "Official emulator JAR download blocked; administrative access unavailable",
     "deployment_reported_by_user": true,
-    "deployment_independently_verified": false
+    "deployment_independently_verified": false,
+    "testing_deferral_approved_by_user": true,
+    "deferral_scope": "test phase only; restrictive rules retained; tests not passed"
   },
   "user_reported_validation": {
     "signup": "successful",
