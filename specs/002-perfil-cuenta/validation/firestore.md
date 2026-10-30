@@ -11,7 +11,15 @@ ejecutan secuencialmente para evitar que un archivo limpie datos de otro.
 Los13 escenarios no se ejecutaron: no afirmar reglas validadas. Sintaxis JavaScript
 del test revisada con node --check, sin sustituir al compilador de reglas.
 
-Sin cambios desplegados por el asistente. Se requiere validación y publicación
-autorizada de las nuevas reglas para editar nombre; las reglas anteriores del001
-niegan esa escritura. La configuración pública Android no concede acceso administrativo.
-Prueba real de evidencia idéntica antes/después preparada, no ejecutada.
+Reintento de validación 2026-10-30: `npm ci` instaló las dependencias fijadas. `npm test`
+intentó iniciar Firestore Emulator y falló antes de los escenarios porque el entorno
+denegó el bind de puertos locales (EPERM). Un reintento con ejecución elevada no
+encontró el CLI `firebase`. `node --check tests/profile.test.mjs` y
+`node --check tests/firestore.test.mjs` pasan; solo comprueban sintaxis JavaScript,
+no compilan ni validan reglas.
+
+Los 13 escenarios no se ejecutaron. No se hicieron solicitudes directas ni comparación
+de autorización antes/después. Sin cambios desplegados por el asistente. Se requiere
+validación de las nuevas reglas antes de cualquier publicación; la configuración
+pública Android no concede acceso administrativo. La prueba de evidencia idéntica
+sigue preparada, no ejecutada.

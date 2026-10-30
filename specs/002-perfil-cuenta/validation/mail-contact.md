@@ -12,3 +12,9 @@ Un timeout no cancela una acción nativa ya solicitada: no afirmar cancelación 
 Apertura/cancelación con/sin cliente real en API24/actual pendientes; los dobles
 no certifican resolución del intent Android, entrega de correo o funcionamiento
 del portapapeles en hardware.
+# Actualización de evidencia — 2026-10-30
+
+El usuario reportó que funciona la comprobación manual indicada del contacto para
+eliminación. No se informaron Android/API, cliente de correo, apertura/cancelación
+real ni prueba de copia en hardware; T029 permanece pendiente. No se enviaron
+mensajes reales.

@@ -12,3 +12,10 @@ forzar las pruebas. Icono de perfil decorativo excluido de lectura.
 
 TalkBack, foco/teclado nativos, contraste por dispositivo y matriz reales pendientes.
 El reporte del usuario de TalkBack del001 no se usa como prueba de Perfil F02.
+# Actualización de evidencia — 2026-10-30
+
+El usuario reportó que funcionan las comprobaciones manuales indicadas de
+accesibilidad. Se registra como evidencia reportada, no observada de forma
+independiente. No se especificaron dispositivo/OS, API, tamaño, versión de build,
+TalkBack, pasos ni cobertura de texto al 200%; por tanto T027 permanece pendiente.
+Los resultados automatizados T026 existentes cubren pruebas Flutter, no hardware.

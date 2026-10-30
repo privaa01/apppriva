@@ -1,5 +1,6 @@
 {
-  "scope": "F02 local implementation and F01 regression",
+  "scope": "F02 local implementation and validation follow-up",
+  "previous_local_run": "103 tests passed and 0 diagnostics, from the earlier recorded run; not rerun in this environment",
   "unit_widget_tests": {
     "passed": 103,
     "failed": 0,
@@ -14,15 +15,37 @@
     "f02_new": 6,
     "executed": false,
     "deployed_by_assistant": false,
-    "blocker": "official emulator JAR download blocked"
+    "attempts": [
+      "npm test: Firebase Emulator could not bind local ports (EPERM)",
+      "npm test with elevated execution: firebase CLI not found after dependency installation"
+    ],
+    "blocker": "Firestore emulator did not start; scenarios not executed"
   },
   "native_tests": {
     "prepared": true,
     "executed": false
   },
+  "static_analysis": {
+    "attempted": true,
+    "executed": false,
+    "blocker": "Docker and Dart/Flutter executables unavailable in this environment"
+  },
   "android_build": {
     "completed": false,
-    "blocker": "engine artifact CONNECT403"
+    "attempted": true,
+    "blocker": "Flutter executable unavailable in this environment"
+  },
+  "manual_user_report": {
+    "reported_pass": [
+      "profile",
+      "name edit and cancellation",
+      "deletion contact",
+      "sign out",
+      "accessibility"
+    ],
+    "source": "user confirmation on 2026-10-30",
+    "device_matrix_details": "not provided",
+    "independently_observed": false
   },
   "tasks": {
     "completed": 26,

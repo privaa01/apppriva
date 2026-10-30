@@ -21,3 +21,12 @@ no interactivo más botón Copiar correo≥48dp. No se ignoraron lints o guideli
 Pruebas de integración reales preparadas en integration_test/profile_account_test.dart
 con cuenta sintética verificada explícita; no ejecutadas aquí. Pruebas de reglas
 preparadas en firebase/tests/profile.test.mjs; no ejecutadas por bloqueo del emulador.
+
+## Reintento de validación — 2026-10-30
+
+La corrida nueva de la suite Flutter no fue posible: Flutter/Dart no están instalados
+en el entorno activo. `node --check firebase/tests/profile.test.mjs` y
+`node --check firebase/tests/firestore.test.mjs` terminaron correctamente, pero solo
+validan sintaxis de esos scripts. La suite Firestore completa tampoco corrió: véase
+`firestore.md`. Los 103 resultados descritos arriba son ejecución previa, no se
+atribuyen a este reintento.
