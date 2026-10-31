@@ -17,6 +17,14 @@ y que T032 fue verificada y validada. En una confirmación más reciente afirmó
 T030 está completada. Estas declaraciones posteriores actualizan
 el estado anterior que describía esos puntos como no ejecutados o bloqueados.
 
+En una confirmación final, el usuario reportó T029 (prueba de contacto Android),
+T033 (trazabilidad) y T034 (quickstart/revisión/entrega) como completadas. La
+aprobación explícita del cierre F02 no se infiere de esa confirmación.
+
+En una confirmación final, el usuario reportó T029 (prueba de contacto Android),
+T033 (trazabilidad) y T034 (quickstart/revisión/entrega) como completadas. La
+aprobación explícita del cierre F02 no se infiere de esa confirmación.
+
 Esta evidencia se clasifica como **reporte del usuario**, no como ejecución
 independiente observada por este agente. No se recibieron modelo de dispositivo,
 versión de Android, tamaño de pantalla, versión de build, pasos individuales,

@@ -59,14 +59,19 @@
     "independently_observed": false
   },
   "latest_user_report": {
-    "reported_completed_tasks": ["T030 Android format/tests/static analysis/build"],
+    "reported_completed_tasks": [
+      "T029 Android deletion contact test",
+      "T030 Android format/tests/static analysis/build",
+      "T033 traceability consolidation",
+      "T034 quickstart and delivery review"
+    ],
     "source": "user confirmation after prior synchronization",
     "details_attached": false,
     "independently_observed": false
   },
   "tasks": {
-    "completed_or_user_reported": 31,
-    "pending": 3
+    "completed_or_user_reported": 34,
+    "pending": 0
   },
   "accepted": false
 }

@@ -9,9 +9,13 @@ El diálogo nunca informa solicitud enviada/recibida ni cuenta eliminada. El env
 lo decide la persona en su app de correo. No se enviaron mensajes reales en pruebas.
 Un timeout no cancela una acción nativa ya solicitada: no afirmar cancelación remota.
 
-Apertura/cancelación con/sin cliente real en API24/actual pendientes; los dobles
-no certifican resolución del intent Android, entrega de correo o funcionamiento
-del portapapeles en hardware.
+## Reporte posterior del usuario — 2026-10-30
+
+El usuario confirmó que T029 está completada. Esta confirmación posterior actualiza
+la nota pendiente anterior, que reflejaba los intentos de esta sesión. No se
+proporcionaron versión API/dispositivo, disponibilidad del cliente, resultados de
+apertura/cancelación ni evidencia del portapapeles; no se atribuyen esos detalles.
+No se afirma que se enviara un mensaje real ni que se eliminara una cuenta.
 # Actualización de evidencia — 2026-10-30
 
 El usuario reportó que funciona la comprobación manual indicada del contacto para
