@@ -23,3 +23,12 @@ de autorización antes/después. Sin cambios desplegados por el asistente. Se re
 validación de las nuevas reglas antes de cualquier publicación; la configuración
 pública Android no concede acceso administrativo. La prueba de evidencia idéntica
 sigue preparada, no ejecutada.
+
+## Reporte posterior del usuario — 2026-10-30
+
+El usuario confirmó que T028 (validación de escenarios) ya se realizó. Este reporte
+posterior actualiza el estado de ejecución anterior; los intentos locales fallidos
+se conservan como historial fiel de ese entorno. No se afirma que el asistente haya
+ejecutado esas pruebas ni que se hayan desplegado reglas. No se recibieron resultados
+por escenario ni evidencia de comparación antes/después, por lo que se registra
+la confirmación como reporte del usuario, no como salida reproducible adjunta.

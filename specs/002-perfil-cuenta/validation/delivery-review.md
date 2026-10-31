@@ -21,8 +21,9 @@ abrir puertos del emulador y el reintento elevado no encontró el CLI; análisis
 inició por ausencia de Docker; compilación no inició por ausencia de Flutter. Solo
 pasó `node --check` para ambos archivos de pruebas de reglas, que no valida reglas.
 
-T027/T029 tienen reporte parcial del usuario, pero no dispositivo ni matriz y siguen
-pendientes. T028/T030 siguen sin evidencia de ejecución satisfactoria. No se ejecutó
-la suite Flutter, pruebas nativas Android ni mediciones de rendimiento. T031–T034 no
-se marcan completos; T032/T033 esperan sus dependencias. No se desplegaron reglas,
-no se declara aprobado el cierre F02 y no se inicia el spec 003.
+T027, T028, T031 y T032 cuentan con confirmación posterior del usuario y están
+marcadas como reportadas en tareas/evidencias; no se recibieron sus artefactos
+detallados. T029 y T030 permanecen pendientes. La suite Flutter, análisis y APK
+siguen sin ejecutarse en este entorno. T033/T034 esperan completar sus dependencias
+y revisión final. No se desplegaron reglas, no se declara aprobado el cierre F02 y no
+se inicia el spec 003.

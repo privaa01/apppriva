@@ -12,3 +12,11 @@ No se ejecutó: falta dispositivo y acceso/control de prueba apropiados.
 T031 pendiente: feedback≤1s, respuesta/aviso≤15s en cada muestra y combinación de
 dispositivo/red, incluida espera artificial y apertura/fallback de correo. No
 promediar excesos, medir entrega de correo o presentar timeout como finalización.
+
+## Reporte posterior del usuario — 2026-10-30
+
+El usuario confirmó que T031 (mediciones) ya se realizó. Este reporte actualiza la
+nota previa de no ejecución. No se recibieron en el repositorio cifras sanitizadas,
+dispositivo, perfil de red, resultados por repetición ni informe de la prueba; por
+tanto, se conserva la confirmación como evidencia reportada por el usuario y no se
+inventan métricas ni se afirma que esta sesión ejecutó el test.

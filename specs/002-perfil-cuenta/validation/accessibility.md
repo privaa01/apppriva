@@ -10,8 +10,13 @@ Se reemplazó la dirección seleccionable de objetivo menor a48dp por texto info
 y un botón explícito Copiar correo. Ninguna acción se excluyó de semántica para
 forzar las pruebas. Icono de perfil decorativo excluido de lectura.
 
-TalkBack, foco/teclado nativos, contraste por dispositivo y matriz reales pendientes.
-El reporte del usuario de TalkBack del001 no se usa como prueba de Perfil F02.
+## Reporte posterior del usuario — 2026-10-30
+
+El usuario confirmó que T027 se realizó en el emulador Android. No se aportó
+identificador/versión del emulador, matriz mínima/actual y pequeña/grande, ni
+detalle de TalkBack, foco, teclado, texto200% y defectos/repruebas. Se clasifica
+como evidencia reportada por el usuario y actualiza el estado pendiente anterior;
+los detalles no disponibles no se inventan. Véase `user-reported-manual.md`.
 # Actualización de evidencia — 2026-10-30
 
 El usuario reportó que funcionan las comprobaciones manuales indicadas de
