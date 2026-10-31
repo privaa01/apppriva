@@ -13,7 +13,8 @@ El usuario confirma que funcionan las comprobaciones manuales indicadas para:
 
 En una confirmación posterior, el usuario especificó además que T027 se realizó en
 el emulador, que se validaron los escenarios T028, que T031 (mediciones) se realizó
-y que T032 fue verificada y validada. Estas declaraciones posteriores actualizan
+y que T032 fue verificada y validada. En una confirmación más reciente afirmó que
+T030 está completada. Estas declaraciones posteriores actualizan
 el estado anterior que describía esos puntos como no ejecutados o bloqueados.
 
 Esta evidencia se clasifica como **reporte del usuario**, no como ejecución
@@ -24,5 +25,5 @@ pero no demuestra la ejecución completa de esas tareas en API24/actual ni susti
 las pruebas automatizadas, nativas o de rendimiento.
 
 No se registran datos de cuenta, direcciones privadas, capturas ni mensajes reales.
-Para T027/T031 no se aportaron detalles técnicos ni métricas sanitizadas; el estado
+Para T027/T030/T031 no se aportaron detalles técnicos, hashes ni métricas sanitizadas; el estado
 se atribuye al reporte del usuario y no a una corrida observada independientemente.

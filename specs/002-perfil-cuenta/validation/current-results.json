@@ -30,7 +30,8 @@
     "blocker": "Docker and Dart/Flutter executables unavailable in this environment"
   },
   "android_build": {
-    "completed": false,
+    "completed_by_assistant": false,
+    "reported_completed_by_user": true,
     "attempted": true,
     "blocker": "Flutter executable unavailable in this environment"
   },
@@ -57,9 +58,15 @@
     "details_attached": false,
     "independently_observed": false
   },
+  "latest_user_report": {
+    "reported_completed_tasks": ["T030 Android format/tests/static analysis/build"],
+    "source": "user confirmation after prior synchronization",
+    "details_attached": false,
+    "independently_observed": false
+  },
   "tasks": {
-    "completed_or_user_reported": 30,
-    "pending": 4
+    "completed_or_user_reported": 31,
+    "pending": 3
   },
   "accepted": false
 }

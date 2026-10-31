@@ -18,3 +18,11 @@ Pendiente build Android y matriz nativa. iOS está fuera de alcance.
 - No se generó APK ni hash de artefacto. La suite Flutter, el formato y el análisis
   estático de este intento quedan pendientes. El resultado histórico de 103 pruebas
   y cero diagnósticos se conserva como evidencia previa, no como una nueva corrida.
+
+## Reporte posterior del usuario — 2026-10-30
+
+El usuario confirmó que T030 ya está completada. Esta confirmación posterior
+actualiza el estado pendiente derivado de los intentos bloqueados anteriores de esta
+sesión. No se proporcionaron comandos/versiones, resultados detallados, hash del APK
+ni matriz Android; se registra como evidencia reportada por el usuario y no se
+atribuyen esos datos ni una ejecución a este agente.
