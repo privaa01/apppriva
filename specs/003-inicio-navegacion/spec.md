@@ -2,7 +2,7 @@
 
 **Feature Branch**: `work` (selección por directorio).
 **Created**: 2026-10-21. **Updated**: 2026-11-03.
-**Status**: Draft — revisado para aprobación; no autoriza plan ni implementación.
+**Status**: Approved — revisión aprobada explícitamente por el usuario el 2026-11-03.
 **SPECIFY_FEATURE_DIRECTORY**: `specs/003-inicio-navegacion`.
 **Input**: «continuemos con el 003», después del cierre aprobado de F02.
 **Gobierno**: [constitución v1.1.0](../../.specify/memory/constitution.md).
@@ -214,3 +214,10 @@ El 2026-11-03 el usuario solicitó continuar con F03 después de aprobar F02. Es
 permite preparar y revisar este spec; no aprueba su prioridad, propuesta editorial,
 plan, tareas o implementación. Se solicita aprobación de esta versión antes del
 plan técnico conforme al principio IX y a la puerta Spec de la constitución.
+
+## Registro de aprobación — 2026-11-03
+
+El usuario respondió «lo apruebo» a la revisión del commit `d8c4a55`. Quedan
+aprobados el alcance de F03, la prioridad P1, los criterios y la propuesta editorial
+de esa revisión. Se autoriza preparar el plan técnico, no generar o ejecutar tareas
+ni implementar. El registro anterior de aprobación pendiente es histórico.

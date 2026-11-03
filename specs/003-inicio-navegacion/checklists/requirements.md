@@ -42,8 +42,9 @@ No hay hooks configurados en `.specify/extensions.yml`. Se utiliza el directorio
 existente, sin duplicar la funcionalidad ni crear otra rama. No se ejecutaron pruebas
 de producto: este checklist no es evidencia de implementación ni aceptación.
 
-**Puerta de aprobación pendiente:** el responsable debe aprobar esta revisión antes
-de `$speckit-plan`, según el principio IX y los controles de la
+**Puerta de aprobación del spec satisfecha:** el usuario respondió «lo apruebo»
+el 2026-11-03 sobre `d8c4a55`; ver el registro del spec. El plan técnico preparado
+requiere aprobación independiente según el principio IX y los controles de la
 [constitución](../../../.specify/memory/constitution.md). La muestra del protocolo de
 uso y la matriz Android se concretarán y aprobarán en el plan, antes de implementar.
 Los PD de otros módulos no se consideran resueltos por esta revisión.
