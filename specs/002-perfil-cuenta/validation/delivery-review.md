@@ -1,4 +1,4 @@
-# Revisión de entrega F02 — pendiente
+# Revisión de entrega F02 — cierre aprobado
 
 Implementación local disponible: perfil, edición nombre, cierre y borrador/copia
 de correo, con regresión. Checklist documental16/16 (sin cambios de marcadores),
@@ -7,9 +7,9 @@ autorización explícita de tareas/implementación registrada. Sin hooks configu
 T001–T026 completadas como desarrollo/preparación de pruebas/ejecución local. T023
 representa edición de reglas en repositorio, NO validación o despliegue (T028).
 T024 representa creación del recorrido nativo, NO ejecución en Firebase real.
-T027–T034 pendientes: hardware, nuevas reglas/servicio, correo nativo, APK, rendimiento,
-privacidad final, trazabilidad/cierre. Los documentos parciales no cierran tareas
-que dependen de esos controles. No solicitar aceptación final ni avanzar al003.
+En la revisión inicial, T027–T034 estaban pendientes: hardware, nuevas reglas/servicio,
+correo nativo, APK, rendimiento, privacidad final y trazabilidad/cierre. Las
+actualizaciones siguientes registran los reportes posteriores y la aceptación.
 
 ## Actualización de validación — 2026-10-30
 
@@ -24,6 +24,16 @@ pasó `node --check` para ambos archivos de pruebas de reglas, que no valida reg
 T027–T034 se registran completadas según confirmaciones del usuario, con limitaciones
 de detalle anotadas para T027–T032. Los intentos de suite Flutter, análisis, reglas y
 APK de esta sesión fallaron por herramientas/entorno ausentes; los reportes
-posteriores del usuario se mantienen diferenciados de esos intentos. El usuario no
-ha aprobado explícitamente el cierre del spec 002; no se declara aceptado ni se
-avanza al spec 003 hasta esa aprobación.
+posteriores del usuario se mantienen diferenciados de esos intentos. En esa actualización aún faltaba la aprobación explícita del cierre del spec 002.
+
+## Aceptación explícita — 2026-11-03
+
+Tras sincronizar `work` con `origin/work` en `7145183` y comunicar el estado de
+34/34 tareas, incluidas las validaciones reportadas y las limitaciones de evidencia,
+el usuario respondió «apruebo». Se registra el cierre aceptado de F02.
+
+Esta aprobación no convierte los reportes del usuario en pruebas ejecutadas por el
+asistente ni elimina los bloqueos históricos o la falta de métricas, comandos,
+hash del APK y detalles de dispositivos. Se conserva esa distinción en
+`current-results.json` y en los documentos de validación. No se han ejecutado
+nuevas pruebas, publicado reglas ni iniciado F03 como parte de este registro.

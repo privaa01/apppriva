@@ -11,8 +11,8 @@ seguridad aplicables a Android. No implica aprobación de otros specs ni entrega
 **Estado:** F01 cuenta con conformidad funcional comunicada por el usuario,
 69 pruebas locales satisfactorias y limitaciones de evidencia técnica conservadas;
 pruebas de reglas aplazadas explícitamente. El usuario autorizó avanzar a F02 el
-2026-10-29. F02, plan y ejecución autorizados el2026-10-29; implementación local disponible con26 tareas completadas y8 validaciones finales pendientes. F03–F08 siguen en borrador. No se declara ejecución de mediciones no realizadas.
-**Actualización:** 2026-10-29.
+2026-10-29. F02, plan y ejecución autorizados el2026-10-29; cierre aprobado por el usuario el 2026-11-03, con 34/34 tareas registradas como completadas y limitaciones de evidencia conservadas en [la revisión de entrega](002-perfil-cuenta/validation/delivery-review.md). F03–F08 siguen en borrador. No se declara ejecución de mediciones no realizadas.
+**Actualización:** 2026-11-03.
 
 Cada carpeta contiene `spec.md` y `checklists/requirements.md`, conforme a la estructura
 de Spec Kit. Los documentos se trasladaron desde `docs/descomposicion/` para mantener

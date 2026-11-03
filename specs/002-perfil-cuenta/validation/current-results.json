@@ -73,5 +73,10 @@
     "completed_or_user_reported": 34,
     "pending": 0
   },
-  "accepted": false
+  "accepted": true,
+  "acceptance": {
+    "date": "2026-11-03",
+    "source": "Aprobación explícita del usuario: «apruebo», tras revisar el estado sincronizado de F02.",
+    "scope": "Cierre de F02 con las limitaciones de evidencia documentadas; no constituye nuevas ejecuciones de pruebas ni aprobación de F03."
+  }
 }

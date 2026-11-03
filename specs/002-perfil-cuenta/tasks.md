@@ -4,8 +4,9 @@
 **Input**: [spec](spec.md), [plan aprobado](plan.md), [investigación](research.md),
 [modelo](data-model.md), [contratos](contracts/perfil-cuenta.md),
 [guía](quickstart.md), [constitución](../../.specify/memory/constitution.md).
-**Estado**: implementación en curso;26 tareas de desarrollo/preparación y pruebas
-locales completadas,8 validaciones finales pendientes. Tareas e implementación
+**Estado**: cierre aprobado por el usuario el 2026-11-03; 34/34 tareas registradas
+como completadas, incluidas las validaciones reportadas por el usuario con sus
+limitaciones de evidencia documentadas. Tareas e implementación
 autorizadas explícitamente mediante «inicia la implementación» sobre5611047.
 
 ## Format: `[ID] [P?] [Story?] descripción con ruta`
@@ -90,7 +91,7 @@ con CA incumplido ni autoriza despliegue o avance al003.
 - [X] T031 Medir feedback≤1s y respuesta/aviso≤15s con reloj monotónico:20 repeticiones por carga/guardado, perfil de red y dispositivo, incluyendo espera artificial y respuesta tardía; medir apertura/fallback del redactor sin contar entrega de correo. Guardar solo métricas sanitizadas en specs/002-perfil-cuenta/validation/performance.md y pruebas en mobile/integration_test/profile_performance_test.dart. Depende de T027–T030. **Evidencia reportada por el usuario (2026-10-30):** medición realizada. No se han proporcionado al repositorio cifras, perfil de red, dispositivo ni resultados por repetición; se registra explícitamente esa limitación documental.
 - [X] T032 Revisar flujos/datos y comprobar que perfil no duplica email ni escribe datos de autorización/cuestionario, y que borrador/copia no filtran datos privados; documentar en specs/002-perfil-cuenta/validation/privacy-review.md. No convertir la solicitud por correo en eliminación automática o cerrar retenciones ajenas por inferencia. Depende de T022/T025/T028/T029. **Evidencia reportada por el usuario (2026-10-30):** revisión y validación completadas.
 - [X] T033 Consolidar RF-02/RF-04→HU-02→CA-02.1–02.19→tareas→pruebas/resultados y SC-02.1–02.5 en specs/002-perfil-cuenta/validation/traceability.md; diferenciar satisfactorio, fallido, no ejecutado, reporte de usuario y aplazado. Depende de T027–T032; no cerrar con mediciones pendientes. **Evidencia reportada por el usuario (2026-10-30):** consolidación completada.
-- [X] T034 Ejecutar specs/002-perfil-cuenta/quickstart.md, actualizar mobile/README.md y firebase/README.md, corregir bloqueantes y registrar revisión final en specs/002-perfil-cuenta/validation/delivery-review.md; hacer commit/push y solicitar aceptación de F02. Depende de T033; no avanzar al003 ni dar por enviada una solicitud de eliminación. **Evidencia reportada por el usuario (2026-10-30):** tarea completada. La aceptación explícita del cierre del spec 002 se mantiene como decisión separada pendiente.
+- [X] T034 Ejecutar specs/002-perfil-cuenta/quickstart.md, actualizar mobile/README.md y firebase/README.md, corregir bloqueantes y registrar revisión final en specs/002-perfil-cuenta/validation/delivery-review.md; hacer commit/push y solicitar aceptación de F02. Depende de T033; no avanzar al003 ni dar por enviada una solicitud de eliminación. **Evidencia reportada por el usuario (2026-10-30):** tarea completada. El usuario aprobó explícitamente el cierre del spec 002 el 2026-11-03 («apruebo»).
 
 ## Dependencies & Execution Order
 
@@ -147,6 +148,7 @@ reglas nuevas ni pruebas ejecutadas. No hay hooks configurados en `.specify/exte
 ## Registro de autorización y ejecución
 
 El usuario indicó «inicia la implementación» después de las tareas del5611047,
-autorizando su ejecución. Se conservan abiertas las8 validaciones finales; ver
-validation/current-results.json y delivery-review.md para estados reales. No
+autorizando su ejecución. El usuario aprobó el cierre el 2026-11-03; las 34 tareas figuran completadas,
+diferenciando ejecución local de validación reportada. Ver
+validation/current-results.json y delivery-review.md para estados y limitaciones reales. No
 modificar el checklist de calidad documental ni afirmar pruebas nativas ejecutadas.
