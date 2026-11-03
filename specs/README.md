@@ -11,7 +11,7 @@ seguridad aplicables a Android. No implica aprobación de otros specs ni entrega
 **Estado:** F01 cuenta con conformidad funcional comunicada por el usuario,
 69 pruebas locales satisfactorias y limitaciones de evidencia técnica conservadas;
 pruebas de reglas aplazadas explícitamente. El usuario autorizó avanzar a F02 el
-2026-10-29. F02, plan y ejecución autorizados el2026-10-29; cierre aprobado por el usuario el 2026-11-03, con 34/34 tareas registradas como completadas y limitaciones de evidencia conservadas en [la revisión de entrega](002-perfil-cuenta/validation/delivery-review.md). F03 tiene su spec aprobado el 2026-11-03 y el [plan técnico](003-inicio-navegacion/plan.md) preparado para aprobación; F04–F08 siguen en borrador. No se declara ejecución de mediciones no realizadas.
+2026-10-29. F02, plan y ejecución autorizados el2026-10-29; cierre aprobado por el usuario el 2026-11-03, con 34/34 tareas registradas como completadas y limitaciones de evidencia conservadas en [la revisión de entrega](002-perfil-cuenta/validation/delivery-review.md). F03 tiene spec y [plan técnico](003-inicio-navegacion/plan.md) aprobados el 2026-11-03; sus [35 tareas](003-inicio-navegacion/tasks.md) están preparadas y pendientes de autorización para ejecución; F04–F08 siguen en borrador. No se declara ejecución de mediciones no realizadas.
 **Actualización:** 2026-11-03.
 
 Cada carpeta contiene `spec.md` y `checklists/requirements.md`, conforme a la estructura

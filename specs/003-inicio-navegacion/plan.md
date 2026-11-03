@@ -2,7 +2,7 @@
 
 **Branch**: `work` | **Date**: 2026-11-03 | **Spec**: [spec.md](spec.md).
 **Input**: revisión `d8c4a55`, aprobada explícitamente por el usuario el 2026-11-03.
-**Status**: Proposed — pendiente de aprobación del plan antes de generar tareas.
+**Status**: Approved — aprobado explícitamente por el usuario el 2026-11-03.
 
 ## Summary
 
@@ -216,3 +216,17 @@ lógicamente003; la rama Git real sigue siendo `work`. No se ha implementado,
 generado tasks.md, desplegado ni ejecutado una prueba de producto F03.
 La aprobación de este plan autorizará generar tareas; su ejecución requiere la
 aprobación de esa etapa según la constitución. F04 permanece sin avanzar.
+
+## Registro de aprobación del plan — 2026-11-03
+
+El usuario respondió «apruebo» a la solicitud de aprobar el plan del commit
+`125f313`. Quedan aprobados diseño, investigación, modelo, contratos, matriz Android,
+presupuestos y protocolo de usabilidad de esa revisión. Se autoriza generar tareas,
+no ejecutarlas ni implementar. Las referencias anteriores a propuesta son históricas
+y no constituyen evidencia de que las pruebas o el estudio se hayan realizado.
+
+## Tareas generadas tras aprobación
+
+Se preparó [tasks.md](tasks.md) con35 tareas pendientes vinculadas a HU-03,
+contratos C1–C6 y criterios de aceptación/éxito. No se ha ejecutado ninguna;
+se requiere autorización de la etapa de tareas antes de implementar.
