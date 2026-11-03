@@ -1,8 +1,9 @@
 # Guía de validación F03 — ejecución futura
 
-**Estado**: propuesta; usar después de aprobar plan, tareas e implementación.
-Los archivos de prueba F03 mencionados abajo todavía no existen. Ningún comando
-ni escenario de esta guía se declara ejecutado. [Contratos](contracts/inicio-navegacion.md)
+**Estado**: plan y tareas aprobados; implementación local disponible.
+Los runners F03 ya existen; resultados efectivamente ejecutados en validation/.
+Esta guía describe la validación completa y no afirma que todos sus escenarios
+se hayan realizado. [Contratos](contracts/inicio-navegacion.md)
 y [modelo](data-model.md) definen el comportamiento; no duplicar controladores aquí.
 
 ## 1. Preparar entorno y baseline
@@ -11,8 +12,9 @@ En la raíz del repositorio, comprobar rama/commit y cambios locales antes de op
 No descartar trabajo del usuario ni actualizar Flutter/dependencias silenciosamente.
 Preparar Flutter3.47.8/Dart3.13.7 y SDK Android compatible con API24/API36, licencias,
 Java y acceso de descarga. Mantener caches/configuración en directorios escribibles.
-El entorno actual no tiene Flutter/Dart en PATH ni `/workspace/.tools`; preparar
-herramientas será requisito de implementación. Nunca etiquetar un fallo de instalación
+En esta sesión se preparó el SDK oficial en `/tmp/priva-flutter` y caches en
+`/tmp/priva-pub`; estas rutas son temporales y no se presumen presentes en otro
+equipo. Las versiones/comandos realmente usados se registran en validation/. Nunca etiquetar un fallo de instalación
 como prueba de comportamiento ni eludir validación TLS.
 
 ```bash

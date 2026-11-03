@@ -1,3 +1,7 @@
+import '../features/navigation/application/navigation_controller.dart';
+import '../features/navigation/data/destination_catalog.dart';
+import '../features/navigation/presentation/home_screen.dart';
+
 import 'package:flutter/material.dart';
 
 import '../features/profile/data/profile_repository.dart';
@@ -24,7 +28,9 @@ class AccountRouter {
     this.profileRepository,
     this.deletionContactService,
     this.profileObserver,
+    this.navigation,
   });
+  final NavigationController? navigation;
   final AccountController controller;
   final AccountDestinationBuilder? destinationBuilder;
   final ProfileRepository? profileRepository;
@@ -50,9 +56,19 @@ class AccountRouter {
           profileRepository: profileRepository,
           contact: deletionContactService,
           observer: profileObserver,
+          navigation: navigation,
         );
     }
-    return MaterialPageRoute<void>(settings: settings, builder: (_) => child);
+    return MaterialPageRoute<void>(
+      settings: settings,
+      builder: (_) => navigation == null
+          ? child
+          : NavigationPageGuard(
+              controller: navigation!,
+              path: path,
+              child: child,
+            ),
+    );
   }
 }
 
@@ -64,6 +80,7 @@ class _GuardedDestination extends StatelessWidget {
     this.profileRepository,
     this.contact,
     this.observer,
+    this.navigation,
   });
   final AccountController controller;
   final String path;
@@ -71,12 +88,43 @@ class _GuardedDestination extends StatelessWidget {
   final ProfileRepository? profileRepository;
   final DeletionContactService? contact;
   final RouteObserver<PageRoute<dynamic>>? observer;
+  final NavigationController? navigation;
   @override
   Widget build(BuildContext context) => AnimatedBuilder(
-    animation: controller,
+    animation: navigation == null
+        ? controller
+        : Listenable.merge([controller, navigation!]),
     builder: (context, _) {
+      final destination = destinationFor(path);
+      if (destination == null) {
+        return AccountScaffold(
+          controller: controller,
+          title: 'Sección no encontrada',
+          child: Builder(
+            builder: (context) => TextButton(
+              onPressed: () => navigation?.navigate(context, '/tips'),
+              child: const Text('Volver a Tips'),
+            ),
+          ),
+        );
+      }
       if (!canOpenDestination(path, controller.state)) {
         return SigninScreen(controller: controller, accessRequired: true);
+      }
+      if (destination.requiresResult && navigation?.hasResult != true) {
+        return AccountScaffold(
+          controller: controller,
+          title: 'No hay un resultado disponible',
+          child: Builder(
+            builder: (context) => TextButton(
+              onPressed: () => navigation?.navigate(context, '/questionnaire'),
+              child: const Text('Volver al cuestionario'),
+            ),
+          ),
+        );
+      }
+      if (path == '/home' && builder == null) {
+        return HomeScreen(account: controller);
       }
       if (path == '/profile' && profileRepository != null && builder == null) {
         return ProfileScreen(

@@ -1,3 +1,5 @@
+import '../../navigation/data/destination_catalog.dart';
+
 enum AccountPhase { visitor, pendingVerification, authenticated, recovering }
 
 class AccountSession {
@@ -33,17 +35,10 @@ class AccountState {
       phase == AccountPhase.authenticated && session?.canAccessPrivate == true;
 }
 
-bool isPublicDestination(String route) => const {
-  '/tips',
-  '/tips/passwords',
-  '/tips/sharing',
-  '/tips/links',
-  '/tips/profiles',
-  '/signin',
-  '/signup',
-  '/confirm',
-  '/recovery',
-}.contains(route);
+bool isPublicDestination(String route) =>
+    destinationFor(route) != null &&
+    destinationFor(route)!.access != DestinationAccess.private;
 
 bool canOpenDestination(String route, AccountState state) =>
-    isPublicDestination(route) || state.canAccessPrivate;
+    destinationFor(route) != null &&
+    (isPublicDestination(route) || state.canAccessPrivate);

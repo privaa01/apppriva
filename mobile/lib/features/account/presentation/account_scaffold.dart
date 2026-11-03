@@ -1,3 +1,8 @@
+import 'dart:async';
+
+import '../../navigation/application/navigation_controller.dart';
+import '../../navigation/data/destination_catalog.dart';
+
 import 'package:flutter/material.dart';
 
 import '../application/account_controller.dart';
@@ -8,6 +13,11 @@ void openAccountDestination(
   String path,
   AccountController controller,
 ) {
+  final navigation = NavigationScope.maybeOf(context);
+  if (navigation != null) {
+    unawaited(navigation.navigate(context, path));
+    return;
+  }
   if (!canOpenDestination(path, controller.state)) {
     ScaffoldMessenger.of(context).showSnackBar(
       const SnackBar(content: Text('Inicia sesión para continuar.')),
@@ -27,30 +37,59 @@ class AccountScaffold extends StatelessWidget {
     required this.title,
     required this.child,
     this.navigation = true,
+    this.navigationPath,
   });
   final AccountController controller;
   final String title;
   final Widget child;
   final bool navigation;
+  final String? navigationPath;
   @override
   Widget build(BuildContext context) {
     final large = MediaQuery.textScalerOf(context).scale(1) > 1.3;
-    Widget destination(String label, IconData icon, String route) => Expanded(
-      child: TextButton(
-        onPressed: () => openAccountDestination(context, route, controller),
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Icon(icon),
-            Text(label, textAlign: TextAlign.center),
-          ],
+    final section = destinationFor(
+      navigationPath ?? ModalRoute.of(context)?.settings.name ?? '',
+    )?.section;
+    Widget destination(String label, IconData icon, String route) {
+      final selected =
+          section != null && section == destinationFor(route)?.section;
+      return Expanded(
+        child: TextButton(
+          style: TextButton.styleFrom(
+            minimumSize: const Size(48, 64),
+            padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 8),
+            side: selected
+                ? BorderSide(
+                    color: Theme.of(context).colorScheme.primary,
+                    width: 2,
+                  )
+                : BorderSide.none,
+          ),
+          onPressed: () => openAccountDestination(context, route, controller),
+          child: Semantics(
+            selected: selected,
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                ExcludeSemantics(child: Icon(icon)),
+                Text(
+                  label,
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    fontWeight: selected ? FontWeight.bold : FontWeight.normal,
+                  ),
+                ),
+              ],
+            ),
+          ),
         ),
-      ),
-    );
+      );
+    }
+
     return Scaffold(
       appBar: navigation
           ? PreferredSize(
-              preferredSize: Size.fromHeight(large ? 124 : 90),
+              preferredSize: Size.fromHeight(large ? 160 : 90),
               child: SafeArea(
                 bottom: false,
                 child: Padding(

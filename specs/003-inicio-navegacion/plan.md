@@ -230,3 +230,12 @@ y no constituyen evidencia de que las pruebas o el estudio se hayan realizado.
 Se preparó [tasks.md](tasks.md) con35 tareas pendientes vinculadas a HU-03,
 contratos C1–C6 y criterios de aceptación/éxito. No se ha ejecutado ninguna;
 se requiere autorización de la etapa de tareas antes de implementar.
+
+## Implementación autorizada — 2026-11-03
+
+El usuario aprobó las tareas del commit2cd833f e iniciar implementación mediante
+«apruebo». Se implementó el módulo y la integración F01/F02;27/35 tareas completadas
+como desarrollo/regresión local/preparación de runners. Las124 pruebas locales
+y análisis0 diagnósticos no certifican Android físico, mediciones ni participantes.
+Consultar validation/current-results.json y delivery-review.md; sin aceptación
+final ni avance a F04. Los estados anteriores describen la historia de planificación.

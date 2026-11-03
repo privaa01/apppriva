@@ -1,3 +1,5 @@
+import '../../navigation/application/navigation_controller.dart';
+
 import 'dart:async';
 
 import 'package:flutter/material.dart';
@@ -104,119 +106,122 @@ class _ProfileScreenState extends State<ProfileScreen> with RouteAware {
       final editing =
           state.phase == ProfilePhase.editing ||
           state.phase == ProfilePhase.saving;
-      return PopScope(
-        canPop: state.phase != ProfilePhase.saving,
-        child: AccountScaffold(
-          controller: widget.account,
-          title: 'Perfil',
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              const ExcludeSemantics(
-                child: Icon(Icons.account_circle, size: 96),
-              ),
-              const SizedBox(height: 20),
-              if (state.phase == ProfilePhase.loading)
-                Semantics(
-                  label: 'Cargando perfil',
-                  liveRegion: true,
-                  child: const LinearProgressIndicator(),
+      return NavigationExitGuard(
+        canLeave: state.phase != ProfilePhase.saving,
+        child: PopScope(
+          canPop: state.phase != ProfilePhase.saving,
+          child: AccountScaffold(
+            controller: widget.account,
+            title: 'Perfil',
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                const ExcludeSemantics(
+                  child: Icon(Icons.account_circle, size: 96),
                 ),
-              if (state.message != null)
-                Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 16),
-                  child: Semantics(
+                const SizedBox(height: 20),
+                if (state.phase == ProfilePhase.loading)
+                  Semantics(
+                    label: 'Cargando perfil',
                     liveRegion: true,
-                    child: Text(
-                      state.message!,
-                      style: TextStyle(
-                        color: state.phase == ProfilePhase.ready
-                            ? Theme.of(context).colorScheme.primary
-                            : Theme.of(context).colorScheme.error,
+                    child: const LinearProgressIndicator(),
+                  ),
+                if (state.message != null)
+                  Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 16),
+                    child: Semantics(
+                      liveRegion: true,
+                      child: Text(
+                        state.message!,
+                        style: TextStyle(
+                          color: state.phase == ProfilePhase.ready
+                              ? Theme.of(context).colorScheme.primary
+                              : Theme.of(context).colorScheme.error,
+                        ),
                       ),
                     ),
                   ),
-                ),
-              if (data != null) ...[
-                Text(
-                  'Hola, ${data.name}.',
-                  key: const Key('profile.greeting'),
-                  textAlign: TextAlign.center,
-                  style: Theme.of(context).textTheme.headlineSmall,
-                ),
-                const SizedBox(height: 24),
-                const Text('Correo electrónico'),
-                Text(data.email, key: const Key('profile.email')),
-                const SizedBox(height: 24),
-                if (editing) ...[
-                  TextFormField(
-                    key: const Key('profile.name'),
-                    controller: _name,
-                    decoration: const InputDecoration(
-                      labelText: 'Nombre',
-                      helperText: 'Este nombre se usa para saludarte.',
+                if (data != null) ...[
+                  Text(
+                    'Hola, ${data.name}.',
+                    key: const Key('profile.greeting'),
+                    textAlign: TextAlign.center,
+                    style: Theme.of(context).textTheme.headlineSmall,
+                  ),
+                  const SizedBox(height: 24),
+                  const Text('Correo electrónico'),
+                  Text(data.email, key: const Key('profile.email')),
+                  const SizedBox(height: 24),
+                  if (editing) ...[
+                    TextFormField(
+                      key: const Key('profile.name'),
+                      controller: _name,
+                      decoration: const InputDecoration(
+                        labelText: 'Nombre',
+                        helperText: 'Este nombre se usa para saludarte.',
+                      ),
+                      textInputAction: TextInputAction.done,
+                      autofillHints: const [AutofillHints.name],
+                      enabled: !_profile.operationPending,
+                      onChanged: _profile.changeDraft,
+                      onFieldSubmitted: (_) =>
+                          _profile.operationPending ? null : _save(),
                     ),
-                    textInputAction: TextInputAction.done,
-                    autofillHints: const [AutofillHints.name],
-                    enabled: !_profile.operationPending,
-                    onChanged: _profile.changeDraft,
-                    onFieldSubmitted: (_) =>
-                        _profile.operationPending ? null : _save(),
-                  ),
-                  const SizedBox(height: 16),
-                  AccountSubmit(
-                    key: const Key('profile.save'),
-                    label: 'Guardar nombre',
-                    busy: state.phase == ProfilePhase.saving,
-                    onPressed: _profile.operationPending ? null : _save,
-                  ),
+                    const SizedBox(height: 16),
+                    AccountSubmit(
+                      key: const Key('profile.save'),
+                      label: 'Guardar nombre',
+                      busy: state.phase == ProfilePhase.saving,
+                      onPressed: _profile.operationPending ? null : _save,
+                    ),
+                    TextButton(
+                      key: const Key('profile.cancel'),
+                      onPressed: _profile.operationPending
+                          ? null
+                          : () {
+                              FocusScope.of(context).unfocus();
+                              _profile.cancelEdit();
+                            },
+                      child: const Text('Cancelar'),
+                    ),
+                  ] else if (state.phase == ProfilePhase.ready)
+                    TextButton.icon(
+                      key: const Key('profile.edit'),
+                      onPressed: _profile.beginEdit,
+                      icon: const Icon(Icons.edit_outlined),
+                      label: const Text('Editar nombre'),
+                    ),
+                ],
+                if (state.phase == ProfilePhase.error ||
+                    state.phase == ProfilePhase.unknown)
                   TextButton(
-                    key: const Key('profile.cancel'),
+                    key: const Key('profile.reload'),
                     onPressed: _profile.operationPending
                         ? null
-                        : () {
-                            FocusScope.of(context).unfocus();
-                            _profile.cancelEdit();
-                          },
-                    child: const Text('Cancelar'),
+                        : () => _profile.load(),
+                    child: const Text('Volver a consultar el perfil'),
                   ),
-                ] else if (state.phase == ProfilePhase.ready)
-                  TextButton.icon(
-                    key: const Key('profile.edit'),
-                    onPressed: _profile.beginEdit,
-                    icon: const Icon(Icons.edit_outlined),
-                    label: const Text('Editar nombre'),
-                  ),
-              ],
-              if (state.phase == ProfilePhase.error ||
-                  state.phase == ProfilePhase.unknown)
+                const SizedBox(height: 24),
                 TextButton(
-                  key: const Key('profile.reload'),
-                  onPressed: _profile.operationPending
-                      ? null
-                      : () => _profile.load(),
-                  child: const Text('Volver a consultar el perfil'),
+                  key: const Key('profile.delete.info'),
+                  onPressed: () {
+                    showDialog<void>(
+                      context: context,
+                      builder: (_) =>
+                          _DeletionContactDialog(contact: widget.contact),
+                    );
+                  },
+                  child: const Text('Solicitar eliminación de mis datos'),
                 ),
-              const SizedBox(height: 24),
-              TextButton(
-                key: const Key('profile.delete.info'),
-                onPressed: () {
-                  showDialog<void>(
-                    context: context,
-                    builder: (_) =>
-                        _DeletionContactDialog(contact: widget.contact),
-                  );
-                },
-                child: const Text('Solicitar eliminación de mis datos'),
-              ),
-              const SizedBox(height: 16),
-              AccountSubmit(
-                key: const Key('profile.signout'),
-                label: 'Cerrar sesión',
-                busy: false,
-                onPressed: _closing ? null : _signOut,
-              ),
-            ],
+                const SizedBox(height: 16),
+                AccountSubmit(
+                  key: const Key('profile.signout'),
+                  label: 'Cerrar sesión',
+                  busy: false,
+                  onPressed: _closing ? null : _signOut,
+                ),
+              ],
+            ),
           ),
         ),
       );

@@ -131,3 +131,23 @@ usuarios ni envía correos. No se ha ejecutado desde este runner sin dispositivo
 
 Resultados/límites: `../specs/002-perfil-cuenta/validation/`. No declarar F02 aceptado
 por disponer de pruebas locales; reglas, TalkBack, correo nativo y matriz pendientes.
+
+## F03 — Inicio y navegación (implementación local)
+
+P01 presenta las tres herramientas con los textos educativos aprobados. El catálogo
+cerrado aplica acceso según F01; Tips permanece público. La cabecera/menú indican
+sección activa, no duplican vistas al reseleccionar y respetan el guardado de Perfil.
+El cambio de UID revoca el permiso anterior y se limpia historial privado.
+
+Los módulos F04–F07 no están entregados por este cambio: muestran su disponibilidad
+real. La frontera de cuestionario usa un puerto vacío en producción y uno sintético
+en pruebas; no hay preguntas, score, respuestas ni resultados persistidos.
+
+Validación local:124 pruebas y análisis0 diagnósticos. Runners Android preparados:
+`integration_test/navigation_test.dart` y `navigation_performance_test.dart`.
+Véase [guía F03](../specs/003-inicio-navegacion/quickstart.md) y
+[estado de entrega](../specs/003-inicio-navegacion/validation/delivery-review.md)
+para distinguir ejecución local, build y controles nativos/humanos pendientes.
+En un SDK configurado ejecutar `flutter test` y `flutter analyze --fatal-infos`;
+el script `tool/analyze.sh` permite `PRIVA_FLUTTER_ROOT` y `PUB_CACHE` propios
+cuando se necesita el analizador en Docker con configuración escribible.

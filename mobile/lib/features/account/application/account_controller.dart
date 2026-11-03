@@ -39,7 +39,9 @@ class AccountController extends ChangeNotifier {
     _subscription ??= repository.sessionChanges.listen(
       (session) {
         // Stream events can revoke an existing grant, never create a new one.
-        if (_state.canAccessPrivate && session?.canAccessPrivate != true) {
+        if (_state.canAccessPrivate &&
+            (session?.canAccessPrivate != true ||
+                session?.userId != _state.session?.userId)) {
           _generation++;
           _set(const AccountState());
         }

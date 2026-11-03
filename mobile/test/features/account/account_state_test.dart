@@ -67,6 +67,21 @@ void main() {
     expect(controller.state.canAccessPrivate, isFalse);
     expect(controller.state.error, signInFailureMessage);
   });
+  test('valid stream identity change revokes prior grant', () async {
+    await controller.signIn(
+      email: 'persona@example.test',
+      password: 'Synthetic123!',
+    );
+    expect(controller.state.canAccessPrivate, isTrue);
+    repo.changes.add(
+      const AccountSession(
+        userId: 'different-user',
+        emailVerified: true,
+        passwordAuthenticated: true,
+      ),
+    );
+    expect(controller.state.canAccessPrivate, isFalse);
+  });
   test('untrusted auth event alone never unlocks navigation', () async {
     repo.changes.add(
       const AccountSession(

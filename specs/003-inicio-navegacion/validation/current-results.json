@@ -1,0 +1,97 @@
+{
+  "date": "2026-11-03",
+  "scope": "F03 local implementation; delivery validation pending",
+  "authorization": {
+    "tasks_commit": "2cd833f",
+    "message": "apruebo",
+    "accepted_delivery": false
+  },
+  "unit_widget_tests": {
+    "executed": true,
+    "passed": 124,
+    "failed": 0,
+    "f01_f02_baseline": 103,
+    "f03_new": 21
+  },
+  "static_analysis": {
+    "executed": true,
+    "diagnostics": 0,
+    "method": "mobile/tool/analyze.sh; pinned Docker image; SDK and PUB_CACHE in /tmp"
+  },
+  "android_build": {
+    "completed": true,
+    "command": "flutter build apk --debug --no-pub",
+    "type": "debug; not a release",
+    "apk_path": "mobile/build/app/outputs/flutter-apk/app-debug.apk",
+    "sha256": "e16284129cbea7720e0a3a1b20d28dd731e9226f33814e5b898f592f09027f13",
+    "bytes": 169062099,
+    "metadata": [
+      "package: name='com.priva' versionCode='1' versionName='0.1.0' platformBuildVersionName='16' platformBuildVersionCode='36' compileSdkVersion='36' compileSdkVersionCodename='16'",
+      "minSdkVersion:'24'",
+      "targetSdkVersion:'36'"
+    ],
+    "base_commit": "2cd833f",
+    "source_snapshot_sha256": "1a2764d9dec046442fda90926553c979390ae4cae89a0f786950af0e0bef78e6",
+    "source_snapshot_method": "sorted mobile/lib Dart files plus pubspec.yaml, pubspec.lock, app/build.gradle.kts and AndroidManifest.xml; path NUL bytes NUL",
+    "installed_and_matrix_validated": false
+  },
+  "native_tests": {
+    "prepared": true,
+    "executed": false,
+    "blockers": [
+      "No physical Android or running AVD",
+      "adb cannot create /home/agent/.android on read-only filesystem"
+    ]
+  },
+  "accessibility": {
+    "widget_geometries_dp": [
+      "320x720",
+      "412x915"
+    ],
+    "text_scales": [
+      1.0,
+      2.0
+    ],
+    "automated_pass": true,
+    "native_talkback_executed": false
+  },
+  "performance": {
+    "runner_prepared": true,
+    "native_executed": false,
+    "samples_collected": 0
+  },
+  "usability": {
+    "required_participants": 5,
+    "participants_tested": 0,
+    "valid_opportunities": 0,
+    "required_opportunities": 30,
+    "required_successes": 21,
+    "executed": false
+  },
+  "privacy_review": {
+    "code_and_synthetic_contracts_reviewed": true,
+    "native_storage_traffic_review_complete": false,
+    "new_backend_rules_or_data_stores": false
+  },
+  "temporary_journey": {
+    "production": "empty adapter",
+    "tests": "synthetic contracts",
+    "real_f06_f07_integrated": false
+  },
+  "tasks": {
+    "total": 35,
+    "completed": 27,
+    "pending": 8,
+    "pending_ids": [
+      "T027",
+      "T028",
+      "T030",
+      "T031",
+      "T032",
+      "T033",
+      "T034",
+      "T035"
+    ]
+  },
+  "accepted": false
+}

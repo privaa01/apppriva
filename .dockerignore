@@ -1,0 +1,14 @@
+.git/
+node_modules/
+**/build/
+**/.dart_tool/
+**/.gradle/
+**/.env*
+*.log
+**/coverage/
+**/*service-account*.json
+**/google-services.json
+**/GoogleService-Info.plist
+**/config/*.local.json
+
+**/.kotlin/

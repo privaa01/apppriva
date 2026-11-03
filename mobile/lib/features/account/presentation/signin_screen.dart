@@ -46,6 +46,7 @@ class _SigninScreenState extends State<SigninScreen> {
     builder: (context, _) => AccountScaffold(
       controller: widget.controller,
       title: '¡Ingresa a tu cuenta!',
+      navigationPath: '/signin',
       child: Form(
         key: _form,
         child: Column(

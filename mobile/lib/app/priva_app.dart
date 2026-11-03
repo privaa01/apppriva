@@ -1,3 +1,7 @@
+import '../features/navigation/application/navigation_controller.dart';
+import '../features/navigation/data/temporary_journey.dart';
+import '../features/navigation/data/destination_catalog.dart';
+
 import 'package:flutter/material.dart';
 
 import '../features/account/application/account_controller.dart';
@@ -15,7 +19,9 @@ class PrivaApp extends StatefulWidget {
     this.builder,
     this.profileRepository,
     this.deletionContactService,
+    this.temporaryJourney,
   });
+  final TemporaryJourney? temporaryJourney;
   final AccountController controller;
   final bool testMode;
   final String initialRoute;
@@ -27,12 +33,49 @@ class PrivaApp extends StatefulWidget {
   State<PrivaApp> createState() => _PrivaAppState();
 }
 
-class _PrivaAppState extends State<PrivaApp> {
+class _PrivaAppState extends State<PrivaApp> with WidgetsBindingObserver {
+  late TemporaryJourney _journey;
+  late NavigationController _navigation;
+  void _createNavigation() {
+    _journey = widget.temporaryJourney ?? EmptyTemporaryJourney();
+    _navigation = NavigationController(widget.controller, _journey);
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _createNavigation();
+    WidgetsBinding.instance.addObserver(this);
+  }
+
+  @override
+  void didUpdateWidget(PrivaApp oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    if (oldWidget.controller != widget.controller ||
+        oldWidget.temporaryJourney != widget.temporaryJourney) {
+      _navigation.dispose();
+      if (oldWidget.temporaryJourney == null) _journey.dispose();
+      _createNavigation();
+    }
+  }
+
+  @override
+  void didChangeAppLifecycleState(AppLifecycleState state) =>
+      _navigation.lifecycle(state);
+  @override
+  void dispose() {
+    WidgetsBinding.instance.removeObserver(this);
+    _navigation.dispose();
+    if (widget.temporaryJourney == null) _journey.dispose();
+    super.dispose();
+  }
+
   final _profileObserver = RouteObserver<PageRoute<dynamic>>();
   @override
   Widget build(BuildContext context) {
     final router = AccountRouter(
       controller: widget.controller,
+      navigation: _navigation,
       destinationBuilder: widget.destinationBuilder,
       profileRepository: widget.profileRepository,
       deletionContactService:
@@ -69,16 +112,46 @@ class _PrivaAppState extends State<PrivaApp> {
           style: TextButton.styleFrom(minimumSize: const Size(48, 48)),
         ),
       ),
+      navigatorKey: _navigation.navigatorKey,
       initialRoute: widget.initialRoute,
-      navigatorObservers: [_profileObserver],
+      navigatorObservers: [_profileObserver, _navigation.observer],
       onGenerateInitialRoutes: (route) => [
+        if (route.startsWith('/tips/') && destinationFor(route) != null)
+          router.onGenerateRoute(const RouteSettings(name: '/tips')),
         router.onGenerateRoute(RouteSettings(name: route)),
       ],
       onGenerateRoute: router.onGenerateRoute,
       builder: (context, child) {
         final built =
             widget.builder?.call(context, child) ?? child ?? const SizedBox();
-        if (!widget.testMode) return built;
+        final content = NavigationScope(
+          controller: _navigation,
+          child: AnimatedBuilder(
+            animation: _navigation,
+            child: built,
+            builder: (context, child) {
+              final sensitive = const [
+                '/questionnaire',
+                '/results',
+              ].contains(_navigation.state.path);
+              final hidden = _navigation.obscured && sensitive;
+              return Stack(
+                fit: StackFit.expand,
+                children: [
+                  ExcludeSemantics(
+                    excluding: hidden,
+                    child: IgnorePointer(ignoring: hidden, child: child!),
+                  ),
+                  if (hidden)
+                    const Positioned.fill(
+                      child: ColoredBox(color: Color(0xfff7f8f2)),
+                    ),
+                ],
+              );
+            },
+          ),
+        );
+        if (!widget.testMode) return content;
         return Column(
           children: [
             Material(
@@ -94,7 +167,7 @@ class _PrivaAppState extends State<PrivaApp> {
                 ),
               ),
             ),
-            Expanded(child: built),
+            Expanded(child: content),
           ],
         );
       },
