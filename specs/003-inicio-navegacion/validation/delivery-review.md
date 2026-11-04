@@ -33,3 +33,12 @@ nativas ni datos de participantes; no se inventaron resultados.
 Estado:27/35 tareas completadas, entrega funcional local, **sin aceptación final**.
 Se sincronizan código y evidencias para revisión, sin avanzar a F04 ni presentar
 F03 como cerrado. Los pendientes conservan sus condiciones de cierre explícitas.
+
+## Seguimiento — 2026-11-04
+
+Nueva incidencia de acceso: ver [investigación y validación](signin-incident-2026-11-04.md).
+La suite actual tiene129 pruebas satisfactorias, análisis0 y un nuevo APK debug;
+los resultados anteriores se conservan como historial. La causa real del fallo
+reportado sigue pendiente de clasificación desde el dispositivo afectado. El hash
+y artefacto vigentes están en current-results.json; el binario de la compilación
+anterior ha sido reemplazado localmente, sin representar una aceptación nativa.

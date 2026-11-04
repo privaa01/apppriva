@@ -148,14 +148,14 @@ class AccountController extends ChangeNotifier {
         );
       }
       return false;
-    } catch (_) {
+    } catch (error) {
       if (!_disposed && generation == _generation) {
         _set(
           AccountState(
             phase: before.phase,
             email: before.email,
             session: before.session,
-            error: errorMessage,
+            error: error is SignInFailure ? error.safeMessage : errorMessage,
           ),
         );
       }

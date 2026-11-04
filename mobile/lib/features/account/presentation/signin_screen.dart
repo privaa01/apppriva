@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../application/account_controller.dart';
+import '../../../app/account_errors.dart';
 import 'account_scaffold.dart';
 
 class SigninScreen extends StatefulWidget {
@@ -60,6 +61,13 @@ class _SigninScreenState extends State<SigninScreen> {
                 ),
               ),
             AccountMessages(controller: widget.controller),
+            if (widget.controller.state.error == signInFailureMessage)
+              const Padding(
+                padding: EdgeInsets.only(bottom: 16),
+                child: Text(
+                  'Cambiar la contraseña no verifica el correo. Comprueba que abriste el enlace de verificación enviado al registrarte.',
+                ),
+              ),
             TextFormField(
               key: const Key('signin.email'),
               controller: _email,

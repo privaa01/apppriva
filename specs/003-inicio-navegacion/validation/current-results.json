@@ -1,5 +1,5 @@
 {
-  "date": "2026-11-03",
+  "date": "2026-11-04",
   "scope": "F03 local implementation; delivery validation pending",
   "authorization": {
     "tasks_commit": "2cd833f",
@@ -8,10 +8,10 @@
   },
   "unit_widget_tests": {
     "executed": true,
-    "passed": 124,
+    "passed": 129,
     "failed": 0,
     "f01_f02_baseline": 103,
-    "f03_new": 21
+    "f03_new": 26
   },
   "static_analysis": {
     "executed": true,
@@ -22,16 +22,16 @@
     "completed": true,
     "command": "flutter build apk --debug --no-pub",
     "type": "debug; not a release",
-    "apk_path": "mobile/build/app/outputs/flutter-apk/app-debug.apk",
-    "sha256": "e16284129cbea7720e0a3a1b20d28dd731e9226f33814e5b898f592f09027f13",
+    "apk_path": "mobile/build/app/outputs/flutter-apk/priva-003-acceso-20261104.apk",
+    "sha256": "8e45544e17a4fdba78fbfb57e8043dd06d8eec508c3eab1a43d5ff79ac6f4de8",
     "bytes": 169062099,
     "metadata": [
       "package: name='com.priva' versionCode='1' versionName='0.1.0' platformBuildVersionName='16' platformBuildVersionCode='36' compileSdkVersion='36' compileSdkVersionCodename='16'",
       "minSdkVersion:'24'",
       "targetSdkVersion:'36'"
     ],
-    "base_commit": "2cd833f",
-    "source_snapshot_sha256": "1a2764d9dec046442fda90926553c979390ae4cae89a0f786950af0e0bef78e6",
+    "base_commit": "b79c5cc",
+    "source_snapshot_sha256": "36fecc30d0fbbe874a658c3dc3c4072a32431e3cdfa45ccc19b0aa09e3da127d",
     "source_snapshot_method": "sorted mobile/lib Dart files plus pubspec.yaml, pubspec.lock, app/build.gradle.kts and AndroidManifest.xml; path NUL bytes NUL",
     "installed_and_matrix_validated": false
   },
@@ -93,5 +93,33 @@
       "T035"
     ]
   },
-  "accepted": false
+  "accepted": false,
+  "previous_builds": [
+    {
+      "completed": true,
+      "command": "flutter build apk --debug --no-pub",
+      "type": "debug; not a release",
+      "apk_path": "mobile/build/app/outputs/flutter-apk/app-debug.apk",
+      "sha256": "e16284129cbea7720e0a3a1b20d28dd731e9226f33814e5b898f592f09027f13",
+      "bytes": 169062099,
+      "metadata": [
+        "package: name='com.priva' versionCode='1' versionName='0.1.0' platformBuildVersionName='16' platformBuildVersionCode='36' compileSdkVersion='36' compileSdkVersionCodename='16'",
+        "minSdkVersion:'24'",
+        "targetSdkVersion:'36'"
+      ],
+      "base_commit": "2cd833f",
+      "source_snapshot_sha256": "1a2764d9dec046442fda90926553c979390ae4cae89a0f786950af0e0bef78e6",
+      "source_snapshot_method": "sorted mobile/lib Dart files plus pubspec.yaml, pubspec.lock, app/build.gradle.kts and AndroidManifest.xml; path NUL bytes NUL",
+      "installed_and_matrix_validated": false
+    }
+  ],
+  "login_incident": {
+    "user_reports_password_changed": true,
+    "user_reports_email_verified": true,
+    "real_account_root_cause_confirmed": false,
+    "real_account_login_validated": false,
+    "safe_failure_diagnostics_added": true,
+    "invalid_credentials_and_unverified_public_message_identical": true,
+    "pending": "affected device reference from the new APK; do not infer native login success from synthetic tests"
+  }
 }

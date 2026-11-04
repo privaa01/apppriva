@@ -61,6 +61,7 @@ class Auth extends Fake implements FirebaseAuth {
   User? user;
   User? existingIdentity;
   bool signinFails = false;
+  String? signinFailureCode;
   String? signupFailure;
   Identity? created;
   @override
@@ -101,7 +102,12 @@ class Auth extends Fake implements FirebaseAuth {
     required String email,
     required String password,
   }) async {
-    if (signinFails) throw FirebaseAuthException(code: 'invalid-credential');
+    if (signinFails || signinFailureCode != null) {
+      throw FirebaseAuthException(
+        code: signinFailureCode ?? 'invalid-credential',
+        message: 'private provider message',
+      );
+    }
     user ??= existingIdentity;
     return Credential(user);
   }
@@ -115,6 +121,7 @@ class Auth extends Fake implements FirebaseAuth {
 class Store implements AccountRegistrationStore {
   bool recorded = false;
   bool failRead = false;
+  bool profileFails = false;
   bool failWrite = false;
   bool loseAcknowledgement = false;
   String? name;
@@ -133,10 +140,94 @@ class Store implements AccountRegistrationStore {
   }
 
   @override
-  Future<String?> profileName(String uid) async => name ?? 'Prueba';
+  Future<String?> profileName(String uid) async {
+    if (profileFails) throw StateError('private profile details');
+    return name ?? 'Prueba';
+  }
 }
 
 void main() {
+  test('invalid account and password outcomes remain identical without provider details', () async {
+    for (final code in [
+      'invalid-credential',
+      'user-not-found',
+      'wrong-password',
+    ]) {
+      final repo = FirebaseAccountRepository(
+        Auth(Identity())..signinFailureCode = code,
+        registrationStore: Store()..recorded = true,
+      );
+      try {
+        await repo.signIn(email: 'test@example.test', password: 'synthetic');
+        fail('must reject');
+      } on SignInFailure catch (error) {
+        expect(error.safeMessage, signInFailureMessage);
+        expect(error.safeMessage, isNot(contains('private')));
+      }
+      expect(repo.currentSession, isNull);
+    }
+  });
+  test(
+    'configuration failure produces sanitized actionable reference',
+    () async {
+      final repo = FirebaseAccountRepository(
+        Auth(Identity())..signinFailureCode = 'app-not-authorized',
+        registrationStore: Store()..recorded = true,
+      );
+      await expectLater(
+        repo.signIn(email: 'test@example.test', password: 'synthetic'),
+        throwsA(
+          isA<SignInFailure>().having(
+            (e) => e.issue,
+            'issue',
+            SignInIssue.configuration,
+          ),
+        ),
+      );
+    },
+  );
+  test('post-password evidence and profile failures identify stage without granting access', () async {
+    for (final issue in [
+      SignInIssue.authorizationMissing,
+      SignInIssue.authorizationRead,
+      SignInIssue.profileRead,
+    ]) {
+      final store = Store()
+        ..recorded = issue != SignInIssue.authorizationMissing
+        ..failRead = issue == SignInIssue.authorizationRead
+        ..profileFails = issue == SignInIssue.profileRead;
+      final auth = Auth(Identity());
+      final repo = FirebaseAccountRepository(auth, registrationStore: store);
+      await expectLater(
+        repo.signIn(email: 'test@example.test', password: 'synthetic'),
+        throwsA(isA<SignInFailure>().having((e) => e.issue, 'issue', issue)),
+      );
+      expect(repo.currentSession, isNull);
+      expect(auth.currentUser, isNull);
+    }
+  });
+  test(
+    'unverified identity retains the same public invalid-credential message',
+    () async {
+      final repo = FirebaseAccountRepository(
+        Auth(Identity(verified: false)),
+        registrationStore: Store()..recorded = true,
+      );
+      final controller = AccountController(repo);
+      await controller.initialize();
+      expect(
+        await controller.signIn(
+          email: 'test@example.test',
+          password: 'synthetic',
+        ),
+        isFalse,
+      );
+      expect(controller.state.error, signInFailureMessage);
+      expect(controller.state.canAccessPrivate, isFalse);
+      controller.dispose();
+    },
+  );
+
   test('missing server evidence revokes an existing private session', () async {
     final store = Store()..recorded = true;
     final repo = FirebaseAccountRepository(

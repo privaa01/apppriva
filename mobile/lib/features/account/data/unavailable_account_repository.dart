@@ -29,7 +29,7 @@ class UnavailableAccountRepository implements AccountRepository {
   Future<AccountSession?> signIn({
     required String email,
     required String password,
-  }) async => throw const AccountFailure();
+  }) async => throw const SignInFailure(SignInIssue.service);
   @override
   Future<void> requestRecovery(String email) async =>
       throw const AccountFailure();

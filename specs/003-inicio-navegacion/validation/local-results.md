@@ -30,3 +30,12 @@ regresiones/casos F03, incluida la revocación UID en cuenta), análisis **0 dia
 Comandos flutter test --no-pub y analizador Docker descrito arriba, ambos exit0.
 Logs de trabajo: /tmp/priva-f03-complete-tests.log y
 /tmp/priva-f03-complete-analysis.log. No se modificó código tras estas validaciones.
+
+## Seguimiento — 2026-11-04
+
+Nueva incidencia de acceso: ver [investigación y validación](signin-incident-2026-11-04.md).
+La suite actual tiene129 pruebas satisfactorias, análisis0 y un nuevo APK debug;
+los resultados anteriores se conservan como historial. La causa real del fallo
+reportado sigue pendiente de clasificación desde el dispositivo afectado. El hash
+y artefacto vigentes están en current-results.json; el binario de la compilación
+anterior ha sido reemplazado localmente, sin representar una aceptación nativa.

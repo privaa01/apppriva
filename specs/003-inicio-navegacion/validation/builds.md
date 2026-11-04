@@ -24,3 +24,12 @@ antes de futuras actualizaciones, sin actualizar ahora fuera del plan aprobado.
 **T027 sigue pendiente** por instalación/matriz API24/API36 y Android físico.
 Compilar no equivale a ejecutar, probar TalkBack o medir uso. APK debug para pruebas;
 no se publica como release ni se sube el binario a Git.
+
+## Seguimiento — 2026-11-04
+
+Nueva incidencia de acceso: ver [investigación y validación](signin-incident-2026-11-04.md).
+La suite actual tiene129 pruebas satisfactorias, análisis0 y un nuevo APK debug;
+los resultados anteriores se conservan como historial. La causa real del fallo
+reportado sigue pendiente de clasificación desde el dispositivo afectado. El hash
+y artefacto vigentes están en current-results.json; el binario de la compilación
+anterior ha sido reemplazado localmente, sin representar una aceptación nativa.

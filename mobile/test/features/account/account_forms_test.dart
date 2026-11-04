@@ -7,6 +7,36 @@ import 'package:priva_mobile/features/account/application/account_controller.dar
 import 'ui_test_repository.dart';
 
 void main() {
+  testWidgets(
+    'successful form sign in reaches real F03 home without a navigation reset',
+    (tester) async {
+      final repo = UiTestRepository();
+      final controller = AccountController(repo);
+      await controller.initialize();
+      await tester.pumpWidget(PrivaApp(controller: controller));
+      await tester.enterText(
+        find.byKey(const Key('signin.email')),
+        'persona@example.test',
+      );
+      await tester.enterText(
+        find.byKey(const Key('signin.password')),
+        'Synthetic123!',
+      );
+      await tester.ensureVisible(find.byKey(const Key('signin.submit')));
+      await tester.tap(find.byKey(const Key('signin.submit')));
+      await tester.pumpAndSettle();
+      expect(find.byKey(const Key('signin.submit')), findsNothing);
+      expect(
+        find.text('Aprende hábitos para cuidar tu información'),
+        findsOneWidget,
+      );
+      expect(controller.state.canAccessPrivate, isTrue);
+      await tester.pumpWidget(const SizedBox());
+      controller.dispose();
+      await repo.changes.close();
+    },
+  );
+
   testWidgets('P11 keeps navigation and errors never expose account status', (
     tester,
   ) async {

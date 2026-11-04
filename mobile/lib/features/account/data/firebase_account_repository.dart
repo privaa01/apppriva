@@ -48,34 +48,80 @@ class FirebaseAccountRepository extends UnavailableAccountRepository
     required String password,
   }) async {
     _session = null;
+    var stage = SignInIssue.credentials;
     try {
       final result = await auth.signInWithEmailAndPassword(
         email: email,
         password: password,
       );
       final user = result.user;
-      if (user == null || !user.emailVerified) throw const AccountFailure();
+      if (user == null) throw const SignInFailure(SignInIssue.credentials);
+      if (!user.emailVerified) {
+        throw const SignInFailure(SignInIssue.verification);
+      }
+      stage = SignInIssue.identity;
       final token = await user.getIdTokenResult(true);
-      // Evidence is checked against the server; editable identity metadata is not authority.
-      if (token.signInProvider != 'password' ||
-          await registrationStore?.hasAuthorization(user.uid) != true ||
-          auth.currentUser?.uid != user.uid) {
-        throw const AccountFailure();
+      if (token.signInProvider != 'password') {
+        throw const SignInFailure(SignInIssue.identity);
+      }
+      if (registrationStore == null) {
+        throw const SignInFailure(SignInIssue.configuration);
+      }
+      stage = SignInIssue.authorizationRead;
+      if (!await registrationStore!.hasAuthorization(user.uid)) {
+        throw const SignInFailure(SignInIssue.authorizationMissing);
+      }
+      stage = SignInIssue.profileRead;
+      final name = await registrationStore!.profileName(user.uid);
+      // Revalidate after every server read before granting the private session.
+      if (auth.currentUser?.uid != user.uid ||
+          auth.currentUser?.emailVerified != true) {
+        throw const SignInFailure(SignInIssue.identity);
       }
       return _session = AccountSession(
         userId: user.uid,
         emailVerified: true,
         passwordAuthenticated: true,
-        displayName: await registrationStore!.profileName(user.uid),
+        displayName: name,
       );
-    } catch (_) {
+    } catch (error) {
       _session = null;
       try {
         await auth.signOut();
       } catch (_) {
-        // No raw provider exceptions or credentials leave this adapter.
+        /* Remain unprivileged. */
       }
-      throw const AccountFailure();
+      if (error is SignInFailure) rethrow;
+      if (error is FirebaseAuthException) {
+        if (error.code == 'network-request-failed') {
+          throw const SignInFailure(SignInIssue.network);
+        }
+        if (error.code == 'too-many-requests') {
+          throw const SignInFailure(SignInIssue.rateLimited);
+        }
+        if (const {
+          'operation-not-allowed',
+          'invalid-api-key',
+          'app-not-authorized',
+          'invalid-app-id',
+          'configuration-not-found',
+        }.contains(error.code)) {
+          throw const SignInFailure(SignInIssue.configuration);
+        }
+        // All invalid account/password outcomes remain indistinguishable.
+        if (const {
+          'invalid-credential',
+          'invalid-login-credentials',
+          'wrong-password',
+          'user-not-found',
+          'user-disabled',
+          'invalid-email',
+        }.contains(error.code)) {
+          throw const SignInFailure(SignInIssue.credentials);
+        }
+        throw const SignInFailure(SignInIssue.service);
+      }
+      throw SignInFailure(stage);
     }
   }
 
