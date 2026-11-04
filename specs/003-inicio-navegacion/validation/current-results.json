@@ -8,10 +8,10 @@
   },
   "unit_widget_tests": {
     "executed": true,
-    "passed": 129,
+    "passed": 135,
     "failed": 0,
     "f01_f02_baseline": 103,
-    "f03_new": 26
+    "f03_new": 32
   },
   "static_analysis": {
     "executed": true,
@@ -22,16 +22,16 @@
     "completed": true,
     "command": "flutter build apk --debug --no-pub",
     "type": "debug; not a release",
-    "apk_path": "mobile/build/app/outputs/flutter-apk/priva-003-acceso-20261104.apk",
-    "sha256": "8e45544e17a4fdba78fbfb57e8043dd06d8eec508c3eab1a43d5ff79ac6f4de8",
-    "bytes": 169062099,
+    "apk_path": "mobile/build/app/outputs/flutter-apk/priva-003-sesion-20261104.apk",
+    "sha256": "e2fcc26c4d68cde9f5770dfd1fa120757b3f2341ada63f79184ef460896cd094",
+    "bytes": 192008049,
     "metadata": [
       "package: name='com.priva' versionCode='1' versionName='0.1.0' platformBuildVersionName='16' platformBuildVersionCode='36' compileSdkVersion='36' compileSdkVersionCodename='16'",
       "minSdkVersion:'24'",
       "targetSdkVersion:'36'"
     ],
-    "base_commit": "b79c5cc",
-    "source_snapshot_sha256": "36fecc30d0fbbe874a658c3dc3c4072a32431e3cdfa45ccc19b0aa09e3da127d",
+    "base_commit": "5926365",
+    "source_snapshot_sha256": "f932954a581920ff3177d109e91cf5642fb08b85820e8fb5f374721e1fb25753",
     "source_snapshot_method": "sorted mobile/lib Dart files plus pubspec.yaml, pubspec.lock, app/build.gradle.kts and AndroidManifest.xml; path NUL bytes NUL",
     "installed_and_matrix_validated": false
   },
@@ -111,6 +111,23 @@
       "source_snapshot_sha256": "1a2764d9dec046442fda90926553c979390ae4cae89a0f786950af0e0bef78e6",
       "source_snapshot_method": "sorted mobile/lib Dart files plus pubspec.yaml, pubspec.lock, app/build.gradle.kts and AndroidManifest.xml; path NUL bytes NUL",
       "installed_and_matrix_validated": false
+    },
+    {
+      "completed": true,
+      "command": "flutter build apk --debug --no-pub",
+      "type": "debug; not a release",
+      "apk_path": "mobile/build/app/outputs/flutter-apk/priva-003-acceso-20261104.apk",
+      "sha256": "8e45544e17a4fdba78fbfb57e8043dd06d8eec508c3eab1a43d5ff79ac6f4de8",
+      "bytes": 169062099,
+      "metadata": [
+        "package: name='com.priva' versionCode='1' versionName='0.1.0' platformBuildVersionName='16' platformBuildVersionCode='36' compileSdkVersion='36' compileSdkVersionCodename='16'",
+        "minSdkVersion:'24'",
+        "targetSdkVersion:'36'"
+      ],
+      "base_commit": "b79c5cc",
+      "source_snapshot_sha256": "36fecc30d0fbbe874a658c3dc3c4072a32431e3cdfa45ccc19b0aa09e3da127d",
+      "source_snapshot_method": "sorted mobile/lib Dart files plus pubspec.yaml, pubspec.lock, app/build.gradle.kts and AndroidManifest.xml; path NUL bytes NUL",
+      "installed_and_matrix_validated": false
     }
   ],
   "login_incident": {
@@ -159,5 +176,18 @@
     "device_model": null,
     "android_version": null,
     "full_validation_matrix_confirmed": false
+  },
+  "session_lifecycle_incident": {
+    "date": "2026-11-04",
+    "user_report": "session closes when app goes to background; it must remain open",
+    "native_sdk_restoration_added": true,
+    "restoration_requires_server_authorization": true,
+    "transient_network_error_retains_only_prior_validated_same_owner_grant": true,
+    "explicit_logout_invalidates_pending_restoration": true,
+    "questionnaire_restoration": false,
+    "password_storage_added": false,
+    "synthetic_tests_pass": true,
+    "real_device_retest_confirmed": false,
+    "status": "fix locally validated; awaiting Android user confirmation"
   }
 }

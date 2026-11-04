@@ -27,3 +27,8 @@ abstract interface class AccountRepository {
 abstract interface class EmailLinkRecovery {}
 
 abstract interface class EmailLinkVerification {}
+
+/// Revalidates an identity persisted by the native SDK; never stores passwords.
+abstract interface class SessionRestoration {
+  Future<AccountSession?> restoreSession();
+}

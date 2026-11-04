@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:priva_mobile/app/priva_app.dart';
@@ -10,16 +12,22 @@ import 'package:priva_mobile/features/account/data/firebase_registration_store.d
 import 'package:priva_mobile/features/account/data/priva_treatment_policy.dart';
 
 class Token extends Fake implements IdTokenResult {
-  Token(this.ready);
+  Token(this.ready, {this.provider = 'password'});
+  final String provider;
   final bool ready;
   @override
-  String? get signInProvider => 'password';
+  String? get signInProvider => provider;
   @override
   Map<String, dynamic>? get claims => {'priva_account_ready': ready};
 }
 
 class Identity extends Fake implements User {
-  Identity({this.verified = true, this.ready = true});
+  Identity({
+    this.verified = true,
+    this.ready = true,
+    this.provider = 'password',
+  });
+  final String provider;
   final bool verified, ready;
   bool deleted = false;
   bool mailFails = false;
@@ -47,7 +55,7 @@ class Identity extends Fake implements User {
   String? get displayName => 'Prueba';
   @override
   Future<IdTokenResult> getIdTokenResult([bool forceRefresh = false]) async =>
-      Token(ready);
+      Token(ready, provider: provider);
 }
 
 class Credential extends Fake implements UserCredential {
@@ -61,6 +69,7 @@ class Auth extends Fake implements FirebaseAuth {
   User? user;
   User? existingIdentity;
   bool signinFails = false;
+  int signins = 0;
   String? signinFailureCode;
   String? signupFailure;
   Identity? created;
@@ -98,10 +107,13 @@ class Auth extends Fake implements FirebaseAuth {
   @override
   Stream<User?> idTokenChanges() => Stream.value(user);
   @override
+  Stream<User?> authStateChanges() => Stream.value(user);
+  @override
   Future<UserCredential> signInWithEmailAndPassword({
     required String email,
     required String password,
   }) async {
+    signins++;
     if (signinFails || signinFailureCode != null) {
       throw FirebaseAuthException(
         code: signinFailureCode ?? 'invalid-credential',
@@ -122,6 +134,8 @@ class Store implements AccountRegistrationStore {
   bool recorded = false;
   bool failRead = false;
   bool profileFails = false;
+  bool transientRead = false;
+  Future<String?> Function()? profileLoader;
   bool failWrite = false;
   bool loseAcknowledgement = false;
   String? name;
@@ -135,18 +149,139 @@ class Store implements AccountRegistrationStore {
 
   @override
   Future<bool> hasAuthorization(String uid) async {
+    if (transientRead) {
+      throw FirebaseException(plugin: 'cloud_firestore', code: 'unavailable');
+    }
     if (failRead) throw StateError('synthetic server failure');
     return recorded;
   }
 
   @override
   Future<String?> profileName(String uid) async {
+    if (profileLoader != null) return profileLoader!();
     if (profileFails) throw StateError('private profile details');
     return name ?? 'Prueba';
   }
 }
 
 void main() {
+  test(
+    'native unverified or non-password identity never restores private access',
+    () async {
+      for (final identity in [
+        Identity(verified: false),
+        Identity(provider: 'custom'),
+      ]) {
+        final auth = Auth(identity);
+        final repo = FirebaseAccountRepository(
+          auth,
+          registrationStore: Store()..recorded = true,
+        );
+        expect(await repo.restoreSession(), isNull);
+        expect(repo.currentSession, isNull);
+      }
+    },
+  );
+
+  testWidgets(
+    'background and process recreation restore native login without another password',
+    (tester) async {
+      final auth = Auth(Identity());
+      final store = Store()..recorded = true;
+      final firstRepo = FirebaseAccountRepository(
+        auth,
+        registrationStore: store,
+      );
+      await firstRepo.signIn(email: 'test@example.test', password: 'synthetic');
+      final firstController = AccountController(firstRepo);
+      await firstController.initialize();
+      await tester.pumpWidget(PrivaApp(controller: firstController));
+      await tester.pumpAndSettle();
+      tester.binding.handleAppLifecycleStateChanged(AppLifecycleState.inactive);
+      tester.binding.handleAppLifecycleStateChanged(AppLifecycleState.paused);
+      tester.binding.handleAppLifecycleStateChanged(AppLifecycleState.resumed);
+      await tester.pumpAndSettle();
+      expect(firstController.state.canAccessPrivate, isTrue);
+      await tester.pumpWidget(const SizedBox());
+      firstController.dispose();
+      final restoredRepo = FirebaseAccountRepository(
+        auth,
+        registrationStore: store,
+      );
+      final restoredController = AccountController(restoredRepo);
+      await tester.pumpWidget(PrivaApp(controller: restoredController));
+      await restoredController.initialize();
+      await tester.pumpAndSettle();
+      expect(
+        find.text('Aprende hábitos para cuidar tu información'),
+        findsOneWidget,
+      );
+      expect(find.byKey(const Key('signin.submit')), findsNothing);
+      expect(auth.signins, 1);
+      expect(restoredController.state.canAccessPrivate, isTrue);
+      await tester.pumpWidget(const SizedBox());
+      restoredController.dispose();
+    },
+  );
+  test(
+    'sign out invalidates a pending persisted-session restoration',
+    () async {
+      final pending = Completer<String?>();
+      final auth = Auth(Identity());
+      final store = Store()
+        ..recorded = true
+        ..profileLoader = () => pending.future;
+      final repo = FirebaseAccountRepository(auth, registrationStore: store);
+      final restoring = repo.restoreSession();
+      await Future<void>.delayed(Duration.zero);
+      await repo.signOut();
+      pending.complete('Prueba');
+      expect(await restoring, isNull);
+      expect(repo.currentSession, isNull);
+      expect(auth.currentUser, isNull);
+    },
+  );
+  test('restoration read failure preserves native identity but grants no private session', () async {
+    final auth = Auth(Identity());
+    final store = Store()
+      ..recorded = true
+      ..transientRead = true;
+    final repo = FirebaseAccountRepository(auth, registrationStore: store);
+    await expectLater(repo.restoreSession(), throwsA(isA<AccountFailure>()));
+    expect(repo.currentSession, isNull);
+    expect(auth.currentUser, isNotNull);
+  });
+
+  test(
+    'native persisted identity restores only after server authorization check',
+    () async {
+      final store = Store()..recorded = true;
+      final repo = FirebaseAccountRepository(
+        Auth(Identity()),
+        registrationStore: store,
+      );
+      expect(repo.currentSession, isNull);
+      expect((await repo.restoreSession())?.canAccessPrivate, isTrue);
+      store.recorded = false;
+      expect(await repo.restoreSession(), isNull);
+      expect(repo.currentSession, isNull);
+    },
+  );
+  test('transient token-event read failure keeps only an already validated same-owner session', () async {
+    final store = Store()..recorded = true;
+    final repo = FirebaseAccountRepository(
+      Auth(Identity()),
+      registrationStore: store,
+    );
+    final session = await repo.signIn(
+      email: 'test@example.test',
+      password: 'synthetic',
+    );
+    store.transientRead = true;
+    expect(await repo.sessionChanges.first, same(session));
+    expect(repo.currentSession, same(session));
+  });
+
   test('invalid account and password outcomes remain identical without provider details', () async {
     for (final code in [
       'invalid-credential',
@@ -671,7 +806,7 @@ void main() {
     'SDK events grant no access; legacy code validation stays blocked',
     () async {
       final repo = FirebaseAccountRepository(Auth(Identity()));
-      expect(await repo.sessionChanges.first, isNull);
+      expect(await repo.sessionChanges.isEmpty, isTrue);
       expect(await repo.loadPolicy(), isNull);
       await repo.requestRecovery('test@example.test');
       await expectLater(

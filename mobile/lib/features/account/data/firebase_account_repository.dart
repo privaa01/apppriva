@@ -10,43 +10,96 @@ import 'firebase_registration_store.dart';
 
 /// Native Firebase identity with immutable Firestore authorization evidence.
 class FirebaseAccountRepository extends UnavailableAccountRepository
-    implements EmailLinkRecovery, EmailLinkVerification {
+    implements EmailLinkRecovery, EmailLinkVerification, SessionRestoration {
   FirebaseAccountRepository(this.auth, {this.registrationStore});
   final AccountRegistrationStore? registrationStore;
   final FirebaseAuth auth;
   AccountSession? _session;
+  int _sessionRevision = 0;
 
   @override
   AccountSession? get currentSession => _session;
 
   @override
-  Stream<AccountSession?> get sessionChanges => auth.idTokenChanges().asyncMap((
-    user,
-  ) async {
-    // Events may revoke access but cannot establish a new private session.
+  Stream<AccountSession?>
+  get sessionChanges => auth.idTokenChanges().asyncExpand((user) async* {
+    // Skip events that precede any validated grant, including startup events.
     final existing = _session;
-    if (existing == null) return null;
+    if (existing == null) return;
+    AccountSession? validated = existing;
     try {
       if (user == null || !user.emailVerified || user.uid != existing.userId) {
-        _session = null;
+        validated = null;
+      } else {
+        final token = await user.getIdTokenResult();
+        if (token.signInProvider != 'password' ||
+            await registrationStore?.hasAuthorization(user.uid) != true) {
+          validated = null;
+        }
+      }
+    } catch (error) {
+      // Network unavailability is not evidence of logout or revoked consent.
+      // This can retain a prior grant only, never establish a new one.
+      final transient =
+          error is FirebaseException &&
+          const {
+            'unavailable',
+            'deadline-exceeded',
+            'network-request-failed',
+          }.contains(error.code);
+      if (!transient) validated = null;
+    }
+    if (!identical(_session, existing)) return;
+    if (auth.currentUser?.uid != existing.userId ||
+        auth.currentUser?.emailVerified != true) {
+      validated = null;
+    }
+    _session = validated;
+    yield validated;
+  });
+
+  @override
+  Future<AccountSession?> restoreSession() async {
+    final revision = ++_sessionRevision;
+    _session = null;
+    try {
+      final user = await auth.authStateChanges().first;
+      if (revision != _sessionRevision ||
+          user == null ||
+          !user.emailVerified ||
+          registrationStore == null) {
         return null;
       }
-      final token = await user.getIdTokenResult();
+      final token = await user.getIdTokenResult(true);
       if (token.signInProvider != 'password' ||
-          await registrationStore?.hasAuthorization(user.uid) != true) {
-        _session = null;
+          !await registrationStore!.hasAuthorization(user.uid)) {
+        return null;
       }
+      final name = await registrationStore!.profileName(user.uid);
+      if (revision != _sessionRevision ||
+          auth.currentUser?.uid != user.uid ||
+          auth.currentUser?.emailVerified != true) {
+        return null;
+      }
+      return _session = AccountSession(
+        userId: user.uid,
+        emailVerified: true,
+        passwordAuthenticated: true,
+        displayName: name,
+      );
     } catch (_) {
-      _session = null;
+      if (revision == _sessionRevision) _session = null;
+      // Preserve the native identity on connection errors; do not grant access.
+      throw const AccountFailure();
     }
-    return _session;
-  });
+  }
 
   @override
   Future<AccountSession?> signIn({
     required String email,
     required String password,
   }) async {
+    _sessionRevision++;
     _session = null;
     var stage = SignInIssue.credentials;
     try {
@@ -278,6 +331,7 @@ class FirebaseAccountRepository extends UnavailableAccountRepository
 
   @override
   Future<void> signOut() async {
+    _sessionRevision++;
     _session = null;
     try {
       await auth.signOut();

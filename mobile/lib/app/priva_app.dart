@@ -113,7 +113,11 @@ class _PrivaAppState extends State<PrivaApp> with WidgetsBindingObserver {
         ),
       ),
       navigatorKey: _navigation.navigatorKey,
-      initialRoute: widget.initialRoute,
+      initialRoute:
+          widget.initialRoute == '/signin' &&
+              widget.controller.state.canAccessPrivate
+          ? '/home'
+          : widget.initialRoute,
       navigatorObservers: [_profileObserver, _navigation.observer],
       onGenerateInitialRoutes: (route) => [
         if (route.startsWith('/tips/') && destinationFor(route) != null)

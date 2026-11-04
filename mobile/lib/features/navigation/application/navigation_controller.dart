@@ -84,6 +84,9 @@ class NavigationController extends ChangeNotifier {
       _invalidateDialog();
       _scheduleReset();
     }
+    if (_uid == null && next != null && state.path == '/signin') {
+      _scheduleReset();
+    }
     _uid = next;
     _publish();
   }

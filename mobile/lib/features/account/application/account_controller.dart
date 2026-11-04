@@ -60,6 +60,14 @@ class AccountController extends ChangeNotifier {
       } catch (_) {
         /* Fail closed. */
       }
+    } else if (repository is SessionRestoration) {
+      await _perform(() async {
+        final session = await (repository as SessionRestoration)
+            .restoreSession();
+        return session?.canAccessPrivate == true
+            ? AccountState(phase: AccountPhase.authenticated, session: session)
+            : const AccountState();
+      });
     }
     try {
       final loaded = await repository.loadPolicy().timeout(timeout);

@@ -143,7 +143,7 @@ Los módulos F04–F07 no están entregados por este cambio: muestran su disponi
 real. La frontera de cuestionario usa un puerto vacío en producción y uno sintético
 en pruebas; no hay preguntas, score, respuestas ni resultados persistidos.
 
-Validación local:129 pruebas y análisis0 diagnósticos. Runners Android preparados:
+Validación local:135 pruebas y análisis0 diagnósticos. Runners Android preparados:
 `integration_test/navigation_test.dart` y `navigation_performance_test.dart`.
 Véase [guía F03](../specs/003-inicio-navegacion/quickstart.md) y
 [estado de entrega](../specs/003-inicio-navegacion/validation/delivery-review.md)

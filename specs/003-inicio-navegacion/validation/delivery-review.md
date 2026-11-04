@@ -50,3 +50,10 @@ La incidencia AC-05 queda resuelta según ese reporte; los pendientes anteriores
 de comprobar acceso real son históricos. Ver [alcance de la confirmación](user-reported-manual.md).
 No constituye observación independiente, matriz Android completa, TalkBack, medición
 de rendimiento, estudio de usabilidad ni aceptación final de F03.
+
+## Corrección de conservación de sesión — 2026-11-04
+
+Se implementó restauración de Firebase Auth validada contra servidor y conservación
+de concesión previa ante errores de red transitorios, sin restaurar cuestionario.
+135 pruebas locales, análisis0, APK nuevo. Ver [incidencia](session-background-2026-11-04.md).
+Falta confirmar en Android real;27/35 tareas y aceptación pendiente sin cambios.

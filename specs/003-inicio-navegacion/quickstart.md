@@ -169,3 +169,21 @@ fallo/bloqueo y pendiente. Resolver todos los CA y defectos bloqueantes antes de
 solicitar aceptación; no suponer excepciones de F02 aplicables a F03. Repetir las
 fronteras reales de F06/F07 cuando se integren, sin declarar esos módulos terminados.
 Hacer commit/push y solicitar aceptación de F03 antes de avanzar a otro spec.
+
+## 8. Regresión de sesión al volver de segundo plano
+
+Con APK de sesión actualizado, cuenta sintética verificada y red disponible:
+
+1. Iniciar sesión, abrir otra app y volver a Priva: mantener la cuenta sin pedir
+   otra contraseña; descartar el recorrido temporal si corresponde.
+2. Terminar/reabrir el proceso sin borrar datos de la app: Firebase restaura identidad
+   nativa y Priva valida autorización en servidor antes de abrir Inicio.
+3. Cerrar sesión expresamente y repetir segundo plano/reapertura: mantener visitante,
+   sin recuperar rutas privadas ni una restauración que estuviera en espera.
+4. Comprobar error transitorio de conexión sin confundirlo con revocación confirmada.
+   No se exige acceso offline ni se guarda cuestionario para recuperar continuidad.
+
+Registrar modelo/Android y resultados reales; las135 pruebas locales con dobles y
+lifecycle inyectado no sustituyen esta comprobación. Revisar la evidencia de
+validation/session-background-2026-11-04.md y repetir integración real F06/F07 cuando
+existan esos módulos, sin afirmar que hoy se entregó su contenido.
