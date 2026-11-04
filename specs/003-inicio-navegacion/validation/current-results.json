@@ -1,10 +1,10 @@
 {
   "date": "2026-11-04",
-  "scope": "F03 local implementation; delivery validation pending",
+  "scope": "F03 delivery accepted by user with documented validation exceptions",
   "authorization": {
     "tasks_commit": "2cd833f",
     "message": "apruebo",
-    "accepted_delivery": false
+    "accepted_delivery": true
   },
   "unit_widget_tests": {
     "executed": true,
@@ -80,20 +80,20 @@
   },
   "tasks": {
     "total": 35,
-    "completed": 27,
-    "pending": 8,
-    "pending_ids": [
+    "completed": 29,
+    "pending": 0,
+    "pending_ids": [],
+    "deferred_or_partial": 6,
+    "deferred_ids": [
       "T027",
       "T028",
       "T030",
       "T031",
       "T032",
-      "T033",
-      "T034",
-      "T035"
+      "T033"
     ]
   },
-  "accepted": false,
+  "accepted": true,
   "previous_builds": [
     {
       "completed": true,
@@ -170,7 +170,8 @@
     "source": "Usuario: «listo, el inicio esta bien, se ve la navegacion del 003 y funciona»",
     "scope": [
       "real account sign in after rules update",
-      "F03 navigation visible and functioning"
+      "F03 navigation visible and functioning",
+      "session remains open after returning from background; user report"
     ],
     "independently_observed": false,
     "device_model": null,
@@ -187,7 +188,24 @@
     "questionnaire_restoration": false,
     "password_storage_added": false,
     "synthetic_tests_pass": true,
-    "real_device_retest_confirmed": false,
-    "status": "fix locally validated; awaiting Android user confirmation"
+    "real_device_retest_confirmed": true,
+    "status": "resolved per user report",
+    "confirmation_source": "user report; device model and OS not supplied",
+    "independently_observed": false
+  },
+  "acceptance": {
+    "date": "2026-11-04",
+    "source": "listo, se mantiene, aprueba las verficaciones del 003 y terminalo",
+    "type": "user-directed closure with documented evidence limitations",
+    "tests_not_executed_are_not_marked_passed": true,
+    "exceptions": {
+      "T027": "Matriz completa API24/API36 y tamaños sin evidencia; APK compilado e instalación/funcionamiento reportados.",
+      "T028": "Segundo plano/sesión y navegación reportados; sin evidencia completa de recreación, notificaciones y matriz nativa.",
+      "T030": "Accesibilidad automática satisfecha; TalkBack/foco nativo F03 sin reporte específico.",
+      "T031": "Runner preparado; no hay muestras nativas de rendimiento.",
+      "T032": "No hay estudio de cinco participantes ni30 oportunidades documentadas.",
+      "T033": "Revisión de código y contratos realizada; inspección nativa de almacenamiento/tráfico sin completar."
+    },
+    "does_not_approve_f04": true
   }
 }

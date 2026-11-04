@@ -24,3 +24,10 @@ La suite F01/F02 se ejecuta de nuevo, conservando sus tests y políticas. No tra
 una excepción/aceptación de esos specs a los controles faltantes de F03. La
 consolidación final y current-results.json deben actualizarse con resultados reales
 tras resolver los pendientes, antes de solicitar aceptación o avanzar a F04.
+
+## Cierre posterior — 2026-11-04
+
+El usuario confirmó conservación de sesión y aprobó cerrar F03. Ver
+[aceptación y limitaciones](closure-2026-11-04.md):29 tareas completadas,6 parciales/
+aplazadas. Los pendientes anteriores describen el estado histórico; no se convierten
+en resultados satisfactorios. Se preservan los límites de la evidencia ejecutada.

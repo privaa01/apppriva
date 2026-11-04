@@ -221,3 +221,10 @@ El usuario respondió «lo apruebo» a la revisión del commit `d8c4a55`. Quedan
 aprobados el alcance de F03, la prioridad P1, los criterios y la propuesta editorial
 de esa revisión. Se autoriza preparar el plan técnico, no generar o ejecutar tareas
 ni implementar. El registro anterior de aprobación pendiente es histórico.
+
+## Aceptación de la entrega — 2026-11-04
+
+Tras confirmar acceso, navegación y conservación de sesión, el usuario aprobó cerrar
+F03. La aceptación y los controles sin evidencia completa se distinguen en
+[el registro de cierre](validation/closure-2026-11-04.md). No se modifican requisitos
+para aparentar cumplimiento ni se declaran ejecutadas verificaciones no realizadas.

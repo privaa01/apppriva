@@ -57,3 +57,10 @@ source snapshot en current-results.json. No se modificó código tras validar.
 cierre/reapertura del proceso sin borrar datos y cerrar sesión explícitamente.
 Registrar modelo/Android/resultados. No cerrar T028 o aceptación F03 sin esas pruebas
 y el resto de controles pendientes. Los módulos F06/F07 reales siguen sin integrar.
+
+## Cierre posterior — 2026-11-04
+
+El usuario confirmó conservación de sesión y aprobó cerrar F03. Ver
+[aceptación y limitaciones](closure-2026-11-04.md):29 tareas completadas,6 parciales/
+aplazadas. Los pendientes anteriores describen el estado histórico; no se convierten
+en resultados satisfactorios. Se preservan los límites de la evidencia ejecutada.

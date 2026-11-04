@@ -239,3 +239,10 @@ como desarrollo/regresión local/preparación de runners. Las124 pruebas locales
 y análisis0 diagnósticos no certifican Android físico, mediciones ni participantes.
 Consultar validation/current-results.json y delivery-review.md; sin aceptación
 final ni avance a F04. Los estados anteriores describen la historia de planificación.
+
+## Cierre de entrega — 2026-11-04
+
+El usuario confirmó sesión conservada y aprobó terminar F03. Se registra aceptación
+con las limitaciones de evidencia y controles parciales/aplazados del
+[acta de cierre](validation/closure-2026-11-04.md), sin afirmar que se ejecutaron
+pruebas ausentes ni trasladar esas excepciones a otros specs.

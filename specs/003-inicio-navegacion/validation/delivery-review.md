@@ -1,4 +1,4 @@
-# Revisión de entrega F03 — pendiente de cierre
+# Revisión de entrega F03 — aceptada con limitaciones documentadas
 
 Implementación autorizada por «apruebo» sobre2cd833f. Checklist documental16/16
 con marcadores intactos. Sin hooks before/after_implement: no existe extensions.yml.
@@ -57,3 +57,10 @@ Se implementó restauración de Firebase Auth validada contra servidor y conserv
 de concesión previa ante errores de red transitorios, sin restaurar cuestionario.
 135 pruebas locales, análisis0, APK nuevo. Ver [incidencia](session-background-2026-11-04.md).
 Falta confirmar en Android real;27/35 tareas y aceptación pendiente sin cambios.
+
+## Cierre posterior — 2026-11-04
+
+El usuario confirmó conservación de sesión y aprobó cerrar F03. Ver
+[aceptación y limitaciones](closure-2026-11-04.md):29 tareas completadas,6 parciales/
+aplazadas. Los pendientes anteriores describen el estado histórico; no se convierten
+en resultados satisfactorios. Se preservan los límites de la evidencia ejecutada.

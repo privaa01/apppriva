@@ -151,3 +151,8 @@ para distinguir ejecución local, build y controles nativos/humanos pendientes.
 En un SDK configurado ejecutar `flutter test` y `flutter analyze --fatal-infos`;
 el script `tool/analyze.sh` permite `PRIVA_FLUTTER_ROOT` y `PUB_CACHE` propios
 cuando se necesita el analizador en Docker con configuración escribible.
+
+F03: cierre aceptado por el usuario el2026-11-04 tras confirmar que la sesión se
+mantiene. Las verificaciones sin evidencia completa quedan registradas como
+parciales/aplazadas en el [acta de cierre](../specs/003-inicio-navegacion/validation/closure-2026-11-04.md),
+sin presentarlas como pruebas ejecutadas ni aceptación de funcionalidades futuras.
