@@ -120,7 +120,7 @@
     "real_account_login_validated": false,
     "safe_failure_diagnostics_added": true,
     "invalid_credentials_and_unverified_public_message_identical": true,
-    "pending": "publish validated merged rules in priva-785cb default database and confirm real account login",
+    "pending": "confirm actual sign in after user-reported rules update",
     "user_reported_reference": "AC-05",
     "root_cause_evidence": "Reported published rules allow only demo_contact and deny Priva evidence reads; reproduced in emulator"
   },
@@ -138,6 +138,12 @@
     "reported_published_rules_inspected": true,
     "published_rules_source": "user-provided text",
     "reported_rules_reproduced": true,
-    "demo_contact_preserved": true
+    "demo_contact_preserved": true,
+    "user_reported_deployed": true,
+    "deployment_report": {
+      "date": "2026-11-04",
+      "source": "Usuario: «ya actualice lasreglas»",
+      "independently_verified": false
+    }
   }
 }

@@ -69,3 +69,12 @@ sesión administrativa utilizable en este entorno, por lo que no se ha publicado
 La causa de bloqueo en las reglas aportadas queda demostrada, pero el login real
 seguirá pendiente hasta aplicar/confirmar el cambio. No se crea evidencia manual,
 se modifican datos remotos ni se requiere regenerar la app para aplicar reglas.
+
+## Actualización reportada por el usuario — 2026-11-04
+
+El usuario indicó «ya actualice lasreglas» después de recibir el archivo corregido
+del commit cdbe38e. Se registra la actualización como reportada por el usuario,
+sin inspección administrativa independiente ni despliegue ejecutado por el asistente.
+El pendiente de publicación anterior describe el estado previo a esta confirmación.
+Falta confirmar inicio de sesión real con el APK actual; no se marca la incidencia
+resuelta, la entrega F03 aceptada ni tareas nativas completadas por este reporte.
