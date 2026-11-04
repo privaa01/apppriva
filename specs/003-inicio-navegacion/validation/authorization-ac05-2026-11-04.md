@@ -78,3 +78,11 @@ sin inspección administrativa independiente ni despliegue ejecutado por el asis
 El pendiente de publicación anterior describe el estado previo a esta confirmación.
 Falta confirmar inicio de sesión real con el APK actual; no se marca la incidencia
 resuelta, la entrega F03 aceptada ni tareas nativas completadas por este reporte.
+
+## Confirmación funcional posterior — 2026-11-04
+
+El usuario confirmó que ya inicia sesión y que la navegación del003 se ve y funciona.
+La incidencia AC-05 queda resuelta según ese reporte; los pendientes anteriores
+de comprobar acceso real son históricos. Ver [alcance de la confirmación](user-reported-manual.md).
+No constituye observación independiente, matriz Android completa, TalkBack, medición
+de rendimiento, estudio de usabilidad ni aceptación final de F03.

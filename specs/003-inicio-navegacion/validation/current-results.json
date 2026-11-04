@@ -117,12 +117,14 @@
     "user_reports_password_changed": true,
     "user_reports_email_verified": true,
     "real_account_root_cause_confirmed": true,
-    "real_account_login_validated": false,
+    "real_account_login_validated": true,
     "safe_failure_diagnostics_added": true,
     "invalid_credentials_and_unverified_public_message_identical": true,
-    "pending": "confirm actual sign in after user-reported rules update",
+    "pending": null,
     "user_reported_reference": "AC-05",
-    "root_cause_evidence": "Reported published rules allow only demo_contact and deny Priva evidence reads; reproduced in emulator"
+    "root_cause_evidence": "Reported published rules allow only demo_contact and deny Priva evidence reads; reproduced in emulator",
+    "validation_source": "user report; not independently observed",
+    "status": "resolved per user report"
   },
   "firestore_rules_validation": {
     "date": "2026-11-04",
@@ -145,5 +147,17 @@
       "source": "Usuario: «ya actualice lasreglas»",
       "independently_verified": false
     }
+  },
+  "manual_user_report": {
+    "date": "2026-11-04",
+    "source": "Usuario: «listo, el inicio esta bien, se ve la navegacion del 003 y funciona»",
+    "scope": [
+      "real account sign in after rules update",
+      "F03 navigation visible and functioning"
+    ],
+    "independently_observed": false,
+    "device_model": null,
+    "android_version": null,
+    "full_validation_matrix_confirmed": false
   }
 }

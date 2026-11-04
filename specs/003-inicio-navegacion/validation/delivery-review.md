@@ -42,3 +42,11 @@ los resultados anteriores se conservan como historial. La causa real del fallo
 reportado sigue pendiente de clasificación desde el dispositivo afectado. El hash
 y artefacto vigentes están en current-results.json; el binario de la compilación
 anterior ha sido reemplazado localmente, sin representar una aceptación nativa.
+
+## Confirmación funcional posterior — 2026-11-04
+
+El usuario confirmó que ya inicia sesión y que la navegación del003 se ve y funciona.
+La incidencia AC-05 queda resuelta según ese reporte; los pendientes anteriores
+de comprobar acceso real son históricos. Ver [alcance de la confirmación](user-reported-manual.md).
+No constituye observación independiente, matriz Android completa, TalkBack, medición
+de rendimiento, estudio de usabilidad ni aceptación final de F03.

@@ -15,3 +15,11 @@ Pendientes: ejecutar runner en API24/API36 y geometrías aprobadas; Home, recien
 notificación, retorno, destrucción/reinicio, sesión, retroceso y Perfil en Android
 físico. Registrar modelos/versiones/eventos/repruebas. No se afirma integración real
 F06/F07: producción usa un puerto vacío y los módulos de contenido siguen pendientes.
+
+## Confirmación funcional posterior — 2026-11-04
+
+El usuario confirmó que ya inicia sesión y que la navegación del003 se ve y funciona.
+La incidencia AC-05 queda resuelta según ese reporte; los pendientes anteriores
+de comprobar acceso real son históricos. Ver [alcance de la confirmación](user-reported-manual.md).
+No constituye observación independiente, matriz Android completa, TalkBack, medición
+de rendimiento, estudio de usabilidad ni aceptación final de F03.
