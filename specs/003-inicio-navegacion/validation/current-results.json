@@ -116,10 +116,28 @@
   "login_incident": {
     "user_reports_password_changed": true,
     "user_reports_email_verified": true,
-    "real_account_root_cause_confirmed": false,
+    "real_account_root_cause_confirmed": true,
     "real_account_login_validated": false,
     "safe_failure_diagnostics_added": true,
     "invalid_credentials_and_unverified_public_message_identical": true,
-    "pending": "affected device reference from the new APK; do not infer native login success from synthetic tests"
+    "pending": "publish validated merged rules in priva-785cb default database and confirm real account login",
+    "user_reported_reference": "AC-05",
+    "root_cause_evidence": "Reported published rules allow only demo_contact and deny Priva evidence reads; reproduced in emulator"
+  },
+  "firestore_rules_validation": {
+    "date": "2026-11-04",
+    "executed": true,
+    "passed": 17,
+    "failed": 0,
+    "skipped": 0,
+    "project": "demo-priva",
+    "rules_sha256": "16a6bb1350db45412ee6fd01f221202814b05ed89e9fe2c048e73617a168ffa0",
+    "rules_changed": true,
+    "deployed": false,
+    "real_rules_inspected": false,
+    "reported_published_rules_inspected": true,
+    "published_rules_source": "user-provided text",
+    "reported_rules_reproduced": true,
+    "demo_contact_preserved": true
   }
 }

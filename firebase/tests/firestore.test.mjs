@@ -68,3 +68,32 @@ test('non-password identity cannot write consent', async () => {
     firebase:{sign_in_provider:'anonymous'}}).firestore();
   await assertFails(signup(db,'alice'));
 });
+
+test('verified password owner can read missing evidence without a permission error', async () => {
+  const db = dbFor('missing-evidence-owner', true);
+  const snapshot = await assertSucceeds(getDoc(doc(db, 'authorization_evidence', 'missing-evidence-owner')));
+  if (snapshot.exists()) throw new Error('Synthetic missing record unexpectedly exists');
+  await assertFails(getDoc(doc(dbFor('other-owner', true), 'authorization_evidence', 'missing-evidence-owner')));
+  await assertFails(getDoc(doc(env.unauthenticatedContext().firestore(), 'authorization_evidence', 'missing-evidence-owner')));
+});
+
+const demoId='11111111-1111-4111-8111-111111111111';
+const demoPayload=()=>({mode:'demo',revision:'demo-contact-v1',nameOrAlias:'Visitante de prueba',email:'prueba@example.test',message:'Mensaje ficticio para probar el formulario.',consent:true,createdAt:serverTimestamp()});
+test('existing demo contact accepts only whitelisted fictitious fields and stays unreadable', async()=>{
+  const db=env.unauthenticatedContext().firestore();
+  await assertSucceeds(setDoc(doc(db,'demo_contact',demoId),demoPayload()));
+  await assertFails(getDoc(doc(db,'demo_contact',demoId)));
+  await assertFails(updateDoc(doc(db,'demo_contact',demoId),{consent:false}));
+  await assertFails(deleteDoc(doc(db,'demo_contact',demoId)));
+  await assertFails(setDoc(doc(db,'demo_contact','22222222-2222-4222-8222-222222222222'),{...demoPayload(),email:'not-approved@example.test'}));
+  await assertFails(setDoc(doc(db,'demo_contact','invalid-id'),demoPayload()));
+});
+test('existing suppression gate remains effective and suppression records remain private', async()=>{
+  await env.withSecurityRulesDisabled(async context=>{
+    await setDoc(doc(context.firestore(),'privacy_suppressions',demoId),{});
+  });
+  const db=env.unauthenticatedContext().firestore();
+  await assertFails(setDoc(doc(db,'demo_contact',demoId),demoPayload()));
+  await assertFails(getDoc(doc(db,'privacy_suppressions',demoId)));
+  await assertFails(getDoc(doc(dbFor('alice',true),'privacy_suppressions',demoId)));
+});

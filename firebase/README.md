@@ -131,3 +131,44 @@ Antes de publicar reglas nuevas, ejecutar las pruebas en entorno con emulador y
 acceso apropiados; después usar Firebase Console o el comando de despliegue
 exclusivo de reglas ya documentado. No usar modo público/de prueba como solución.
 La postergación de tests del001 no equivale a validación de la escritura nueva.
+
+## Investigación AC-05 — 2026-11-04
+
+La validación local ya se ejecutó: **14/14 pruebas satisfactorias**, sin cambios de
+reglas. Incluye lectura propia de evidencia ausente, visitantes/otra identidad y
+la suite de Perfil. Los bloqueos de descargas y pruebas no ejecutadas descritos
+arriba corresponden a intentos históricos, no al resultado de esta ejecución.
+
+Para reproducir en un entorno con HOME de solo lectura, usar directorios de cache
+escribibles sin redefinir HOME:
+
+```bash
+npm_config_cache=/tmp/priva-npm-cache npm ci
+FIREBASE_EMULATORS_PATH=/tmp/priva-firebase-emulators XDG_CONFIG_HOME=/tmp/priva-config XDG_CACHE_HOME=/tmp/priva-cache CI=true npm_config_cache=/tmp/priva-npm-cache npm test
+```
+
+El proyecto demo-priva de las pruebas no toca priva-785cb. AC-05 indica excepción
+al consultar la evidencia; evidencia inexistente consultada correctamente produce
+AC-04. Comparar las reglas realmente publicadas en la base(default) con
+[el archivo validado](firestore.rules) antes de atribuir la causa a reglas o datos.
+No hay publicación desde este entorno ni autorización fabricada. Ver
+[la evidencia y límites](../specs/003-inicio-navegacion/validation/authorization-ac05-2026-11-04.md).
+
+### Reglas publicadas aportadas y corrección combinada
+
+El usuario compartió reglas que solo daban create a demo_contact y denegaban
+las rutas Priva. Se reprodujo el rechazo y se preparó firestore.rules completo,
+conservando textualmente las reglas del demo y su control privacy_suppressions.
+Suite final: **17/17 satisfactorias**,0 omitidas. No se publicó desde este entorno.
+
+Aplicación por el responsable con su sesión Firebase:
+
+1. Abrir priva-785cb → Firestore Database → base(default) → Reglas.
+2. Copiar el contenido completo de [firestore.rules](firestore.rules), que ya incluye
+   demo_contact y las reglas restrictivas de cuenta/perfil.
+3. Publicar y reintentar el acceso con el APK actual. Registrar resultado real;
+   validar en emulador no demuestra que la configuración hospedada ya cambió.
+
+No editar documentos para simular autorización ni activar reglas públicas. El
+archivo anterior recibido se conserva solo como fixture de regresión; no es el
+archivo de despliegue. Firebase.json sigue apuntando a firestore.rules.
