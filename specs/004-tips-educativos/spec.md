@@ -1,117 +1,230 @@
-# Feature Specification: F04 — Consultar las cuatro categorías de tips
+# Feature Specification: F04 — Consultar las cuatro categorías de Tips
 
-**Feature Branch**: `work` (rama actual; la funcionalidad se selecciona por directorio)
-**Created**: 2026-10-21
-**Status**: Draft — especificación funcional separada; pendiente de aprobación.
-**Separated**: 2026-10-26
-**Input**: Especificar esta funcionalidad a partir de PRIVA_MOBILE_SPEC.md, sus pantallas y las decisiones explícitas del usuario.
-**Fuentes**: [Spec original](../../docs/referencias/PRIVA_MOBILE_SPEC.md), [PDF](../../docs/referencias/app.pdf).
-
-## Regla de acceso confirmada — 2026-10-26
-
-Decisión explícita del usuario: sin iniciar sesión solo se accede al contenido de
-Tips (P02 y sus cuatro detalles P03–P06). Crear cuenta, iniciar sesión y recuperar
-acceso siguen disponibles como flujos de entrada, no como contenido protegido.
-Con sesión iniciada se habilitan todas las funcionalidades de Priva dentro de su
-alcance aprobado; Perfil solo permite gestionar la propia cuenta.
-
-Se conserva la navegación del wireframe de acceso. Que un control esté visible
-NO concede acceso: Inicio, Perfil, Chat IA, Cuestionario y Resultados requieren
-sesión. Sin sesión, seleccionar una opción protegida debe indicar que se necesita
-iniciar sesión y no mostrar su contenido. El detalle visual del aviso no se fija aquí.
-Al cerrar sesión se revoca el acceso protegido y se descarta el cuestionario y su
-resultado; Tips continúa disponible. No se añade modo sin conexión.
-
-Esta decisión sustituye la exclusión visual del menú en acceso y la interpretación
-de que toda la app necesita cuenta. Los extractos del spec original que se conservan
-más abajo son antecedentes: ante discrepancia prevalece esta revisión explícita.
-No aprueba el resto del spec ni autoriza el cambio de etapa.
+**Feature Branch**: `work` (selección por directorio).
+**Created**: 2026-10-21. **Updated**: 2026-11-04.
+**Status**: Draft — revisión preparada para aprobación; no autoriza plan o implementación.
+**SPECIFY_FEATURE_DIRECTORY**: `specs/004-tips-educativos`.
+**Input**: «continua con la 004», después del cierre aprobado de F03.
+**Gobierno**: [constitución v1.1.0](../../.specify/memory/constitution.md).
+**Fuentes**: [original §§5, 6, HU-04, 12 y 15](../../docs/referencias/PRIVA_MOBILE_SPEC.md),
+[wireframes PDF](../../docs/referencias/app.pdf),
+[mapa de pantallas y brechas](../../docs/descomposicion/README.md),
+[decisiones de acceso](../../docs/referencias/ACTUALIZACION_PANTALLAS_2026-10-26.md).
 
 ## User Scenarios & Testing *(mandatory)*
 
-### HU-04 — Consultar tips (RF-06)
+### HU-04 — Consultar Tips (RF-06) (Priority: P1, propuesta para aprobación)
 
-Como usuario, quiero consultar recomendaciones para proteger mis datos.
+Como usuario, quiero consultar recomendaciones para proteger mis datos y comprender
+sus límites, sin tener que crear una cuenta.
 
-- **CA-04.1:** Tips presenta las cuatro categorías y un control «Ver más» por categoría.
-- **CA-04.2:** Al abrir una categoría veo su contenido, ejemplo y consejo revisados.
-- **CA-04.3:** Si falla la carga, se muestra un error y una opción para reintentar.
+**Why this priority**: Tips es la herramienta pública de Priva para personas de
+40–65 años. Sustituye los marcadores de navegación por contenido educativo revisado
+sin depender de entregar el chat o el cuestionario. Prioridad propuesta en este spec.
 
-**Prioridad:** pendiente de aprobación; la numeración es identificación, no orden de entrega.
-**Independent Test:** ejecutar los criterios CA anteriores en las pantallas asignadas,
-con sus precondiciones de sesión y contenido, comprobando el resultado funcional
-sin exigir implementar otras historias conforme a esta especificación; las pruebas aún no se han ejecutado.
-**Recorrido:** Tips → Ver más → detalle de categoría con recomendaciones, ejemplo y consejo → volver.
+**Independent Test**: como visitante y con sesión válida, abrir el catálogo y cada
+categoría, revisar recomendaciones/ejemplo/consejo y volver. Forzar carga fallida,
+contenido incompleto y reintento; comprobar texto ajustado, lector de pantalla y
+límites editoriales. No requiere implementar F05–F07 ni evaluar una cuenta externa.
+
+**Acceptance Scenarios**:
+
+- **CA-04.1:** Tips presenta exactamente las cuatro categorías aprobadas y un control
+  «Ver más» por categoría. Cada control se identifica también por su categoría para
+  quien usa lector de pantalla; no hay cuatro acciones indistinguibles.
+- **CA-04.2:** Al abrir una categoría se muestran título, recomendaciones, ejemplo
+  ficticio y consejo revisados que corresponden a ella. No se mezclan contenidos
+  de otra categoría ni se muestran ejemplos como información de la persona.
+- **CA-04.3:** Si falla la carga, se muestra un error sencillo y una opción para
+  reintentar el mismo destino. El fallo no se presenta como éxito o contenido vacío
+  normal, no exige iniciar sesión para recuperarse y no expone detalles técnicos.
+- **CA-04.4:** Visitante, cuenta aún no habilitada y sesión válida pueden consultar
+  P02–P06 y sus rutas directas. El contenido y sus recomendaciones no cambian según
+  nombre, correo, respuestas del cuestionario o conversaciones.
+- **CA-04.5:** Al volver desde un detalle se muestra el catálogo sin bucles ni copias
+  producidas por reseleccionar Tips. Tips se mantiene activo en los cuatro detalles,
+  visualmente y para el lector de pantalla, usando los contratos de F03.
+- **CA-04.6:** Mientras se espera contenido se muestra carga comprensible. Un registro
+  ausente, desconocido o incompleto produce indisponibilidad con acción recuperable,
+  no texto inventado ni el contenido de otra categoría como sustituto silencioso.
+- **CA-04.7:** El material de enlaces explica que HTTPS cifra la conexión y no
+  garantiza que el sitio sea legítimo. No identifica un enlace real como seguro o
+  fraudulento ni ejecuta comprobaciones sobre enlaces de la persona.
+- **CA-04.8:** El material de perfiles presenta señales como motivos para verificar
+  o limitar interacción, no como prueba de fraude. Pocos seguidores, antigüedad o
+  pocas publicaciones no bastan para concluir que un perfil es falso.
+- **CA-04.9:** Los ejemplos son ficticios y consultables dentro de Priva, sin pedir
+  contraseñas, fotos, ubicación, cuentas o enlaces de la persona. Ningún ejemplo
+  requiere abrir una web externa, subir archivos o dar permisos al dispositivo.
+- **CA-04.10:** Cada categoría entregada tiene contenido final aprobado y un registro
+  editorial con fuentes identificables, fecha de revisión y versión. Una propuesta
+  o una frase del wireframe no constituye por sí sola material revisado. Un cambio
+  de contenido actualiza esa evidencia y sus pruebas antes de entregarse.
+- **CA-04.11:** Texto al200% y lector de pantalla permiten recorrer catálogo, leer el
+  detalle, activar su acción y volver sin ocultar contenido/acciones. El estado de
+  carga/error/reintento es comprensible y el color no es la única señal.
+- **CA-04.12:** Consultar o reintentar no registra historial de lectura, categorías
+  visitadas, datos de cuenta ni respuestas/resultados. No incorpora favoritos,
+  personalización, analítica de uso o un formulario para evaluar casos personales.
+
+### Criterios de acceso preservados
+
+- **CA-ACC-01:** Sin sesión se consulta Tips P02 y sus cuatro detalles P03–P06.
+- **CA-ACC-02:** Los controles Inicio/Perfil/Chat IA/Cuestionario y Resultados siguen
+  sujetos a F01/F03: sin acceso habilitado no muestran contenido protegido.
+- **CA-ACC-03:** Una sesión válida habilita funciones sujetas a sus precondiciones;
+  entregar Tips no implementa el chat ni habilita Resultados sin intento completado.
+- **CA-ACC-04:** Al cerrar sesión, Tips sigue disponible; contenido protegido deja
+  de estarlo y el estado temporal de cuestionario/resultados se descarta según F03.
+- **CA-ACC-05:** P11 conserva la navegación del wireframe sin eludir restricciones.
+  F04 no modifica registro, acceso, recuperación, Perfil o restauración de sesión.
+
+Los IDs provienen de decisiones aprobadas; aquí se especifica su integración con
+Tips, sin declarar pruebas ejecutadas de esta funcionalidad.
 
 ### Edge Cases
 
-Contenido no disponible; fallo de carga; consejo engañoso; confundir HTTPS con garantía o indicios de perfiles con prueba de fraude.
+- Una URL directa a categoría desconocida no abre contenido de ejemplo ni convierte
+  un destino arbitrario en una sección pública; aplicar el catálogo cerrado de F03.
+- Pulsar varias veces «Ver más» o Reintentar no duplica vistas/contenido; una respuesta
+  tardía no reemplaza el detalle que la persona eligió después.
+- Falla la comprobación de cuenta, pero Tips puede cargarse: no transformar una
+  herramienta pública en una pantalla que obligue a registrarse.
+- Falla la red o el servicio de contenido: mostrar el estado recuperable sin prometer
+  un modo sin conexión o que las recomendaciones se encuentran actualizadas.
+- Fuentes o contenido inválidos/incompletos no se publican como revisados; las pruebas
+  deben distinguir el caso de un material válido que no pudo cargarse.
+- Ejemplo de contraseña enmascarado: explicar su carácter ilustrativo, sin presentarlo
+  como una contraseña de la persona o una herramienta para generar/evaluar claves.
+- Ejemplo de foto o perfil: ilustración ficticia, sin rostros, documentos o información
+  reales que se recolecten de usuarios para demostrar funcionamiento.
+- Referencia o URL ilustrativa: texto no accionable y sin dominio real que la persona
+  deba visitar para completar el recorrido. No inferir un escáner por mostrarla.
 
 ## Requirements *(mandatory)*
 
 ### Functional Requirements
 
-- **RF-06**: Mostrar cuatro categorías de tips y su detalle con recomendaciones, ejemplo y consejo.
+**RF-06**: mostrar cuatro categorías y sus detalles con recomendaciones, ejemplo y
+consejo. Subcriterios locales para trazar tareas y pruebas, sin sustituir el ID:
 
-### Asociación a pantallas
+- **RF-06.a:** ofrecer las cuatro categorías con título reconocible, resumen breve
+  y «Ver más» claramente asociado a cada una, respetando la composición de P02.
+- **RF-06.b:** entregar un detalle coherente por categoría con recomendaciones,
+  ejemplo ficticio y consejo legibles, sin formularios, captura ni evaluación de datos.
+- **RF-06.c:** mantener acceso público, rutas conocidas, selección Tips y retorno
+  de F03; el contenido no depende de tener perfil ni de completar otra herramienta.
+- **RF-06.d:** contemplar carga, error, indisponibilidad y reintento del mismo destino,
+  sin confundir fallos con éxito ni revelar datos o excepciones de servicios.
+- **RF-06.e:** cumplir las reglas editoriales y demostrar revisión/versionado/fuentes
+  antes de implementar el material que se entregará. No usar promesas de protección.
+- **RF-06.f:** soportar texto ajustado del sistema, lector de pantalla, foco, etiquetas
+  específicas y señales comprensibles; concretar matriz/umbrales en el plan.
+- **RF-06.g:** no añadir finalidades, permisos, historial o datos personales; conservar
+  ejemplos y pruebas sintéticos sin recolectar respuestas/resultados del cuestionario.
 
-P02 (PDF 4); P03 (6), P04 (8), P05 (9), P06 (10).
+### Asociación a pantallas y dirección editorial
 
-**Brechas observadas:** P05 necesita aclarar que HTTPS no demuestra legitimidad; P06 debe presentar indicios como señales, no conclusiones. Corregir lenguaje y ortografía sin cambiar alcance.
+| Pantalla / PDF | Categoría / contenido obligatorio | Límites de la revisión propuesta |
+| --- | --- | --- |
+| P02 /4 | Catálogo de las cuatro categorías y «Ver más» | Corregir ortografía, conservar identidad visual; no añadir búsqueda, filtros o categorías |
+| P03 /6 | Contraseñas seguras: recomendaciones, ejemplo y consejo | Contraseñas largas/únicas y sin datos personales; no recomendar reutilizar una clave cambiando orden o símbolos ni confundir la política de acceso de Priva con una regla universal |
+| P04 /8 | Cuida lo que subes: recomendaciones, ejemplo y consejo | Pensar antes de publicar, revisar audiencia y exposición; no afirmar borrado universal o imposibilidad absoluta de retirar información |
+| P05 /9 | Enlaces sospechosos: recomendaciones, ejemplo y consejo | HTTPS no acredita legitimidad; atención a presión/remitente/destino y canales conocidos, sin clasificador ni URL real para visitar |
+| P06 /10 | Perfiles falsos: recomendaciones, ejemplo y consejo | Señales orientativas y verificación por canal conocido, sin certificar personas ni concluir fraude por seguidores o antigüedad |
 
-### Reglas de la fuente aplicables
+Esta tabla propone la dirección editorial para aprobación del spec; no acredita
+que los textos finales ya tengan revisión de fuentes. El catálogo editorial final
+(textos exactos, ejemplos, consejos, referencias, versión y revisión del responsable
+del proyecto) será un artefacto concreto del plan, presentado para aprobar antes de
+implementar. No se aprueba copiar automáticamente recomendaciones del PDF.
 
-Los siguientes extractos conservan su estado original: una propuesta o un pendiente
-NO se convierte en decisión por copiarse aquí. Las secciones compartidas son contexto,
-no duplicación de responsabilidad; véase [el índice SDD](../README.md) para el reparto F06/F07.
-
-### Contenido y alcance de tips
-
-Cuatro categorías: contraseñas seguras, cuida lo que subes, enlaces sospechosos y perfiles falsos. Cada detalle presenta recomendaciones, ejemplo y consejo revisados (§§5–6 y HU-04).
+**Contenido excluido:** generador/medidor de contraseñas, apertura o análisis de
+URLs/perfiles externos, acceso a fotos/ubicación/contactos, uploads, favoritos,
+historial de lectura, resultados personalizados, IA generativa para producir Tips,
+CMS/panel de administración y nuevos formularios. Las fuentes editoriales no implican
+exigir enlaces externos para leer las guías. No añadir Zyro a pantallas no sustentadas
+por el diseño; cualquier recurso debe ser ilustrativo y contar con uso autorizado.
 
 ### Key Entities
 
-Categoría, contenido, ejemplo, consejo y revisión editorial; no se aprueba una herramienta de administración.
+- **Categoría:** identidad estable, título y resumen, asociada a un único detalle.
+- **Detalle educativo:** recomendaciones, ejemplo ficticio y consejo de una categoría;
+  contenido común para todos, sin relaciones con cuentas o intentos de cuestionario.
+- **Revisión editorial:** versión del material, fuentes, fecha de comprobación y
+  aprobación del responsable; no es un historial de consultas de la persona.
+- **Estado de consulta:** catálogo/detalle solicitado, carga/resultado/error/
+  indisponibilidad y posibilidad de reintento; no presupone persistencia de visitas.
 
 ## Success Criteria *(mandatory)*
 
 ### Measurable Outcomes
 
-Cuatro categorías accesibles y CA-04.1 a CA-04.3 satisfechos; comprensión de tips ≥80 % (§15), protocolo pendiente.
+- **SC-04.1:** se muestran exactamente4 categorías; el100% de sus accesos y rutas
+  directas permitidas funcionan con visitante y sesión válida. Cero exigencias de
+  cuenta para leer Tips y cero aperturas privadas indebidas desde sus controles.
+- **SC-04.2:** los4 detalles contienen recomendaciones, ejemplo y consejo coherentes;
+  el100% del material entregado tiene aprobación editorial y fuentes/revisión
+  registradas. Cero afirmaciones que equiparen HTTPS o señales de perfil con certeza.
+- **SC-04.3:** todos los escenarios previstos de carga fallida, registro ausente o
+  incompleto y reintento muestran su estado correcto y permiten recuperarse o volver;
+  sin duplicaciones ni sustitución por contenido inventado/de otra categoría.
+- **SC-04.4:** en la matriz Android que apruebe el plan, catálogo, detalle, error y
+  reintento se leen/operan con lector de pantalla y texto200%, sin ocultar acciones
+  esenciales ni depender solo del color. Los4 controles «Ver más» se distinguen.
+- **SC-04.5:** al menos80% de los participantes de40–65años comprenden los Tips según
+  la meta del original §15: identifican una acción preventiva por categoría y los
+  límites de interpretar HTTPS/perfiles. El plan definirá antes de implementar
+  muestra, preguntas, rúbrica y denominador por participante, sin guardar respuestas
+  individuales ni presentar una prueba automática como medición con personas.
 
-La evidencia de implementación y las mediciones aún no existen. Las metas del §15
-no son resultados obtenidos. Toda prueba usará datos sintéticos cuando corresponda;
-no se guardarán respuestas ni resultados reales para demostrar cumplimiento.
+Las metas son requisitos para validar, no resultados ya obtenidos. No se trasladan
+las excepciones de cierre de F03 como aprobación de controles de F04.
 
 ## Assumptions
 
-- Se conserva Android/iOS, público de 40–65 años e internet obligatorio (§§1–3).
-- Las imágenes son referencia visual: sus ejemplos y textos no aprueban reglas nuevas.
-- Navegación F03, accesibilidad/conectividad F08 y controles editoriales transversales.
-- Aplican §§11–17 del spec: minimización, conservación justificada, seguridad,
-  accesibilidad, estados de error y trazabilidad. No se presumen proveedores ni plazos.
+- Solo Android conforme a la decisión ratificada del2026-10-28; público40–65años.
+- Se mantiene internet obligatorio, sin modo offline nuevo. La ubicación, distribución
+  y recuperación del contenido se decidirán en el plan, sin escoger proveedor aquí.
+- Se reutilizan navegación/sesión de F03 y guardas F01. El cierre de F03 conserva
+  sus límites de evidencia; F04 generará pruebas propias de integración y regresión.
+- Accesibilidad/conectividad F08 siguen siendo transversales. El plan concretará
+  contraste, objetivos táctiles, geometrías, versiones y presupuestos de respuesta
+  conforme a las decisiones ya aprobadas, sin prometer todos los dispositivos.
+- Secciones escritas e imágenes son antecedentes: no justifican recopilar datos
+  porque se vea una foto, contraseña enmascarada, perfil o enlace en el diseño.
+- Banco/puntuación F06/F07, proveedor y guías Zyro F05 y PD-10 de desconexión durante
+  intento no se resuelven con Tips ni bloquean su lectura pública independiente.
+- No hay un PD de negocio exclusivo de F04 por resolver en este spec. Los textos,
+  fuentes, protocolo y decisiones técnicas se concretarán como parte del plan para
+  revisión, sin implementar contenidos aún no aprobados.
 
-## Decisiones y aprobación pendientes
+## Conflictos, trazabilidad y aprobación
 
-Pendientes originales asociados: ningún PD exclusivo; aplican los controles transversales y las brechas descritas.
-Consultar sus condiciones de cierre en §18 del spec fuente. Las brechas de pantalla
-se resuelven en el registro del índice, sin modificar silenciosamente el original.
-Antes de `$speckit-plan`, resolver los pendientes aplicables y obtener aprobación explícita de la constitución y de este spec. Separar el documento no constituye esa aprobación.
+Contraste textual del PDF y mapa existente: conservar jerarquía de catálogo/detalles,
+corregir lenguaje engañoso sin atribuir al wireframe requisitos nuevos.
 
-## Criterios de aceptación de acceso añadidos
+| Fuente / brecha | Tratamiento propuesto |
+| --- | --- |
+| P02 «concejos», «cuidartu» y otras erratas | Redacción sencilla y corregida, sin cambiar las cuatro categorías |
+| P03 «cambia el orden, utiliza caracteres distintos» | Evitar enseñar variaciones de una clave reutilizada; apoyar la redacción final en fuentes revisadas |
+| P04 «puede quedarse para siempre» | Explicar posibles copias/redistribución sin certezas absolutas o promesas de eliminación |
+| P05 «enlace seguro» por HTTPS y URL defectuosa | Explicar cifrado frente a legitimidad y usar ilustración inerte, sin enlaces de prueba reales |
+| P06 seguidores/antigüedad como detección de falsedad | Presentarlos solo como contexto insuficiente para concluir fraude |
+| Borrador histórico Android/iOS | Aplicar Android ya ratificado; no reabrir otra plataforma |
+| Diseños sin estados de carga/error | Especificar recuperación y accesibilidad, sin suponer un backend o eliminar CA-04.3 |
 
-- **CA-ACC-01:** Sin sesión, abrir Tips y cada una de sus cuatro categorías permite consultar contenido sin exigir cuenta.
-- **CA-ACC-02:** Sin sesión, intentar abrir Inicio, Perfil, Zyro, Cuestionario o Resultados no muestra contenido protegido e informa que se requiere iniciar sesión.
-- **CA-ACC-03:** Con una sesión válida se puede acceder a todas las funciones del alcance, sujeto a sus precondiciones; no se muestran resultados sin completar un intento.
-- **CA-ACC-04:** Tras cerrar sesión, Tips sigue disponible y el contenido protegido deja de estarlo, incluido mediante retroceso; respuestas y resultados se descartan.
-- **CA-ACC-05:** La navegación visible de P11 se conserva conforme al wireframe sin eludir las restricciones anteriores.
+| Requisito | Historia / criterios | Evidencia prevista |
+| --- | --- | --- |
+| RF-06.a/b | HU-04 / CA-04.1/04.2 | Catálogo,4 detalles, comparación textual/visual y registro editorial |
+| RF-06.c | HU-04 / CA-04.4/04.5, CA-ACC-01–05 | Matriz público/sesión, rutas y retorno, regresión F01–F03 |
+| RF-06.d | HU-04 / CA-04.3/04.6 | Fallos/ausencia/incompleto/reintento y respuesta tardía |
+| RF-06.e | HU-04 / CA-04.7–04.10 | Fuentes fechadas, texto aprobado y revisión de límites |
+| RF-06.f | HU-04 / CA-04.11 | Lector de pantalla, texto ajustado y acciones accesibles |
+| RF-06.g | HU-04 / CA-04.9/04.12 | Revisión de datos, permisos y ausencia de historial/captura |
+| SC-04.1–04.5 | HU-04 | Matriz de aceptación, cobertura editorial y protocolo de comprensión |
 
-Estos criterios documentan la decisión; aún no son pruebas ejecutadas.
-
-## Alcance de plataforma vigente — 2026-10-28
-
-Decisión explícita del usuario: «solo preparala para android». Esta entrega se
-prepara únicamente para Android (mínimo API24 del plan); iOS, VoiceOver y Xcode
-quedan fuera del alcance actual. Las menciones anteriores a ambas plataformas
-son históricas. Se mantienen todos los requisitos funcionales, de privacidad y
-seguridad aplicables a Android. No implica aprobación de otros specs ni entrega.
+El2026-11-04 el usuario solicitó continuar con F04. Autoriza revisar el spec,
+no aprobar automáticamente esta prioridad, dirección editorial, plan o tareas.
+Antes de `$speckit-plan`, obtener aprobación de esta revisión según constitución IX.
+No se generan tareas, cambian reglas Firebase o implementan pantallas en esta etapa.
