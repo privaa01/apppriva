@@ -126,7 +126,8 @@ void main() {
       await tester.pumpAndSettle();
       expect(journey.phase, JourneyPhase.idle);
       expect(journey.discarded, 1);
-      expect(find.text('Tips'), findsNWidgets(2));
+      expect(find.text('¡Tengo estos tips para ti!'), findsOneWidget);
+      expect(find.text('Tips'), findsOneWidget);
       await tester.pumpWidget(const SizedBox());
       journey.dispose();
       h.dispose();

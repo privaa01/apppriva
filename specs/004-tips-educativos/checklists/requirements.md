@@ -58,7 +58,7 @@ anteriores no se aplican por defecto a F04. Este checklist no es aceptación de 
 - [x] Explicitada la acción «Ver ejemplo» y su diferencia con revelar la contraseña.
 - [x] Separados textos aportados de ajustes editoriales propuestos A1–A5.
 - [x] Resolver A1–A5: aprobados por «si los apruebo»,2026-11-04.
-- [ ] Completar contraste de fuentes durante la planificación editorial (parcial, ver `../fuentes-editoriales.md`).
+- [x] Completar contraste de fuentes durante la planificación editorial: ver cierre2026-11-05 en `../fuentes-editoriales.md`.
 
 Los16 controles anteriores describen la revisión documental previa. No equivalen
 a aprobar los ajustes nuevos ni a validar comportamiento implementado.
@@ -77,3 +77,12 @@ El responsable aprobó el plan presentado y ratificó wireframes, cuatro categor
 y «Ver ejemplo». Aprobación registrada; no se solicita de nuevo. La verificación
 editorial sigue pendiente y bloquea ejecución; `../tasks.md` prepara el desglose
 sin convertir esa condición en tarea completada ni excepción aprobada.
+
+
+## Verificación editorial completada — 2026-11-05
+
+NIST, FTC, RFC Editor y Google consultados con GET y lectura de contenido. Registro
+por categoría, secciones y límites actualizado. CISA no se declara leída y se
+sustituye por las fuentes primarias alternativas previstas. A1–A5/texto1.0.0 se
+mantienen íntegros. La revisión documental queda satisfecha; no implica pruebas
+nativas/humanas, despliegue ni aceptación de entrega.

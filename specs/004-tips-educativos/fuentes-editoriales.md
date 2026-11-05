@@ -1,7 +1,9 @@
 # F04 — Registro de fuentes editoriales
 
 **Fecha de revisión:** 2026-11-04, zona del usuario. **Versión editorial:**1.0.0.
-**Estado:** parcial; fuentes bloqueadas no se declaran consultadas.
+**Estado actual:** contraste completado mediante NIST, FTC, RFC Editor y Google
+el2026-11-05. Las incidencias de red anteriores se conservan como historial;
+CISA no se declara consultada ni necesaria tras las fuentes alternativas primarias.
 **Responsable editorial:** responsable del proyecto, por sus mensajes de contenido
 y aprobación A1–A5. No se incorpora identidad personal a documentos de contenido.
 
@@ -78,3 +80,50 @@ cambio; el estado activo sigue con la restricción anterior.
 El usuario debe revisar y guardar los cambios de red en la configuración del
 entorno y publicarlos. Tras aplicarlos se reintenta la revisión, sin volver a pedir
 aprobación del plan técnico ya concedida y sin dar por hechos los accesos.
+
+
+## Cierre del contraste externo — 2026-11-05
+
+La nueva instancia aplica la política publicada. Las consultas siguientes fueron
+GET HTTPS reales, siguiendo redirecciones, con TLS y proxy habilitados; se leyó
+contenido del documento, no solo su HTTP200. No se cambiaron textos del usuario,
+A1–A5 ni los wireframes. Los artículos son soporte educativo, no certificación.
+
+| ID vigente | Documento consultado / sección | Alcance verificado |
+| --- | --- | --- |
+| N1 | NIST SP800-63B-4 Appendix A, Length/Complexity, repositorio oficial fijado arriba; releído | Longitud/frases, límites de composición y de contraseñas frente a phishing. P03/A1/A5. |
+| F4 | [FTC: Protect Your Personal Information From Hackers and Scammers](https://consumer.ftc.gov/articles/protect-your-personal-information-hackers-and-scammers), Passwords y Protect Yourself from Attempts To Steal Your Information | Contraseñas largas, frases no predecibles, mezcla de caracteres como consejo y canales conocidos. No se traslada su longitud orientativa a una política universal ni se añade2FA a la función Tips. |
+| G1 | [Google: Proteger mejor tu cuenta](https://support.google.com/accounts/answer/46526?hl=es), pasos3 y5 | Claves únicas reducen reutilización; suplantación mediante mensajes/sitios; no compartir claves/datos ni abrir enlaces sospechosos. P03/P05/P06. |
+| F1 | [FTC: How To Recognize and Avoid Phishing Scams](https://consumer.ftc.gov/articles/how-recognize-avoid-phishing-scams), How To Recognize Phishing y What To Do if You Suspect a Phishing Attack | Señales de engaño y contacto por teléfono/sitio conocido, no por el enlace recibido. P05. URL original redirige a esta URL vigente. |
+| F2a | [FTC: How Websites and Apps Collect and Use Your Information](https://consumer.ftc.gov/articles/how-websites-and-apps-collect-and-use-your-information), Adjust your privacy settings | Ajustes de privacidad y de cuentas sociales, control de ubicación/fotos/contactos y reducción de exposición. P04. Sustituye el índice F2 y la redirección del artículo antiguo. |
+| F3a | [FTC: What To Know About Romance Scams](https://consumer.ftc.gov/articles/what-know-about-romance-scams), What Is a Romance Scam?, How to Avoid Losing Money y How to Report | Perfiles ficticios, fotos que pueden no corresponder, solicitudes de dinero, limitar interacción y denunciar a la plataforma. P06; la app no ejecuta denuncias ni búsquedas sobre personas. |
+| R1 | [RFC2606](https://www.rfc-editor.org/rfc/rfc2606.txt), sección2 | `.example` reservado para documentación/ejemplos. A2; dirección solo texto. |
+| H1 | [Chrome: Comprobar si la conexión de un sitio es segura](https://support.google.com/chrome/answer/95617?hl=es), Significado de cada símbolo de seguridad | Conexión privada no elimina la necesidad de comprobar el nombre del sitio ni de tener cuidado con datos sensibles. P05/A3. GET correcto, aunque HEAD anterior dio404. |
+| R2 | [RFC8446](https://www.rfc-editor.org/rfc/rfc8446.txt), introducción | Objetivos de TLS: autenticación de servidor/canal, confidencialidad e integridad; no es una evaluación editorial de la honestidad de un sitio. Complementa A3. |
+
+### Límites del contraste y ejemplos ficticios
+
+El texto de vacaciones es una ilustración editorial: decir públicamente que se
+está ausente expone esa información. Publicar tras regresar es una precaución
+propuesta por el responsable, no una afirmación estadística atribuida a FTC ni una
+garantía de evitar daños. Dirección/teléfono/documentos se tratan como información
+personal que conviene no exponer; no se afirma que esos datos por sí solos prueben
+un ataque o que revisar la audiencia elimine el riesgo.
+
+No se encontró respaldo para clasificar perfiles por número de publicaciones;
+justamente A4 impide presentarlo como prueba de falsedad. El caso María López es
+completamente sintético y no una evaluación de alguien identificable. Revisión de
+actividad/fotos es orientación para verificar por otro medio, sin diagnóstico.
+La contraseña expuesta es ilustrativa, no se recomienda reutilizarla y A1 evita
+tratar composición como garantía de seguridad. No se añaden funciones externas
+por aparecer recomendaciones o herramientas adicionales en las fuentes.
+
+C1/C2 de CISA siguen sin lectura por respuesta403 y dejan de ser dependencias
+obligatorias: N1/F4/G1/F1 cubren los mismos consejos. Los índices F2/F3 se sustituyen
+por F2a/F3a. Se descartaron rutas FTC antiguas con404, sin atribuirles revisión.
+Las fuentes alternativas estaban previstas por este registro; no es un cambio de
+alcance, texto aprobado o proveedor del producto.
+
+Resultado: soporte por las cuatro categorías, fechas/versión y límites registrados.
+T001 queda completada. Esto no es aprobación de la entrega, prueba de interfaz,
+validación con participantes ni publicación de contenido/reglas.

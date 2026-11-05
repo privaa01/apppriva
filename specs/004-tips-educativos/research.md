@@ -2,7 +2,7 @@
 
 **Fecha de diseño:** 2026-11-04. **Aprobación técnica:**2026-11-05.
 **Estado:** decisiones técnicas aprobadas; contraste
-editorial externo parcial. No es evidencia de ejecución de producto.
+editorial externo completado2026-11-05 mediante las alternativas primarias registradas. No es evidencia de ejecución de producto.
 
 ## R1 — Integración con navegación existente
 
@@ -88,3 +88,12 @@ editorial externa, no una elección técnica que pueda resolverse por suposició
 La aprobación técnica quedó registrada el2026-11-05. No se cierra el prerrequisito
 editorial ni se inicia implementación hasta resolverlo. El desglose preliminar de
 tareas permite preparar el trabajo sin considerar superada esa puerta.
+
+
+## Actualización de ejecución — 2026-11-05
+
+El cierre del registro de fuentes resuelve el bloqueo editorial descrito en R5 y
+la revisión posterior anterior, sin alterar texto ni alcance. Flutter oficial
+3.47.8/Dart3.13.7 instalados desde etiqueta737ba8f885; pub get con lockfile exigido y
+análisis oficial satisfactorio. Herramientas Android23.0 verificadas contra el
+checksum del XML oficial; preparación Android/baseline en curso.

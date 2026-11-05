@@ -1,7 +1,8 @@
 # F04 — Catálogo editorial aportado por el responsable
 
 **Versión:** 1.0.0. **Fecha:** 2026-11-04.
-**Estado:** textos y ajustes A1–A5 aprobados por el usuario; contraste externo de fuentes parcialmente pendiente.
+**Estado:** textos y ajustes A1–A5 aprobados; contraste externo completado
+el2026-11-05, según `fuentes-editoriales.md`. Versión de texto1.0.0 sin cambios.
 **Origen:** mensaje del responsable que confirma las cuatro categorías y ordena
 conservar el diseño y seguir los wireframes. La aprobación de A1–A5 se registra
 abajo; no acredita contraste externo de fuentes ni aprobación del plan técnico.
@@ -192,7 +193,7 @@ del usuario no sustituye las comprobaciones pendientes para CA-04.10.
 Confirmados por el usuario: cuatro categorías, acceso público según el alcance
 propuesto, textos aportados y conservación del diseño de wireframes.
 A1–A5 aprobados explícitamente por «si los apruebo» el2026-11-04.
-Plan técnico aprobado el2026-11-05. Pendiente: completar el contraste de fuentes
-antes de abrir ejecución. El desglose de tareas permanece preliminar mientras
-no se resuelva ese prerrequisito.
+Plan técnico aprobado el2026-11-05. Contraste externo completado mediante
+fuentes primarias alternativas previstas en el registro, sin modificar textos.
+El payload deberá compararse con este contenido antes de publicar.
 No hay implementación, pruebas de producto ni aceptación de entrega en este artefacto.

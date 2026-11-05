@@ -1,3 +1,4 @@
+import '../features/tips/data/tips_repository.dart';
 import '../features/navigation/application/navigation_controller.dart';
 import '../features/navigation/data/temporary_journey.dart';
 import '../features/navigation/data/destination_catalog.dart';
@@ -20,7 +21,9 @@ class PrivaApp extends StatefulWidget {
     this.profileRepository,
     this.deletionContactService,
     this.temporaryJourney,
+    this.tipsRepository,
   });
+  final TipsRepository? tipsRepository;
   final TemporaryJourney? temporaryJourney;
   final AccountController controller;
   final bool testMode;
@@ -75,6 +78,7 @@ class _PrivaAppState extends State<PrivaApp> with WidgetsBindingObserver {
   Widget build(BuildContext context) {
     final router = AccountRouter(
       controller: widget.controller,
+      tipsRepository: widget.tipsRepository,
       navigation: _navigation,
       destinationBuilder: widget.destinationBuilder,
       profileRepository: widget.profileRepository,

@@ -1,0 +1,144 @@
+{
+  "passwords": {
+    "schemaVersion": 1,
+    "contentVersion": "tips-1.0.0",
+    "categoryId": "passwords",
+    "status": "approved",
+    "catalogTitle": "Contraseñas seguras",
+    "description": "Crea una clave difícil de adivinar y fácil de recordar.",
+    "title": "Contraseña segura.",
+    "panelTitle": "¿Cómo crear una contraseña segura?",
+    "recommendations": [
+      "Usa una frase que puedas recordar fácilmente.",
+      "Combina letras mayúsculas, minúsculas, números y símbolos.",
+      "Evita utilizar nombres, fechas de nacimiento o datos personales."
+    ],
+    "example": {
+      "kind": "password",
+      "label": "Ejemplo",
+      "fictionalLabel": "Ejemplo ficticio",
+      "value": "Sol!Camina27_Luna",
+      "caption": "Esta es una contraseña de ejemplo que combina diferentes caracteres y no utiliza información personal evidente"
+    },
+    "explanation": "Una contraseña larga y única es más difícil de adivinar. Combinar distintos caracteres puede ayudar, pero no basta si la clave es corta o predecible. Evitar nombres y fechas personales reduce las pistas que otras personas podrían conocer. No uses esta contraseña de ejemplo en tus cuentas",
+    "advice": "Utiliza una contraseña diferente para cada cuenta. Así reduces el riesgo de que una contraseña descubierta permita entrar en tus otras cuentas",
+    "clarification": "",
+    "editorialReview": {
+      "version": "1.0.0",
+      "approvedOn": "2026-11-04",
+      "sourceIds": [
+        "N1",
+        "F4",
+        "G1"
+      ]
+    }
+  },
+  "sharing": {
+    "schemaVersion": 1,
+    "contentVersion": "tips-1.0.0",
+    "categoryId": "sharing",
+    "status": "approved",
+    "catalogTitle": "Cuida lo que subes",
+    "description": "Piensa antes de publicar. No toda tu información debe estar en internet.",
+    "title": "Protege tu información personal.",
+    "panelTitle": "¿Cómo proteger tu información en redes sociales?",
+    "recommendations": [
+      "Evita publicar tu dirección, teléfono o ubicación en tiempo real.",
+      "Revisa quién puede ver tus fotografías y publicaciones.",
+      "No compartas documentos personales ni fotografías de información privada."
+    ],
+    "example": {
+      "kind": "post",
+      "label": "Ejemplo",
+      "fictionalLabel": "Publicación ficticia",
+      "body": "¡De vacaciones! Estoy fuera de casa durante toda la semana. ¡Nos vemos pronto!",
+      "caption": "Esta publicación puede revelar que una persona está ausente de su hogar."
+    },
+    "explanation": "Compartir que estás fuera de casa puede revelar información que otras personas podrían aprovechar. Es mejor publicar tus fotografías cuando hayas regresado",
+    "advice": "Antes de publicar algo, pregúntate: ¿Esta información podría ser utilizada por alguien para perjudicarme?",
+    "clarification": "",
+    "editorialReview": {
+      "version": "1.0.0",
+      "approvedOn": "2026-11-04",
+      "sourceIds": [
+        "F2a"
+      ]
+    }
+  },
+  "links": {
+    "schemaVersion": 1,
+    "contentVersion": "tips-1.0.0",
+    "categoryId": "links",
+    "status": "approved",
+    "catalogTitle": "Enlaces sospechosos",
+    "description": "No todos los enlaces que recibes son seguros. Algunos buscan engañarte para robar tu información.",
+    "title": "¡Cuidado con los enlaces!",
+    "panelTitle": "¿Cómo identificar un enlace sospechoso?",
+    "recommendations": [
+      "Desconfía de mensajes que prometen premios, regalos o beneficios inesperados.",
+      "Revisa que la dirección web corresponda al sitio oficial.",
+      "No ingreses contraseñas ni datos bancarios desde enlaces recibidos por mensajes."
+    ],
+    "example": {
+      "kind": "message",
+      "label": "Ejemplo",
+      "fictionalLabel": "Mensaje ficticio",
+      "body": "¡Felicidades! Has ganado un celular. Reclama tu premio hoy mismo ingresando tus datos en el siguiente enlace",
+      "address": "www.premio-regalo.example",
+      "caption": "Posible intento de engaño"
+    },
+    "explanation": "Este mensaje utiliza un premio inesperado y la urgencia para llamar tu atención. No abras el enlace ni ingreses información personal. Verifica la promoción directamente en la página oficial de la empresa",
+    "advice": "Si recibes un mensaje que te presiona para actuar rápidamente, detente y verifica la información antes de hacer clic",
+    "clarification": "HTTPS cifra la conexión, pero no garantiza que el sitio sea legítimo",
+    "editorialReview": {
+      "version": "1.0.0",
+      "approvedOn": "2026-11-04",
+      "sourceIds": [
+        "F1",
+        "R1",
+        "H1",
+        "R2",
+        "G1"
+      ]
+    }
+  },
+  "profiles": {
+    "schemaVersion": 1,
+    "contentVersion": "tips-1.0.0",
+    "categoryId": "profiles",
+    "status": "approved",
+    "catalogTitle": "Perfiles falsos",
+    "description": "Algunas personas crean cuentas falsas para engañar, suplantar identidades o conseguir información personal.",
+    "title": "Aprende a reconocer perfiles falsos.",
+    "panelTitle": "¿Cómo identificar un perfil falso?",
+    "recommendations": [
+      "Desconfía de cuentas con fotografías, nombres o información que parecen copiadas.",
+      "Revisa si tiene publicaciones recientes, interacciones y una actividad coherente.",
+      "Ten cuidado con personas desconocidas que piden dinero, códigos o información privada."
+    ],
+    "example": {
+      "kind": "profile",
+      "label": "Ejemplo",
+      "fictionalLabel": "Perfil ficticio",
+      "name": "María López",
+      "handle": "@maria.lopez_oficial",
+      "signals": [
+        "Utiliza fotografías de otra persona.",
+        "Tiene muy pocas publicaciones.",
+        "Envía mensajes solicitando dinero."
+      ],
+      "avatar": "person"
+    },
+    "explanation": "Este perfil presenta varias señales de alerta. Las fotografías podrían pertenecer a otra persona y los mensajes que solicitan dinero pueden ser un intento de engaño. No compartas información ni envíes dinero. Verifica la identidad de la persona por otro medio",
+    "advice": "Si sospechas que una cuenta es falsa o está suplantando a alguien, denúnciala desde la red social y evita interactuar con ella",
+    "clarification": "Tener pocas publicaciones no demuestra que una cuenta sea falsa. Verifica la identidad por un canal que ya conozcas",
+    "editorialReview": {
+      "version": "1.0.0",
+      "approvedOn": "2026-11-04",
+      "sourceIds": [
+        "F3a",
+        "G1"
+      ]
+    }
+  }
+}

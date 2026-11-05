@@ -156,3 +156,23 @@ F03: cierre aceptado por el usuario el2026-11-04 tras confirmar que la sesión s
 mantiene. Las verificaciones sin evidencia completa quedan registradas como
 parciales/aplazadas en el [acta de cierre](../specs/003-inicio-navegacion/validation/closure-2026-11-04.md),
 sin presentarlas como pruebas ejecutadas ni aceptación de funcionalidades futuras.
+
+
+## F04 — Tips educativos (implementación local)
+
+Catálogo público y cuatro detalles conectados al router existente. «Ver ejemplo»
+revela explicación inline; la contraseña ilustrativa tiene control de visibilidad
+independiente. Los ejemplos no abren enlaces ni recopilan datos. Contenido con
+lecturas Firestore al servidor, sin persistencia, historial o personalización.
+
+Para mostrar contenido alojado, publicar los cuatro documentos y reglas revisadas
+siguiendo `../firebase/README.md`, desde una sesión administrativa autorizada. Esa
+publicación aún no se ha realizado aquí; la app muestra indisponibilidad/reintento
+si falta contenido o permiso. No confundir un APK nuevo con contenido remoto listo.
+
+Validación local:182/182 Flutter,0 diagnósticos,24/24 reglas/preflight y APK debug
+compilado. Matriz nativa, TalkBack, rendimiento, participantes y publicación pendientes;
+ver `../specs/004-tips-educativos/validation/delivery-review.md`. Activación del entorno:
+`source /workspace/.tools/priva-toolchain.sh`; luego comandos existentes desde mobile/.
+Runners `integration_test/tips_test.dart` y `tips_performance_test.dart` usan datos
+sintéticos y no sustituyen una prueba contra el contenido hospedado.

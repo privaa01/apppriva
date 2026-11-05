@@ -1,12 +1,13 @@
 # F04 — Guía de validación propuesta
 
-**Estado:** guía de comandos/escenarios futuros; módulo F04 aún no implementado.
-No presenta los siguientes comandos como ejecutados ni resultados como aprobados.
+**Estado:** módulo F04 implementado localmente. Resultados ejecutados en validation/;
+comandos Android nativos/humanos/remotos siguientes siguen pendientes, sin atribuirlos
+a las pruebas locales.
 
 ## 1. Prerrequisitos
 
-Usar checkout `/workspace/apppriva`, rama `work`, sin worktrees nuevos. El plan fue aprobado el2026-11-05; completar las fuentes editoriales antes
-de abrir la ejecución de las tareas de implementación. Instalar
+Usar checkout `/workspace/apppriva`, rama `work`, sin worktrees nuevos. El plan fue aprobado el2026-11-05; el contraste de fuentes quedó completado; conservar sus referencias y los textos
+aprobados durante la ejecución. Instalar
 baseline Flutter3.47.8/Dart3.13.7 y SDK Android mediante fuentes oficiales y
 comprobaciones de integridad; preservar pins/lockfile. Necesita Node y Java21
 para reglas; no requiere credenciales de producción para pruebas locales.
@@ -48,10 +49,10 @@ CI=true FIREBASE_EMULATORS_PATH=/workspace/.cache/priva/firebase-emulators XDG_C
 ```
 
 El runner existente inicia/detiene Firestore en127.0.0.1:8085 para `demo-priva`.
-La suite futura `tests/tips.test.mjs` debe ejecutarse realmente junto a cuenta/perfil/
+La suite `tests/tips.test.mjs` debe ejecutarse realmente junto a cuenta/perfil/
 demo. Comprobar get público de4 IDs aprobados, ausente conocido, denegación de
-ID arbitrario/draft/versión inválida, list y toda escritura cliente. Las reglas
-actuales aún no permiten Tips: la prueba positiva no puede pasar antes del cambio.
+ID arbitrario/draft/versión inválida, list y toda escritura cliente. La suite local ya pasa con las reglas Tips implementadas; las reglas hospedadas
+no se consideran actualizadas por cambiar este archivo.
 No habilitar reglas públicas globales ni simular publicación de producción.
 
 Repository/widget con dobles: catálogo completo y cada detalle; error,timeout,
@@ -84,7 +85,7 @@ Repetir con visitante, cuenta no verificada y cuenta sintética válida:
 
 ## 5. Android e inspección visual — C-TIPS-05/06
 
-Runners que se crearán en implementación, no disponibles todavía:
+Runners preparados y analizados; ejecución Android pendiente de dispositivo:
 
 ```bash
 cd /workspace/apppriva/mobile
@@ -92,7 +93,7 @@ flutter test integration_test/tips_test.dart -d DEVICE_ID
 flutter test integration_test/tips_performance_test.dart -d DEVICE_ID
 ```
 
-Los runners usarán repositorio/cuentas sintéticos del harness y no necesitarán
+Los runners usan repositorio/cuentas sintéticos del harness y no necesitarán
 escribir contenido ni personas en el proyecto alojado. La comprobación real contra
 Firestore se realiza por separado tras una publicación explícitamente autorizada.
 Un runner con dobles no prueba la configuración remota.

@@ -89,6 +89,11 @@ bool destinationAvailable(String path) => const {
   '/recovery',
   '/home',
   '/profile',
+  '/tips',
+  '/tips/passwords',
+  '/tips/sharing',
+  '/tips/links',
+  '/tips/profiles',
 }.contains(path);
 
 bool destinationAllowed(

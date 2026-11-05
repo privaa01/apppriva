@@ -2,7 +2,7 @@
 
 **Feature Branch**: `work` (selección por directorio).
 **Created**: 2026-10-21. **Updated**: 2026-11-04.
-**Status**: Alcance, textos A1–A5 y plan técnico aprobados; contraste externo de fuentes pendiente. Sin implementación ni aceptación de entrega.
+**Status**: Alcance, textos A1–A5 y plan técnico aprobados; contraste de fuentes completado2026-11-05. Implementación local verificada, con validaciones nativas/humanas y publicación pendientes; sin aceptación de entrega.
 **SPECIFY_FEATURE_DIRECTORY**: `specs/004-tips-educativos`.
 **Input**: «continua con la 004», después del cierre aprobado de F03.
 **Gobierno**: [constitución v1.1.0](../../.specify/memory/constitution.md).

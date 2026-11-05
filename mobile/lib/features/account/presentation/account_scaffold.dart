@@ -38,12 +38,14 @@ class AccountScaffold extends StatelessWidget {
     required this.child,
     this.navigation = true,
     this.navigationPath,
+    this.heading,
   });
   final AccountController controller;
   final String title;
   final Widget child;
   final bool navigation;
   final String? navigationPath;
+  final Widget? heading;
   @override
   Widget build(BuildContext context) {
     final large = MediaQuery.textScalerOf(context).scale(1) > 1.3;
@@ -76,7 +78,12 @@ class AccountScaffold extends StatelessWidget {
                   label,
                   textAlign: TextAlign.center,
                   style: TextStyle(
-                    fontWeight: selected ? FontWeight.bold : FontWeight.normal,
+                    fontSize: section == NavigationSection.tips ? 16 : null,
+                    fontWeight: selected
+                        ? FontWeight.bold
+                        : section == NavigationSection.tips
+                        ? FontWeight.w600
+                        : FontWeight.normal,
                   ),
                 ),
               ],
@@ -134,15 +141,16 @@ class AccountScaffold extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
-                  Semantics(
-                    header: true,
-                    child: Text(
-                      title,
-                      textAlign: TextAlign.center,
-                      style: Theme.of(context).textTheme.headlineSmall
-                          ?.copyWith(fontWeight: FontWeight.bold),
-                    ),
-                  ),
+                  heading ??
+                      Semantics(
+                        header: true,
+                        child: Text(
+                          title,
+                          textAlign: TextAlign.center,
+                          style: Theme.of(context).textTheme.headlineSmall
+                              ?.copyWith(fontWeight: FontWeight.bold),
+                        ),
+                      ),
                   const SizedBox(height: 28),
                   child,
                 ],

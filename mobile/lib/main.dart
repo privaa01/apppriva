@@ -1,3 +1,6 @@
+import 'features/tips/data/firestore_tips_repository.dart';
+import 'features/tips/data/tips_repository.dart';
+
 import 'dart:async';
 
 import 'package:flutter/material.dart';
@@ -19,14 +22,29 @@ import 'features/account/data/unavailable_account_repository.dart';
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   final config = FirebaseConfig.fromEnvironment();
+  Future<FirebaseFirestore> openDatabase() async {
+    if (!config.isConfigured) {
+      throw const TipsFailure(TipsFailureKind.unavailable);
+    }
+    final app = Firebase.apps.isEmpty
+        ? await Firebase.initializeApp(options: config.options)
+              .timeout(const Duration(seconds: 15))
+        : Firebase.app();
+    final database = FirebaseFirestore.instanceFor(app: app);
+    database.settings = const Settings(persistenceEnabled: false);
+    return database;
+  }
+
+  TipsRepository tipsRepository = DeferredTipsRepository(
+    () async => FirestoreTipsRepository(await openDatabase()),
+  );
   ProfileRepository? profileRepository;
   AccountRepository repository = UnavailableAccountRepository();
   if (config.isConfigured) {
     try {
-      await Firebase.initializeApp(options: config.options)
-          .timeout(const Duration(seconds: 15));
-      final database = FirebaseFirestore.instance;
-      database.settings = const Settings(persistenceEnabled: false);
+      final database = await openDatabase();
+      // Public Tips depend on Core/Firestore, never on account authorization.
+      tipsRepository = FirestoreTipsRepository(database);
       profileRepository = FirestoreProfileRepository(
         FirebaseAuth.instance,
         database,
@@ -45,6 +63,7 @@ Future<void> main() async {
       controller: controller,
       testMode: false,
       profileRepository: profileRepository,
+      tipsRepository: tipsRepository,
     ),
   );
   unawaited(controller.initialize());

@@ -53,6 +53,15 @@ service cloud.firestore {
         request.resource.data.name.matches('(?s).*[^\\s\\p{Z}\\x{FEFF}].*');
       allow list, delete: if false;
     }
+    // Public educational material only; never account or questionnaire data.
+    match /educational_tips/{id} {
+      allow get: if id in ['passwords', 'sharing', 'links', 'profiles'] &&
+        (!exists(/databases/$(database)/documents/educational_tips/$(id)) ||
+          (resource.data.status == 'approved' &&
+           resource.data.schemaVersion == 1 &&
+           resource.data.contentVersion == 'tips-1.0.0'));
+      allow list, create, update, delete: if false;
+    }
     match /{document=**} {
       allow read, write: if false;
     }

@@ -4,8 +4,8 @@
 **Selección:** `SPECIFY_FEATURE_DIRECTORY=specs/004-tips-educativos`; el script
 reporta el identificador lógico004-tips-educativos, no crea ni cambia la rama real.
 **Estado:** plan técnico aprobado explícitamente por el responsable el2026-11-05;
-cierre editorial pendiente por fuentes bloqueadas. La aprobación no dispensa ese
-prerrequisito ni acredita pruebas o publicación.
+contraste editorial completado en esa fecha. Implementación local verificada;
+pruebas nativas/humanas y publicación pendientes, sin aceptación de entrega.
 **Entrada:** categorías, textos y wireframes confirmados; A1–A5 aprobados por
 «si los apruebo». [Contenido final](contenido-editorial.md), versión1.0.0.
 
@@ -41,11 +41,11 @@ históricos son prerrequisitos de ejecución, no defectos confirmados del módul
 
 ## Constitution Check
 
-**Antes del diseño:** alcance y A1–A5 aprobados; sin violación constitucional
-propuesta. **Después del diseño:** diseño técnico trazado, pero cierre del plan
-pendiente de completar contraste editorial externo; aprobación del responsable
-registrada el2026-11-05.
-No se declara superada la puerta de implementación.
+**Revisión previa y posterior:** alcance, A1–A5 y plan aprobados; contraste editorial
+cerrado2026-11-05 y ejecución local autorizada por «listo sigamos». No se propone
+violación constitucional.182 pruebas Flutter,24 reglas/preflight y APK compilado
+acreditan el tramo local; no cierran la puerta de entrega, con controles nativos,
+humanos, privacidad remota y publicación aún pendientes.
 
 | Principio | Diseño y evidencia exigida |
 | --- | --- |
@@ -57,7 +57,7 @@ No se declara superada la puerta de implementación.
 | VI — calidad | Reglas get público solo4 IDs, list/escrituras denegados; no ampliar permisos de cuenta. Manejo de errores/timeout, rutas y pruebas sintéticas. |
 | VII — trazabilidad | Matriz RF/CA→contratos→validaciones; tareas detalladas se generan tras aprobación del plan. |
 | VIII — simplicidad | Un router; un repositorio de lectura; sin listeners permanentes, índices, CMS, analítica, conectividad artificial ni dependencias nuevas. |
-| IX — etapas | Aprobación técnica registrada; bloqueo editorial visible. Desglose preliminar de tareas no equivale a apertura de ejecución. Commit y sincronización no dispensan prerrequisitos. |
+| IX — etapas | Aprobación técnica y fuentes registradas; ejecución local autorizada. Tareas/resultados distinguen pruebas locales, nativas, humanas y remotas. Commit no equivale a entrega aceptada. |
 
 La consulta de NIST fue satisfactoria desde su repositorio oficial. Otras fuentes
 están pendientes por acceso de red, ver [registro](fuentes-editoriales.md).
@@ -265,3 +265,14 @@ preliminar del plan aprobado, sin declarar cerrada la puerta editorial ni inicia
 implementación. No se han ejecutado pruebas F04 ni desplegado reglas/documentos.
 El borrador de red incorpora los cuatro dominios documentados en el registro de
 fuentes; guardarlo no aplica ni publica esa configuración.
+
+
+## Prerrequisito editorial resuelto — 2026-11-05
+
+La nueva instancia aplica los dominios publicados. Se consultaron FTC, RFC Editor,
+Google y NIST; el registro de fuentes documenta redirecciones, secciones, cobertura
+de las cuatro categorías y límites. CISA no es consultable, pero sus alternativas
+primarias previstas cubren los consejos. El texto1.0.0/A1–A5 no cambia. Se cierra
+el bloqueo editorial T001, sin pedir aprobación otra vez del plan. El responsable
+pidió «listo sigamos»: se continúa con herramientas/baseline y ejecución del plan,
+sin inferir permiso para publicar en Firebase ni aceptar pruebas humanas pendientes.

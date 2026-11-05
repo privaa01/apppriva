@@ -1,3 +1,6 @@
+import '../features/tips/presentation/tips_catalog_screen.dart';
+import '../features/tips/presentation/tip_detail_screen.dart';
+import '../features/tips/data/tips_repository.dart';
 import '../features/navigation/application/navigation_controller.dart';
 import '../features/navigation/data/destination_catalog.dart';
 import '../features/navigation/presentation/home_screen.dart';
@@ -29,7 +32,9 @@ class AccountRouter {
     this.deletionContactService,
     this.profileObserver,
     this.navigation,
+    this.tipsRepository,
   });
+  final TipsRepository? tipsRepository;
   final NavigationController? navigation;
   final AccountController controller;
   final AccountDestinationBuilder? destinationBuilder;
@@ -57,6 +62,7 @@ class AccountRouter {
           contact: deletionContactService,
           observer: profileObserver,
           navigation: navigation,
+          tipsRepository: tipsRepository,
         );
     }
     return MaterialPageRoute<void>(
@@ -81,7 +87,9 @@ class _GuardedDestination extends StatelessWidget {
     this.contact,
     this.observer,
     this.navigation,
+    this.tipsRepository,
   });
+  final TipsRepository? tipsRepository;
   final AccountController controller;
   final String path;
   final AccountDestinationBuilder? builder;
@@ -121,6 +129,21 @@ class _GuardedDestination extends StatelessWidget {
               child: const Text('Volver al cuestionario'),
             ),
           ),
+        );
+      }
+      if (builder == null && path == '/tips') {
+        return TipsCatalogScreen(
+          account: controller,
+          repository: tipsRepository ?? const UnavailableTipsRepository(),
+          observer: observer,
+        );
+      }
+      if (builder == null && path.startsWith('/tips/')) {
+        return TipDetailScreen(
+          account: controller,
+          categoryId: path.split('/').last,
+          repository: tipsRepository ?? const UnavailableTipsRepository(),
+          observer: observer,
         );
       }
       if (path == '/home' && builder == null) {
