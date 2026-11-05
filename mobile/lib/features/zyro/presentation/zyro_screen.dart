@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import '../../account/application/account_controller.dart';
 import '../../account/presentation/account_scaffold.dart';
 import '../application/zyro_controller.dart';
-import '../domain/zyro_message.dart';
+import 'zyro_message_view.dart';
 
 class ZyroScreen extends StatefulWidget {
   const ZyroScreen({
@@ -19,9 +19,35 @@ class ZyroScreen extends StatefulWidget {
 
 class _ZyroScreenState extends State<ZyroScreen> {
   final input = TextEditingController();
+  final inputFocus = FocusNode();
+
+  @override
+  void initState() {
+    super.initState();
+    widget.controller.addListener(_restoreFailedDraft);
+  }
+
+  @override
+  void didUpdateWidget(ZyroScreen oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    if (oldWidget.controller != widget.controller) {
+      oldWidget.controller.removeListener(_restoreFailedDraft);
+      widget.controller.addListener(_restoreFailedDraft);
+    }
+  }
+
+  void _restoreFailedDraft() {
+    if (widget.controller.error != null && input.text.isEmpty) {
+      input.text = widget.controller.failedDraft ?? '';
+      input.selection = TextSelection.collapsed(offset: input.text.length);
+    }
+  }
+
   @override
   void dispose() {
+    widget.controller.removeListener(_restoreFailedDraft);
     input.dispose();
+    inputFocus.dispose();
     widget.controller.leave();
     super.dispose();
   }
@@ -46,7 +72,8 @@ class _ZyroScreenState extends State<ZyroScreen> {
             textAlign: TextAlign.center,
           ),
           const SizedBox(height: 20),
-          for (final m in widget.controller.messages) _Message(message: m),
+          for (final message in widget.controller.messages)
+            ZyroMessageView(message: message),
           if (widget.controller.busy)
             Semantics(liveRegion: true, child: LinearProgressIndicator()),
           if (widget.controller.error != null)
@@ -56,7 +83,11 @@ class _ZyroScreenState extends State<ZyroScreen> {
                 children: [
                   Text(widget.controller.error!),
                   TextButton(
-                    onPressed: widget.controller.retry,
+                    key: const Key('zyro.retry'),
+                    onPressed: () {
+                      input.clear();
+                      widget.controller.retry();
+                    },
                     child: const Text('Reintentar'),
                   ),
                 ],
@@ -64,47 +95,26 @@ class _ZyroScreenState extends State<ZyroScreen> {
             ),
           const SizedBox(height: 16),
           TextField(
+            key: const Key('zyro.input'),
             controller: input,
+            focusNode: inputFocus,
             maxLength: 1000,
             maxLines: 4,
             decoration: const InputDecoration(labelText: 'Escribe tu mensaje'),
           ),
           FilledButton(
+            key: const Key('zyro.send'),
             onPressed: widget.controller.busy
                 ? null
                 : () {
                     final text = input.text;
                     input.clear();
                     widget.controller.send(text);
+                    inputFocus.requestFocus();
                   },
             child: const Text('Enviar'),
           ),
         ],
-      ),
-    ),
-  );
-}
-
-class _Message extends StatelessWidget {
-  const _Message({required this.message});
-  final ZyroMessage message;
-  @override
-  Widget build(BuildContext context) => Semantics(
-    label: (message.role == ZyroRole.user ? 'Tú: ' : 'Zyro: ') + message.text,
-    child: Card(
-      child: Padding(
-        padding: const EdgeInsets.all(16),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              message.role == ZyroRole.user ? 'Tú' : 'Zyro',
-              style: const TextStyle(fontWeight: FontWeight.bold),
-            ),
-            Text(message.text),
-            for (final step in message.steps) Text('• $step'),
-          ],
-        ),
       ),
     ),
   );

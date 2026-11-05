@@ -41,6 +41,10 @@ function parseGuide(value: unknown): VerifiedGuide | null {
   return Object.freeze({...row, steps: Object.freeze([...row.steps])}) as unknown as VerifiedGuide;
 }
 
+export function isServableGuide(value: unknown): boolean {
+  return parseGuide(value) !== null;
+}
+
 function loadCatalogue(value: unknown): ReadonlyArray<VerifiedGuide> {
   if (!value || typeof value !== "object") throw new Error("invalid-guide-catalogue");
   const file = value as CatalogueFile;

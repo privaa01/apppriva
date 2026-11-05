@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 
-import {GUIDE_CATALOGUE_ID, findVerifiedGuide, verifiedGuides} from "../../src/zyro/catalog.js";
+import {GUIDE_CATALOGUE_ID, findVerifiedGuide, isServableGuide, verifiedGuides} from "../../src/zyro/catalog.js";
 import {routeApprovedGuide} from "../../src/zyro/guide_router.js";
 
 test("loads only the twelve approved current guides", () => {
@@ -21,6 +21,13 @@ test("does not guess when platform or approved intent is absent", () => {
   assert.equal(findVerifiedGuide("Quiero proteger mejor mi cuenta"), null);
   assert.equal(findVerifiedGuide("¿Cómo elimino Instagram?"), null);
   assert.equal(findVerifiedGuide("¿Cómo configuro TikTok?"), null);
+});
+
+test("a stale guide cannot be served", () => {
+  const current = verifiedGuides[0];
+  assert.equal(isServableGuide(current), true);
+  assert.equal(isServableGuide({...current, status: "vencida"}), false);
+  assert.equal(isServableGuide({...current, status: "retirada"}), false);
 });
 
 test("routes a guide with traceable metadata and the same request id", () => {

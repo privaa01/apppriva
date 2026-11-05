@@ -7,8 +7,9 @@ import '../data/zyro_repository.dart';
 import '../domain/zyro_message.dart';
 
 class ZyroController extends ChangeNotifier {
-  ZyroController(this.repository);
+  ZyroController(this.repository, {this.timeout = const Duration(seconds: 15)});
   final ZyroRepository repository;
+  final Duration timeout;
   final messages = <ZyroMessage>[];
   bool busy = false;
   String? error;
@@ -16,6 +17,7 @@ class ZyroController extends ChangeNotifier {
   int _generation = 0;
   String? _retryText;
   String? _retryRequestId;
+  String? get failedDraft => error == null ? null : _retryText;
   void owner(String? uid) {
     if (_uid != uid) {
       _uid = uid;
@@ -49,7 +51,7 @@ class ZyroController extends ChangeNotifier {
     try {
       final reply = await repository
           .respond(requestId: requestId, message: text, context: messages)
-          .timeout(const Duration(seconds: 15));
+          .timeout(timeout);
       if (generation != _generation || _uid == null) return;
       messages.add(
         ZyroMessage(
@@ -58,6 +60,8 @@ class ZyroController extends ChangeNotifier {
           text: reply.text,
           kind: reply.kind,
           steps: reply.steps,
+          guideId: reply.guideId,
+          guideRevision: reply.guideRevision,
         ),
       );
     } catch (_) {
@@ -67,6 +71,10 @@ class ZyroController extends ChangeNotifier {
     } finally {
       if (generation == _generation) {
         busy = false;
+        if (error == null) {
+          _retryText = null;
+          _retryRequestId = null;
+        }
         notifyListeners();
       }
     }

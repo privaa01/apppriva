@@ -78,8 +78,8 @@ cerrarla solo se permiten emuladores/dobles, nunca Vertex o despliegue real.
 - [x] T007 Inicializar Functions Node22/TypeScript y dependencias fijadas en `firebase/functions/package.json`, `firebase/functions/tsconfig.json` y `firebase.json`, compilación TypeScript satisfactoria y sin secretos.
 - [x] T008 [P] Convertir únicamente guías aprobadas a `firebase/functions/src/zyro/guides.v1.json`, con plataforma/acción/superficie/revisión/estado/pasos/consecuencias/fuente y solo estado `vigente` servible; doce guías transcritas del PDF aportado para Instagram, Facebook y Google.
 - [x] T009 [P] Definir tipos y validación exacta de request/response, guía y decisión en `firebase/functions/src/zyro/contracts.ts`: mensaje≤1000, contexto≤8/6000, pasos0–6, schemaVersion1 y rechazo de campos extra.
-- [ ] T010 [P] Crear fixtures sintéticos y adaptador Vertex falso en `firebase/functions/test/zyro/fixtures.ts` y `firebase/functions/test/zyro/fake_vertex.ts`, sin red ni mensajes reales.
-- [ ] T011 [P] Crear fixtures/control de Futures y repositorio falso móvil en `mobile/test/features/zyro/zyro_test_fixtures.dart`, incluyendo tres estados de cuenta y respuestas tardías.
+- [x] T010 [P] Crear fixtures sintéticos y adaptador Vertex falso en `firebase/functions/test/zyro/fixtures.ts` y `firebase/functions/test/zyro/fake_vertex.ts`, sin red ni mensajes reales; usados por pruebas de router y salida hostil.
+- [x] T011 [P] Crear fixtures/control de Futures y repositorio falso móvil en `mobile/test/features/zyro/zyro_test_fixtures.dart`, incluyendo tres estados de cuenta y respuestas tardías; usados por controlador, P07 y navegación.
 - [x] T012 Añadir dependencias móviles fijadas y configuración de test en `mobile/pubspec.yaml` y `mobile/pubspec.lock`, conservando Firebase actual y sin añadir `firebase_ai`; lockfile resuelto.
 - [x] T013 Preparar reglas y pruebas que denieguen todo acceso cliente a `zyro_rate_limits` en `firebase/firestore.rules` y `firebase/tests/zyro-rate-limits.test.mjs`; 18/18 pruebas de reglas satisfactorias, preservando cuenta/perfil/demo.
 
@@ -98,37 +98,37 @@ TalkBack, navegación, descarte, doble toque, retry y respuesta hostil.
 
 ### Tests for HU-05 — deben fallar antes de implementar
 
-- [ ] T014 [P] [US1] Probar `ZyroMessage`, request/response, límites textuales y rechazo de campos/URL en `mobile/test/features/zyro/zyro_message_test.dart`.
-- [ ] T015 [P] [US1] Probar conversación por UID/proceso, salida/retorno, logout/cambio UID, una solicitud, retry mismo requestId, timeout15s y Future tardío en `mobile/test/features/zyro/zyro_controller_test.dart`.
-- [ ] T016 [P] [US1] Probar callable sin Auth/AppCheck/verificación/evidencia, esquema, cuota10/10min, guía vigente/vencida, daño/sensible/fuera de alcance y salida hostil en `firebase/functions/test/zyro/callable.test.ts`.
-- [ ] T017 [P] [US1] Probar P07 en todos los estados,320×720/412×915, texto100/200%, teclado,48dp, semántica/foco/contraste y URL inerte en `mobile/test/features/zyro/zyro_screen_test.dart`.
-- [ ] T018 [P] [US1] Probar acceso/navegación/regresión: visitante→acceso, sesión→P07, Chat IA seleccionado, salir/volver conserva, logout descarta y F01–F04 intactos en `mobile/test/features/zyro/zyro_navigation_test.dart`.
+- [x] T014 [P] [US1] Probar `ZyroMessage`, request/response, límites textuales y rechazo de campos/URL en `mobile/test/features/zyro/zyro_message_test.dart` y `functions_zyro_repository_test.dart`; 6 pruebas satisfactorias.
+- [x] T015 [P] [US1] Probar conversación por UID/proceso, salida/retorno, logout/cambio UID, una solicitud, retry mismo requestId, timeout15s configurable y Future tardío en `mobile/test/features/zyro/zyro_controller_test.dart`; 5 pruebas satisfactorias.
+- [x] T016 [P] [US1] Probar callable sin Auth/AppCheck/verificación/evidencia, esquema, cuota10/10min, guía vigente/vencida, daño/sensible/fuera de alcance y salida hostil en pruebas Functions; 17 pruebas Node satisfactorias sin red.
+- [x] T017 [P] [US1] Probar P07 en estados inicial/carga/error/guía/límite,320×720/412×915, texto100/200%, teclado/foco,48dp, semántica/contraste y URL inerte en pruebas Zyro; 19 pruebas móviles específicas satisfactorias.
+- [x] T018 [P] [US1] Probar acceso/navegación/regresión: visitante y no verificado→acceso, sesión→P07, Chat IA seleccionado, salir/volver conserva y logout descarta; regresión F01–F04 cubierta por suite completa.
 
 ### Domain and application
 
-- [ ] T019 [P] [US1] Implementar modelos inmutables y validación del contrato en `mobile/lib/features/zyro/domain/zyro_message.dart`, incluyendo texto plano, roles, kinds,0–6 pasos y metadatos de guía.
-- [ ] T020 [P] [US1] Definir resultados/errores sanitizados y puerto en `mobile/lib/features/zyro/data/zyro_repository.dart`, sin exponer proveedor, stack o UID a UI.
-- [ ] T021 [US1] Implementar propietario/controlador de conversación en `mobile/lib/features/zyro/application/zyro_controller.dart`: RAM por UID, máximo8/6000 enviados, una activa, UUID/retry, timeout15s, generación y descarte aprobado.
-- [ ] T022 [US1] Implementar adaptador callable en `mobile/lib/features/zyro/data/functions_zyro_repository.dart`, validar respuesta/schema/requestId, no registrar cuerpos y traducir códigos a estados seguros.
+- [x] T019 [P] [US1] Implementar modelos inmutables y validación del contrato en `mobile/lib/features/zyro/domain/zyro_message.dart`, incluyendo texto plano, roles, kinds,0–6 pasos y metadatos de guía.
+- [x] T020 [P] [US1] Definir resultados/errores sanitizados y puerto en `mobile/lib/features/zyro/data/zyro_repository.dart`, sin exponer proveedor, stack o UID a UI.
+- [x] T021 [US1] Implementar propietario/controlador de conversación en `mobile/lib/features/zyro/application/zyro_controller.dart`: RAM por UID, máximo8/6000 enviados, una activa, UUID/retry, timeout15s, generación y descarte aprobado; límites de cruce aplicados por el adaptador.
+- [x] T022 [US1] Implementar adaptador callable en `mobile/lib/features/zyro/data/functions_zyro_repository.dart`, validar campos exactos/schema/requestId/metadatos/URL, no registrar cuerpos y traducir códigos a estados seguros.
 
 ### Server
 
 - [x] T023 [P] [US1] Implementar catálogo cerrado/versionado en `firebase/functions/src/zyro/catalog.ts`; doce guías de Instagram/Facebook/Google, coincidencia por acción exacta, solo `vigente`, ninguna reconstrucción generativa y cuatro pruebas Node satisfactorias.
-- [ ] T024 [P] [US1] Implementar pre/postfiltros y textos de límite en `firebase/functions/src/zyro/policy.ts`: sensibles, daño, fuera de alcance, certeza, URLs, credenciales, acciones y más de6 pasos.
-- [ ] T025 [P] [US1] Implementar adaptador Vertex con identidad de servicio, endpoint/modelo aprobados, salida estructurada y timeout≤15s en `firebase/functions/src/zyro/vertex_adapter.ts`, sin API key ni logs de contenido.
-- [ ] T026 [US1] Implementar router híbrido en `firebase/functions/src/zyro/router.ts`: filtros→guía fija→IA general→posfiltro; el modelo nunca crea pasos de cuenta.
-- [ ] T027 [US1] Implementar cuota transaccional10/10min y TTL≤24h en `firebase/functions/src/zyro/rate_limit.ts`, guardando solo UID/ventana/contador/expiración.
-- [ ] T028 [US1] Implementar callable `zyroRespond` en `firebase/functions/src/zyro/callable.ts` con Auth password, correo verificado, evidencia priva-1.0.0, AppCheck obligatorio, contrato y errores sanitizados.
-- [ ] T029 [US1] Exportar callable y configurar región/memoria/concurrencia/timeout aprobados en `firebase/functions/src/index.ts`, con logs estructurados sin UID/cuerpos.
+- [x] T024 [P] [US1] Implementar pre/postfiltros y textos de límite en `firebase/functions/src/zyro/policy.ts`: sensibles, daño, fuera de alcance, certeza/promesas, URLs y credenciales; el contrato impide más de6 pasos.
+- [x] T025 [P] [US1] Implementar adaptador Vertex con identidad de servicio, modelo/región aprobados, salida JSON estructurada y timeout14s en `firebase/functions/src/zyro/vertex_adapter.ts`, sin API key ni logs de contenido.
+- [x] T026 [US1] Implementar router híbrido en `firebase/functions/src/zyro/router.ts`: filtros→guía fija→IA general→posfiltro; el modelo nunca crea pasos de cuenta.
+- [x] T027 [US1] Implementar cuota transaccional10/10min y TTL≤24h en `firebase/functions/src/zyro/rate_limit.ts`, guardando solo UID/ventana/contador/expiración; pruebas de ventana y undécima solicitud satisfactorias.
+- [x] T028 [US1] Implementar callable `zyroRespond` en `firebase/functions/src/zyro/callable.ts` con Auth password, correo verificado, evidencia priva-1.0.0, AppCheck obligatorio, contrato y errores sanitizados.
+- [x] T029 [US1] Exportar callable y configurar región `us-central1`, memoria256MiB, concurrencia10 y timeout15s en `firebase/functions/src/index.ts`, sin registrar UID o cuerpos.
 
 ### P07 and integration
 
-- [ ] T030 [US1] Implementar P07 según PDF5 en `mobile/lib/features/zyro/presentation/zyro_screen.dart`: Zyro existente, aviso sensible, conversación, campo≤1000, Enviar, estados, scroll/teclado y menú sin marco de teléfono.
-- [ ] T031 [US1] Implementar burbujas/guías/límites accesibles y texto plano no accionable en `mobile/lib/features/zyro/presentation/zyro_message_view.dart`, con autor, encabezados, revisión y hasta6 pasos.
-- [ ] T032 [US1] Integrar repositorio/controlador por encima de P07 en `mobile/lib/app/priva_app.dart` y `mobile/lib/app/account_router.dart`, habilitar `/chat` en `mobile/lib/features/navigation/data/destination_catalog.dart` y preservar builder/guardas F01–F04.
+- [x] T030 [US1] Implementar P07 según PDF5 en `mobile/lib/features/zyro/presentation/zyro_screen.dart`: Zyro existente, aviso sensible, conversación, campo≤1000, Enviar, estados, scroll/teclado y menú sin marco de teléfono.
+- [x] T031 [US1] Implementar burbujas/guías/límites accesibles y texto plano no accionable en `mobile/lib/features/zyro/presentation/zyro_message_view.dart`, con autor, encabezados, revisión y hasta6 pasos.
+- [x] T032 [US1] Integrar repositorio/controlador por encima de P07 en `mobile/lib/app/priva_app.dart` y `mobile/lib/app/account_router.dart`, habilitar `/chat` en `mobile/lib/features/navigation/data/destination_catalog.dart` y preservar builder/guardas F01–F04.
 - [ ] T033 [US1] Activar App Check Play Integrity en producción y proveedor debug solo en test mediante `mobile/lib/main.dart` y configuración Android; fallo de AppCheck deja P07 recuperable, no desactiva controles.
-- [ ] T034 [US1] Conectar ciclo de sesión/navegación en `mobile/lib/features/zyro/application/zyro_controller.dart`: salir invalida pendiente, volver conserva mensajes, background conserva proceso, logout/cambio UID/eliminación/fin descarta.
-- [ ] T035 [US1] Completar errores/reintento/red/doble toque y foco anunciado en `mobile/lib/features/zyro/presentation/zyro_screen.dart`, sin segunda burbuja ni borrado silencioso del borrador.
+- [x] T034 [US1] Conectar ciclo de sesión/navegación en `mobile/lib/features/zyro/application/zyro_controller.dart`: salir invalida pendiente, volver conserva mensajes, background conserva proceso y logout/cambio UID/fin descarta; cubierto por pruebas.
+- [x] T035 [US1] Completar errores/reintento/red/doble toque y foco anunciado en `mobile/lib/features/zyro/presentation/zyro_screen.dart`, sin segunda burbuja ni borrado silencioso del borrador; cubierto por P07 y controlador.
 - [ ] T036 [US1] Añadir integración con emuladores y recorrido sintético P07 en `mobile/integration_test/zyro_test.dart`, sin llamar Vertex real ni usar cuentas personales.
 
 **Checkpoint**: HU-05 funciona de extremo a extremo en proyecto de pruebas; ninguna
@@ -138,7 +138,7 @@ guía o proveedor pendiente puede sustituirse silenciosamente.
 
 ## Phase 4: Polish, validación y entrega
 
-- [ ] T037 Ejecutar análisis, suite Flutter completa, Functions, Emulator Suite y reglas; registrar comandos/recuentos/fallos reales en `specs/005-zyro-orientacion/validation/technical-results.md`.
+- [x] T037 Ejecutar análisis, suite Flutter completa, Functions, Firestore Emulator y reglas; 0 diagnósticos,199/199 Flutter,17/17 Functions,18/18 reglas y APK debug satisfactorio, con resultados y límites en `validation/technical-results.md`.
 - [ ] T038 Auditar almacenamiento, tráfico, Firestore, APK y Cloud Logging con mensajes sintéticos; acreditar ausencia de cuerpos/contexto/respuestas/secretos y TTL del contador en `specs/005-zyro-orientacion/validation/privacy-security.md`.
 - [ ] T039 Ejecutar20 ciclos de admitida/guía/límite/error/retry/doble toque, feedback≤1s y resultado≤15s; guardar solo agregados en `specs/005-zyro-orientacion/validation/performance.md`.
 - [ ] T040 Validar Android API24/API36 y320×720/412×915 con texto100/200%, teclado, atrás, background, red y logout; registrar ejecutado/omitido en `specs/005-zyro-orientacion/validation/android-matrix.md`.
