@@ -1,18 +1,37 @@
-# Specification Quality Checklist: F05
+# Specification Quality Checklist: F05 — Orientación confiable mediante Zyro
 
+**Purpose**: validar completitud antes de planificación
+**Created**: 2026-11-05
 **Feature**: [spec.md](../spec.md)
-**Estado**: revisión documental, no aceptación del producto.
 
-- [x] Historia y criterios CA preservados con sus IDs originales.
-- [x] RF asociados y pantallas/PDF identificados.
-- [x] Recorrido, casos límite, datos y dependencias identificados.
-- [x] Fuente y propuestas diferenciadas de decisiones aprobadas.
-- [x] Sin selección nueva de arquitectura, proveedor o plazos legales.
-- [ ] Resolver brechas de pantallas indicadas en el spec y registro general.
-- [ ] Cerrar los PD aplicables y criterios medibles aún pendientes.
-- [ ] Aprobar prioridad y límites de la funcionalidad.
-- [ ] Ratificar constitución y aprobar este alcance explícitamente.
-- [ ] Ejecutar y aportar evidencia de aceptación (fase posterior).
+## Content Quality
 
-No está listo para planificación. Los escenarios y métricas copiados son requisitos,
-no pruebas ejecutadas. Los controles transversales se revisan también en [el índice SDD](../../README.md).
+- [x] No selecciona lenguaje, framework, API, proveedor o arquitectura.
+- [x] Se centra en orientación, comprensión, límites y recuperación.
+- [x] Está escrito para responsables no técnicos.
+- [x] Contiene escenarios, requisitos, entidades, alcance y resultados.
+
+## Requirement Completeness
+
+- [ ] No quedan marcadores NEEDS CLARIFICATION: faltan catálogo inicial, ciclo de
+  conversación y modelo de orientación.
+- [x] Los requisitos son verificables y no convierten el mockup en fuente aprobada.
+- [x] Los resultados tienen denominadores, condiciones y límites de evidencia.
+- [x] Los resultados no dependen de un proveedor o tecnología.
+- [x] Se cubren consulta admitida, no verificada, dañina, sensible y error.
+- [x] Se identifican concurrencia, respuesta tardía, teclado, salida y ambigüedad.
+- [x] El alcance excluye acciones externas, credenciales, adjuntos e historial no aprobado.
+- [x] Se identifican F01–F04, Android, conexión, fuentes y decisiones del plan.
+
+## Feature Readiness
+
+- [x] RF-07–09 y subcriterios se vinculan con CA-05.1–12.
+- [x] HU-05 cubre P07 inicial, conversación, carga, límite y error.
+- [x] SC-05.1–6 cubren confiabilidad, guías, concurrencia, accesibilidad, comprensión y datos.
+- [x] No se presentan decisiones técnicas como reglas funcionales.
+
+## Notes
+
+Resultado: **15/16 controles completos**. La especificación no está lista para
+aprobación ni planificación hasta resolver conjuntamente las tres decisiones.
+Después se actualizarán spec/checklist y se repetirá esta revisión.

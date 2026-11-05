@@ -1,136 +1,206 @@
-# Feature Specification: F05 — Orientación verificada mediante Zyro
+# Feature Specification: F05 — Orientación confiable mediante Zyro
 
-**Feature Branch**: `work` (rama actual; la funcionalidad se selecciona por directorio)
-**Created**: 2026-10-21
-**Status**: Draft — especificación funcional separada; pendiente de aprobación.
-**Separated**: 2026-10-26
-**Input**: Especificar esta funcionalidad a partir de PRIVA_MOBILE_SPEC.md, sus pantallas y las decisiones explícitas del usuario.
-**Fuentes**: [Spec original](../../docs/referencias/PRIVA_MOBILE_SPEC.md), [PDF](../../docs/referencias/app.pdf).
-
-## Regla de acceso confirmada — 2026-10-26
-
-Decisión explícita del usuario: sin iniciar sesión solo se accede al contenido de
-Tips (P02 y sus cuatro detalles P03–P06). Crear cuenta, iniciar sesión y recuperar
-acceso siguen disponibles como flujos de entrada, no como contenido protegido.
-Con sesión iniciada se habilitan todas las funcionalidades de Priva dentro de su
-alcance aprobado; Perfil solo permite gestionar la propia cuenta.
-
-Se conserva la navegación del wireframe de acceso. Que un control esté visible
-NO concede acceso: Inicio, Perfil, Chat IA, Cuestionario y Resultados requieren
-sesión. Sin sesión, seleccionar una opción protegida debe indicar que se necesita
-iniciar sesión y no mostrar su contenido. El detalle visual del aviso no se fija aquí.
-Al cerrar sesión se revoca el acceso protegido y se descarta el cuestionario y su
-resultado; Tips continúa disponible. No se añade modo sin conexión.
-
-Esta decisión sustituye la exclusión visual del menú en acceso y la interpretación
-de que toda la app necesita cuenta. Los extractos del spec original que se conservan
-más abajo son antecedentes: ante discrepancia prevalece esta revisión explícita.
-No aprueba el resto del spec ni autoriza el cambio de etapa.
+**Feature Branch**: `work` (selección por directorio)
+**Created**: 2026-10-21. **Updated**: 2026-11-05
+**Status**: En revisión — tres decisiones requieren aprobación; no autoriza plan ni implementación
+**SPECIFY_FEATURE_DIRECTORY**: `specs/005-zyro-orientacion`
+**Input**: «continua con el spec 005»
+**Fuentes**: [spec original §§5, 8, 11–18](../../docs/referencias/PRIVA_MOBILE_SPEC.md),
+[wireframe P07, PDF5](../../docs/referencias/app.pdf),
+[mapa de pantallas](../../docs/descomposicion/README.md) y
+[constitución v1.1.0](../../.specify/memory/constitution.md).
 
 ## User Scenarios & Testing *(mandatory)*
 
-### HU-05 — Consultar a Zyro (RF-07 a RF-09)
+### HU-05 — Consultar a Zyro (RF-07 a RF-09) (Priority: P1 propuesta)
 
-Como usuario, quiero resolver dudas sobre privacidad y seguridad con explicaciones sencillas.
+Como persona con una cuenta habilitada, quiero consultar a Zyro sobre privacidad y
+seguridad y recibir orientación sencilla que reconozca sus límites.
 
-- **CA-05.1:** El chat muestra la identidad Zyro, su función, campo de mensaje y control de envío.
-- **CA-05.2:** Una consulta admitida obtiene orientación comprensible; las instrucciones se organizan en pasos cuando corresponde.
-- **CA-05.3:** Una plataforma sin guía verificada produce una explicación del límite, sin pasos inventados.
-- **CA-05.4:** Una consulta fuera de alcance o dañina recibe una respuesta de límite y una alternativa apropiada.
-- **CA-05.5:** Un fallo del servicio muestra opción de reintento sin duplicar mensajes por envíos repetidos.
-- **CA-05.6:** El campo y el botón de envío permanecen visibles cuando se abre el teclado.
+**Why this priority**: Zyro es la función de orientación de Priva y P07 ya está
+conectada a la navegación protegida. La prioridad necesita aprobación con el spec.
 
-**Prioridad:** pendiente de aprobación; la numeración es identificación, no orden de entrega.
-**Independent Test:** ejecutar los criterios CA anteriores en las pantallas asignadas,
-con sus precondiciones de sesión y contenido, comprobando el resultado funcional
-sin exigir implementar otras historias conforme a esta especificación; las pruebas aún no se han ejecutado.
-**Recorrido:** Consulta → orientación breve o pasos verificados; consulta no sustentada/fuera de alcance → límite explícito; fallo → reintento sin duplicación.
+**Independent Test**: iniciar sesión, abrir P07, revisar identidad/aviso, enviar
+consultas sintéticas admitidas, no verificadas, dañinas y con datos sensibles;
+forzar error y reintento. Verificar teclado, texto 200%, TalkBack, acceso y descarte
+de conversación sin implementar cuestionario o resultados.
+
+**Acceptance Scenarios**:
+
+- **CA-05.1:** P07 muestra identidad de Zyro, función educativa, aviso de no compartir
+  contraseñas/códigos/datos sensibles, campo de mensaje y control Enviar inequívoco.
+- **CA-05.2:** Una consulta admitida recibe lenguaje sencillo, pasos breves cuando
+  corresponde y una indicación clara de que la orientación no garantiza protección.
+- **CA-05.3:** Una plataforma o ruta sin guía vigente produce un límite explícito;
+  Zyro no inventa nombres de menús, URLs, consecuencias o pasos.
+- **CA-05.4:** Una petición para vulnerar sistemas, acceder a cuentas ajenas, obtener
+  datos privados o realizar daño se rechaza y ofrece una alternativa segura dentro
+  del alcance. Asesoría jurídica/profesional individual se remite a un canal adecuado.
+- **CA-05.5:** Carga, falta de conexión, demora y fallo muestran estados comprensibles.
+  Reintentar la misma consulta no duplica el mensaje del usuario ni envía dos
+  solicitudes simultáneas; una respuesta tardía no reemplaza una conversación nueva.
+- **CA-05.6:** Con teclado abierto, texto al 200% y TalkBack se pueden leer los
+  mensajes, editar la consulta, activar Enviar/Reintentar y cerrar el teclado sin
+  ocultar el campo ni la acción principal.
+- **CA-05.7:** Zyro nunca pide credenciales, códigos, documentos, datos financieros
+  ni acceso a una cuenta. Si el mensaje parece contenerlos, detiene la orientación,
+  muestra una advertencia y no los repite en la respuesta.
+- **CA-05.8:** Zyro no abre enlaces, inspecciona perfiles, inicia sesión, elimina o
+  desactiva cuentas, presenta denuncias ni cambia configuraciones. Las instrucciones
+  se leen dentro de Priva y toda acción externa queda a cargo de la persona.
+- **CA-05.9:** Una guía para eliminar/desactivar identifica plataforma, tipo de acción,
+  fecha de revisión y alcance; distingue eliminar de desactivar y sus consecuencias
+  verificadas. Una guía vencida o incompleta se trata como no disponible.
+- **CA-05.10:** Sin sesión no se muestra P07; con sesión válida se permite. Cerrar
+  sesión revoca acceso y elimina el estado temporal de conversación de Priva.
+- **CA-05.11:** Los mensajes no se usan para personalizar Tips, cuestionario o perfil,
+  no se envían al cuestionario y no aparecen en analítica o registros técnicos.
+- **CA-05.12:** P07 conserva Inicio/Perfil y menú inferior, marca Chat IA como sección
+  activa y permite salir conforme a F03 sin liberar otras funciones pendientes.
 
 ### Edge Cases
 
-Plataforma sin guía; petición de credenciales; consulta dañina; incertidumbre; proveedor caído; teclado ocultando envío; envíos repetidos.
+- Mensaje vacío, solo espacios o demasiado largo: no se envía y se explica cómo
+  corregirlo sin perder silenciosamente lo escrito.
+- Doble toque en Enviar durante carga: una sola consulta activa.
+- Se abandona P07 o se cierra sesión con una solicitud pendiente: se invalida; su
+  respuesta tardía no reaparece ni abre acceso.
+- El proveedor responde con credenciales, enlaces accionables, certeza de fraude o
+  pasos fuera del catálogo: validar y sustituir por un límite seguro, no mostrarlos.
+- Consulta ambigua: pedir una aclaración mínima sin solicitar información sensible.
+- Consulta de cuenta comprometida: ofrecer medidas iniciales generales y canales
+  oficiales; no prometer recuperar la cuenta ni investigar el incidente.
+- El teclado cambia tamaño/orientación: conservar campo y Enviar visibles mediante
+  desplazamiento/foco; no crear una segunda pantalla.
 
 ## Requirements *(mandatory)*
 
 ### Functional Requirements
 
-- **RF-07**: Permitir consultar a Zyro sobre privacidad y seguridad digital.
-- **RF-08**: Ofrecer instrucciones verificadas para eliminar o desactivar cuentas admitidas.
-- **RF-09**: Gestionar consultas fuera de alcance, incertidumbre y errores del chat.
+- **RF-07:** permitir consultas de privacidad y seguridad en los temas admitidos:
+  contraseñas/2FA, privacidad y permisos, exposición, mensajes/enlaces/perfiles,
+  cuenta posiblemente comprometida y conceptos generales de datos personales.
+- **RF-08:** ofrecer dentro de P07 instrucciones revisadas para eliminar o desactivar
+  cuentas del catálogo inicial aprobado.
+- **RF-09:** manejar fuera de alcance, daño, incertidumbre, contenido no verificado,
+  conectividad, demora y errores sin inventar ni duplicar orientación.
+- **RF-07.a:** presentar identidad, alcance y aviso de datos antes del primer envío.
+- **RF-07.b:** conservar orden conversacional comprensible y distinguir visual y
+  semánticamente mensajes de la persona, Zyro, estados y errores.
+- **RF-07.c:** limitar longitud/frecuencia antes del envío y bloquear solicitudes
+  concurrentes; los valores exactos se fijarán en el plan.
+- **RF-08.a:** cada guía publicada debe tener plataforma, acción, pasos, consecuencias,
+  fuente oficial, versión/plataforma aplicable, fecha y responsable de revisión.
+- **RF-08.b:** mostrar pasos dentro de Priva como texto; referencias son evidencia
+  editorial y no enlaces obligatorios para completar la orientación.
+- **RF-09.a:** aplicar límites antes y después de obtener respuesta, con respuestas
+  seguras para credenciales, daño, asesoría individual y certeza no sustentada.
+- **RF-09.b:** permitir reintento recuperable e impedir respuestas tardías o duplicadas.
+- **RF-09.c:** no incorporar acciones externas, navegación web automática, archivos,
+  cámara, micrófono, ubicación, contactos o lectura de otras aplicaciones.
 
-### Asociación a pantallas
+### Pantalla y estados
 
-P07 (PDF 5).
+| Pantalla / estado | Funcionalidad verificable |
+| --- | --- |
+| P07 inicial | Zyro, mensaje de presentación, aviso de datos, conversación vacía, campo y Enviar |
+| P07 conversación | mensajes diferenciados, respuesta sencilla y pasos cuando corresponda |
+| P07 carga | envío bloqueado, progreso anunciado y salida posible |
+| P07 límite | incertidumbre, guía no disponible, fuera de alcance, daño o dato sensible |
+| P07 error | mensaje sencillo y Reintentar sin duplicar |
+| P07 teclado/texto 200% | campo y Enviar visibles, lectura/foco ordenados |
 
-**Brechas observadas:** La conversación sobre Instagram es ilustrativa, no guía verificada ni catálogo aprobado; confirmar control de envío: el icono visible es ambiguo. Faltan aviso de datos sensibles y estados de incertidumbre/error.
+El wireframe PDF5 aporta composición, Zyro, conversación, campo y menú. Su ejemplo
+de Instagram no prueba que la ruta esté vigente; «intagram/instragram» y el icono
+ambiguo se corrigen. El control se rotula Enviar. No se agrega otra pantalla.
 
-### Reglas de la fuente aplicables
+### Decisiones que requieren aprobación
 
-Los siguientes extractos conservan su estado original: una propuesta o un pendiente
-NO se convierte en decisión por copiarse aquí. Las secciones compartidas son contexto,
-no duplicación de responsabilidad; véase [el índice SDD](../README.md) para el reparto F06/F07.
+1. **[NEEDS CLARIFICATION: catálogo inicial de plataformas para guías verificadas:
+   solo Instagram, conjunto Meta (Instagram/Facebook) u otro conjunto concreto.]**
+2. **[NEEDS CLARIFICATION: ciclo de conversación en Priva: temporal solo mientras
+   P07 está abierta, temporal durante la sesión iniciada, o historial persistente.]**
+3. **[NEEDS CLARIFICATION: modelo de orientación: híbrido con guías fijas verificadas
+   y IA limitada para temas generales, solo catálogo de respuestas verificadas, o
+   IA generativa para todo el alcance con controles.]**
 
-### 8. Zyro: alcance y confiabilidad
+La selección del proveedor, arquitectura, ubicación, conservación del proveedor y
+procedimiento de borrado pertenecen al plan posterior, pero deberán demostrar los
+límites aprobados aquí antes de implementar. No se afirma que ningún proveedor
+retenga cero datos.
 
-### Temas admitidos
+### Out of Scope
 
-- Contraseñas, autenticación y verificación en dos pasos.
-- Privacidad en redes sociales, permisos y exposición de información.
-- Señales de alerta en mensajes, enlaces y perfiles.
-- Eliminación o desactivación de cuentas externas incluidas en un catálogo inicial.
-- Medidas iniciales ante una posible cuenta comprometida y orientación hacia canales oficiales.
-- Conceptos generales de protección de datos, sin asesoría legal individualizada.
-
-### Reglas obligatorias
-
-1. Explicar con lenguaje sencillo y pasos breves cuando la consulta lo requiera.
-2. No acceder a cuentas, ejecutar acciones externas ni solicitar contraseñas o códigos.
-3. No garantizar que un enlace, perfil o mensaje sea seguro o fraudulento.
-4. No ayudar a vulnerar sistemas, acceder a cuentas ajenas u obtener datos privados.
-5. Si no hay información verificada, reconocerlo y evitar inventar rutas o pasos.
-6. Si una consulta requiere intervención profesional, explicar el límite y orientar a un canal adecuado.
-7. Diferenciar eliminar y desactivar y explicar las consecuencias verificadas de cada opción.
-8. Mantener guías apoyadas en fuentes oficiales revisadas, con fecha de revisión y plataforma o versión aplicable cuando corresponda.
-9. Presentar las instrucciones dentro del chat, sin exigir abrir enlaces externos. Las referencias oficiales se conservan internamente para revisión y trazabilidad.
-10. Avisar al usuario que no comparta información sensible y explicar los límites de conservación del proveedor una vez seleccionado.
-
-Mensaje de presentación propuesto: **«Soy Zyro, tu asistente para aprender sobre privacidad y seguridad digital. Te orientaré paso a paso».**
-
-El catálogo inicial de plataformas y el procedimiento de actualización están pendientes. La disponibilidad de una IA no sustituye la revisión de las guías.
+Acceso o recuperación directa de cuentas, ejecución de eliminación/desactivación,
+análisis de URLs/perfiles/archivos, navegación externa automática, asesoría legal o
+forense individual, garantías de seguridad, moderación de contenido de terceros,
+voz, adjuntos, historial/favoritos no aprobados, entrenamiento con mensajes de Priva,
+uso de respuestas del cuestionario y funciones de F06–F08 aún no entregadas.
 
 ### Key Entities
 
-Mensaje, respuesta y guía con fuente oficial y fecha; conservación de mensajes por definir, distinta de la prohibición del cuestionario.
+- **Mensaje temporal:** rol, texto validado, orden y estado; nunca credencial.
+- **Respuesta de Zyro:** orientación o límite, con estado de generación y trazabilidad
+  interna de reglas aplicadas; no implica una acción externa.
+- **Guía verificada:** plataforma, acción eliminar/desactivar, pasos, consecuencias,
+  fuente oficial, fecha, versión aplicable, responsable y estado vigente/no disponible.
+- **Conversación activa:** secuencia temporal y solicitud pendiente; su ciclo depende
+  de la decisión2 y no se presume persistencia.
+- **Revisión editorial:** evidencia del catálogo; no historial de consultas.
 
 ## Success Criteria *(mandatory)*
 
 ### Measurable Outcomes
 
-CA-05.1 a CA-05.6 satisfechos; las consultas no verificadas no reciben rutas inventadas ni promesas de protección. Tiempos pendientes en PD-08.
-
-La evidencia de implementación y las mediciones aún no existen. Las metas del §15
-no son resultados obtenidos. Toda prueba usará datos sintéticos cuando corresponda;
-no se guardarán respuestas ni resultados reales para demostrar cumplimiento.
+- **SC-05.1:** el100% de escenarios admitido/no verificado/fuera de alcance/dañino/
+  dato sensible produce el tipo de respuesta aprobado; cero pasos inventados,
+  solicitudes de credenciales, acciones externas o garantías.
+- **SC-05.2:** el100% de guías entregadas pertenece al catálogo aprobado y tiene
+  fuente oficial, fecha, versión/plataforma y responsable; guías vencidas/incompletas
+  producen límite, no instrucciones.
+- **SC-05.3:** en20 ciclos de envío, doble toque, error y reintento hay una solicitud
+  activa y un mensaje de usuario por intento; cero respuestas tardías visibles tras
+  abandonar, cerrar sesión o iniciar conversación nueva.
+- **SC-05.4:** en la matriz Android del plan, P07 inicial/conversación/carga/límite/
+  error funciona a texto100% y200%; TalkBack distingue autor, estado, campo, Enviar
+  y Reintentar, con objetivos táctiles y contraste aprobados.
+- **SC-05.5:** al menos80% de cinco participantes de40–65 años completa sin ayuda:
+  identificar el alcance, enviar una consulta, reconocer que no debe compartir
+  credenciales, comprender un límite y diferenciar orientación de acción ejecutada.
+  Solo se conservan conteos agregados, nunca mensajes o respuestas individuales.
+- **SC-05.6:** la revisión de datos demuestra cero mensajes en analítica, logs,
+  cuestionario o perfil y documenta para cada sistema/proveedor finalidad, campos,
+  ubicación, conservación, eliminación y acceso antes de aprobar implementación.
 
 ## Assumptions
 
-- Se conserva Android/iOS, público de 40–65 años e internet obligatorio (§§1–3).
-- Las imágenes son referencia visual: sus ejemplos y textos no aprueban reglas nuevas.
-- Acceso F01, navegación F03 y F08. Catálogo y proveedor pendientes; no se aprueba una plataforma por aparecer en un ejemplo.
-- Aplican §§11–17 del spec: minimización, conservación justificada, seguridad,
-  accesibilidad, estados de error y trazabilidad. No se presumen proveedores ni plazos.
+- Android únicamente, mínimo API24 vigente; público de40–65 años.
+- P07 requiere cuenta habilitada y conexión; Tips continúa siendo el único contenido
+  público. Se reutilizan sesión/navegación F01–F04.
+- La imagen Zyro existente puede usarse en P07 conforme al wireframe; no se añade a
+  otras pantallas por esta funcionalidad.
+- Las fuentes y textos de guías se investigan y presentan como artefacto del plan;
+  el mockup no constituye aprobación editorial.
+- Los tiempos, límites de longitud/frecuencia, proveedor, matriz Android y protocolo
+  detallado se fijan en el plan tras aprobar las tres decisiones.
 
-## Decisiones y aprobación pendientes
+## Conflictos, privacidad y trazabilidad
 
-Pendientes originales asociados: PD-03, PD-05, PD-06, PD-08.
-Consultar sus condiciones de cierre en §18 del spec fuente. Las brechas de pantalla
-se resuelven en el registro del índice, sin modificar silenciosamente el original.
-Antes de `$speckit-plan`, resolver los pendientes aplicables y obtener aprobación explícita de la constitución y de este spec. Separar el documento no constituye esa aprobación.
+| Brecha | Resolución del spec |
+| --- | --- |
+| PDF5 da pasos Instagram sin fuente | Tratar como ejemplo; aprobar catálogo y contrastar fuente antes de entrega |
+| PDF5 no muestra aviso, carga, límite o error | Añadir estados en P07 sin crear otra pantalla |
+| Icono de envío ambiguo | Rotular semántica y visualmente «Enviar» |
+| «Chat IA» puede sugerir ejecución | Explicar que orienta y no actúa en cuentas |
+| Retención/proveedor pendientes | Resolver ciclo de Priva ahora y proveedor/ubicación/conservación en plan |
+| Spec original menciona Android/iOS | Aplicar enmienda constitucional Android únicamente |
 
-## Alcance de plataforma vigente — 2026-10-28
+| Requisito | Criterios | Evidencia prevista |
+| --- | --- | --- |
+| RF-07 / 07.a–c | CA-05.1/2/6/7/10/12 | P07, acceso, teclado, semántica y validación |
+| RF-08 / 08.a–b | CA-05.3/8/9 | catálogo y registro editorial con fuentes |
+| RF-09 / 09.a–c | CA-05.4/5/7/8/11 | matriz de límites, errores, concurrencia y privacidad |
+| SC-05.1–6 | HU-05 | automatización, Android, revisión editorial/datos y protocolo humano |
 
-Decisión explícita del usuario: «solo preparala para android». Esta entrega se
-prepara únicamente para Android (mínimo API24 del plan); iOS, VoiceOver y Xcode
-quedan fuera del alcance actual. Las menciones anteriores a ambas plataformas
-son históricas. Se mantienen todos los requisitos funcionales, de privacidad y
-seguridad aplicables a Android. No implica aprobación de otros specs ni entrega.
+La especificación queda lista para resolver las tres decisiones. Su aprobación
+posterior autorizará preparar el plan, no tareas, proveedor ni implementación.
