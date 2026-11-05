@@ -3,7 +3,9 @@
 **Branch:** `work` | **Date:** 2026-11-04 | **Spec:** [spec.md](spec.md).
 **Selección:** `SPECIFY_FEATURE_DIRECTORY=specs/004-tips-educativos`; el script
 reporta el identificador lógico004-tips-educativos, no crea ni cambia la rama real.
-**Estado:** borrador para revisión; no aprobado para tareas/implementación.
+**Estado:** plan técnico aprobado explícitamente por el responsable el2026-11-05;
+cierre editorial pendiente por fuentes bloqueadas. La aprobación no dispensa ese
+prerrequisito ni acredita pruebas o publicación.
 **Entrada:** categorías, textos y wireframes confirmados; A1–A5 aprobados por
 «si los apruebo». [Contenido final](contenido-editorial.md), versión1.0.0.
 
@@ -41,7 +43,8 @@ históricos son prerrequisitos de ejecución, no defectos confirmados del módul
 
 **Antes del diseño:** alcance y A1–A5 aprobados; sin violación constitucional
 propuesta. **Después del diseño:** diseño técnico trazado, pero cierre del plan
-pendiente de completar contraste editorial externo y aprobación del responsable.
+pendiente de completar contraste editorial externo; aprobación del responsable
+registrada el2026-11-05.
 No se declara superada la puerta de implementación.
 
 | Principio | Diseño y evidencia exigida |
@@ -54,7 +57,7 @@ No se declara superada la puerta de implementación.
 | VI — calidad | Reglas get público solo4 IDs, list/escrituras denegados; no ampliar permisos de cuenta. Manejo de errores/timeout, rutas y pruebas sintéticas. |
 | VII — trazabilidad | Matriz RF/CA→contratos→validaciones; tareas detalladas se generan tras aprobación del plan. |
 | VIII — simplicidad | Un router; un repositorio de lectura; sin listeners permanentes, índices, CMS, analítica, conectividad artificial ni dependencias nuevas. |
-| IX — etapas | Borrador y aprobaciones se distinguen. Commit y sincronización de esta propuesta; no implementar por el hecho de sincronizarla. |
+| IX — etapas | Aprobación técnica registrada; bloqueo editorial visible. Desglose preliminar de tareas no equivale a apertura de ejecución. Commit y sincronización no dispensan prerrequisitos. |
 
 La consulta de NIST fue satisfactoria desde su repositorio oficial. Otras fuentes
 están pendientes por acceso de red, ver [registro](fuentes-editoriales.md).
@@ -236,10 +239,29 @@ contenido/reglas no constituye aceptación ni autoriza otras operaciones del pro
 devuelven403. Completar revisión verificable antes de cerrar planificación editorial.
 2. **Entorno:** Flutter/Android y emulador Firestore requieren preparación; no hay
 pruebas de producto en esta etapa. No alterar pins ni desactivar comprobaciones.
-3. **Publicación:** nueva colección pública y reglas deben ser aprobadas en este plan;
+3. **Publicación:** nueva colección pública y reglas incluidas en el plan aprobado;
 acceso administrativo se comprueba en la etapa pertinente por canales seguros,
 nunca se piden claves en chat. Sin despliegue, cliente debe mostrar indisponibilidad.
 4. **Evidencia humana/nativa:** TalkBack, dispositivo y participantes se ejecutan
 posteriormente; las excepciones F03 no se heredan.
 
 No se propone excepción constitucional ni complejidad adicional sin necesidad.
+
+
+## Aprobación del responsable — 2026-11-05
+
+El usuario indicó: «Estoy de acuerdo con el plan técnico propuesto para F04. Se
+deben conservar los wireframes aprobados, la estructura de las cuatro categorías
+y la funcionalidad de “Ver ejemplo” y lo demás».
+
+Se registra su aprobación del diseño técnico presentado, incluidos alcance Android,
+lectura pública limitada de contenido, navegación, estados y estrategia de pruebas.
+No se vuelve a pedir aprobación de este mismo plan. Se mantienen los textos y
+A1–A5 aprobados, los wireframes y las cuatro categorías; no se amplían funciones.
+
+La aprobación no declara resuelta la comprobación externa de fuentes. La nueva
+consulta sigue denegada por proxy403. Se prepara [tasks.md](tasks.md) como desglose
+preliminar del plan aprobado, sin declarar cerrada la puerta editorial ni iniciar
+implementación. No se han ejecutado pruebas F04 ni desplegado reglas/documentos.
+El borrador de red incorpora los cuatro dominios documentados en el registro de
+fuentes; guardarlo no aplica ni publica esa configuración.

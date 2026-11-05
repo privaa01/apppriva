@@ -60,3 +60,21 @@ un documento inaccesible ni eludir la política mediante otro proxy.
 
 El criterio CA-04.10 y la revisión editorial del plan permanecen pendientes hasta
 completar ese trabajo. No se hereda el aplazamiento de pruebas de F03.
+
+
+## Nueva comprobación y borrador de red — 2026-11-05
+
+Se volvió a comprobar CISA, FTC, RFC Editor y soporte Chrome mediante HTTPS y el
+proxy existente: los cuatro intentos fallaron en CONNECT (curl56, código HTTP de
+destino000); una petición de cabeceras CISA confirmó403 del proxy. Esto no cambia
+el estado de lectura de las fuentes ni acredita autorización hacia sus servidores.
+
+El borrador de entorno se leyó y actualizó con éxito: se añadieron `www.cisa.gov`,
+`consumer.ftc.gov`, `www.rfc-editor.org` y `support.google.com`, preservando
+`storage.googleapis.com` y los presets existentes. El servicio confirmó guardado
+con publicación requerida. No se ha aplicado a la instancia ni publicado por este
+cambio; el estado activo sigue con la restricción anterior.
+
+El usuario debe revisar y guardar los cambios de red en la configuración del
+entorno y publicarlos. Tras aplicarlos se reintenta la revisión, sin volver a pedir
+aprobación del plan técnico ya concedida y sin dar por hechos los accesos.

@@ -1,6 +1,7 @@
 # F04 — Contratos de contenido, acceso e interfaz
 
-**Estado:** propuestos para aprobar con el plan. No son endpoints desplegados.
+**Estado:** incluidos en el plan aprobado el2026-11-05. No son endpoints desplegados;
+la ejecución sigue sujeta a los prerrequisitos editoriales documentados.
 
 ## C-TIPS-01 — Repositorio de lectura
 

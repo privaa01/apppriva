@@ -2,7 +2,7 @@
 
 **Feature Branch**: `work` (selección por directorio).
 **Created**: 2026-10-21. **Updated**: 2026-11-04.
-**Status**: Alcance y revisión editorial A1–A5 aprobados; planificación en borrador. No constituye aprobación del plan ni de la entrega.
+**Status**: Alcance, textos A1–A5 y plan técnico aprobados; contraste externo de fuentes pendiente. Sin implementación ni aceptación de entrega.
 **SPECIFY_FEATURE_DIRECTORY**: `specs/004-tips-educativos`.
 **Input**: «continua con la 004», después del cierre aprobado de F03.
 **Gobierno**: [constitución v1.1.0](../../.specify/memory/constitution.md).
@@ -267,3 +267,12 @@ anunciado. No aprueban por anticipado arquitectura, matriz/protocolo ni un plan
 que el responsable no ha revisado. El contraste externo de fuentes permanece
 visible en [fuentes-editoriales.md](fuentes-editoriales.md); no modifica lo
 aprobado por el usuario ni se presenta como validación de producto.
+
+
+## Aprobación del plan técnico — 2026-11-05
+
+El responsable expresó su acuerdo con el plan F04 y reiteró conservar wireframes,
+cuatro categorías, «Ver ejemplo» y demás comportamientos propuestos. Se registra
+la aprobación en [plan.md](plan.md), sin alterar contenido ni alcance. La revisión
+externa de fuentes continúa bloqueada; no se considera dispensada por esa aprobación.
+El desglose [tasks.md](tasks.md) es preparación documental, no evidencia de ejecución.

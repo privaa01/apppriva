@@ -192,6 +192,7 @@ del usuario no sustituye las comprobaciones pendientes para CA-04.10.
 Confirmados por el usuario: cuatro categorías, acceso público según el alcance
 propuesto, textos aportados y conservación del diseño de wireframes.
 A1–A5 aprobados explícitamente por «si los apruebo» el2026-11-04.
-Pendientes: completar el contraste de fuentes indicado en su registro y aprobar
-el plan técnico antes de generar tareas e implementar.
+Plan técnico aprobado el2026-11-05. Pendiente: completar el contraste de fuentes
+antes de abrir ejecución. El desglose de tareas permanece preliminar mientras
+no se resuelva ese prerrequisito.
 No hay implementación, pruebas de producto ni aceptación de entrega en este artefacto.

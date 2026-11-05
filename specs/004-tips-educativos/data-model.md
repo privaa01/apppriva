@@ -1,6 +1,7 @@
 # F04 — Modelo de contenido y estado
 
-**Estado:** diseño propuesto; sin migraciones/documentos alojados creados.
+**Estado:** diseño incluido en el plan aprobado el2026-11-05; sin implementación
+ni documentos alojados creados. Fuentes editoriales pendientes.
 
 ## Categoría cerrada
 

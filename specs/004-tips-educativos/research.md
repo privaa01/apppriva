@@ -1,6 +1,7 @@
 # F04 — Investigación de diseño
 
-**Fecha:** 2026-11-04. **Estado:** decisiones técnicas propuestas; contraste
+**Fecha de diseño:** 2026-11-04. **Aprobación técnica:**2026-11-05.
+**Estado:** decisiones técnicas aprobadas; contraste
 editorial externo parcial. No es evidencia de ejecución de producto.
 
 ## R1 — Integración con navegación existente
@@ -77,11 +78,13 @@ feedback1s/resolución15s con20 muestras;5 participantes, éxito conjunto de sei
 comprobaciones en≥4/5. Sin identidades, respuestas individuales ni grabaciones.
 **Motivo:** concreta SC-04.4/5 y reutiliza criterios del plan F03 sin heredar sus
 excepciones ni dar por hechas sus pruebas. No sustituir TalkBack/participantes por
-unit tests o agentes. El plan y protocolo siguen pendientes de aprobación.
+unit tests o agentes. El plan y protocolo fueron aprobados el2026-11-05; las pruebas siguen pendientes.
 
 ## Revisión posterior
 
 Decisiones técnicas documentadas, sin marcadores de elección técnica sin resolver.
 No hay excepción constitucional solicitada. Existe un bloqueo de verificación
 editorial externa, no una elección técnica que pueda resolverse por suposición.
-No se cierra el plan ni se avanza a tareas hasta resolverlo y obtener aprobación.
+La aprobación técnica quedó registrada el2026-11-05. No se cierra el prerrequisito
+editorial ni se inicia implementación hasta resolverlo. El desglose preliminar de
+tareas permite preparar el trabajo sin considerar superada esa puerta.

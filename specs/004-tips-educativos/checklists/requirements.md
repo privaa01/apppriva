@@ -69,3 +69,11 @@ a aprobar los ajustes nuevos ni a validar comportamiento implementado.
 La aprobación de A1–A5 permite preparar el plan. La revisión editorial externa
 no está completa: se distingue de la aprobación del contenido por el usuario.
 Plan en borrador; no se generan tareas ni implementación en esta etapa.
+
+
+## Aprobación técnica — 2026-11-05
+
+El responsable aprobó el plan presentado y ratificó wireframes, cuatro categorías
+y «Ver ejemplo». Aprobación registrada; no se solicita de nuevo. La verificación
+editorial sigue pendiente y bloquea ejecución; `../tasks.md` prepara el desglose
+sin convertir esa condición en tarea completada ni excepción aprobada.

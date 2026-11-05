@@ -5,8 +5,8 @@ No presenta los siguientes comandos como ejecutados ni resultados como aprobados
 
 ## 1. Prerrequisitos
 
-Usar checkout `/workspace/apppriva`, rama `work`, sin worktrees nuevos. Aprobar
-el plan y completar fuentes editoriales antes de tareas/implementación. Instalar
+Usar checkout `/workspace/apppriva`, rama `work`, sin worktrees nuevos. El plan fue aprobado el2026-11-05; completar las fuentes editoriales antes
+de abrir la ejecución de las tareas de implementación. Instalar
 baseline Flutter3.47.8/Dart3.13.7 y SDK Android mediante fuentes oficiales y
 comprobaciones de integridad; preservar pins/lockfile. Necesita Node y Java21
 para reglas; no requiere credenciales de producción para pruebas locales.
