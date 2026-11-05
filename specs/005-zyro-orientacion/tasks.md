@@ -145,7 +145,7 @@ guía o proveedor pendiente puede sustituirse silenciosamente.
 - [ ] T041 Ejecutar TalkBack físico para autor/orden/campo/Enviar/Reintentar/guía/límite/foco y registrar evidencia sin conversación real en `specs/005-zyro-orientacion/validation/accessibility.md`.
 - [ ] T042 Ejecutar SC-05.5 con5 participantes40–65 y cinco tareas; conservar solo conteos agregados y defectos en `specs/005-zyro-orientacion/validation/comprehension.md`.
 - [ ] T043 Desplegar Functions/reglas/TTL/AppCheck únicamente en proyecto de pruebas y realizar smoke con mensajes sintéticos; registrar región/modelo/versiones sin secretos en `specs/005-zyro-orientacion/validation/hosted-smoke.md`.
-- [ ] T044 Consolidar RF/CA/SC→T001–T043→pruebas/resultados, limitaciones y bloqueantes en `specs/005-zyro-orientacion/validation/traceability.md` y `delivery-review.md`.
+- [x] T044 Consolidar RF/CA/SC→T001–T043→pruebas/resultados, limitaciones y bloqueantes en `specs/005-zyro-orientacion/validation/traceability.md` y `delivery-review.md`; incluye brecha explícita RF-08/CA-05.9 y controles hospedados/humanos abiertos.
 - [ ] T045 Actualizar `specs/README.md`, solicitar aceptación explícita, hacer commit y sincronizar `work`; no cerrar F05 ni avanzar F06 con pendientes.
 
 ## Dependencies & Execution Order
