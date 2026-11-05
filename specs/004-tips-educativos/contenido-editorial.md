@@ -103,7 +103,8 @@ Identificar el mensaje como un **posible** intento de engaño.
 
 «Este mensaje utiliza un premio inesperado y la urgencia para llamar tu atención. No abras el enlace ni ingreses información personal. Verifica la promoción directamente en la página oficial de la empresa».
 
-**Aclaración aprobada A3:** «HTTPS cifra la conexión, pero no garantiza que el sitio sea legítimo».
+**A3 retirada por decisión explícita del responsable el2026-11-05.** La pantalla
+de Enlaces sospechosos no muestra una aclaración adicional sobre HTTPS.
 
 **Consejo final:**
 
@@ -161,7 +162,7 @@ de CA-04.7–04.10. La tabla conserva el motivo de cada decisión.
 | --- | --- | --- |
 | A1 | Explicación de contraseña: «Una contraseña larga y única es más difícil de adivinar. Combinar distintos caracteres puede ayudar, pero no basta si la clave es corta o predecible. Evitar nombres y fechas personales reduce las pistas que otras personas podrían conocer. No uses esta contraseña de ejemplo en tus cuentas». | Concretar la explicación solicitada, sin presentar la mezcla de caracteres como garantía. |
 | A2 | Mostrar `www.premio-regalo.example` como texto, sin enlace ni acción de copia/apertura. | Usar un dominio reservado para documentación en lugar de un .com que podría existir. |
-| A3 | Añadir al material de enlaces: «HTTPS cifra la conexión, pero no garantiza que el sitio sea legítimo». | Cumplir CA-04.7. |
+| A3 | Retirada el2026-11-05 por solicitud explícita del responsable antes de la entrega. | La pantalla de enlaces conserva recomendaciones, ejemplo, explicación y consejo sin este texto adicional. |
 | A4 | Añadir al caso de perfil: «Tener pocas publicaciones no demuestra que una cuenta sea falsa. Verifica la identidad por un canal que ya conozcas». | Cumplir CA-04.8 sin eliminar la señal contextual aportada. |
 | A5 | Sustituir únicamente el cierre del consejo de contraseña por «Así reduces el riesgo de que una contraseña descubierta permita entrar en tus otras cuentas». | Evitar que «seguirán protegidas» se interprete como garantía absoluta. |
 

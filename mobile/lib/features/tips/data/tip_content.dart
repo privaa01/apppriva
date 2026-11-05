@@ -142,7 +142,7 @@ class TipContent {
       invalid();
     }
     final clarification = text(data['clarification'], empty: true);
-    if ((id == 'links' || id == 'profiles') && clarification.trim().isEmpty) {
+    if (id == 'profiles' && clarification.trim().isEmpty) {
       invalid();
     }
     return TipContent._(

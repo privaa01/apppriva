@@ -90,7 +90,7 @@ const tipsFixtureJson = r'''{
     },
     "explanation": "Este mensaje utiliza un premio inesperado y la urgencia para llamar tu atención. No abras el enlace ni ingreses información personal. Verifica la promoción directamente en la página oficial de la empresa",
     "advice": "Si recibes un mensaje que te presiona para actuar rápidamente, detente y verifica la información antes de hacer clic",
-    "clarification": "HTTPS cifra la conexión, pero no garantiza que el sitio sea legítimo",
+    "clarification": "",
     "editorialReview": {
       "version": "1.0.0",
       "approvedOn": "2026-11-04",

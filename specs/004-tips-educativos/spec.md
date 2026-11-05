@@ -55,9 +55,10 @@ límites editoriales. No requiere implementar F05–F07 ni evaluar una cuenta ex
 - **CA-04.6:** Mientras se espera contenido se muestra carga comprensible. Un registro
   ausente, desconocido o incompleto produce indisponibilidad con acción recuperable,
   no texto inventado ni el contenido de otra categoría como sustituto silencioso.
-- **CA-04.7:** El material de enlaces explica que HTTPS cifra la conexión y no
-  garantiza que el sitio sea legítimo. No identifica un enlace real como seguro o
-  fraudulento ni ejecuta comprobaciones sobre enlaces de la persona.
+- **CA-04.7:** El material de enlaces no identifica un enlace real como seguro o
+  fraudulento ni ejecuta comprobaciones sobre enlaces de la persona. La aclaración
+  adicional sobre HTTPS fue retirada por decisión explícita del responsable el
+  2026-11-05 antes de la entrega.
 - **CA-04.8:** El material de perfiles presenta señales como motivos para verificar
   o limitar interacción, no como prueba de fraude. Pocos seguidores, antigüedad o
   pocas publicaciones no bastan para concluir que un perfil es falso.

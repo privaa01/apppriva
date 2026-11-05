@@ -20,3 +20,8 @@ Adaptaciones aplicadas: menús comunes reutilizados, objetivos48dp, texto oscuro
 Las capturas widget no representan con exactitud sombras/rasterizado de Android;
 no se declara comparación píxel a píxel ni entrega visual nativa aceptada. Falta
 revisión del APK en dispositivo y sus pantallas con ejemplo/consejo expandidos.
+
+**Reporte del responsable,2026-11-05:** revisó las pantallas desde Visual Studio
+Code y confirmó tamaños/diseño, con un único cambio solicitado: retirar la aclaración
+HTTPS de Enlaces sospechosos. El texto fue retirado del asset y fixture. Se requiere
+una última revisión visual después de recompilar; este reporte no sustituye Android.

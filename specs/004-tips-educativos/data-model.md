@@ -37,7 +37,7 @@ modelo. `/tips` representa el catálogo; siempre cuatro entradas ordenadas.
 | example | Objeto según variantes de abajo; solo contenido ficticio aprobado. |
 | explanation | String literal para «Ver ejemplo», incluye A1 en passwords. |
 | advice | Consejo literal aprobado; A5 aplicado en passwords. |
-| clarification | String: A3 en links, A4 en profiles; vacío en las otras dos categorías. |
+| clarification | String: A4 en profiles; vacío en passwords, sharing y links. A3 fue retirada por el responsable el2026-11-05. |
 | editorialReview | Objeto con version1.0.0, approvedOn2026-11-04 y sourceIds de fuentes verificadas. No contiene identidad del revisor ni datos de lectores. |
 
 Validación estricta: no campos extra, tipos incorrectos, texto vacío obligatorio,

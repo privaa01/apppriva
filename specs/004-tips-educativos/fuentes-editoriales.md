@@ -45,7 +45,7 @@ revisión. Son fuentes del producto, no autoridad técnica de los consejos.
 | F2 | https://consumer.ftc.gov/identity-theft-and-online-security/online-privacy-and-security | Índice propuesto para localizar guía específica vigente sobre compartir información/audiencia y exposición, P04. No atribuir soporte a todo el índice sin seleccionar y leer el artículo. |
 | F3 | https://consumer.ftc.gov/scams/imposter-scams | Índice propuesto para seleccionar guía vigente de suplantación/verificación de identidad y solicitudes de dinero, P06. Falta lectura y referencia específica. |
 | R1 | https://www.rfc-editor.org/rfc/rfc2606.txt | GET intentado:403 por proxy. Verificar reserva `.example` para documentación, A2. |
-| H1 | https://support.google.com/chrome/answer/95617?hl=es | Referencia propuesta, todavía no consultada; comprobar alcance de conexión cifrada y límites sobre legitimidad, A3. |
+| H1 | https://support.google.com/chrome/answer/95617?hl=es | Referencia histórica de A3; A3 fue retirada por el responsable el2026-11-05. |
 
 Un HTTP403 no prueba que el documento no exista ni que su contenido respalde el
 texto; solo acredita el acceso fallido. La petición inicial a un path NIST `.md`
@@ -107,8 +107,8 @@ A1–A5 ni los wireframes. Los artículos son soporte educativo, no certificaci�
 | F2a | [FTC: How Websites and Apps Collect and Use Your Information](https://consumer.ftc.gov/articles/how-websites-and-apps-collect-and-use-your-information), Adjust your privacy settings | Ajustes de privacidad y de cuentas sociales, control de ubicación/fotos/contactos y reducción de exposición. P04. Sustituye el índice F2 y la redirección del artículo antiguo. |
 | F3a | [FTC: What To Know About Romance Scams](https://consumer.ftc.gov/articles/what-know-about-romance-scams), What Is a Romance Scam?, How to Avoid Losing Money y How to Report | Perfiles ficticios, fotos que pueden no corresponder, solicitudes de dinero, limitar interacción y denunciar a la plataforma. P06; la app no ejecuta denuncias ni búsquedas sobre personas. |
 | R1 | [RFC2606](https://www.rfc-editor.org/rfc/rfc2606.txt), sección2 | `.example` reservado para documentación/ejemplos. A2; dirección solo texto. |
-| H1 | [Chrome: Comprobar si la conexión de un sitio es segura](https://support.google.com/chrome/answer/95617?hl=es), Significado de cada símbolo de seguridad | Conexión privada no elimina la necesidad de comprobar el nombre del sitio ni de tener cuidado con datos sensibles. P05/A3. GET correcto, aunque HEAD anterior dio404. |
-| R2 | [RFC8446](https://www.rfc-editor.org/rfc/rfc8446.txt), introducción | Objetivos de TLS: autenticación de servidor/canal, confidencialidad e integridad; no es una evaluación editorial de la honestidad de un sitio. Complementa A3. |
+| H1 | [Chrome: Comprobar si la conexión de un sitio es segura](https://support.google.com/chrome/answer/95617?hl=es), Significado de cada símbolo de seguridad | Fuente consultada y conservada como historial; el texto A3 asociado fue retirado el2026-11-05. |
+| R2 | [RFC8446](https://www.rfc-editor.org/rfc/rfc8446.txt), introducción | Fuente consultada y conservada como historial; el texto A3 asociado fue retirado el2026-11-05. |
 
 ### Límites del contraste y ejemplos ficticios
 
