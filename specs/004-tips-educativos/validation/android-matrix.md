@@ -16,7 +16,7 @@ SDK no equivale a haber ejecutado una matriz de dispositivos.
 La compilación APK debug terminó satisfactoriamente (458.6s tras corregir setup). Se detectó Java runtime sin
 javac y se instaló JDK21.0.13+9 oficial con SHA256 comprobado; Java usa el proxy
  y el almacén de confianza del entorno, sin desactivar TLS. Resultado real:
-`mobile/build/app/outputs/flutter-apk/app-debug.apk`,162MiB aproximados; paquete
+`mobile/build/app/outputs/flutter-apk/app-debug.apk`,192066564 bytes; paquete
 com.priva, minSdk24/target36/compile36, actividad dev.priva.priva_mobile.MainActivity,
 ABIs armeabi-v7a/arm64-v8a/x86_64 confirmados con aapt. SHA256:
 aae853d37b891a24eb5bf4ccb3ae6c9a95dce23a6b0114add9952a5dbe4bde3c.
