@@ -1,5 +1,13 @@
 # F04 — estado Android
 
+## Cierre aceptado — 2026-11-05
+
+El responsable validó en Motorola G22 con Android12 el catálogo, cuatro detalles,
+«Ver más», atrás, ejemplos, TalkBack, modo avión y20 repeticiones sin pausas ni
+errores. Tras explicarse la matriz, aprobó explícitamente cerrar sin API24/API36 y
+sin generar un APK nuevo. La cobertura queda limitada al dispositivo/OS reportado;
+no se presenta como compatibilidad ejecutada en los extremos.
+
 Fecha2026-11-05. Instalados: commandline-tools23.0, platform-tools37.0.1, SDK
 API24/34/35/36, build-tools36.0.0 y NDK28.2.13676358. Flutter requiere compile/target36
 y conserva minSdk24. No se modificó la configuración de versiones del proyecto.

@@ -5,9 +5,8 @@
 > listeners ni escrituras. Un asset ausente o inválido produce `unavailable`; una
 > ruta desconocida se rechaza. El contrato de UI y navegación no cambia.
 
-**Estado:** contrato implementado localmente el2026-11-05 sobre el asset aprobado,
-pendiente de revalidación tras la migración. No son endpoints desplegados y no
-existe publicación de Tips; las validaciones nativas/humanas siguen pendientes.
+**Estado:** contrato implementado, revalidado y aceptado el2026-11-05 sobre el asset
+aprobado. No son endpoints desplegados y no existe publicación de Tips.
 
 ## C-TIPS-01 — Repositorio de lectura
 

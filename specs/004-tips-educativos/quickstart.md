@@ -9,9 +9,9 @@ resultado debe ser idéntico. Firebase/Firestore no es prerrequisito de F04 y no
 publican documentos ni reglas de Tips. Las secciones remotas posteriores son
 historial del plan sustituido, no una puerta de cierre.
 
-**Estado:** módulo F04 implementado localmente. Resultados locales y pendientes se
-registran en validation/; los comandos Android y las validaciones humanas siguen
-pendientes, sin atribuirlos a las pruebas locales ni al baseline anterior.
+**Estado:** módulo F04 implementado, validado y aceptado el2026-11-05. Resultados y
+limitaciones aceptadas se registran en `validation/`; esta guía conserva el protocolo
+utilizado y los comandos históricos.
 
 ## 1. Prerrequisitos
 

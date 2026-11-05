@@ -1,6 +1,24 @@
-# F04 — revisión de entrega local, sin cierre final
+# F04 — cierre aceptado
 
-## Estado vigente — contenido incluido en la APK
+## Aceptación final — 2026-11-05
+
+El responsable indicó explícitamente «apruebalo» y «acepto y finaliza». F04 queda
+cerrada con36/36 tareas registradas. Esta aceptación no aprueba F05–F08.
+
+Resultado vigente: contenido fijo dentro de la app mediante
+`BundledTipsRepository`, sin Firestore para Tips; textos, pantallas, «Ver más», atrás,
+ejemplos y offline preservados. Análisis0 diagnósticos y180/180 pruebas satisfactorias.
+Validación manual en Motorola G22/Android12: TalkBack y modo avión satisfactorios,
+20 repeticiones sin pausas/errores y comprensión5/5 con6/6 sin ayuda, edades40–60.
+
+Limitaciones conocidas y aceptadas: no se generó APK posterior a la migración por
+decisión del responsable y no se ejecutaron API24/API36; la cobertura Android real
+se limita a Android12. No se inventan hashes, tiempos individuales ni resultados de
+versiones no probadas.
+
+## Historial anterior
+
+## Historial de preparación — contenido incluido en la app
 
 Tips se migró a contenido fijo incluido en la APK por decisión explícita del
 2026-11-05. La publicación Firebase deja de ser un pendiente y no existe colección
@@ -21,12 +39,10 @@ T025 debe reejecutarse en un entorno con Flutter. El contenido editorial se comp
 literalmente en el baseline, las fuentes primarias están revisadas y existen capturas
 sintéticas. SDK/JDK y cachés se prepararon fuera del repo.
 
-No es entrega aceptada ni F04 terminada. **28/36 tareas completas.** Pendientes:
+Registro histórico anterior al cierre: **28/36 tareas estaban completas.** Pendían:
 revalidación Flutter/build (T025), matriz Android (T027), comparación visual (T028),
 TalkBack (T029), rendimiento nativo (T030), comprensión con5 participantes (T031),
 smoke offline en Android real (T035) y aceptación final (T036).
 
-Para continuar: ejecutar analyze, suite completa y build APK en un entorno con
-Flutter; validar después el APK en Android con modo avión y sin sesión; completar
-TalkBack, rendimiento y comprensión; y registrar la aceptación explícita. No hay
-despliegue de Tips en Firebase ni se presupone autorización para otras operaciones.
+Ese estado fue sustituido por la aceptación final registrada al inicio. No hay
+despliegue de Tips en Firebase ni autorización para otras operaciones.

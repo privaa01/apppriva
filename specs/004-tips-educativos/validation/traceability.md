@@ -1,5 +1,9 @@
 # F04 — Matriz de trazabilidad de ejecución
 
+> **Cierre 2026-11-05:** responsable acepta F04 con36/36 tareas, Motorola
+> G22/Android12 y las limitaciones documentadas de APK/API24/API36. F05–F08 quedan
+> fuera de esta aceptación.
+
 > **Actualización 2026-11-05:** C-TIPS-01/02 se satisfacen mediante asset local y
 > `BundledTipsRepository`; T008/T015/T023/T024/T033/T034 reemplazan lectura,
 > reglas y publicación remota. T025 se reabre para revalidación y T035 pasa a smoke

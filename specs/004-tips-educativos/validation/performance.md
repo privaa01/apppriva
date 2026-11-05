@@ -1,4 +1,4 @@
-# F04 — rendimiento pendiente de dispositivo
+# F04 — rendimiento aceptado
 
 Runner preparado: mobile/integration_test/tips_performance_test.dart.20 repeticiones
 por catálogo/detalle/reintento/expansión, reloj monotónico, feedback≤1s y resolución

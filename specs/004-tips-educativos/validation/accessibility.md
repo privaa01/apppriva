@@ -1,4 +1,4 @@
-# F04 — accesibilidad local y pendientes nativos
+# F04 — accesibilidad aceptada
 
 Fecha2026-11-05.20 escenarios widget: catálogo+4 detalles×320×720/412×915dp×
 texto100%/200%. Densidad de prueba3, fuentes Roboto/MaterialIcons oficiales cargadas.

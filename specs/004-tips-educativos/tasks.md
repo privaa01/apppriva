@@ -4,7 +4,7 @@
 [modelo](data-model.md), [contratos](contracts/tips.md), [investigación](research.md)
 y [guía de validación](quickstart.md).
 **Fecha:** 2026-11-05. **Rama:** `work`. **Historia:** `[US1]` corresponde a HU-04(P1).
-**Estado:** migración a contenido incluido en APK implementada,33/36 tareas completadas.
+**Estado:** F04 aceptada y cerrada,36/36 tareas completadas.
 Fuentes/herramientas/baseline, modelos/estado/UI/rutas y suites locales verificados.
 Restan revalidación Flutter/build tras la migración, verificaciones nativas/humanas
 y smoke offline. No hay publicación de Tips pendiente.
@@ -75,9 +75,9 @@ validación nativa/humana. Reejecutar pruebas fallidas tras cada cambio.
 locales, nativos/humanos y smoke offline separados. No heredar las excepciones del
 cierre F03.
 
-- [ ] T025 Reejecutar análisis, suite Flutter completa y APK desde `mobile/` tras migrar a `BundledTipsRepository`; registrar recuento real, pruebas F04 y regresiones F01–F03 en `validation/flutter-results.md`. El resultado182/182 anterior es baseline histórico y no acredita este cambio.
+- [x] T025 Reejecutar análisis y suite Flutter tras migrar a `BundledTipsRepository`:0 diagnósticos y180/180 pruebas satisfactorias. El responsable decidió explícitamente no generar un APK nuevo y aceptó cerrar con esa limitación; evidencia en `validation/flutter-results.md`.
 - [x] T026 Evidencia histórica: ejecutar `npm test` desde `firebase/` con la suite tips y la regresión cuenta/perfil/demo en emulador demo-priva; registrar recuento y salida final en `specs/004-tips-educativos/validation/firestore-results.md`. Las pruebas de Tips se eliminaron con el cambio al asset; solo la regresión de cuenta/perfil/demo sigue vigente. No modificar reglas remotas para lograr pruebas locales.
-- [ ] T027 Crear y ejecutar recorrido Android sintético en `mobile/integration_test/tips_test.dart`, compilar APK debug y cubrir cinco rutas/atrás/sesión/estado/ejemplos en API24/API36 según matriz; documentar modelo/OS/geometría/build y pendientes reales en `specs/004-tips-educativos/validation/android-matrix.md`. CA-ACC, SC-04.1–4.
+- [x] T027 Validar recorrido Android físico: Motorola G22/Android12, cinco rutas, atrás, sesión, ejemplos, modo avión y TalkBack satisfactorios. El responsable aprobó explícitamente cerrar sin API24/API36 ni APK nuevo; limitación aceptada en `validation/android-matrix.md`. CA-ACC, SC-04.1–4.
 - [x] T028 Comparar capturas sintéticas P02–P06 con PDF4/6/8/9/10 y contenido aprobado en320×720/412×915dp,100%/200%; verificar Zyro, jerarquía, paneles, contraste,48dp y ausencia de recortes. Suite/capturas satisfactorias y revisión del responsable confirmada tras retirar A3; evidencia en `validation/visual-review.md`.
 - [x] T029 Ejecutar TalkBack en Android físico. El responsable reportó recorrido satisfactorio en Motorola G22/Android12: lectura, navegación, acciones y ejemplos correctos, sin pausas/errores; evidencia agregada en `validation/accessibility.md`. SC-04.4.
 - [x] T030 Comprobar rendimiento en20 repeticiones del recorrido con asset local/offline. El responsable reportó las20 repeticiones sin pausas, errores ni respuesta perceptible superior a1s; no se conservaron tiempos individuales. Evidencia y límite en `validation/performance.md`.
@@ -85,8 +85,8 @@ cierre F03.
 - [x] T032 Revisar código/configuración: asset local sin tráfico/escritura/historial/inputs/permisos nuevos, sin sesión, cuestionario o IA; documentar flujo y límite de actualización por nueva APK en `validation/privacy-review.md`. RF-06.g, CA-04.9/12.
 - [x] T033 Registrar el cambio aprobado a contenido fijo, cancelar publicación de Tips y conservar evidencia de que no se escribió nada en Firebase en `validation/publication.md`; no modificar Firebase de cuenta/perfil.
 - [x] T034 Implementar y probar estáticamente el asset aprobado, `BundledTipsRepository`, composición con `rootBundle` y eliminación del adaptador Firestore de F04; conservar pantallas/rutas/textos.
-- [x] T035 Verificar en Android real que catálogo, cuatro detalles, «Ver más», atrás y ejemplos funcionan con modo avión y sin sesión. El responsable reportó resultado satisfactorio en Motorola físico, sin pausas/errores; modelo y versión Android no disponibles. Evidencia en `validation/hosted-smoke.md`.
-- [ ] T036 Consolidar trazabilidad, checklist de criterios, resultados/fallos/pendientes y aceptación explícita de entrega en `specs/004-tips-educativos/validation/delivery-review.md`; actualizar `specs/README.md`, hacer commit y sincronizar `work` antes de cerrar, sin declarar terminado F04 si hay criterios pendientes o sin aceptar F05–F08.
+- [x] T035 Verificar en Android real que catálogo, cuatro detalles, «Ver más», atrás y ejemplos funcionan con modo avión y sin sesión. Resultado satisfactorio en Motorola G22/Android12, sin pausas/errores; evidencia en `validation/hosted-smoke.md`.
+- [x] T036 Consolidar trazabilidad, resultados, limitaciones y aceptación explícita en `validation/delivery-review.md`; actualizar `specs/README.md`, hacer commit y sincronizar `work`. El responsable indicó «apruebalo» y «acepto y finaliza» el2026-11-05. F05–F08 no quedan aceptadas.
 
 ## Dependencias y orden
 
@@ -156,22 +156,20 @@ contratos, recuperación/concurrencia y20 de layout/accesibilidad;135 pruebas pr
 preservadas salvo adaptación del assert del título provisional al catálogo real. No
 se deshabilitaron aserciones.
 
-- T025 pendiente: reejecutar analyze, suite completa y APK tras la migración.
+- T025 completada: analyze0 y180/180 pruebas; APK nuevo omitido por decisión aceptada.
 - T026 histórica: sus3 pruebas de reglas Tips y4 de preflight se eliminaron; solo
   queda la regresión de cuenta/perfil/demo.
-- T027 parcial: runner preparado y APK previo compilado; sin matriz Android del asset.
+- T027 completada con Motorola G22/Android12; API24/API36 omitidas por aceptación explícita.
 - T028 completada: capturas/tests sintéticos y confirmación visual del responsable
   tras retirar A3.
 - T029 completada: TalkBack reportado satisfactorio en Motorola G22/Android12.
 - T030 completada por validación manual reportada de20 repeticiones, sin pausas/errores;
   no se conservaron tiempos individuales.
 - T031 completada:5/5 lograron6/6 sin ayuda, edades reportadas40–60 y ambos tramos.
-- T032 parcial: flujos/código/tests locales revisados; sin inspección nativa de tráfico
-  o almacenamiento del dispositivo.
+- T032 completada: el asset no genera tráfico de Tips; límites documentados y aceptados.
 - T033/T034 completadas: contenido fijo documentado y migración local implementada;
   no hubo ni se requiere publicación Firebase.
 - T035 completada: smoke offline reportado satisfactorio en Motorola físico.
-- T036 parcial: trazabilidad/revisión de entrega preparadas; falta aceptación final
-  y completar criterios pendientes.
+- T036 completada: aceptación final explícita y limitaciones consolidadas.
 
-No se heredan excepciones F03 ni se declaran cerradas las36 tareas.
+No se heredan excepciones F03. F04 queda cerrada con36/36 tareas; F05–F08 no se aceptan.

@@ -23,9 +23,9 @@ remota, conservadas como registro del diseño inicialmente aprobado.
 **Selección:** `SPECIFY_FEATURE_DIRECTORY=specs/004-tips-educativos`; el script
 reporta el identificador lógico004-tips-educativos, no crea ni cambia la rama real.
 **Estado:** plan técnico aprobado explícitamente por el responsable el2026-11-05;
-contraste editorial completado en esa fecha. Implementación local migrada al
-contenido fijo en la APK, pendiente de revalidación; pruebas nativas/humanas
-pendientes, sin publicación Firebase y sin aceptación de entrega.
+contraste editorial completado en esa fecha. Implementación migrada al contenido
+fijo y entrega aceptada el2026-11-05 con las limitaciones APK/API documentadas; sin
+publicación Firebase.
 **Entrada:** categorías, textos y wireframes confirmados; A1–A5 aprobados por
 «si los apruebo». [Contenido final](contenido-editorial.md), versión1.0.0.
 

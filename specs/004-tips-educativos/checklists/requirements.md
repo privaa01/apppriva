@@ -68,8 +68,8 @@ a aprobar los ajustes nuevos ni a validar comportamiento implementado.
 ## Estado posterior a aprobación
 
 La aprobación de A1–A5 permitió preparar el plan. Estado vigente: plan aprobado,
-fuentes verificadas e implementación local migrada al asset de la APK; 28/36 tareas
-completas y validaciones nativas/humanas pendientes. No hay publicación Firebase
+fuentes verificadas e implementación local migrada al asset de la APK;36/36 tareas
+completas y cierre aceptado con limitaciones Android documentadas. No hay publicación Firebase
 de Tips.
 
 

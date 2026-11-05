@@ -8,7 +8,7 @@
 
 **Feature Branch**: `work` (selección por directorio).
 **Created**: 2026-10-21. **Updated**: 2026-11-05.
-**Status**: Alcance, textos A1–A5 y plan técnico aprobados; contraste de fuentes completado2026-11-05. Implementación local migrada al contenido fijo en la APK, pendiente de revalidación tras el cambio; quedan validaciones nativas/humanas y no hay aceptación de entrega.
+**Status**: Cerrada y aceptada por el responsable el2026-11-05. Contenido fijo en la app,0 diagnósticos,180/180 pruebas y validación Motorola G22/Android12 satisfactorias. Se aceptan explícitamente las limitaciones: sin APK nuevo y sin matriz API24/API36.
 **SPECIFY_FEATURE_DIRECTORY**: `specs/004-tips-educativos`.
 **Input**: «continua con la 004», después del cierre aprobado de F03.
 **Gobierno**: [constitución v1.1.0](../../.specify/memory/constitution.md).

@@ -1,4 +1,4 @@
-# F04 — smoke offline pendiente
+# F04 — smoke offline completado
 
 El cambio aprobado del2026-11-05 elimina el servicio alojado para Tips. No se requiere
 smoke Firebase ni publicación de documentos o reglas. La validación vigente debe
