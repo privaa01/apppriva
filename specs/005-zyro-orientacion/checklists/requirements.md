@@ -13,8 +13,8 @@
 
 ## Requirement Completeness
 
-- [ ] No quedan marcadores NEEDS CLARIFICATION: faltan catálogo inicial, ciclo de
-  conversación y modelo de orientación.
+- [x] No quedan marcadores NEEDS CLARIFICATION; catálogo, ciclo de conversación y
+  modelo de orientación fueron decididos el 2026-11-05.
 - [x] Los requisitos son verificables y no convierten el mockup en fuente aprobada.
 - [x] Los resultados tienen denominadores, condiciones y límites de evidencia.
 - [x] Los resultados no dependen de un proveedor o tecnología.
@@ -32,6 +32,6 @@
 
 ## Notes
 
-Resultado: **15/16 controles completos**. La especificación no está lista para
-aprobación ni planificación hasta resolver conjuntamente las tres decisiones.
-Después se actualizarán spec/checklist y se repetirá esta revisión.
+Resultado: **16/16 controles completos**. La especificación está lista para
+aprobación. Aprobarla autoriza preparar el plan, no seleccionar automáticamente un
+proveedor, crear tareas o implementar.

@@ -2,7 +2,7 @@
 
 **Feature Branch**: `work` (selección por directorio)
 **Created**: 2026-10-21. **Updated**: 2026-11-05
-**Status**: En revisión — tres decisiones requieren aprobación; no autoriza plan ni implementación
+**Status**: Revisión completa — decisiones resueltas; pendiente de aprobación del spec
 **SPECIFY_FEATURE_DIRECTORY**: `specs/005-zyro-orientacion`
 **Input**: «continua con el spec 005»
 **Fuentes**: [spec original §§5, 8, 11–18](../../docs/referencias/PRIVA_MOBILE_SPEC.md),
@@ -114,16 +114,22 @@ El wireframe PDF5 aporta composición, Zyro, conversación, campo y menú. Su ej
 de Instagram no prueba que la ruta esté vigente; «intagram/instragram» y el icono
 ambiguo se corrigen. El control se rotula Enviar. No se agrega otra pantalla.
 
-### Decisiones que requieren aprobación
+### Decisiones confirmadas — 2026-11-05
 
-1. **[NEEDS CLARIFICATION: catálogo inicial de plataformas para guías verificadas:
-   solo Instagram, conjunto Meta (Instagram/Facebook) u otro conjunto concreto.]**
-2. **[NEEDS CLARIFICATION: ciclo de conversación en Priva: temporal solo mientras
-   P07 está abierta, temporal durante la sesión iniciada, o historial persistente.]**
-3. **[NEEDS CLARIFICATION: modelo de orientación: híbrido con guías fijas verificadas
-   y IA limitada para temas generales, solo catálogo de respuestas verificadas, o
-   IA generativa para todo el alcance con controles.]**
+1. **Catálogo inicial:** Instagram, Facebook y Google. El plan debe investigar para
+   cada plataforma las acciones de eliminar/desactivar que su fuente oficial realmente
+   ofrezca. No se inventará una equivalencia: si Google u otra plataforma no ofrece
+   una acción con ese nombre, Zyro lo explicará y solo mostrará la guía verificada.
+2. **Ciclo de conversación:** temporal durante la sesión activa. Se conserva al
+   navegar dentro de Priva y regresar a P07 mientras continúan la misma cuenta y el
+   mismo proceso de la app. Se descarta al cerrar sesión, cambiar de cuenta, terminar
+   el proceso o eliminar la cuenta. No se restaura tras reiniciar, no se guarda en
+   archivos/base de datos y no existe historial permanente.
+3. **Modelo híbrido:** guías fijas verificadas para eliminar/desactivar cuentas del
+   catálogo e IA limitada para temas generales admitidos. La IA no puede alterar
+   pasos de una guía, suplir una guía ausente ni ampliar el catálogo.
 
+Estas decisiones fueron seleccionadas por el responsable como «1.C, 2.B, 3.A».
 La selección del proveedor, arquitectura, ubicación, conservación del proveedor y
 procedimiento de borrado pertenecen al plan posterior, pero deberán demostrar los
 límites aprobados aquí antes de implementar. No se afirma que ningún proveedor
@@ -144,8 +150,8 @@ uso de respuestas del cuestionario y funciones de F06–F08 aún no entregadas.
   interna de reglas aplicadas; no implica una acción externa.
 - **Guía verificada:** plataforma, acción eliminar/desactivar, pasos, consecuencias,
   fuente oficial, fecha, versión aplicable, responsable y estado vigente/no disponible.
-- **Conversación activa:** secuencia temporal y solicitud pendiente; su ciclo depende
-  de la decisión2 y no se presume persistencia.
+- **Conversación activa:** secuencia temporal y solicitud pendiente vinculada solo
+  en memoria a la sesión/cuenta actual; no se restaura tras terminar el proceso.
 - **Revisión editorial:** evidencia del catálogo; no historial de consultas.
 
 ## Success Criteria *(mandatory)*
@@ -182,7 +188,7 @@ uso de respuestas del cuestionario y funciones de F06–F08 aún no entregadas.
 - Las fuentes y textos de guías se investigan y presentan como artefacto del plan;
   el mockup no constituye aprobación editorial.
 - Los tiempos, límites de longitud/frecuencia, proveedor, matriz Android y protocolo
-  detallado se fijan en el plan tras aprobar las tres decisiones.
+  detallado se fijan en el plan después de aprobar este spec.
 
 ## Conflictos, privacidad y trazabilidad
 
@@ -202,5 +208,6 @@ uso de respuestas del cuestionario y funciones de F06–F08 aún no entregadas.
 | RF-09 / 09.a–c | CA-05.4/5/7/8/11 | matriz de límites, errores, concurrencia y privacidad |
 | SC-05.1–6 | HU-05 | automatización, Android, revisión editorial/datos y protocolo humano |
 
-La especificación queda lista para resolver las tres decisiones. Su aprobación
-posterior autorizará preparar el plan, no tareas, proveedor ni implementación.
+La especificación incorpora las tres decisiones del responsable y supera su revisión
+documental. Su aprobación explícita autorizará preparar el plan, no tareas, proveedor
+ni implementación.
