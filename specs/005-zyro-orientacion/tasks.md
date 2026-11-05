@@ -76,12 +76,12 @@ cerrarla solo se permiten emuladores/dobles, nunca Vertex o despliegue real.
 **Purpose**: crear infraestructura compartida antes de HU-05.
 
 - [x] T007 Inicializar Functions Node22/TypeScript y dependencias fijadas en `firebase/functions/package.json`, `firebase/functions/tsconfig.json` y `firebase.json`, compilación TypeScript satisfactoria y sin secretos.
-- [ ] T008 [P] Convertir únicamente guías aprobadas a `firebase/functions/src/zyro/guides.v1.json`, con plataforma/acción/superficie/revisión/estado/pasos/consecuencias/fuente y solo estado `vigente` servible.
+- [x] T008 [P] Convertir únicamente guías aprobadas a `firebase/functions/src/zyro/guides.v1.json`, con plataforma/acción/superficie/revisión/estado/pasos/consecuencias/fuente y solo estado `vigente` servible; doce guías transcritas del PDF aportado para Instagram, Facebook y Google.
 - [x] T009 [P] Definir tipos y validación exacta de request/response, guía y decisión en `firebase/functions/src/zyro/contracts.ts`: mensaje≤1000, contexto≤8/6000, pasos0–6, schemaVersion1 y rechazo de campos extra.
 - [ ] T010 [P] Crear fixtures sintéticos y adaptador Vertex falso en `firebase/functions/test/zyro/fixtures.ts` y `firebase/functions/test/zyro/fake_vertex.ts`, sin red ni mensajes reales.
 - [ ] T011 [P] Crear fixtures/control de Futures y repositorio falso móvil en `mobile/test/features/zyro/zyro_test_fixtures.dart`, incluyendo tres estados de cuenta y respuestas tardías.
 - [x] T012 Añadir dependencias móviles fijadas y configuración de test en `mobile/pubspec.yaml` y `mobile/pubspec.lock`, conservando Firebase actual y sin añadir `firebase_ai`; lockfile resuelto.
-- [ ] T013 Preparar reglas y pruebas inicialmente fallidas que denieguen todo acceso cliente a `zyro_rate_limits` en `firebase/firestore.rules` y `firebase/tests/zyro-rate-limits.test.mjs`, preservando cuenta/perfil/demo.
+- [x] T013 Preparar reglas y pruebas que denieguen todo acceso cliente a `zyro_rate_limits` en `firebase/firestore.rules` y `firebase/tests/zyro-rate-limits.test.mjs`; 18/18 pruebas de reglas satisfactorias, preservando cuenta/perfil/demo.
 
 **Checkpoint**: contratos y pruebas base listos; todavía no existe una respuesta real.
 
@@ -113,7 +113,7 @@ TalkBack, navegación, descarte, doble toque, retry y respuesta hostil.
 
 ### Server
 
-- [ ] T023 [P] [US1] Implementar catálogo cerrado/versionado en `firebase/functions/src/zyro/catalog.ts`; Instagram/Facebook/Google, acciones exactas, solo `vigente` y ninguna reconstrucción generativa.
+- [x] T023 [P] [US1] Implementar catálogo cerrado/versionado en `firebase/functions/src/zyro/catalog.ts`; doce guías de Instagram/Facebook/Google, coincidencia por acción exacta, solo `vigente`, ninguna reconstrucción generativa y cuatro pruebas Node satisfactorias.
 - [ ] T024 [P] [US1] Implementar pre/postfiltros y textos de límite en `firebase/functions/src/zyro/policy.ts`: sensibles, daño, fuera de alcance, certeza, URLs, credenciales, acciones y más de6 pasos.
 - [ ] T025 [P] [US1] Implementar adaptador Vertex con identidad de servicio, endpoint/modelo aprobados, salida estructurada y timeout≤15s en `firebase/functions/src/zyro/vertex_adapter.ts`, sin API key ni logs de contenido.
 - [ ] T026 [US1] Implementar router híbrido en `firebase/functions/src/zyro/router.ts`: filtros→guía fija→IA general→posfiltro; el modelo nunca crea pasos de cuenta.

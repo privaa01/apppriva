@@ -53,6 +53,9 @@ service cloud.firestore {
         request.resource.data.name.matches('(?s).*[^\\s\\p{Z}\\x{FEFF}].*');
       allow list, delete: if false;
     }
+    match /zyro_rate_limits/{uid} {
+      allow read, write: if false;
+    }
     match /{document=**} {
       allow read, write: if false;
     }

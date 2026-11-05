@@ -5,6 +5,25 @@
 **Responsable al aprobar**: equipo Priva
 **Fecha de investigación**: 2026-11-05
 
+## Catálogo estructurado aportado — 2026-11-05
+
+El responsable aportó `guia_privacidad_instagram_facebook_google.pdf`, una guía
+de cinco páginas actualizada el 5 de noviembre de 2026. El documento define
+cuatro acciones para cada plataforma: Instagram, Facebook y Google. Sus doce
+guías se transcribieron a
+`firebase/functions/src/zyro/guides.v1.json` con revisión, estado, superficie,
+pasos, consecuencias y referencia exacta de sección.
+
+- SHA-256 del nuevo PDF aportado:
+  `5b22afe240333f44de5535e9bf16a956ab4be50744f2c2c2da4bc603df230e4c`.
+
+El catálogo conserva como `vigente` únicamente el contenido del documento. Los
+nombres de menús pueden variar por versión, idioma, dispositivo o tipo de cuenta,
+tal como advierte la propia fuente. Zyro debe reconocer esa incertidumbre y
+remitir al centro de ayuda oficial cuando una opción no aparezca. Este catálogo
+no incorpora credenciales, no ejecuta cambios y no habilita las antiguas acciones
+candidatas de desactivación o eliminación descritas más abajo.
+
 El documento fuente aportado tiene aprobación editorial explícita del usuario.
 Los intentos de comprobación independiente del entorno se conservan como evidencia
 histórica; la aprobación no acredita ejecución de rutas Android/web por Codex.

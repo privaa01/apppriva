@@ -1,4 +1,6 @@
 import '../features/tips/data/tips_repository.dart';
+import '../features/zyro/application/zyro_controller.dart';
+import '../features/zyro/data/zyro_repository.dart';
 import '../features/navigation/application/navigation_controller.dart';
 import '../features/navigation/data/temporary_journey.dart';
 import '../features/navigation/data/destination_catalog.dart';
@@ -22,7 +24,9 @@ class PrivaApp extends StatefulWidget {
     this.deletionContactService,
     this.temporaryJourney,
     this.tipsRepository,
+    this.zyroRepository,
   });
+  final ZyroRepository? zyroRepository;
   final TipsRepository? tipsRepository;
   final TemporaryJourney? temporaryJourney;
   final AccountController controller;
@@ -39,10 +43,26 @@ class PrivaApp extends StatefulWidget {
 class _PrivaAppState extends State<PrivaApp> with WidgetsBindingObserver {
   late TemporaryJourney _journey;
   late NavigationController _navigation;
+  late ZyroController _zyro;
   void _createNavigation() {
     _journey = widget.temporaryJourney ?? EmptyTemporaryJourney();
     _navigation = NavigationController(widget.controller, _journey);
+    _zyro = ZyroController(
+      widget.zyroRepository ?? const UnavailableZyroRepository(),
+    );
+    _zyro.owner(
+      widget.controller.state.canAccessPrivate
+          ? widget.controller.state.session!.userId
+          : null,
+    );
+    widget.controller.addListener(_syncZyro);
   }
+
+  void _syncZyro() => _zyro.owner(
+    widget.controller.state.canAccessPrivate
+        ? widget.controller.state.session!.userId
+        : null,
+  );
 
   @override
   void initState() {
@@ -57,6 +77,8 @@ class _PrivaAppState extends State<PrivaApp> with WidgetsBindingObserver {
     if (oldWidget.controller != widget.controller ||
         oldWidget.temporaryJourney != widget.temporaryJourney) {
       _navigation.dispose();
+      oldWidget.controller.removeListener(_syncZyro);
+      _zyro.dispose();
       if (oldWidget.temporaryJourney == null) _journey.dispose();
       _createNavigation();
     }
@@ -69,6 +91,8 @@ class _PrivaAppState extends State<PrivaApp> with WidgetsBindingObserver {
   void dispose() {
     WidgetsBinding.instance.removeObserver(this);
     _navigation.dispose();
+    widget.controller.removeListener(_syncZyro);
+    _zyro.dispose();
     if (widget.temporaryJourney == null) _journey.dispose();
     super.dispose();
   }
@@ -79,6 +103,7 @@ class _PrivaAppState extends State<PrivaApp> with WidgetsBindingObserver {
     final router = AccountRouter(
       controller: widget.controller,
       tipsRepository: widget.tipsRepository,
+      zyroController: _zyro,
       navigation: _navigation,
       destinationBuilder: widget.destinationBuilder,
       profileRepository: widget.profileRepository,

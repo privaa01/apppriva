@@ -1,0 +1,211 @@
+{
+  "schemaVersion": 1,
+  "catalogueId": "zyro-guides-es-CO-1.1.0",
+  "reviewedAt": "2026-11-05",
+  "guides": [
+    {
+      "id": "instagram-private-account",
+      "platform": "instagram",
+      "action": "hacer privada la cuenta",
+      "surface": "aplicacion oficial",
+      "revision": "2026-11-05",
+      "status": "vigente",
+      "steps": [
+        "Abre Instagram y entra en tu perfil.",
+        "Toca el menú de tres líneas en la parte superior.",
+        "Busca Privacidad de la cuenta o entra en la sección de privacidad.",
+        "Activa Cuenta privada y confirma el cambio.",
+        "Revisa tus seguidores actuales y elimina las cuentas que no quieras que sigan viendo tu contenido."
+      ],
+      "consequences": "Las personas deberán solicitar seguirte para ver el contenido destinado a seguidores. El nombre de usuario, la foto y otras partes del perfil pueden seguir visibles.",
+      "source": "guia_privacidad_instagram_facebook_google.pdf, sección 2.A"
+    },
+    {
+      "id": "instagram-two-step-verification",
+      "platform": "instagram",
+      "action": "activar la verificación en dos pasos",
+      "surface": "aplicacion oficial y Centro de cuentas",
+      "revision": "2026-11-05",
+      "status": "vigente",
+      "steps": [
+        "Desde tu perfil, toca el menú de tres líneas y abre Centro de cuentas.",
+        "Entra en Contraseña y seguridad.",
+        "Selecciona Autenticación en dos pasos.",
+        "Elige tu cuenta de Instagram.",
+        "Selecciona el método disponible y sigue las instrucciones; si puedes, usa una aplicación de autenticación.",
+        "Guarda los códigos de recuperación en un lugar seguro al que otras personas no tengan acceso."
+      ],
+      "consequences": "La cuenta solicitará un segundo método de verificación en los accesos que correspondan.",
+      "source": "guia_privacidad_instagram_facebook_google.pdf, sección 2.B"
+    },
+    {
+      "id": "instagram-review-sessions",
+      "platform": "instagram",
+      "action": "revisar sesiones y cerrar dispositivos desconocidos",
+      "surface": "aplicacion oficial y Centro de cuentas",
+      "revision": "2026-11-05",
+      "status": "vigente",
+      "steps": [
+        "Abre el menú de tres líneas y entra en Centro de cuentas.",
+        "Entra en Contraseña y seguridad.",
+        "Selecciona Dónde iniciaste sesión.",
+        "Elige tu cuenta de Instagram y revisa dispositivos, ubicaciones y sesiones.",
+        "Si no reconoces una sesión, selecciónala y ciérrala; si sospechas de un acceso, cambia también tu contraseña."
+      ],
+      "consequences": "Cerrar una sesión obliga a ese dispositivo a autenticarse otra vez.",
+      "source": "guia_privacidad_instagram_facebook_google.pdf, sección 2.C"
+    },
+    {
+      "id": "instagram-interaction-controls",
+      "platform": "instagram",
+      "action": "controlar mensajes, menciones y actividad",
+      "surface": "aplicacion oficial",
+      "revision": "2026-11-05",
+      "status": "vigente",
+      "steps": [
+        "En Configuración y actividad, abre los apartados de mensajes, etiquetas y menciones.",
+        "Limita quién puede enviarte solicitudes de mensajes, etiquetarte o mencionarte.",
+        "Busca Estado de actividad y desactívalo si no quieres mostrar cuándo estás en línea.",
+        "Revisa las historias y define quién puede responderlas o compartirlas."
+      ],
+      "consequences": "Las opciones elegidas cambian quién puede contactarte, mencionarte y ver tu actividad.",
+      "source": "guia_privacidad_instagram_facebook_google.pdf, sección 2.D"
+    },
+    {
+      "id": "facebook-publication-audience",
+      "platform": "facebook",
+      "action": "revisar quién puede ver las publicaciones",
+      "surface": "aplicacion oficial",
+      "revision": "2026-11-05",
+      "status": "vigente",
+      "steps": [
+        "Abre Facebook y toca tu foto de perfil o el menú.",
+        "Entra en Configuración y privacidad y luego en Configuración.",
+        "Busca Audiencia y visibilidad o la sección de privacidad.",
+        "En Publicaciones, establece quién puede ver tus publicaciones futuras.",
+        "Revisa también historias, lista de amigos, información del perfil y las opciones para que otras personas te encuentren."
+      ],
+      "consequences": "Cambiar la audiencia futura no necesariamente modifica las publicaciones antiguas; revísalas junto con sus etiquetas.",
+      "source": "guia_privacidad_instagram_facebook_google.pdf, sección 3.A"
+    },
+    {
+      "id": "facebook-two-step-verification",
+      "platform": "facebook",
+      "action": "activar la autenticación en dos pasos",
+      "surface": "aplicacion oficial y Centro de cuentas",
+      "revision": "2026-11-05",
+      "status": "vigente",
+      "steps": [
+        "Abre Configuración y privacidad y luego Configuración.",
+        "Entra en Centro de cuentas.",
+        "Selecciona Contraseña y seguridad.",
+        "Toca Autenticación en dos pasos y selecciona tu cuenta de Facebook.",
+        "Elige un método de verificación y sigue los pasos de la pantalla.",
+        "Guarda de forma segura los códigos de recuperación si se ofrecen."
+      ],
+      "consequences": "La cuenta solicitará un segundo método de verificación en los accesos que correspondan.",
+      "source": "guia_privacidad_instagram_facebook_google.pdf, sección 3.B"
+    },
+    {
+      "id": "facebook-review-sessions",
+      "platform": "facebook",
+      "action": "comprobar sesiones abiertas",
+      "surface": "aplicacion oficial y Centro de cuentas",
+      "revision": "2026-11-05",
+      "status": "vigente",
+      "steps": [
+        "Abre Centro de cuentas y entra en Contraseña y seguridad.",
+        "Entra en Dónde iniciaste sesión.",
+        "Selecciona tu perfil de Facebook.",
+        "Revisa los dispositivos y las ubicaciones que aparecen.",
+        "Cierra las sesiones que no reconozcas; si encuentras actividad sospechosa, cambia tu contraseña y revisa los datos de recuperación."
+      ],
+      "consequences": "Cerrar una sesión obliga a ese dispositivo a autenticarse otra vez.",
+      "source": "guia_privacidad_instagram_facebook_google.pdf, sección 3.C"
+    },
+    {
+      "id": "facebook-connected-apps",
+      "platform": "facebook",
+      "action": "revisar aplicaciones conectadas",
+      "surface": "aplicacion oficial",
+      "revision": "2026-11-05",
+      "status": "vigente",
+      "steps": [
+        "En Configuración, busca Aplicaciones y sitios web o el apartado de permisos y conexiones.",
+        "Revisa las aplicaciones que tienen acceso a tu cuenta.",
+        "Elimina las que no uses o no reconozcas.",
+        "Revisa por separado la cuenta o sitio de la aplicación si allí almacenaste información."
+      ],
+      "consequences": "La aplicación dejará de acceder a Facebook, pero los datos guardados por su propio servicio pueden requerir una gestión separada.",
+      "source": "guia_privacidad_instagram_facebook_google.pdf, sección 3.D"
+    },
+    {
+      "id": "google-security-review",
+      "platform": "google",
+      "action": "hacer una revisión de seguridad",
+      "surface": "Cuenta de Google",
+      "revision": "2026-11-05",
+      "status": "vigente",
+      "steps": [
+        "Abre Seguridad de tu Cuenta de Google e inicia sesión.",
+        "Revisa las recomendaciones y alertas de seguridad que aparecen.",
+        "Comprueba que el correo y el teléfono de recuperación sean tuyos y estén actualizados.",
+        "Revisa los dispositivos con sesión iniciada y cierra los que no reconozcas.",
+        "Revisa las conexiones con aplicaciones y servicios de terceros y retira los accesos que ya no necesites."
+      ],
+      "consequences": "Retirar accesos o cerrar sesiones puede exigir una nueva autenticación en esos dispositivos o servicios.",
+      "source": "guia_privacidad_instagram_facebook_google.pdf, sección 4.A"
+    },
+    {
+      "id": "google-two-step-verification",
+      "platform": "google",
+      "action": "activar la verificación en dos pasos",
+      "surface": "Cuenta de Google",
+      "revision": "2026-11-05",
+      "status": "vigente",
+      "steps": [
+        "Entra en Seguridad de la Cuenta de Google.",
+        "Busca Cómo inicias sesión en Google o Verificación en 2 pasos.",
+        "Selecciona Verificación en 2 pasos y pulsa para comenzar.",
+        "Confirma tu identidad y sigue las instrucciones.",
+        "Configura un segundo método; cuando estén disponibles, prioriza llaves de seguridad o llaves de acceso.",
+        "Guarda los códigos de respaldo en un lugar seguro y nunca los envíes a otra persona."
+      ],
+      "consequences": "La cuenta solicitará un segundo método de verificación en los accesos que correspondan.",
+      "source": "guia_privacidad_instagram_facebook_google.pdf, sección 4.B"
+    },
+    {
+      "id": "google-review-devices",
+      "platform": "google",
+      "action": "revisar los dispositivos conectados",
+      "surface": "Cuenta de Google",
+      "revision": "2026-11-05",
+      "status": "vigente",
+      "steps": [
+        "Abre Tus dispositivos o entra en Seguridad de tu Cuenta de Google.",
+        "Revisa los dispositivos y las sesiones recientes.",
+        "Selecciona un dispositivo que no reconozcas o que ya no uses.",
+        "Elige cerrar sesión y sigue las instrucciones.",
+        "Si no reconoces el acceso, cambia la contraseña y revisa los métodos de recuperación."
+      ],
+      "consequences": "Cerrar una sesión obliga a ese dispositivo a autenticarse otra vez.",
+      "source": "guia_privacidad_instagram_facebook_google.pdf, sección 4.C"
+    },
+    {
+      "id": "google-activity-privacy",
+      "platform": "google",
+      "action": "controlar actividad y privacidad",
+      "surface": "Cuenta de Google",
+      "revision": "2026-11-05",
+      "status": "vigente",
+      "steps": [
+        "Entra en Datos y privacidad.",
+        "Revisa los controles de actividad disponibles, como Actividad web y de aplicaciones, Historial de ubicaciones e Historial de YouTube.",
+        "Decide qué actividad deseas guardar y durante cuánto tiempo; puedes pausarla o eliminarla desde sus controles.",
+        "Para descargar una copia, visita Google Takeout, selecciona los productos y solicita la exportación."
+      ],
+      "consequences": "Pausar o eliminar actividad cambia los datos conservados y puede modificar la personalización. Revisar Gmail no exige eliminar la Cuenta de Google.",
+      "source": "guia_privacidad_instagram_facebook_google.pdf, sección 4.D"
+    }
+  ]
+}

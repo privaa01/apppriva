@@ -49,3 +49,12 @@ la incorporación efectiva corresponde a T007/T012.
 No se modificaron servicios hospedados. T001–T003/T005/T006 están cerradas; T004
 permanece bloqueada por ausencia de una identidad administrativa conectada y fue
 reubicada antes de T043 por aprobación del responsable.
+
+## Intento de despliegue de Zyro — 2026-11-05
+
+La función `zyroRespond`, sus reglas y la activación móvil de App Check quedaron
+implementadas y validadas localmente. Firebase CLI rechazó el despliegue a
+`priva-785cb` con `Failed to authenticate, have you run firebase login?`. La
+credencial automática del entorno no fue aceptada para publicar. No se desplegaron
+Functions ni reglas, no se habilitaron APIs, TTL o Play Integrity y no hubo
+consumo real del proveedor.

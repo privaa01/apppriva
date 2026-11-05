@@ -1,6 +1,8 @@
 import '../features/tips/presentation/tips_catalog_screen.dart';
 import '../features/tips/presentation/tip_detail_screen.dart';
 import '../features/tips/data/tips_repository.dart';
+import '../features/zyro/application/zyro_controller.dart';
+import '../features/zyro/presentation/zyro_screen.dart';
 import '../features/navigation/application/navigation_controller.dart';
 import '../features/navigation/data/destination_catalog.dart';
 import '../features/navigation/presentation/home_screen.dart';
@@ -33,7 +35,9 @@ class AccountRouter {
     this.profileObserver,
     this.navigation,
     this.tipsRepository,
+    this.zyroController,
   });
+  final ZyroController? zyroController;
   final TipsRepository? tipsRepository;
   final NavigationController? navigation;
   final AccountController controller;
@@ -63,6 +67,7 @@ class AccountRouter {
           observer: profileObserver,
           navigation: navigation,
           tipsRepository: tipsRepository,
+          zyroController: zyroController,
         );
     }
     return MaterialPageRoute<void>(
@@ -88,7 +93,9 @@ class _GuardedDestination extends StatelessWidget {
     this.observer,
     this.navigation,
     this.tipsRepository,
+    this.zyroController,
   });
+  final ZyroController? zyroController;
   final TipsRepository? tipsRepository;
   final AccountController controller;
   final String path;
@@ -148,6 +155,9 @@ class _GuardedDestination extends StatelessWidget {
       }
       if (path == '/home' && builder == null) {
         return HomeScreen(account: controller);
+      }
+      if (path == '/chat' && builder == null && zyroController != null) {
+        return ZyroScreen(account: controller, controller: zyroController!);
       }
       if (path == '/profile' && profileRepository != null && builder == null) {
         return ProfileScreen(
