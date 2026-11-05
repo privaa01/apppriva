@@ -162,17 +162,15 @@ sin presentarlas como pruebas ejecutadas ni aceptación de funcionalidades futur
 
 Catálogo público y cuatro detalles conectados al router existente. «Ver ejemplo»
 revela explicación inline; la contraseña ilustrativa tiene control de visibilidad
-independiente. Los ejemplos no abren enlaces ni recopilan datos. Contenido con
-lecturas Firestore al servidor, sin persistencia, historial o personalización.
+independiente. Los ejemplos no abren enlaces ni recopilan datos. El contenido fijo
+aprobado está incluido en `assets/content/tips-1.0.0.json`, sin lectura Firestore,
+red, sesión, historial o personalización. Funciona offline; actualizar los textos
+exige compilar y distribuir otra APK. Firebase permanece para cuenta y perfil.
 
-Para mostrar contenido alojado, publicar los cuatro documentos y reglas revisadas
-siguiendo `../firebase/README.md`, desde una sesión administrativa autorizada. Esa
-publicación aún no se ha realizado aquí; la app muestra indisponibilidad/reintento
-si falta contenido o permiso. No confundir un APK nuevo con contenido remoto listo.
-
-Validación local:182/182 Flutter,0 diagnósticos,24/24 reglas/preflight y APK debug
-compilado. Matriz nativa, TalkBack, rendimiento, participantes y publicación pendientes;
+El baseline anterior fue182/182 Flutter,0 diagnósticos y APK debug compilado. Tras
+el cambio de repositorio deben reejecutarse suites/build. Matriz nativa offline,
+TalkBack, rendimiento y participantes siguen pendientes;
 ver `../specs/004-tips-educativos/validation/delivery-review.md`. Activación del entorno:
 `source /workspace/.tools/priva-toolchain.sh`; luego comandos existentes desde mobile/.
 Runners `integration_test/tips_test.dart` y `tips_performance_test.dart` usan datos
-sintéticos y no sustituyen una prueba contra el contenido hospedado.
+sintéticos y deben repetirse en modo avión para acreditar el contenido empaquetado.

@@ -1,9 +1,9 @@
-import 'features/tips/data/firestore_tips_repository.dart';
-import 'features/tips/data/tips_repository.dart';
+import 'features/tips/data/bundled_tips_repository.dart';
 
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -24,7 +24,7 @@ Future<void> main() async {
   final config = FirebaseConfig.fromEnvironment();
   Future<FirebaseFirestore> openDatabase() async {
     if (!config.isConfigured) {
-      throw const TipsFailure(TipsFailureKind.unavailable);
+      throw StateError('Firebase is not configured');
     }
     final app = Firebase.apps.isEmpty
         ? await Firebase.initializeApp(options: config.options)
@@ -35,16 +35,12 @@ Future<void> main() async {
     return database;
   }
 
-  TipsRepository tipsRepository = DeferredTipsRepository(
-    () async => FirestoreTipsRepository(await openDatabase()),
-  );
+  final tipsRepository = BundledTipsRepository(rootBundle);
   ProfileRepository? profileRepository;
   AccountRepository repository = UnavailableAccountRepository();
   if (config.isConfigured) {
     try {
       final database = await openDatabase();
-      // Public Tips depend on Core/Firestore, never on account authorization.
-      tipsRepository = FirestoreTipsRepository(database);
       profileRepository = FirestoreProfileRepository(
         FirebaseAuth.instance,
         database,

@@ -173,51 +173,9 @@ No editar documentos para simular autorización ni activar reglas públicas. El
 archivo anterior recibido se conserva solo como fixture de regresión; no es el
 archivo de despliegue. Firebase.json sigue apuntando a firestore.rules.
 
-## F04 — Contenido público de Tips (implementación local)
+## F04 — Tips incluidos en la aplicación
 
-El payload revisado es `content/tips-1.0.0.json`: exactamente passwords, sharing,
-links y profiles en `educational_tips`. La app lee documentos del servidor, sin
-persistencia, listados ni escrituras cliente; no necesita iniciar sesión. Las reglas
-incluyen get público limitado a esos IDs y versiones, sin abrir perfiles/evidencias.
-
-Validación local desde `firebase/`:
-
-```bash
-node tool/publish_tips.mjs --validate
-npm test
-```
-
-`--validate` no autentica ni escribe en Internet. La publicación **no se ha ejecutado**.
-Antes de publicar, el responsable debe comprobar el proyecto priva-785cb/base(default),
-respaldar las reglas vigentes fuera del checkout y compararlas con `firestore.rules`.
-Si hay cambios ajenos posteriores, resolver la diferencia antes de reemplazarlas.
-La autorización técnica del plan no sustituye permiso de publicación.
-
-Desde una máquina/sesión con acceso administrativo autorizado y ADC ya configurado:
-
-```bash
-node tool/publish_tips.mjs --check
-node tool/publish_tips.mjs --apply --backup-dir /ruta/externa/respaldo-tips-unico
-npx firebase deploy --only firestore:rules --project priva-785cb
-```
-
-Los últimos tres comandos son pasos pendientes y requieren autorización del
-responsable; no se ejecutan por arrancar el entorno. El operador debe usar su sesión
-segura, nunca poner cuentas de servicio/tokens en la app, archivos versionados o chat.
-El script requiere acceso HTTPS a firestore.googleapis.com y las rutas de su identidad;
-no se ha ampliado para ello la lista de red del entorno. Hay variables ADC de plataforma,
-pero el manifiesto de identidades no contiene una conexión administrativa verificada
-para este proyecto: su presencia no acredita autorización.
-
-`--check` solo consulta los cuatro documentos. `--apply` crea únicamente los que falten,
-respaldando antes sus estados en un directorio externo nuevo; si un documento existente
-no coincide, se detiene sin sobrescribirlo. Una única operación commit con precondiciones
-impide publicar parcialmente los documentos nuevos o pisar una creación concurrente.
-Si existen cuatro idénticos, no vuelve a escribirlos. No modifica reglas, perfiles,
-evidencias, demo_contact u otras colecciones. El despliegue exclusivo de reglas es
-una operación separada y requiere comprobar que conserva cambios ajenos vigentes.
-
-Después: verificar lectura pública real de las cuatro categorías y rechazo de list/
-escrituras cliente; probar Android. El emulador y el preflight no acreditan publicación.
-Ver `../specs/004-tips-educativos/quickstart.md` y sus resultados para pendientes nativos,
-TalkBack y participantes. No declarar F04 aceptado solo por pasar pruebas locales.
+Por decisión aprobada el2026-11-05, F04 no usa Firestore. Sus cuatro textos fijos se
+empaquetan en `mobile/assets/content/tips-1.0.0.json`; no se publican documentos ni
+reglas de Tips. Firebase continúa aquí únicamente para las funciones que ya lo
+requerían, como cuenta y perfil.

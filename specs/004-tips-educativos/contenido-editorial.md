@@ -195,5 +195,6 @@ propuesto, textos aportados y conservación del diseño de wireframes.
 A1–A5 aprobados explícitamente por «si los apruebo» el2026-11-04.
 Plan técnico aprobado el2026-11-05. Contraste externo completado mediante
 fuentes primarias alternativas previstas en el registro, sin modificar textos.
-El payload deberá compararse con este contenido antes de publicar.
-No hay implementación, pruebas de producto ni aceptación de entrega en este artefacto.
+El asset `tips-1.0.0.json` se compara con este contenido antes de empaquetar una
+nueva APK. La implementación local existe, pero este artefacto no acredita pruebas
+de producto ni aceptación de entrega.

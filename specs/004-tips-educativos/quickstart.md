@@ -1,8 +1,17 @@
-# F04 — Guía de validación propuesta
+# F04 — Guía de validación
 
-**Estado:** módulo F04 implementado localmente. Resultados ejecutados en validation/;
-comandos Android nativos/humanos/remotos siguientes siguen pendientes, sin atribuirlos
-a las pruebas locales.
+## Cambio de validación — contenido local (2026-11-05)
+
+La fuente vigente es `mobile/assets/content/tips-1.0.0.json`. Validar igualdad con
+`contenido-editorial.md`, cuatro IDs y rechazo de asset/ruta inválidos. Ejecutar
+catálogo, cuatro detalles, atrás y ejemplos con red disponible y en modo avión; el
+resultado debe ser idéntico. Firebase/Firestore no es prerrequisito de F04 y no se
+publican documentos ni reglas de Tips. Las secciones remotas posteriores son
+historial del plan sustituido, no una puerta de cierre.
+
+**Estado:** módulo F04 implementado localmente. Resultados locales y pendientes se
+registran en validation/; los comandos Android y las validaciones humanas siguen
+pendientes, sin atribuirlos a las pruebas locales ni al baseline anterior.
 
 ## 1. Prerrequisitos
 
@@ -40,7 +49,19 @@ las pruebas F04 que se creen durante implementación y las regresiones F01–F03
 un build o una suite previa sin F04 no acredita la funcionalidad. No fijar aquí
 un recuento inventado. Si falla, conservar clasificación entorno/defecto y reprueba.
 
-## 3. Reglas y repositorio
+## 3. Repositorio local y regresión Firebase
+
+Tips ya no usa Firestore ni necesita reglas propias. El repositorio vigente es
+`BundledTipsRepository`, que lee `assets/content/tips-1.0.0.json` con validación
+completa y caché solo en memoria. Comprobar con dobles: catálogo completo y cada
+detalle; asset ausente/incompleto/inválido y ruta desconocida→unavailable; una sola
+decodificación; cuatro generaciones de carga solapadas y respuesta antigua ignorada;
+reintento conserva destino y dispose no publica. Cubrir una PageRoute
+limpia/invalida, volver a la ruta retenida recarga y un diálogo no borra contenido.
+Verificar también que Auth inválido o un fallo de Firebase no convierte Tips en privado.
+
+La suite Firebase de cuenta/perfil/demo se conserva como regresión y puede ejecutarse
+aparte; ya no contiene pruebas de Tips:
 
 ```bash
 cd /workspace/apppriva/firebase
@@ -48,19 +69,7 @@ npm_config_cache=/tmp/priva-npm-cache npm ci
 CI=true FIREBASE_EMULATORS_PATH=/workspace/.cache/priva/firebase-emulators XDG_CONFIG_HOME=/workspace/.cache/priva/config XDG_CACHE_HOME=/workspace/.cache/priva/cache npm_config_cache=/tmp/priva-npm-cache npm test
 ```
 
-El runner existente inicia/detiene Firestore en127.0.0.1:8085 para `demo-priva`.
-La suite `tests/tips.test.mjs` debe ejecutarse realmente junto a cuenta/perfil/
-demo. Comprobar get público de4 IDs aprobados, ausente conocido, denegación de
-ID arbitrario/draft/versión inválida, list y toda escritura cliente. La suite local ya pasa con las reglas Tips implementadas; las reglas hospedadas
-no se consideran actualizadas por cambiar este archivo.
-No habilitar reglas públicas globales ni simular publicación de producción.
-
-Repository/widget con dobles: catálogo completo y cada detalle; error,timeout,
-faltante,tipo/campo/versión erróneos; cuatro generaciones de carga solapadas y
-respuesta antigua ignorada; reintento conserva destino y dispose no publica.
-Probar permission-denied→unavailable sin revelar causa; cubrir una PageRoute
-limpia/invalida, volver a la ruta retenida recarga y un diálogo no borra contenido.
-Comprobar server-only sin fallback y que Auth inválido no convierte Tips en privado.
+No habilitar reglas públicas globales ni simular despliegues de producción.
 
 ## 4. Escenarios funcionales — C-TIPS-01–05
 
@@ -75,13 +84,14 @@ Repetir con visitante, cuenta no verificada y cuenta sintética válida:
    explicación una vez y permanece dentro de Priva en las cuatro categorías.
 4. Comprobar publicación/perfil genéricos ficticios y dirección `.example` sin acción.
    No inputs, apertura externa, subida, permisos ni inspección de una cuenta real.
-5. Forzar fallo de red, ausencia, documento incompleto y timeout con dobles/emulador:
-   mensajes de C-TIPS-03, reintento y retorno correctos, sin detalles del proveedor.
+5. Forzar asset ausente, incompleto o inválido y timeout con dobles: mensajes de
+   C-TIPS-03, reintento y retorno correctos, sin detalles técnicos. Repetir con modo
+   avión para confirmar que la falta de red no impide leer Tips.
 6. Volver a iniciar sesión/cerrar/cambiar UID; conservar guardas privadas. Perfil
    guardando bloquea salida voluntaria. Regresión de descarte temporal y restauración
    de sesión de F03, sin afirmar integración real de F06/F07.
-7. Inspeccionar configuración/código/tráfico sintético: sin escritura de visitas,
-   categorías leídas, credenciales o cuestionario; persistencia Firestore desactivada.
+7. Inspeccionar configuración/código: sin escritura de visitas, categorías leídas,
+   credenciales ni cuestionario; Tips no abre conexiones ni usa Firestore.
 
 ## 5. Android e inspección visual — C-TIPS-05/06
 
@@ -93,10 +103,10 @@ flutter test integration_test/tips_test.dart -d DEVICE_ID
 flutter test integration_test/tips_performance_test.dart -d DEVICE_ID
 ```
 
-Los runners usan repositorio/cuentas sintéticos del harness y no necesitarán
-escribir contenido ni personas en el proyecto alojado. La comprobación real contra
-Firestore se realiza por separado tras una publicación explícitamente autorizada.
-Un runner con dobles no prueba la configuración remota.
+Los runners usan repositorio/cuentas sintéticos del harness y no escriben contenido
+ni personas en el proyecto alojado. Tips se lee del asset incluido en el APK; no hay
+comprobación contra Firestore ni publicación autorizada. Un runner con dobles no
+sustituye la ejecución en un dispositivo real ni el modo avión.
 
 Matriz:API24/API36 ×320×720/412×915dp ×texto100%/200%; registrar modelo/OS/tamaño
 real, build y ajustes. Al menos un físico con TalkBack. Verificar catálogo,
@@ -115,8 +125,8 @@ cuatro detalles, explicación expandida, máscara, error/carga/reintento y naveg
 Rendimiento:20 repeticiones por configuración de catálogo/detalle/reintento/revelado.
 Reloj monotónico, medir pulsación→feedback≤1s y→contenido/error≤15s; registrar todas
 las duraciones sanitizadas, máximo y número de incumplimientos. No promediar para
-ocultar un fallo ni equiparar configurar timeout con haberlo medido. En fallo red
-controlado debe llegar mensaje≤15s. Tiempo humano de lectura no se incluye.
+ocultar un fallo ni equiparar configurar timeout con haberlo medido. En fallo de
+lectura controlado debe llegar mensaje≤15s. Tiempo humano de lectura no se incluye.
 
 ## 6. Comprensión — SC-04.5
 
@@ -149,15 +159,13 @@ individuales, seudónimos vinculables o contenido de cuentas; no instrumentar la
 para capturar respuestas. Si faltan participantes, registrar pendiente y no usar
 agentes como sustituto.
 
-## 7. Publicación y cierre futuros
+## 7. Cierre futuro
 
-Antes de publicar: fuentes completas, payload versionado comparado con editorial,
-reglas locales y regresión aprobadas; comprobar acceso administrativo autorizado
-sin pedir secretos por chat. En esta etapa no se ejecuta deploy ni se crean recursos.
-Publicar solo los4 documentos y reglas revisadas por el canal que autorice el
-responsable, preservando el resto del proyecto. Verificar luego get público real,
-escritura cliente denegada y comportamiento en Android con datos sintéticos.
+No hay publicación de contenido ni reglas de Tips. Antes de cerrar: revalidar
+análisis/suite/build tras la migración al asset, comparar el contenido empaquetado
+con editorial1.0.0, ejecutar el smoke offline en Android real, completar TalkBack,
+rendimiento y comprensión, y registrar los resultados con sus límites.
 
 Consolidar trazabilidad RF/HU/CA→tareas→pruebas→resultados; separar local, Android,
-TalkBack, comprensión y remoto. No heredar excepciones F03. Registrar fallos,
+TalkBack y comprensión humana. No heredar excepciones F03. Registrar fallos,
 pendientes y aceptación explícita de entrega; commit y sincronización al cerrar etapa.

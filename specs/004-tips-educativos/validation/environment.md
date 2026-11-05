@@ -1,4 +1,4 @@
-# Entorno F04 — preparado y validado localmente
+# Entorno F04 — preparación y baseline histórico
 
 2026-11-05. Checkout existente /workspace/apppriva, rama work; sincronización
 fast-forward de6883bb5 a31ee98f antes de implementar. Sin worktree ni pérdida de
@@ -19,18 +19,21 @@ Java utiliza el proxy del entorno y el truststore /etc/ssl/certs/java/cacerts.
 Se resolvieron UnknownHost al arrancar Gradle, ausencia de javac y falta del CA
 del proxy en el JDK nuevo; no se desactivaron TLS/checksums ni se cambiaron pins.
 
-Validado: pub get --enforce-lockfile, baseline135, regresión182, análisis0,
-reglas/preflight24 y APK debug. El manifiesto Flutter global aún devuelve404;
-la etiqueta y los artefactos del engine fijado sí se verificaron/instalaron.
+Validado antes de la migración al asset (baseline histórico): pub get
+--enforce-lockfile, baseline135, regresión182, análisis0, reglas/preflight24 y APK
+debug. Esos resultados no acreditan `BundledTipsRepository`; T025 debe reejecutarse
+en un entorno con Flutter. El manifiesto Flutter global aún devuelve404; la etiqueta
+y los artefactos del engine fijado sí se verificaron/instalaron.
 
 Limitaciones: sin dispositivo Android ni /dev/kvm; no pruebas nativas/TalkBack o
 participantes. Chrome/Linux desktop no preparados por estar fuera de alcance.
-CISA403 no impide usar fuentes alternativas primarias ya revisadas. No hay
-identidad administrativa verificada para Firebase; no se publicó contenido/reglas.
+CISA403 no impide usar fuentes alternativas primarias ya revisadas. Tips no usa
+Firebase ni requiere identidad administrativa; no se publicó contenido/reglas.
 
 
 Configuración reutilizable: install_script completo y start_skill actualizados en
 el borrador, conservando nombre/repositorios/red. Script probado con dependencias
 cacheadas y npm ci de nuevo satisfactorio; no se declaró probado un restore futuro.
-No se publicó la configuración por esta operación. El usuario podrá revisar,
-guardar y publicar el borrador para reutilizar el snapshot preparado en otras tareas.
+No se publicó la configuración por esta operación. Su aplicación posterior se
+registra en el cierre de `fuentes-editoriales.md`; este apartado conserva el estado
+del borrador preparado.

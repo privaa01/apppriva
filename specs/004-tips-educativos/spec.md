@@ -1,8 +1,14 @@
 # Feature Specification: F04 — Consultar las cuatro categorías de Tips
 
+> **Cambio aprobado 2026-11-05:** el responsable solicitó contenido fijo dentro
+> de la app. Los cuatro Tips se distribuyen en la APK y no se leen ni actualizan
+> mediante Firestore. Se mantienen textos, pantallas, «Ver más», regreso, ejemplos,
+> accesibilidad y acceso sin sesión; además deben funcionar sin conexión. Firebase
+> permanece sin cambios para las demás funcionalidades.
+
 **Feature Branch**: `work` (selección por directorio).
-**Created**: 2026-10-21. **Updated**: 2026-11-04.
-**Status**: Alcance, textos A1–A5 y plan técnico aprobados; contraste de fuentes completado2026-11-05. Implementación local verificada, con validaciones nativas/humanas y publicación pendientes; sin aceptación de entrega.
+**Created**: 2026-10-21. **Updated**: 2026-11-05.
+**Status**: Alcance, textos A1–A5 y plan técnico aprobados; contraste de fuentes completado2026-11-05. Implementación local migrada al contenido fijo en la APK, pendiente de revalidación tras el cambio; quedan validaciones nativas/humanas y no hay aceptación de entrega.
 **SPECIFY_FEATURE_DIRECTORY**: `specs/004-tips-educativos`.
 **Input**: «continua con la 004», después del cierre aprobado de F03.
 **Gobierno**: [constitución v1.1.0](../../.specify/memory/constitution.md).
@@ -92,8 +98,9 @@ Tips, sin declarar pruebas ejecutadas de esta funcionalidad.
   tardía no reemplaza el detalle que la persona eligió después.
 - Falla la comprobación de cuenta, pero Tips puede cargarse: no transformar una
   herramienta pública en una pantalla que obligue a registrarse.
-- Falla la red o el servicio de contenido: mostrar el estado recuperable sin prometer
-  un modo sin conexión o que las recomendaciones se encuentran actualizadas.
+- Falla la carga del contenido incluido en la APK (asset ausente, incompleto o inválido):
+  mostrar el estado recuperable sin inventar texto ni presentar el fallo como contenido
+  vacío normal. La ausencia de red no impide leer Tips.
 - Fuentes o contenido inválidos/incompletos no se publican como revisados; las pruebas
   deben distinguir el caso de un material válido que no pudo cargarse.
 - Ejemplo de contraseña enmascarado: explicar su carácter ilustrativo, sin presentarlo
@@ -186,8 +193,9 @@ las excepciones de cierre de F03 como aprobación de controles de F04.
 ## Assumptions
 
 - Solo Android conforme a la decisión ratificada del2026-10-28; público40–65años.
-- Se mantiene internet obligatorio, sin modo offline nuevo. La ubicación, distribución
-  y recuperación del contenido se decidirán en el plan, sin escoger proveedor aquí.
+- Tips no requiere conexión ni sesión: el contenido aprobado viaja en la APK como
+  asset local y se valida antes de mostrarse. Actualizarlo exige una nueva versión
+  editorial y una nueva APK; Firebase no distribuye ni almacena los Tips.
 - Se reutilizan navegación/sesión de F03 y guardas F01. El cierre de F03 conserva
   sus límites de evidencia; F04 generará pruebas propias de integración y regresión.
 - Accesibilidad/conectividad F08 siguen siendo transversales. El plan concretará
@@ -245,13 +253,13 @@ Sustituyen las redacciones históricas del PDF; se conserva su composición visu
 P02 se contrastó visualmente con la página4 y P03 con la página6 del PDF en esta
 revisión. No se presenta esta inspección como prueba de pantallas implementadas.
 
-Quedan propuestas concretas A1–A5: completar la explicación de contraseña,
+Quedaron propuestas concretas A1–A5: completar la explicación de contraseña,
 usar dominio reservado e inerte, explicar HTTPS, precisar el límite de pocas
 publicaciones y evitar una promesa absoluta sobre otras cuentas. No se atribuye
 aprobación de estas frases nuevas al mensaje que aportó los textos originales.
-CA-04.7–04.10 mantienen sus exigencias; revisión de fuentes y planificación siguen
-pendientes. No se ha aprobado un plan que todavía no existe ni se generan tareas
-o código en esta revisión documental.
+CA-04.7–04.10 mantienen sus exigencias; en ese momento la revisión de fuentes y la
+planificación seguían pendientes. No se aprobó un plan que todavía no existía ni se
+generaron tareas o código en esa revisión documental.
 
 
 ## Aprobación editorial y apertura de planificación — 2026-11-04
@@ -274,5 +282,6 @@ aprobado por el usuario ni se presenta como validación de producto.
 El responsable expresó su acuerdo con el plan F04 y reiteró conservar wireframes,
 cuatro categorías, «Ver ejemplo» y demás comportamientos propuestos. Se registra
 la aprobación en [plan.md](plan.md), sin alterar contenido ni alcance. La revisión
-externa de fuentes continúa bloqueada; no se considera dispensada por esa aprobación.
-El desglose [tasks.md](tasks.md) es preparación documental, no evidencia de ejecución.
+externa de fuentes seguía bloqueada en ese momento; se resolvió más tarde el mismo
+día y no se considera dispensada por esa aprobación. El desglose [tasks.md](tasks.md)
+era preparación documental, no evidencia de ejecución.

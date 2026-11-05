@@ -1,4 +1,10 @@
-# Firestore F04 — emulador
+# Firestore F04 — emulador (histórico)
+
+> **Histórico:** este resultado corresponde al diseño Firestore sustituido el
+> 2026-11-05. Las3 pruebas de reglas Tips y4 de preflight se eliminaron junto con
+> `firebase/tests/tips.test.mjs`, `tips-publication.test.mjs` y
+> `firebase/tool/publish_tips.mjs`. Solo la regresión de cuenta/perfil/demo sigue
+> vigente; no hay reglas ni documentos de Tips.
 
 Fecha2026-11-05. `npm test` desde firebase/, proyecto demo-priva, Firestore
 emulator1.22.0 en127.0.0.1:8085; Node24.22.1, Java21.0.12.1 del entorno.

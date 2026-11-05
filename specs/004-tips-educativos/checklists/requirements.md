@@ -36,16 +36,17 @@ HU-04, CA-04.1–04.3 y CA-ACC-01–05. Se añaden criterios identificados para 
 editorial, datos y accesibilidad. Contraste textual del PDF y mapa de pantallas;
 no se presenta como prueba visual de implementación o de comportamiento.
 
-La prioridad P1 y dirección editorial se proponen para aprobar con el spec. Los
-textos exactos/fuentes/ejemplos/revisión serán un catálogo editorial concreto del
+La prioridad P1 y dirección editorial se propusieron para aprobar con el spec. Los
+textos exactos/fuentes/ejemplos/revisión serían un catálogo editorial concreto del
 plan para aprobación antes de implementar. Muestra, rúbrica y denominador de la
-meta80% se concretarán en ese plan; no se simulan participantes o resultados.
+meta80% se concretarían en ese plan; no se simulan participantes o resultados.
 
-No existen hooks en .specify/extensions.yml. Directorio existente seleccionado,
-sin duplicar spec ni cambiar rama. No se han generado plan/tareas, cambiado reglas
-Firebase, implementado pantallas o ejecutado pruebas de producto F04.
+En esa revisión (2026-11-04) no existían hooks en `.specify/extensions.yml`, no se
+habían generado plan/tareas, cambiado reglas Firebase, implementado pantallas ni
+ejecutado pruebas de producto F04. Directorio existente seleccionado, sin duplicar
+spec ni cambiar rama.
 
-Antes de pasar a `$speckit-plan` se requiere aprobación explícita de este spec,
+Antes de pasar a `$speckit-plan` se requería aprobación explícita de este spec,
 según el principio IX y la puerta Spec de la
 [constitución](../../../.specify/memory/constitution.md). Las excepciones de cierre
 anteriores no se aplican por defecto a F04. Este checklist no es aceptación de entrega.
@@ -66,17 +67,18 @@ a aprobar los ajustes nuevos ni a validar comportamiento implementado.
 
 ## Estado posterior a aprobación
 
-La aprobación de A1–A5 permite preparar el plan. La revisión editorial externa
-no está completa: se distingue de la aprobación del contenido por el usuario.
-Plan en borrador; no se generan tareas ni implementación en esta etapa.
+La aprobación de A1–A5 permitió preparar el plan. Estado vigente: plan aprobado,
+fuentes verificadas e implementación local migrada al asset de la APK; 28/36 tareas
+completas y validaciones nativas/humanas pendientes. No hay publicación Firebase
+de Tips.
 
 
 ## Aprobación técnica — 2026-11-05
 
 El responsable aprobó el plan presentado y ratificó wireframes, cuatro categorías
-y «Ver ejemplo». Aprobación registrada; no se solicita de nuevo. La verificación
-editorial sigue pendiente y bloquea ejecución; `../tasks.md` prepara el desglose
-sin convertir esa condición en tarea completada ni excepción aprobada.
+y «Ver ejemplo». Aprobación registrada; no se solicita de nuevo. En ese momento la
+verificación editorial seguía pendiente; se completó el mismo día y se registra en
+la sección siguiente. `../tasks.md` refleja el desglose y su estado real.
 
 
 ## Verificación editorial completada — 2026-11-05

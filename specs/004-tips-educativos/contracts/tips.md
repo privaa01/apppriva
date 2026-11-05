@@ -1,40 +1,44 @@
 # F04 — Contratos de contenido, acceso e interfaz
 
-**Estado:** incluidos en el plan aprobado el2026-11-05. No son endpoints desplegados;
-la ejecución sigue sujeta a los prerrequisitos editoriales documentados.
+> **Contrato vigente desde 2026-11-05:** `BundledTipsRepository` lee el asset
+> inmutable `assets/content/tips-1.0.0.json`. No usa red, sesión, Firestore, listas,
+> listeners ni escrituras. Un asset ausente o inválido produce `unavailable`; una
+> ruta desconocida se rechaza. El contrato de UI y navegación no cambia.
+
+**Estado:** contrato implementado localmente el2026-11-05 sobre el asset aprobado,
+pendiente de revalidación tras la migración. No son endpoints desplegados y no
+existe publicación de Tips; las validaciones nativas/humanas siguen pendientes.
 
 ## C-TIPS-01 — Repositorio de lectura
 
 Operaciones conceptuales: cargar catálogo y cargar detalle por ID cerrado.
 Devuelven contenido validado o error tipado recuperable/indisponibilidad, sin
-exponer snapshots/errores del proveedor a la UI. Implementación producción:
-Firestore `get` de servidor, sin cache persistente ni fallback; dobles de prueba
-inyectados por constructor, sin endpoints ni flags de test en producto.
+exponer rutas ni excepciones a la UI. Implementación vigente:
+`BundledTipsRepository(rootBundle)` lee `assets/content/tips-1.0.0.json`, valida el
+mapa completo y cachea solo en memoria; dobles de prueba inyectados por constructor,
+sin endpoints ni flags de test en producto.
 
-Catálogo:4 get conocidos en paralelo, validación conjunta y orden fijo. Detalle:
-1 get, sin consulta de colección. Timeout15s del grupo/detalle. Respuesta parcial,
-versión mixta o documento ausente no equivalen a catálogo válido. Esquema en
-[data-model.md](../data-model.md), texto en [contenido-editorial.md](../contenido-editorial.md).
+Catálogo: mapa cerrado de cuatro IDs en orden fijo, validado antes de responder.
+Detalle: una entrada de ese mismo mapa. Timeout15s. Asset ausente/incompleto,
+versión mixta o ID desconocido producen `unavailable`; no equivalen a catálogo
+válido. Esquema en [data-model.md](../data-model.md), texto en
+[contenido-editorial.md](../contenido-editorial.md).
 
-## C-TIPS-02 — Reglas y separación de cuenta
+## C-TIPS-02 — Separación de cuenta y contenido
 
-Propuesta para `/educational_tips/{id}`:
+No existen reglas ni colección Firestore para Tips. El asset local es de solo
+lectura y se valida completo antes de mostrar contenido; no hay `list`, `get`,
+escrituras ni permisos nuevos.
 
-- get permitido sin autenticación solo para passwords/sharing/links/profiles;
-  si existe recurso, debe estar approved y con esquema/versión soportados.
-- get de ID conocido inexistente devuelve ausencia autorizada, no una denegación
-  engañosa; cliente lo convierte en unavailable. No divulgar IDs arbitrarios.
-- list y create/update/delete siempre denegados a clientes, incluso autenticados.
-- accesos a perfiles/evidencias siguen sus condiciones actuales; demo_contact y
-  privacy_suppressions se conservan. Denegación por defecto restante intacta.
-- publicación por responsable autorizado fuera de la app, tras pruebas y comparación
-  de payload; no incluir una ruta de escritura administrativa en Flutter.
+- El contenido no depende de autenticación, UID, correo, perfil ni autorización.
+- Un fallo de cuenta o de Firebase no bloquea Tips ni lo convierte en privado.
+- Las reglas de cuenta/perfil/demo y `privacy_suppressions` permanecen intactas.
+- No se incluye ruta de escritura administrativa ni publicación de Tips en Flutter.
 
-Pruebas obligatorias: visitante y sesión válida leen4 documentos aprobados;
-ID desconocido/draft/versión no soportada no se lee; colección no enumerable;
-cliente no puede escribir ni con su propia sesión; ausencia conocida recuperable;
-regresión completa de reglas de cuenta y demo. Tests siembran documentos con
-`withSecurityRulesDisabled` solo en emulador sintético, nunca para habilitar producción.
+Pruebas obligatorias: visitante y sesión válida leen las cuatro categorías; asset
+ausente/incompleto/inválido e ID desconocido producen `unavailable`; no hay
+escrituras ni historial; regresión completa de cuenta/perfil/demo. Cualquier
+prueba con emulador se limita a esas funciones ajenas a Tips.
 
 ## C-TIPS-03 — Carga, recuperación y mensajes
 
@@ -42,16 +46,17 @@ regresión completa de reglas de cuenta y demo. Tests siembran documentos con
   operaciones superpuestas.
 - error: «No pudimos cargar los consejos. Inténtalo de nuevo.» + «Reintentar».
 - unavailable: «Este contenido no está disponible en este momento.» + «Reintentar»
-  y retorno permitido. No afirmar que todo documento ausente se recuperará sin publicar.
-- `permission-denied` en la lectura de un ID Tips conocido se transforma en unavailable
-  sin atribuir una causa concreta: puede deberse a reglas/versionado/despliegue.
-  Otros fallos de transporte o timeout se transforman en error.
+  y retorno permitido. No afirmar que todo asset ausente se recuperará sin una
+  nueva APK.
+- Un asset ilegible, incompleto o con versión no soportada se transforma en
+  unavailable sin atribuir una causa concreta. Un timeout de carga se transforma
+  en error. No se exponen rutas ni excepciones internas.
 - conservar destino durante reintento. Volver siempre disponible en detalle, incluso
   durante loading/error. No registrar path recibido, email, token ni excepción bruta.
 - datos tardíos de otra generación/pantalla se descartan; excepción no queda sin manejar.
 
 Estos mensajes de estado completan los estados del spec no dibujados en el PDF;
-se proponen con el plan, no sustituyen los textos educativos aprobados.
+se mantienen con el contrato aprobado, no sustituyen los textos educativos aprobados.
 
 ## C-TIPS-04 — Navegación
 

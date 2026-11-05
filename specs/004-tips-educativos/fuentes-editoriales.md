@@ -31,7 +31,11 @@ revisión. Son fuentes del producto, no autoridad técnica de los consejos.
   NIST no se usa para certificar el ejemplo ni garantizar seguridad de otras cuentas.
 - No cubre por sí solo todas las recomendaciones de redes sociales y perfiles.
 
-## Fuentes por verificar antes de cerrar revisión editorial
+## Fuentes por verificar antes de cerrar revisión editorial (histórico)
+
+> **Histórico:** esta tabla y la acción siguiente describen el bloqueo anterior al
+> 2026-11-05. El cierre del contraste documentado más abajo las resolvió; se conservan
+> solo como registro y no representan el estado vigente.
 
 | ID | Fuente primaria / propósito | Estado y alcance pendiente |
 | --- | --- | --- |
@@ -48,7 +52,7 @@ texto; solo acredita el acceso fallido. La petición inicial a un path NIST `.md
 dio404; se corrigió mediante descubrimiento del repositorio oficial y se leyó el
 HTML real. No se atribuye revisión al path inexistente.
 
-## Acción para cerrar el bloqueo
+## Acción para cerrar el bloqueo (histórico)
 
 La política activa permite gestores de paquetes/GitHub; estas fuentes web no están
 habilitadas. Habilitar, en la configuración de red del entorno y conservando las
@@ -60,11 +64,16 @@ con el responsable antes de cambiar texto aprobado. Se pueden usar fuentes prima
 alternativas verificables si cubren los mismos consejos, sin adjudicar consulta a
 un documento inaccesible ni eludir la política mediante otro proxy.
 
-El criterio CA-04.10 y la revisión editorial del plan permanecen pendientes hasta
-completar ese trabajo. No se hereda el aplazamiento de pruebas de F03.
+El criterio CA-04.10 y la revisión editorial del plan quedaron pendientes hasta
+completar ese trabajo; el cierre del contraste del2026-11-05 los resolvió. No se
+hereda el aplazamiento de pruebas de F03.
 
 
-## Nueva comprobación y borrador de red — 2026-11-05
+## Nueva comprobación y borrador de red — 2026-11-05 (histórico)
+
+> **Histórico:** este intento precede a la aplicación de la política. El cierre del
+> contraste siguiente confirma que las consultas se completaron; esta sección no
+> describe el estado vigente.
 
 Se volvió a comprobar CISA, FTC, RFC Editor y soporte Chrome mediante HTTPS y el
 proxy existente: los cuatro intentos fallaron en CONNECT (curl56, código HTTP de

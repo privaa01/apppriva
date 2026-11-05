@@ -15,7 +15,7 @@ scroll; no se fuerza que cuatro categorías quepan mediante recortes o letra red
 Los detalles de publicación/perfil/mensaje usan los casos ficticios nuevos, no los
  textos/fotos históricos del PDF. Ver ejemplo expande inline y máscara es independiente.
 
-Adaptaciones previstas: menús comunes reutilizados, objetivos48dp, texto oscuro
+Adaptaciones aplicadas: menús comunes reutilizados, objetivos48dp, texto oscuro
  en consejo verde para contraste, paneles de altura variable y retorno explícito.
 Las capturas widget no representan con exactitud sombras/rasterizado de Android;
 no se declara comparación píxel a píxel ni entrega visual nativa aceptada. Falta
