@@ -11,6 +11,8 @@ evidencia; una omisión no equivale a aprobación.
 pero todas las fuentes oficiales devolvieron HTTP403 por la política de red. Se
 registró evidencia en `guide-catalogue.md` y `provider-review.md`. Ambas siguen
 pendientes y bloquean T003–T045; no se inició código ni se marcó una tarea completa.
+El intento de guardar dominios en el entorno falló por borrador obsoleto; la
+transferencia exacta quedó en `network-access-request.md`.
 
 ## Phase 1: Setup — puertas previas
 
