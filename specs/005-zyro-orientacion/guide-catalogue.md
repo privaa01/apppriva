@@ -8,6 +8,13 @@
 Las páginas oficiales devolvieron HTTP403 en este entorno. Los pasos siguientes
 organizan la comprobación, pero no se consideran verificados ni implementables aún.
 
+## Intento de ejecución T001 — 2026-11-05
+
+Tras la aprobación de tareas se intentaron de nuevo las cinco URLs con acceso de red
+autorizado, TLS verificado, redirecciones y agente de navegador. El proxy del entorno
+devolvió HTTP403 en todas. T001 permanece **pendiente**: no se inspeccionó contenido,
+no se reprodujeron rutas y ninguna guía cambió a `vigente`.
+
 ## Instagram
 
 **Acciones candidatas**: desactivar temporalmente; eliminar permanentemente.

@@ -2,6 +2,14 @@
 
 **Estado**: bloqueo previo a implementación.
 
+## Intento de ejecución T002 — 2026-11-05
+
+Se intentaron las páginas oficiales de callable Functions, App Check, gobierno de
+datos y ubicaciones de Vertex AI con acceso de red autorizado y TLS verificado. El
+proxy del entorno devolvió HTTP403. No se confirmó modelo, región, entrenamiento,
+retención, eliminación, términos o Logging. Todos los controles siguientes permanecen
+sin marcar y T002 continúa pendiente.
+
 ## Flujo propuesto
 
 ```text

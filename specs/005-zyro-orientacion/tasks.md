@@ -7,6 +7,11 @@
 Todas las pruebas usan cuentas/mensajes sintéticos. Cada tarea se marca solo con
 evidencia; una omisión no equivale a aprobación.
 
+**Ejecución 2026-11-05:** T001 y T002 se intentaron después de aprobar las tareas,
+pero todas las fuentes oficiales devolvieron HTTP403 por la política de red. Se
+registró evidencia en `guide-catalogue.md` y `provider-review.md`. Ambas siguen
+pendientes y bloquean T003–T045; no se inició código ni se marcó una tarea completa.
+
 ## Phase 1: Setup — puertas previas
 
 **Purpose**: cerrar decisiones externas y preparar entorno. T001–T006 bloquean todo
