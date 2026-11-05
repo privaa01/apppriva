@@ -1,12 +1,38 @@
 # Catálogo de guías propuesto — F05
 
 **Versión propuesta**: `zyro-guides-es-CO-1.0.0`
-**Estado**: candidato; no publicar hasta contraste manual
+**Estado**: documento fuente aprobado por el usuario; contraste técnico pendiente
 **Responsable al aprobar**: equipo Priva
 **Fecha de investigación**: 2026-11-05
 
-Las páginas oficiales devolvieron HTTP403 en este entorno. Los pasos siguientes
-organizan la comprobación, pero no se consideran verificados ni implementables aún.
+El documento fuente aportado tiene aprobación editorial explícita del usuario.
+Los intentos de comprobación independiente del entorno se conservan como evidencia
+histórica; la aprobación no acredita ejecución de rutas Android/web por Codex.
+
+## Documento aportado y aprobación — 2026-11-05
+
+El usuario responsable del proyecto aportó y aprobó expresamente la
+[GUÍA PRÁCTICA DE SEGURIDAD Y PRIVACIDAD DIGITAL](../../docs/referencias/GUIA_PRACTICA_SEGURIDAD_PRIVACIDAD_DIGITAL.pdf)
+con el mensaje: «es necesario vincular, ya te di los link en el pdf, yo apruebo el documento».
+Se acepta el documento y sus enlaces como fuente editorial; no se solicita al
+usuario volver a proporcionar enlaces ya incluidos.
+
+- Fecha de comprobación declarada en el PDF: 5 de noviembre de 2026.
+- Aprobador: usuario responsable del proyecto; no se infiere otra identidad.
+- Secciones del alcance F05: 3.1 G/H (Gmail/Cuenta Google), 3.2 G
+  (Facebook) y 3.3 F (Instagram), más recomendaciones previas de la sección 2.
+- Enlaces aportados: `https://support.google.com/accounts/answer/32046`,
+  `https://www.facebook.com/help/`, `https://www.facebook.com/settings`,
+  `https://help.instagram.com/` y `https://accountscenter.instagram.com/`.
+- Las demás plataformas y temas del PDF no amplían automáticamente F05.
+- SHA-256 del PDF conservado: `9a24504bef7d0f5ca7917f5fbbd2ed699d0a9237ea01b5492de032bb6807499f`.
+
+La fuente declara aplicación en Android y navegador web sin desglosar las rutas.
+No identifica al ejecutor de las comprobaciones ni aporta evidencia de recorrido
+con cuenta sintética. Se registra el contenido como **aprobado editorialmente**;
+T001 mantiene pendiente su contraste operativo, sin atribuir al usuario pruebas
+que no ha declarado. Las URLs específicas del catálogo anterior se conservan como
+referencias pendientes de contraste, no como enlaces extraídos del PDF.
 
 ## Intento de ejecución T001 — 2026-11-05
 
@@ -14,6 +40,21 @@ Tras la aprobación de tareas se intentaron de nuevo las cinco URLs con acceso d
 autorizado, TLS verificado, redirecciones y agente de navegador. El proxy del entorno
 devolvió HTTP403 en todas. T001 permanece **pendiente**: no se inspeccionó contenido,
 no se reprodujeron rutas y ninguna guía cambió a `vigente`.
+
+## Reintento T001 en entorno nuevo — 2026-11-05
+
+Responsable del intento: Codex. La política observada está `enforced` e incluye
+`help.instagram.com`, `www.facebook.com` y `support.google.com`. Se consultaron
+las cinco URLs anteriores con `curl --location --max-time 15`, TLS verificado y
+proxy heredado. Todas terminaron con código curl **7**, HTTP **000**:
+`Failed to connect to proxy port 8080: Could not connect to server`.
+Este fallo ocurre antes de recibir una respuesta HTTP; no es el HTTP403 del
+intento anterior. El estado del entorno informa `running/connected`, pero no hay
+diagnósticos de red retenidos que expliquen la falta de conexión al proxy.
+
+No se pudo leer contenido ni reproducir rutas Android/web con cuenta sintética.
+T001 sigue pendiente; no hay texto aprobado ni guías `vigente`. Primero se debe
+restablecer el proxy del entorno y después repetir el protocolo de aprobación.
 
 ## Instagram
 

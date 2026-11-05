@@ -14,14 +14,44 @@ pendientes y bloquean T003–T045; no se inició código ni se marcó una tarea 
 El intento de guardar dominios en el entorno falló por borrador obsoleto; la
 transferencia exacta quedó en `network-access-request.md`.
 
+**Reanudación 2026-11-05:** rama local `work` limpia al iniciar en `05db3fb`.
+Se intentó `git fetch origin` dos veces; ambos intentos fallaron al conectar con
+`proxy:8080`, por lo que no se puede afirmar sincronización remota. En el entorno
+nuevo los dominios solicitados sí aparecen permitidos, pero las cinco URLs de
+T001 fallaron con curl7/HTTP000 por indisponibilidad del proxy. Véase el reintento
+en `guide-catalogue.md`. T001 permanece pendiente y no se inicia implementación.
+
+**Aprobación documental 2026-11-05:** el usuario aportó y aprobó expresamente el
+PDF de guías. Se conservó en `docs/referencias/` y se registraron aprobación,
+fuente y enlaces en `guide-catalogue.md`. La aprobación editorial está resuelta;
+T001 sigue pendiente de contraste operativo, sin declarar pruebas no ejecutadas.
+
+**Continuación autorizada 2026-11-05:** se retomó T002 y se consultaron fuentes
+oficiales mediante navegación. `provider-review.md` contiene hallazgos, propuesta
+concreta y preparación de inventario T003. Faltan decisiones/configuración real;
+T002/T003 no se marcan completas ni se inicia implementación. El proyecto público
+`priva-785cb` se identificó inicialmente en el cliente.
+
+**Confirmación de proyecto 2026-11-05:** el usuario autorizó `priva-785cb` como
+proyecto Firebase de pruebas para Zyro y se identificó como responsable de la
+facturación. Esta confirmación quedó registrada en `provider-review.md`; no activa
+facturación, APIs ni consumo y no completa por sí sola T002 o T004.
+
+**Aprobación de configuración 2026-11-05:** el usuario aprobó modelo rápido y
+económico, región estadounidense, Logging sanitizado por 7 días y cuota 10/10min
+con TTL≤24h. Se fijó `gemini-3.5-flash-lite` en `us-central1` según documentación
+vigente y se completaron T002/T003. T004 sigue pendiente de consola. El intento de
+T006 quedó bloqueado por ausencia de Flutter/Android/Firebase CLI y caché npm
+incompleta; evidencia en `validation/baseline.md`.
+
 ## Phase 1: Setup — puertas previas
 
 **Purpose**: cerrar decisiones externas y preparar entorno. T001–T006 bloquean todo
 trabajo de implementación.
 
 - [ ] T001 Contrastar manualmente las cinco URLs oficiales, rutas Android/web y consecuencias de Instagram/Facebook/Google; completar estados, fecha, responsable y texto aprobado en `specs/005-zyro-orientacion/guide-catalogue.md`, sin publicar pasos candidatos ni completar una eliminación.
-- [ ] T002 Completar y aprobar modelo/endpoint/región, transferencia desde Colombia, entrenamiento, retención, eliminación, términos, responsable, facturación y Logging en `specs/005-zyro-orientacion/provider-review.md`; adjuntar evidencia verificable y no asumir retención cero.
-- [ ] T003 Aprobar finalidad y TTL≤24h de `zyro_rate_limits/{uid}`, incorporar el contador al inventario/política y registrar decisión en `specs/005-zyro-orientacion/provider-review.md`.
+- [x] T002 Completar y aprobar modelo/endpoint/región, transferencia desde Colombia, entrenamiento, retención, eliminación, términos, responsable, facturación y Logging en `specs/005-zyro-orientacion/provider-review.md`; adjuntar evidencia verificable y no asumir retención cero.
+- [x] T003 Aprobar finalidad y TTL≤24h de `zyro_rate_limits/{uid}`, incorporar el contador al inventario/política y registrar decisión en `specs/005-zyro-orientacion/provider-review.md`.
 - [ ] T004 Verificar proyecto Firebase de pruebas, plan con facturación, APIs, IAM mínimo, región común, Play Integrity/App Check y cuenta de servicio sin imprimir credenciales; registrar solo estado/configuración no secreta en `specs/005-zyro-orientacion/validation/environment.md`.
 - [ ] T005 Resolver sin actualizar pins por conveniencia `cloud_functions 7.0.1`, `firebase_app_check 0.5.1`, `firebase-functions 7.4.0`, `firebase-admin 14.5.0` y `@google/genai 2.32.0`; registrar lockfiles/versiones en `specs/005-zyro-orientacion/validation/environment.md`.
 - [ ] T006 Ejecutar baseline de análisis,180 pruebas Flutter vigentes, reglas Firebase y build Android disponible; separar fallos previos/entorno en `specs/005-zyro-orientacion/validation/baseline.md`.
