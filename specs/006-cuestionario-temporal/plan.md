@@ -2,7 +2,7 @@
 
 **Branch:** `work` | **Date:** 2026-11-05 | **Spec:** [spec.md](spec.md)  
 **Selección:** `SPECIFY_FEATURE_DIRECTORY=specs/006-cuestionario-temporal`  
-**Estado:** propuesta técnica pendiente de aprobación.
+**Estado:** aprobado explícitamente por el responsable el 2026-11-05; tareas pendientes.
 
 ## Summary
 
@@ -154,3 +154,8 @@ participantes40–65 realizan tareas; solo se guardan conteos agregados.
 
 No hay violaciones que justificar. El puerto de conectividad evita acoplar el
 controlador a un plugin y permite sustituir la detección en F08.
+
+## Aprobación
+
+El responsable aprobó el plan el 2026-11-05 con «apruebo». Esta aprobación autoriza
+generar tareas; no autoriza todavía su ejecución ni la implementación.
