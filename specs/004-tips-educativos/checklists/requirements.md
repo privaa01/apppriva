@@ -49,3 +49,16 @@ Antes de pasar a `$speckit-plan` se requiere aprobación explícita de este spec
 según el principio IX y la puerta Spec de la
 [constitución](../../../.specify/memory/constitution.md). Las excepciones de cierre
 anteriores no se aplican por defecto a F04. Este checklist no es aceptación de entrega.
+
+
+## Actualización por textos del responsable — 2026-11-04
+
+- [x] Registrados alcance de cuatro categorías y conservación de wireframes.
+- [x] Conservados textos del usuario en `contenido-editorial.md`.
+- [x] Explicitada la acción «Ver ejemplo» y su diferencia con revelar la contraseña.
+- [x] Separados textos aportados de ajustes editoriales propuestos A1–A5.
+- [ ] Resolver A1–A5 antes de cerrar la revisión y avanzar al plan.
+- [ ] Contrastar y registrar fuentes durante la planificación editorial.
+
+Los16 controles anteriores describen la revisión documental previa. No equivalen
+a aprobar los ajustes nuevos ni a validar comportamiento implementado.

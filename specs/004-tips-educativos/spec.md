@@ -2,7 +2,7 @@
 
 **Feature Branch**: `work` (selección por directorio).
 **Created**: 2026-10-21. **Updated**: 2026-11-04.
-**Status**: Draft — revisión preparada para aprobación; no autoriza plan o implementación.
+**Status**: Revisión con alcance, textos y diseño confirmados por el usuario; ajustes editoriales A1–A5 pendientes. No autoriza implementación.
 **SPECIFY_FEATURE_DIRECTORY**: `specs/004-tips-educativos`.
 **Input**: «continua con la 004», después del cierre aprobado de F03.
 **Gobierno**: [constitución v1.1.0](../../.specify/memory/constitution.md).
@@ -35,6 +35,8 @@ límites editoriales. No requiere implementar F05–F07 ni evaluar una cuenta ex
 - **CA-04.2:** Al abrir una categoría se muestran título, recomendaciones, ejemplo
   ficticio y consejo revisados que corresponden a ella. No se mezclan contenidos
   de otra categoría ni se muestran ejemplos como información de la persona.
+  «Ver ejemplo» revela la explicación educativa de esa categoría dentro del detalle,
+  sin abrir enlaces externos ni duplicar contenido al activarlo repetidamente.
 - **CA-04.3:** Si falla la carga, se muestra un error sencillo y una opción para
   reintentar el mismo destino. El fallo no se presenta como éxito o contenido vacío
   normal, no exige iniciar sesión para recuperarse y no expone detalles técnicos.
@@ -224,7 +226,29 @@ corregir lenguaje engañoso sin atribuir al wireframe requisitos nuevos.
 | RF-06.g | HU-04 / CA-04.9/04.12 | Revisión de datos, permisos y ausencia de historial/captura |
 | SC-04.1–04.5 | HU-04 | Matriz de aceptación, cobertura editorial y protocolo de comprensión |
 
-El2026-11-04 el usuario solicitó continuar con F04. Autoriza revisar el spec,
-no aprobar automáticamente esta prioridad, dirección editorial, plan o tareas.
+**Registro anterior, previo a recibir los textos:** el2026-11-04 el usuario solicitó continuar con F04. Esa solicitud autorizaba revisar el spec,
+sin aprobar automáticamente esta prioridad, dirección editorial, plan o tareas. El registro posterior delimita lo confirmado después.
 Antes de `$speckit-plan`, obtener aprobación de esta revisión según constitución IX.
 No se generan tareas, cambian reglas Firebase o implementan pantallas en esta etapa.
+
+
+## Decisión del responsable — 2026-11-04
+
+El usuario confirmó «sí» al alcance de las cuatro categorías y aportó los textos
+exactos de cada una, incluyendo recomendaciones, ejemplos, explicaciones,
+consejos e iconografía sugerida. Indicó «conserva el diseño, y hazlo todo según
+los wireframes». Se registra la aprobación de ese alcance y preferencia visual;
+no se le vuelve a solicitar una confirmación genérica de esos puntos.
+
+Los textos quedan conservados en [contenido-editorial.md](contenido-editorial.md).
+Sustituyen las redacciones históricas del PDF; se conserva su composición visual.
+P02 se contrastó visualmente con la página4 y P03 con la página6 del PDF en esta
+revisión. No se presenta esta inspección como prueba de pantallas implementadas.
+
+Quedan propuestas concretas A1–A5: completar la explicación de contraseña,
+usar dominio reservado e inerte, explicar HTTPS, precisar el límite de pocas
+publicaciones y evitar una promesa absoluta sobre otras cuentas. No se atribuye
+aprobación de estas frases nuevas al mensaje que aportó los textos originales.
+CA-04.7–04.10 mantienen sus exigencias; revisión de fuentes y planificación siguen
+pendientes. No se ha aprobado un plan que todavía no existe ni se generan tareas
+o código en esta revisión documental.
