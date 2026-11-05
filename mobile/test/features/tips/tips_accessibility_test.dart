@@ -119,7 +119,10 @@ void main() {
                   final data = await image.toByteData(
                     format: ui.ImageByteFormat.png,
                   );
-                  await File('/tmp/priva-f04-${id ?? 'catalog'}.png')
+                  await File(
+                    '${Directory.systemTemp.path}${Platform.pathSeparator}'
+                    'priva-f04-${id ?? 'catalog'}.png',
+                  )
                       .writeAsBytes(data!.buffer.asUint8List());
                   image.dispose();
                 });

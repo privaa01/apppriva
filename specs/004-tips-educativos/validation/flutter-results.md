@@ -7,6 +7,14 @@ se añadió el asset aprobado. Esta instancia Windows no dispone de Flutter/Dart
 lo que los resultados siguientes son baseline anterior y no acreditan la migración.
 T025 queda reabierta hasta ejecutar analyze, suite completa y build APK.
 
+## Revalidación Windows — 2026-11-05
+
+Flutter configurado por VS Code en `C:\Users\User\guardar\flutter`; Dart3.13.7.
+`dart analyze --fatal-infos`:0 diagnósticos. `flutter test --no-pub`:180/180
+satisfactorias tras corregir dos rutas de prueba portables (asset local y directorio
+temporal Windows). `flutter build apk --debug` no compiló porque no hay Android SDK
+configurado (`ANDROID_HOME`/sdk.dir ausente). T025 permanece abierta solo por APK.
+
 Fecha2026-11-05. **Resultados históricos previos a la migración al asset.**
 Flutter3.47.8/Dart3.13.7, checkout basado en31ee98f más la implementación F04 con
 `FirestoreTipsRepository`. No son resultados en un teléfono ni acreditan

@@ -15,8 +15,7 @@ Pendiente: TalkBack, foco/lectura real y navegación nativa en al menos un Andro
 físico. No hay dispositivo Android conectado; no hay aceptación automática de estas
 pruebas por sus resultados semánticos. Las excepciones F03 no se heredan.
 
-**Prueba física reportada,2026-11-05:** el responsable activó TalkBack en un teléfono
-Motorola y reportó funcionamiento correcto, sin pausas ni errores. Modelo y versión
-Android desconocidos; no se dispone de registro del orden/foco por escenario. Se
-conserva como evidencia manual positiva, pero T029 sigue pendiente de configuración
-y observaciones mínimas reproducibles.
+**Prueba física reportada,2026-11-05:** el responsable activó TalkBack en un Motorola
+G22 con Android12 y reportó funcionamiento correcto del recorrido, lectura, foco,
+acciones, expansión y navegación, sin pausas ni errores. No se guardaron datos de
+cuenta ni grabaciones. T029 se considera satisfecha mediante aceptación manual.

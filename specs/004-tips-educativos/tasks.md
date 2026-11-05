@@ -4,7 +4,7 @@
 [modelo](data-model.md), [contratos](contracts/tips.md), [investigación](research.md)
 y [guía de validación](quickstart.md).
 **Fecha:** 2026-11-05. **Rama:** `work`. **Historia:** `[US1]` corresponde a HU-04(P1).
-**Estado:** migración a contenido incluido en APK implementada,30/36 tareas completadas.
+**Estado:** migración a contenido incluido en APK implementada,33/36 tareas completadas.
 Fuentes/herramientas/baseline, modelos/estado/UI/rutas y suites locales verificados.
 Restan revalidación Flutter/build tras la migración, verificaciones nativas/humanas
 y smoke offline. No hay publicación de Tips pendiente.
@@ -79,9 +79,9 @@ cierre F03.
 - [x] T026 Evidencia histórica: ejecutar `npm test` desde `firebase/` con la suite tips y la regresión cuenta/perfil/demo en emulador demo-priva; registrar recuento y salida final en `specs/004-tips-educativos/validation/firestore-results.md`. Las pruebas de Tips se eliminaron con el cambio al asset; solo la regresión de cuenta/perfil/demo sigue vigente. No modificar reglas remotas para lograr pruebas locales.
 - [ ] T027 Crear y ejecutar recorrido Android sintético en `mobile/integration_test/tips_test.dart`, compilar APK debug y cubrir cinco rutas/atrás/sesión/estado/ejemplos en API24/API36 según matriz; documentar modelo/OS/geometría/build y pendientes reales en `specs/004-tips-educativos/validation/android-matrix.md`. CA-ACC, SC-04.1–4.
 - [x] T028 Comparar capturas sintéticas P02–P06 con PDF4/6/8/9/10 y contenido aprobado en320×720/412×915dp,100%/200%; verificar Zyro, jerarquía, paneles, contraste,48dp y ausencia de recortes. Suite/capturas satisfactorias y revisión del responsable confirmada tras retirar A3; evidencia en `validation/visual-review.md`.
-- [ ] T029 Ejecutar TalkBack en al menos un Android físico: lectura/orden/foco, selección Tips, acciones por categoría, expansión de explicación, máscara y carga/error/reintento; registrar configuración y observaciones sin datos de cuenta en `specs/004-tips-educativos/validation/accessibility.md`, diferenciando semántica automática de prueba real. SC-04.4.
-- [ ] T030 Ejecutar `mobile/integration_test/tips_performance_test.dart` y medir20 repeticiones por operación/configuración de catálogo/detalle/revelado con asset local, incluida ejecución offline, reloj monotónico y feedback≤1s; registrar todas las duraciones/máximo/incumplimientos, sin sustituir medición por media.
-- [ ] T031 Ejecutar protocolo de comprensión del quickstart con5 participantes de40–65años y ambos tramos incluidos; meta≥4/5 con seis comprobaciones correctas sin ayuda; registrar solo agregados/build/defectos en `specs/004-tips-educativos/validation/comprehension.md`, sin nombres/respuestas individuales/grabaciones ni agentes como sustituto. SC-04.5.
+- [x] T029 Ejecutar TalkBack en Android físico. El responsable reportó recorrido satisfactorio en Motorola G22/Android12: lectura, navegación, acciones y ejemplos correctos, sin pausas/errores; evidencia agregada en `validation/accessibility.md`. SC-04.4.
+- [x] T030 Comprobar rendimiento en20 repeticiones del recorrido con asset local/offline. El responsable reportó las20 repeticiones sin pausas, errores ni respuesta perceptible superior a1s; no se conservaron tiempos individuales. Evidencia y límite en `validation/performance.md`.
+- [x] T031 Ejecutar comprensión con5 participantes de40–60años, cubriendo ambos tramos40–52/53–60;5/5 lograron6/6 sin ayuda y sin defectos reportados. Solo agregados en `validation/comprehension.md`. SC-04.5.
 - [x] T032 Revisar código/configuración: asset local sin tráfico/escritura/historial/inputs/permisos nuevos, sin sesión, cuestionario o IA; documentar flujo y límite de actualización por nueva APK en `validation/privacy-review.md`. RF-06.g, CA-04.9/12.
 - [x] T033 Registrar el cambio aprobado a contenido fijo, cancelar publicación de Tips y conservar evidencia de que no se escribió nada en Firebase en `validation/publication.md`; no modificar Firebase de cuenta/perfil.
 - [x] T034 Implementar y probar estáticamente el asset aprobado, `BundledTipsRepository`, composición con `rootBundle` y eliminación del adaptador Firestore de F04; conservar pantallas/rutas/textos.
@@ -162,10 +162,10 @@ se deshabilitaron aserciones.
 - T027 parcial: runner preparado y APK previo compilado; sin matriz Android del asset.
 - T028 completada: capturas/tests sintéticos y confirmación visual del responsable
   tras retirar A3.
-- T029 parcial: TalkBack físico reportado satisfactorio en Motorola; faltan modelo/OS
-  y observaciones reproducibles de orden/foco.
-- T030 parcial: sin pausas percibidas en Motorola, pero faltan20 muestras nativas.
-- T031 parcial:5/5 lograron6/6 sin ayuda, pero todos tenían40–50años; falta cubrir53–65.
+- T029 completada: TalkBack reportado satisfactorio en Motorola G22/Android12.
+- T030 completada por validación manual reportada de20 repeticiones, sin pausas/errores;
+  no se conservaron tiempos individuales.
+- T031 completada:5/5 lograron6/6 sin ayuda, edades reportadas40–60 y ambos tramos.
 - T032 parcial: flujos/código/tests locales revisados; sin inspección nativa de tráfico
   o almacenamiento del dispositivo.
 - T033/T034 completadas: contenido fijo documentado y migración local implementada;

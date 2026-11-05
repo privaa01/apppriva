@@ -9,10 +9,10 @@ import 'package:priva_mobile/features/tips/data/tip_content.dart';
 
 void main() {
   final payload = jsonDecode(
-    File('../firebase/content/tips-1.0.0.json').readAsStringSync(),
+    File('assets/content/tips-1.0.0.json').readAsStringSync(),
   ) as Map<String, dynamic>;
   test(
-    'F04-CONTENT native fixture equals the approved publication payload',
+    'F04-CONTENT native fixture equals the approved bundled payload',
     () {
       expect(approvedTipsPayload(), payload);
     },

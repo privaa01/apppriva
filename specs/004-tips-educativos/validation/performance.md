@@ -9,6 +9,7 @@ muestras nativas; Tips lee un asset local y no mide red. Las pruebas de
 timeout/reintento con Futures y los tiempos de la suite Flutter no equivalen a esta
 medición en dispositivo.
 
-El responsable reportó en un Motorola físico ausencia de pausas o errores durante
-el recorrido, incluso offline. Es una comprobación perceptual positiva, no las20
-muestras monotónicas requeridas; T030 continúa pendiente.
+El responsable reportó20 repeticiones en Motorola G22/Android12, incluido modo avión,
+sin pausas, errores ni respuesta perceptible superior a1s. No se conservaron las
+duraciones individuales ni un máximo numérico; se registra esta limitación sin
+inventar mediciones. El responsable acepta el resultado manual y T030 se completa.
