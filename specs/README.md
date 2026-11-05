@@ -14,8 +14,8 @@ pruebas de reglas aplazadas explícitamente. El usuario autorizó avanzar a F02 
 2026-10-29. F02, plan y ejecución autorizados el2026-10-29; cierre aprobado por el usuario el 2026-11-03, con 34/34 tareas registradas como completadas y limitaciones de evidencia conservadas en [la revisión de entrega](002-perfil-cuenta/validation/delivery-review.md). F03 fue aceptado para cierre por el usuario el 2026-11-04, con135 pruebas locales,17 de reglas y [limitaciones documentadas](003-inicio-navegacion/validation/closure-2026-11-04.md):29 tareas completas y6 parciales/aplazadas. F04 fue aceptada y cerrada el2026-11-05 con36/36 tareas, contenido fijo en la app, análisis limpio,180 pruebas satisfactorias y validación Motorola G22/Android12; el responsable aceptó explícitamente no generar APK nuevo ni ejecutar API24/API36.
 F05 permanece abierto con35/45 tareas completadas; el responsable autorizó iniciar
 F06 manteniendo pendientes sus controles hospedados, Android físicos y humanos.
-F06 está en aclaración con un banco propuesto de30 preguntas, tres opciones por
-pregunta y regla de conexión confirmada; banco y spec pendientes de aprobación.
+F06 tiene spec y banco de30 preguntas aprobados el2026-11-05; el plan técnico y sus
+artefactos de diseño están preparados y pendientes de aprobación explícita.
 F07–F08 siguen en borrador.
 **Actualización:** 2026-11-05.
 

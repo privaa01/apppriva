@@ -9,10 +9,10 @@
 - [x] Fuente y propuestas diferenciadas de decisiones aprobadas.
 - [x] Sin selección nueva de arquitectura, proveedor o plazos legales.
 - [x] Resolver brechas de pantallas mediante aviso inicial, pausa, salida y error propuestos.
-- [ ] Aprobar el banco editorial propuesto y cerrar PD-01.
+- [x] Aprobar el banco editorial y cerrar PD-01 para F06.
 - [x] Resolver PD-10 para F06; PD-02 queda asignado a F07.
-- [ ] Aprobar prioridad y límites de la funcionalidad.
-- [ ] Ratificar constitución y aprobar este alcance explícitamente.
+- [x] Aprobar prioridad y límites de la funcionalidad.
+- [x] Ratificar constitución vigente y aprobar este alcance explícitamente.
 - [ ] Ejecutar y aportar evidencia de aceptación (fase posterior).
 
 No está listo para planificación. Los escenarios y métricas copiados son requisitos,

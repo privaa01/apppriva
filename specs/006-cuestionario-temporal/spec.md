@@ -2,7 +2,7 @@
 
 **Feature Branch**: `work` (rama actual; la funcionalidad se selecciona por directorio)
 **Created**: 2026-10-21
-**Status**: Clarified proposal — pendiente de aprobación explícita.
+**Status**: Approved — spec y banco editorial aprobados el 2026-11-05; plan pendiente.
 **Separated**: 2026-10-26
 **Input**: Especificar esta funcionalidad a partir de PRIVA_MOBILE_SPEC.md, sus pantallas y las decisiones explícitas del usuario.
 **Fuentes**: [Spec original](../../docs/referencias/PRIVA_MOBILE_SPEC.md), [PDF](../../docs/referencias/app.pdf).
@@ -184,6 +184,10 @@ PD-01 queda propuesto mediante `banco-preguntas.md` y requiere aprobación edito
 PD-10 queda resuelto para F06 por la decisión de pausa en primer plano y descarte en
 segundo plano. PD-02 corresponde al cálculo y presentación de F07; F06 conserva las
 claves correctas sin calcular ni mostrar un resultado.
+
+El responsable aprobó explícitamente el spec y el banco de30 preguntas el
+2026-11-05 con «apruebo». Esta decisión autoriza preparar el plan técnico; no
+aprueba todavía el plan, las tareas ni la implementación.
 Consultar sus condiciones de cierre en §18 del spec fuente. Las brechas de pantalla
 se resuelven en el registro del índice, sin modificar silenciosamente el original.
 Antes de `$speckit-plan`, resolver los pendientes aplicables y obtener aprobación explícita de la constitución y de este spec. Separar el documento no constituye esa aprobación.

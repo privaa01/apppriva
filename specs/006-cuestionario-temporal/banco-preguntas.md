@@ -1,7 +1,7 @@
 # Banco editorial propuesto — F06
 
 **Versión propuesta:** `question-bank-es-CO-1.0.0`. **Fecha:** 2026-11-05.
-**Estado:** pendiente de revisión y aprobación editorial.
+**Estado:** aprobado editorialmente por el responsable el 2026-11-05.
 
 Contenido original de Priva basado en las fuentes ya contrastadas de F04 y en la
 guía aprobada de Instagram, Facebook y Google de F05. Cada registro tiene tres
@@ -75,6 +75,6 @@ ocultan hasta terminar. Una respuesta no demuestra la conducta real de una perso
 
 ## Revisión requerida
 
-Antes de marcar una pregunta como `activa`, el responsable debe aprobar enunciado,
-opciones, clave, explicación, recomendación y fuente. Puede solicitar cambios por
-ID. El plan convertirá únicamente la versión aprobada a un recurso local inmutable.
+El responsable aprobó el banco completo el 2026-11-05 con «apruebo». Cambios futuros
+se propondrán por ID y requerirán una nueva revisión. El plan convertirá esta versión
+aprobada a un recurso local inmutable.
