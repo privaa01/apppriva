@@ -15,7 +15,13 @@
 ## Herramientas y configuración observadas
 
 - `node` y `npm` están disponibles.
-- `gcloud`, `firebase` y `flutter` no están disponibles en `PATH` en este intento.
+- En la reanudación actual existen Flutter en `/tmp/priva-flutter` y Firebase CLI
+  local en `firebase/node_modules/.bin/firebase`; no están expuestos globalmente
+  en `PATH`, pero son ejecutables mediante las rutas de trabajo documentadas.
+- `firebase login:list --json` terminó correctamente y no enumeró cuentas. El
+  manifiesto de identidades del entorno contiene cero conexiones; no hay identidad
+  GCP/Firebase administrativa disponible para verificar el proyecto hospedado.
+- `gcloud` no está disponible.
 - `firebase/firebase.json` configura únicamente reglas y emulador de Firestore;
   todavía no declara Functions.
 - El paquete `firebase/` sirve actualmente para validar reglas. Su lockfile no
@@ -32,5 +38,5 @@
 - Incorporar las versiones fijadas mediante la estructura de Functions prevista y
   resolver lockfiles sin actualizar pins por conveniencia.
 
-No se modificaron servicios hospedados ni dependencias porque T001–T004 siguen
-siendo puertas previas según `tasks.md`.
+No se modificaron servicios hospedados ni dependencias. T001–T003 están cerradas;
+T004 permanece bloqueada por ausencia de una identidad administrativa conectada.

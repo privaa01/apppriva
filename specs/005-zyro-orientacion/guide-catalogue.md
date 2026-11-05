@@ -1,7 +1,7 @@
 # Catálogo de guías propuesto — F05
 
 **Versión propuesta**: `zyro-guides-es-CO-1.0.0`
-**Estado**: documento fuente aprobado por el usuario; contraste técnico pendiente
+**Estado**: vigente por aprobación del responsable; contraste independiente no ejecutado
 **Responsable al aprobar**: equipo Priva
 **Fecha de investigación**: 2026-11-05
 
@@ -29,10 +29,11 @@ usuario volver a proporcionar enlaces ya incluidos.
 
 La fuente declara aplicación en Android y navegador web sin desglosar las rutas.
 No identifica al ejecutor de las comprobaciones ni aporta evidencia de recorrido
-con cuenta sintética. Se registra el contenido como **aprobado editorialmente**;
-T001 mantiene pendiente su contraste operativo, sin atribuir al usuario pruebas
-que no ha declarado. Las URLs específicas del catálogo anterior se conservan como
-referencias pendientes de contraste, no como enlaces extraídos del PDF.
+con cuenta sintética. El responsable confirmó posteriormente que T001 y T002 estaban
+finalizadas. Esa decisión cierra T001 y declara vigente el documento para F05 con
+una limitación aceptada: Codex no ejecutó rutas Android/web ni comprobó los menús
+contra cuentas sintéticas. Las URLs específicas del catálogo anterior se conservan
+como referencias, no como enlaces extraídos del PDF.
 
 ## Intento de ejecución T001 — 2026-11-05
 
@@ -53,8 +54,9 @@ intento anterior. El estado del entorno informa `running/connected`, pero no hay
 diagnósticos de red retenidos que expliquen la falta de conexión al proxy.
 
 No se pudo leer contenido ni reproducir rutas Android/web con cuenta sintética.
-T001 sigue pendiente; no hay texto aprobado ni guías `vigente`. Primero se debe
-restablecer el proxy del entorno y después repetir el protocolo de aprobación.
+Esta limitación permanece registrada aunque el responsable cerró T001 aceptando
+el PDF como fuente vigente. Una revisión posterior podrá repetir el protocolo sin
+reabrir silenciosamente la entrega.
 
 ## Instagram
 

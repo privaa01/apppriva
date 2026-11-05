@@ -44,12 +44,17 @@ vigente y se completaron T002/T003. T004 sigue pendiente de consola. El intento 
 T006 quedó bloqueado por ausencia de Flutter/Android/Firebase CLI y caché npm
 incompleta; evidencia en `validation/baseline.md`.
 
+**Cierre T001 2026-11-05:** el responsable confirmó «según la T1 y T2 ya están
+finalizadas». Se acepta el PDF aportado como fuente vigente y T001 queda completa
+con limitación explícita: Codex no ejecutó rutas Android/web ni contrastó menús con
+cuentas sintéticas por fallos del proxy. No se inventa esa evidencia.
+
 ## Phase 1: Setup — puertas previas
 
 **Purpose**: cerrar decisiones externas y preparar entorno. T001–T006 bloquean todo
 trabajo de implementación.
 
-- [ ] T001 Contrastar manualmente las cinco URLs oficiales, rutas Android/web y consecuencias de Instagram/Facebook/Google; completar estados, fecha, responsable y texto aprobado en `specs/005-zyro-orientacion/guide-catalogue.md`, sin publicar pasos candidatos ni completar una eliminación.
+- [x] T001 Contrastar manualmente las cinco URLs oficiales, rutas Android/web y consecuencias de Instagram/Facebook/Google; completada por aprobación del PDF fuente y aceptación expresa del responsable, con contraste independiente no ejecutado documentado en `specs/005-zyro-orientacion/guide-catalogue.md`.
 - [x] T002 Completar y aprobar modelo/endpoint/región, transferencia desde Colombia, entrenamiento, retención, eliminación, términos, responsable, facturación y Logging en `specs/005-zyro-orientacion/provider-review.md`; adjuntar evidencia verificable y no asumir retención cero.
 - [x] T003 Aprobar finalidad y TTL≤24h de `zyro_rate_limits/{uid}`, incorporar el contador al inventario/política y registrar decisión en `specs/005-zyro-orientacion/provider-review.md`.
 - [ ] T004 Verificar proyecto Firebase de pruebas, plan con facturación, APIs, IAM mínimo, región común, Play Integrity/App Check y cuenta de servicio sin imprimir credenciales; registrar solo estado/configuración no secreta en `specs/005-zyro-orientacion/validation/environment.md`.
