@@ -49,6 +49,11 @@ finalizadas». Se acepta el PDF aportado como fuente vigente y T001 queda comple
 con limitación explícita: Codex no ejecutó rutas Android/web ni contrastó menús con
 cuentas sintéticas por fallos del proxy. No se inventa esa evidencia.
 
+**Cambio de orden aprobado 2026-11-05:** el responsable respondió «okey» a mover
+T004 inmediatamente antes de T043. T005–T042 pueden ejecutarse localmente con
+emuladores, adaptador Vertex falso y datos sintéticos. T004 continúa obligatoria y
+bloquea toda llamada real, despliegue hospedado y consumo de Vertex.
+
 ## Phase 1: Setup — puertas previas
 
 **Purpose**: cerrar decisiones externas y preparar entorno. T001–T006 bloquean todo
@@ -58,11 +63,11 @@ trabajo de implementación.
 - [x] T002 Completar y aprobar modelo/endpoint/región, transferencia desde Colombia, entrenamiento, retención, eliminación, términos, responsable, facturación y Logging en `specs/005-zyro-orientacion/provider-review.md`; adjuntar evidencia verificable y no asumir retención cero.
 - [x] T003 Aprobar finalidad y TTL≤24h de `zyro_rate_limits/{uid}`, incorporar el contador al inventario/política y registrar decisión en `specs/005-zyro-orientacion/provider-review.md`.
 - [ ] T004 Verificar proyecto Firebase de pruebas, plan con facturación, APIs, IAM mínimo, región común, Play Integrity/App Check y cuenta de servicio sin imprimir credenciales; registrar solo estado/configuración no secreta en `specs/005-zyro-orientacion/validation/environment.md`.
-- [ ] T005 Resolver sin actualizar pins por conveniencia `cloud_functions 7.0.1`, `firebase_app_check 0.5.1`, `firebase-functions 7.4.0`, `firebase-admin 14.5.0` y `@google/genai 2.32.0`; registrar lockfiles/versiones en `specs/005-zyro-orientacion/validation/environment.md`.
-- [ ] T006 Ejecutar baseline de análisis,180 pruebas Flutter vigentes, reglas Firebase y build Android disponible; separar fallos previos/entorno en `specs/005-zyro-orientacion/validation/baseline.md`.
+- [x] T005 Resolver sin actualizar pins por conveniencia `cloud_functions 7.0.1`, `firebase_app_check 0.5.1`, `firebase-functions 7.4.0`, `firebase-admin 14.5.0` y `@google/genai 2.32.0`; versiones resueltas desde pub/npm y registradas en `specs/005-zyro-orientacion/validation/environment.md`.
+- [x] T006 Ejecutar baseline de análisis,180 pruebas Flutter vigentes, reglas Firebase y build Android disponible;180/180,0 diagnósticos,17/17 reglas y APK debug satisfactorios en `specs/005-zyro-orientacion/validation/baseline.md`.
 
-**Checkpoint**: fuentes y proveedor aprobados, entorno listo. Si falla T001–T004,
-detener implementación y conservar P07 como no disponible.
+**Checkpoint**: T001–T003 aprobadas. T004 se reubica como puerta de T043; hasta
+cerrarla solo se permiten emuladores/dobles, nunca Vertex o despliegue real.
 
 ---
 
@@ -70,12 +75,12 @@ detener implementación y conservar P07 como no disponible.
 
 **Purpose**: crear infraestructura compartida antes de HU-05.
 
-- [ ] T007 Inicializar Functions Node22/TypeScript y dependencias fijadas en `firebase/functions/package.json`, `firebase/functions/tsconfig.json` y `firebase.json`, sin secretos ni bodies en configuración de logs.
+- [x] T007 Inicializar Functions Node22/TypeScript y dependencias fijadas en `firebase/functions/package.json`, `firebase/functions/tsconfig.json` y `firebase.json`, compilación TypeScript satisfactoria y sin secretos.
 - [ ] T008 [P] Convertir únicamente guías aprobadas a `firebase/functions/src/zyro/guides.v1.json`, con plataforma/acción/superficie/revisión/estado/pasos/consecuencias/fuente y solo estado `vigente` servible.
-- [ ] T009 [P] Definir tipos y validación exacta de request/response, guía y decisión en `firebase/functions/src/zyro/contracts.ts`: mensaje≤1000, contexto≤8/6000, pasos0–6, schemaVersion1 y rechazo de campos extra.
+- [x] T009 [P] Definir tipos y validación exacta de request/response, guía y decisión en `firebase/functions/src/zyro/contracts.ts`: mensaje≤1000, contexto≤8/6000, pasos0–6, schemaVersion1 y rechazo de campos extra.
 - [ ] T010 [P] Crear fixtures sintéticos y adaptador Vertex falso en `firebase/functions/test/zyro/fixtures.ts` y `firebase/functions/test/zyro/fake_vertex.ts`, sin red ni mensajes reales.
 - [ ] T011 [P] Crear fixtures/control de Futures y repositorio falso móvil en `mobile/test/features/zyro/zyro_test_fixtures.dart`, incluyendo tres estados de cuenta y respuestas tardías.
-- [ ] T012 Añadir dependencias móviles fijadas y configuración de test en `mobile/pubspec.yaml` y `mobile/pubspec.lock`, conservando Firebase actual y sin añadir `firebase_ai`.
+- [x] T012 Añadir dependencias móviles fijadas y configuración de test en `mobile/pubspec.yaml` y `mobile/pubspec.lock`, conservando Firebase actual y sin añadir `firebase_ai`; lockfile resuelto.
 - [ ] T013 Preparar reglas y pruebas inicialmente fallidas que denieguen todo acceso cliente a `zyro_rate_limits` en `firebase/firestore.rules` y `firebase/tests/zyro-rate-limits.test.mjs`, preservando cuenta/perfil/demo.
 
 **Checkpoint**: contratos y pruebas base listos; todavía no existe una respuesta real.
@@ -146,7 +151,7 @@ guía o proveedor pendiente puede sustituirse silenciosamente.
 ## Dependencies & Execution Order
 
 ```text
-T001–T006 puertas externas
+T001–T003,T005–T006 puertas locales
         ↓
 T007–T013 fundamento
         ↓
@@ -157,6 +162,8 @@ T019–T029 dominio/servidor
 T030–T036 P07/integración
         ↓
 T037–T045 validación/aceptación
+
+T004 debe completarse después de T042 y antes de T043
 ```
 
 T008–T011 pueden avanzar en paralelo tras T001/T002. T014–T018 son paralelas tras

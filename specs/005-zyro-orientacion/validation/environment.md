@@ -38,5 +38,14 @@
 - Incorporar las versiones fijadas mediante la estructura de Functions prevista y
   resolver lockfiles sin actualizar pins por conveniencia.
 
-No se modificaron servicios hospedados ni dependencias. T001–T003 están cerradas;
-T004 permanece bloqueada por ausencia de una identidad administrativa conectada.
+## Resolución T005 — 2026-11-05
+
+`flutter pub add --dry-run` resolvió `cloud_functions 7.0.1` y
+`firebase_app_check 0.5.1` con Dart3.13.7 sin modificar archivos. El registro npm
+confirmó `firebase-functions 7.4.0` (Node≥18), `firebase-admin 14.5.0` (Node≥22)
+y `@google/genai 2.32.0` (Node≥20). Node22 satisface las tres. T005 queda completa;
+la incorporación efectiva corresponde a T007/T012.
+
+No se modificaron servicios hospedados. T001–T003/T005/T006 están cerradas; T004
+permanece bloqueada por ausencia de una identidad administrativa conectada y fue
+reubicada antes de T043 por aprobación del responsable.

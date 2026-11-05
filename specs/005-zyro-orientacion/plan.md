@@ -161,6 +161,12 @@ entrenamiento; retención por abuso/caché/logs; eliminación; términos y acuer
 aplicable; región común de función/modelo; facturación y límites. `us-central1` es
 candidata y no una decisión cerrada.
 
+**Secuencia enmendada 2026-11-05:** por aprobación «okey», la verificación hospedada
+T004 se ejecutará justo antes de T043. El desarrollo local T005–T042 usa exclusivamente
+emuladores, dobles de Vertex y datos sintéticos; no habilita APIs, facturación,
+despliegue ni llamadas reales. T004 conserva todos sus controles y sigue bloqueando
+T043 y la entrega.
+
 Producción usa Play Integrity; proveedor debug solo en builds de prueba. La cuenta de
 servicio recibe IAM mínimo para Vertex y contador. Ninguna API key se añade a APK,
 Git, variables Dart o `google-services.json`.
