@@ -2,7 +2,7 @@
 
 **Feature Branch**: `work` (rama actual; la funcionalidad se selecciona por directorio)
 **Created**: 2026-10-21
-**Status**: Draft — especificación funcional separada; pendiente de aprobación.
+**Status**: Clarified proposal — pendiente de aprobación explícita.
 **Separated**: 2026-10-26
 **Input**: Especificar esta funcionalidad a partir de PRIVA_MOBILE_SPEC.md, sus pantallas y las decisiones explícitas del usuario.
 **Fuentes**: [Spec original](../../docs/referencias/PRIVA_MOBILE_SPEC.md), [PDF](../../docs/referencias/app.pdf).
@@ -29,7 +29,7 @@ No aprueba el resto del spec ni autoriza el cambio de etapa.
 
 ## User Scenarios & Testing *(mandatory)*
 
-### HU-06 — Responder el cuestionario (RF-10 y RF-11)
+### HU-06 — Responder el cuestionario (RF-10, RF-11 y RF-15)
 
 Como usuario, quiero responder diez situaciones para identificar conocimientos que puedo mejorar.
 
@@ -47,7 +47,9 @@ sin exigir implementar otras historias conforme a esta especificación; las prue
 
 ### Edge Cases
 
-Banco insuficiente; sin respuesta; cambio de opción; opciones reordenadas; salida cancelada o confirmada; segundo plano; cierre; cierre de sesión; pérdida de red en primer plano pendiente.
+Banco insuficiente; sin respuesta; cambio de opción; opciones reordenadas; salida
+cancelada o confirmada; segundo plano; cierre; cierre de sesión; pérdida de red en
+primer plano con pausa y recuperación.
 
 ## Requirements *(mandatory)*
 
@@ -61,7 +63,25 @@ Banco insuficiente; sin respuesta; cambio de opción; opciones reordenadas; sali
 
 P08 (PDF 7); transición a P09 (PDF 3).
 
-**Brechas observadas:** La pregunta sí/no del PDF sobre práctica declarada no define por sí misma una clave educativa correcta; revisar alineación con §9.1. Falta advertencia de descarte al pasar a segundo plano. Puntaje y banco no aprobados.
+**Brechas observadas:** La pregunta sí/no del PDF sobre práctica declarada no define
+por sí misma una clave educativa correcta y no se incorpora al banco por inferencia.
+P08 debe añadir aviso de temporalidad y estados de pausa, salida y error. La fórmula
+y presentación del resultado pertenecen a F07.
+
+### Decisiones confirmadas — 2026-11-05
+
+1. Priva redacta un banco inicial de30 preguntas originales sustentadas en fuentes
+   ya contrastadas. `banco-preguntas.md` permanece propuesto hasta que el responsable
+   apruebe contenido, opciones, claves, explicaciones y fuentes.
+2. Cada pregunta ofrece exactamente tres opciones con IDs estables y una sola clave.
+3. Cada intento toma diez preguntas activas sin repetición: al menos una de cada uno
+   de los siete temas y tres adicionales sorteadas sin superar dos del mismo tema.
+   Preguntas y opciones se mezclan sin cambiar IDs o claves y permanecen fijas.
+4. Si se pierde internet en primer plano, el avance se pausa y el intento permanece
+   únicamente en RAM. Al recuperar conexión puede continuar. Pasar a segundo plano,
+   cerrar sesión o terminar la app lo descarta inmediatamente.
+5. Antes de comenzar se informa que las respuestas no se guardan y que una
+   interrupción obliga a iniciar un intento nuevo.
 
 ### Reglas de la fuente aplicables
 
@@ -80,7 +100,8 @@ Aviso obligatorio: **«Este resultado es orientativo y se basa en tus respuestas
 ### 9.2 Banco de preguntas
 
 - Cada intento contiene exactamente diez preguntas.
-- Se propone un banco inicial de al menos 30 preguntas; este tamaño y el contenido están pendientes de aprobación editorial.
+- El banco inicial contiene30 preguntas originales propuestas; su contenido y claves
+  requieren aprobación editorial antes de volverse recurso activo.
 - Cada pregunta ofrece varias opciones y una sola respuesta correcta.
 - Cada registro contiene ID estable, versión, tema, enunciado, opciones con IDs estables, clave correcta, puntaje, explicación, recomendación, fuente y fecha de revisión.
 - Solo se seleccionan preguntas revisadas y activas. No se generan preguntas ni claves libremente durante el intento.
@@ -131,7 +152,9 @@ Relacionar cada respuesta incorrecta con su explicación y recomendación revisa
 - Al regresar, debe iniciarse un nuevo intento; no se restaura el anterior.
 - Reiniciar el cuestionario no significa cerrar automáticamente la sesión de cuenta.
 - Antes de empezar, informar que una interrupción obliga a responder nuevamente.
-- Propuesta ante pérdida de conexión en primer plano: suspender el avance, mantener el estado solo en memoria y permitir reintentar; si la app pasa a segundo plano, descartar el intento. Pendiente de validación del equipo.
+- Ante pérdida de conexión en primer plano: suspender el avance, mantener el estado
+  solo en memoria y permitir continuar al recuperar conexión; si la app pasa a
+  segundo plano, descartar el intento.
 
 ### Key Entities
 
@@ -149,7 +172,7 @@ no se guardarán respuestas ni resultados reales para demostrar cumplimiento.
 
 ## Assumptions
 
-- Se conserva Android/iOS, público de 40–65 años e internet obligatorio (§§1–3).
+- Android únicamente, mínimo API24 vigente, público de40–65 años e internet obligatorio.
 - Las imágenes son referencia visual: sus ejemplos y textos no aprueban reglas nuevas.
 - F07 consume únicamente el intento completo en memoria. Requiere contenido editorial aprobado y F08.
 - Aplican §§11–17 del spec: minimización, conservación justificada, seguridad,
@@ -157,7 +180,10 @@ no se guardarán respuestas ni resultados reales para demostrar cumplimiento.
 
 ## Decisiones y aprobación pendientes
 
-Pendientes originales asociados: PD-01, PD-02, PD-10.
+PD-01 queda propuesto mediante `banco-preguntas.md` y requiere aprobación editorial.
+PD-10 queda resuelto para F06 por la decisión de pausa en primer plano y descarte en
+segundo plano. PD-02 corresponde al cálculo y presentación de F07; F06 conserva las
+claves correctas sin calcular ni mostrar un resultado.
 Consultar sus condiciones de cierre en §18 del spec fuente. Las brechas de pantalla
 se resuelven en el registro del índice, sin modificar silenciosamente el original.
 Antes de `$speckit-plan`, resolver los pendientes aplicables y obtener aprobación explícita de la constitución y de este spec. Separar el documento no constituye esa aprobación.
