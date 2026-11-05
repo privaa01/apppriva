@@ -14,3 +14,9 @@ al asset. Las capturas son sintéticas, no pruebas en un móvil físico ni TalkB
 Pendiente: TalkBack, foco/lectura real y navegación nativa en al menos un Android
 físico. No hay dispositivo Android conectado; no hay aceptación automática de estas
 pruebas por sus resultados semánticos. Las excepciones F03 no se heredan.
+
+**Prueba física reportada,2026-11-05:** el responsable activó TalkBack en un teléfono
+Motorola y reportó funcionamiento correcto, sin pausas ni errores. Modelo y versión
+Android desconocidos; no se dispone de registro del orden/foco por escenario. Se
+conserva como evidencia manual positiva, pero T029 sigue pendiente de configuración
+y observaciones mínimas reproducibles.

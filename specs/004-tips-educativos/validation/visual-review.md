@@ -25,3 +25,7 @@ revisión del APK en dispositivo y sus pantallas con ejemplo/consejo expandidos.
 Code y confirmó tamaños/diseño, con un único cambio solicitado: retirar la aclaración
 HTTPS de Enlaces sospechosos. El texto fue retirado del asset y fixture. Se requiere
 una última revisión visual después de recompilar; este reporte no sustituye Android.
+
+Después de retirar A3, el responsable confirmó nuevamente que todo estaba correcto.
+Se cierra la revisión visual T028 combinando capturas/tests sintéticos y aceptación
+manual; la matriz Android por versiones continúa separada en T027.

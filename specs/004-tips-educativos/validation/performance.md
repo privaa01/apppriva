@@ -8,3 +8,7 @@ No se ha ejecutado en Android porque no hay dispositivo conectado. No existen
 muestras nativas; Tips lee un asset local y no mide red. Las pruebas de
 timeout/reintento con Futures y los tiempos de la suite Flutter no equivalen a esta
 medición en dispositivo.
+
+El responsable reportó en un Motorola físico ausencia de pausas o errores durante
+el recorrido, incluso offline. Es una comprobación perceptual positiva, no las20
+muestras monotónicas requeridas; T030 continúa pendiente.
