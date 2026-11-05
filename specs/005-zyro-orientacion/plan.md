@@ -2,8 +2,9 @@
 
 **Branch**: `work` | **Date**: 2026-11-05 | **Spec**: [spec.md](spec.md)
 
-**Input**: spec F05 aprobado el 2026-11-05. Este plan es una propuesta pendiente
-de aprobación; no autoriza tareas, despliegue ni tratamiento real de mensajes.
+**Input**: spec F05 aprobado el 2026-11-05. El responsable aprobó este plan, sus
+límites y puertas previas con «apruebo» el 2026-11-05. Autoriza preparar tareas,
+no ejecutarlas, desplegar ni tratar mensajes reales.
 
 ## Summary
 
@@ -46,7 +47,7 @@ de [guide-catalogue.md](guide-catalogue.md).
 | VI. Calidad/seguridad | Auth+evidencia+App Check+cuota; secretos fuera de APK; pruebas negativas y timeout |
 | VII. Trazabilidad | Spec→contratos→pruebas→futuras tareas |
 | VIII. Simplicidad | Una callable; funciones existentes de Firebase; sin API/CMS adicional |
-| IX. Gobierno | Plan requiere aprobación y bloqueos cerrados antes de tareas/implementación |
+| IX. Gobierno | Plan aprobado; bloqueos deben cerrar antes de tareas de implementación |
 
 **Resultado previo y posterior al diseño**: no se propone excepción constitucional.
 El plan puede revisarse, pero no queda apto para implementación mientras las fuentes

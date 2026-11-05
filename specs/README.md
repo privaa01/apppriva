@@ -12,8 +12,8 @@ seguridad aplicables a Android. No implica aprobación de otros specs ni entrega
 69 pruebas locales satisfactorias y limitaciones de evidencia técnica conservadas;
 pruebas de reglas aplazadas explícitamente. El usuario autorizó avanzar a F02 el
 2026-10-29. F02, plan y ejecución autorizados el2026-10-29; cierre aprobado por el usuario el 2026-11-03, con 34/34 tareas registradas como completadas y limitaciones de evidencia conservadas en [la revisión de entrega](002-perfil-cuenta/validation/delivery-review.md). F03 fue aceptado para cierre por el usuario el 2026-11-04, con135 pruebas locales,17 de reglas y [limitaciones documentadas](003-inicio-navegacion/validation/closure-2026-11-04.md):29 tareas completas y6 parciales/aplazadas. F04 fue aceptada y cerrada el2026-11-05 con36/36 tareas, contenido fijo en la app, análisis limpio,180 pruebas satisfactorias y validación Motorola G22/Android12; el responsable aceptó explícitamente no generar APK nuevo ni ejecutar API24/API36. F05–F08 siguen en borrador.
-F05 tiene spec aprobado el2026-11-05 y plan técnico preparado para revisión; no hay
-tareas ni implementación autorizadas.
+F05 tiene spec y plan aprobados el2026-11-05; tareas preparadas para revisión, sin
+implementación autorizada.
 **Actualización:** 2026-11-05.
 
 Cada carpeta contiene `spec.md` y `checklists/requirements.md`, conforme a la estructura
