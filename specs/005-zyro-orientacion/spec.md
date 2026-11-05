@@ -2,7 +2,7 @@
 
 **Feature Branch**: `work` (selección por directorio)
 **Created**: 2026-10-21. **Updated**: 2026-11-05
-**Status**: Revisión completa — decisiones resueltas; pendiente de aprobación del spec
+**Status**: Approved — especificación aprobada; autoriza plan, no tareas ni implementación
 **SPECIFY_FEATURE_DIRECTORY**: `specs/005-zyro-orientacion`
 **Input**: «continua con el spec 005»
 **Fuentes**: [spec original §§5, 8, 11–18](../../docs/referencias/PRIVA_MOBILE_SPEC.md),
@@ -209,5 +209,5 @@ uso de respuestas del cuestionario y funciones de F06–F08 aún no entregadas.
 | SC-05.1–6 | HU-05 | automatización, Android, revisión editorial/datos y protocolo humano |
 
 La especificación incorpora las tres decisiones del responsable y supera su revisión
-documental. Su aprobación explícita autorizará preparar el plan, no tareas, proveedor
-ni implementación.
+documental. El 2026-11-05 el responsable la aprobó explícitamente con «apruebo».
+Esta aprobación autoriza preparar el plan, no tareas, proveedor ni implementación.
