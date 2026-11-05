@@ -2,7 +2,7 @@
 
 **Feature Branch**: `work` (selección por directorio).
 **Created**: 2026-10-21. **Updated**: 2026-11-04.
-**Status**: Revisión con alcance, textos y diseño confirmados por el usuario; ajustes editoriales A1–A5 pendientes. No autoriza implementación.
+**Status**: Alcance y revisión editorial A1–A5 aprobados; planificación en borrador. No constituye aprobación del plan ni de la entrega.
 **SPECIFY_FEATURE_DIRECTORY**: `specs/004-tips-educativos`.
 **Input**: «continua con la 004», después del cierre aprobado de F03.
 **Gobierno**: [constitución v1.1.0](../../.specify/memory/constitution.md).
@@ -13,14 +13,14 @@
 
 ## User Scenarios & Testing *(mandatory)*
 
-### HU-04 — Consultar Tips (RF-06) (Priority: P1, propuesta para aprobación)
+### HU-04 — Consultar Tips (RF-06) (Priority: P1)
 
 Como usuario, quiero consultar recomendaciones para proteger mis datos y comprender
 sus límites, sin tener que crear una cuenta.
 
 **Why this priority**: Tips es la herramienta pública de Priva para personas de
 40–65 años. Sustituye los marcadores de navegación por contenido educativo revisado
-sin depender de entregar el chat o el cuestionario. Prioridad propuesta en este spec.
+sin depender de entregar el chat o el cuestionario. Prioridad de esta entrega de Tips.
 
 **Independent Test**: como visitante y con sesión válida, abrir el catálogo y cada
 categoría, revisar recomendaciones/ejemplo/consejo y volver. Forzar carga fallida,
@@ -252,3 +252,18 @@ aprobación de estas frases nuevas al mensaje que aportó los textos originales.
 CA-04.7–04.10 mantienen sus exigencias; revisión de fuentes y planificación siguen
 pendientes. No se ha aprobado un plan que todavía no existe ni se generan tareas
 o código en esta revisión documental.
+
+
+## Aprobación editorial y apertura de planificación — 2026-11-04
+
+El responsable contestó «si los apruebo» a la lista concreta A1–A5 presentada
+después de confirmar categorías, textos y fidelidad a wireframes. Se registran
+como aprobados los cinco ajustes y se incorpora su versión final en
+[contenido-editorial.md](contenido-editorial.md), versión1.0.0. Este registro
+sustituye el estado pendiente de esos ajustes en la entrada anterior.
+
+La solicitud de continuar con F04 y esta aprobación permiten preparar el plan
+anunciado. No aprueban por anticipado arquitectura, matriz/protocolo ni un plan
+que el responsable no ha revisado. El contraste externo de fuentes permanece
+visible en [fuentes-editoriales.md](fuentes-editoriales.md); no modifica lo
+aprobado por el usuario ni se presenta como validación de producto.

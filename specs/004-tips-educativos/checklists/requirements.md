@@ -57,8 +57,15 @@ anteriores no se aplican por defecto a F04. Este checklist no es aceptación de 
 - [x] Conservados textos del usuario en `contenido-editorial.md`.
 - [x] Explicitada la acción «Ver ejemplo» y su diferencia con revelar la contraseña.
 - [x] Separados textos aportados de ajustes editoriales propuestos A1–A5.
-- [ ] Resolver A1–A5 antes de cerrar la revisión y avanzar al plan.
-- [ ] Contrastar y registrar fuentes durante la planificación editorial.
+- [x] Resolver A1–A5: aprobados por «si los apruebo»,2026-11-04.
+- [ ] Completar contraste de fuentes durante la planificación editorial (parcial, ver `../fuentes-editoriales.md`).
 
 Los16 controles anteriores describen la revisión documental previa. No equivalen
 a aprobar los ajustes nuevos ni a validar comportamiento implementado.
+
+
+## Estado posterior a aprobación
+
+La aprobación de A1–A5 permite preparar el plan. La revisión editorial externa
+no está completa: se distingue de la aprobación del contenido por el usuario.
+Plan en borrador; no se generan tareas ni implementación en esta etapa.

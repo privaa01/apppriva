@@ -1,10 +1,10 @@
 # F04 — Catálogo editorial aportado por el responsable
 
-**Versión:** 0.1.0. **Fecha:** 2026-11-04.
-**Estado:** textos aportados por el usuario; ajustes de revisión propuestos al final.
+**Versión:** 1.0.0. **Fecha:** 2026-11-04.
+**Estado:** textos y ajustes A1–A5 aprobados por el usuario; contraste externo de fuentes parcialmente pendiente.
 **Origen:** mensaje del responsable que confirma las cuatro categorías y ordena
-conservar el diseño y seguir los wireframes. No se atribuye una revisión de fuentes
-externas ni aprobación de los ajustes que todavía no ha visto.
+conservar el diseño y seguir los wireframes. La aprobación de A1–A5 se registra
+abajo; no acredita contraste externo de fuentes ni aprobación del plan técnico.
 **Trazabilidad:** RF-06.a/b/e, CA-04.2 y CA-04.7–04.10.
 
 Los ejemplos son ficticios. No son campos editables, generadores, comprobadores ni
@@ -35,11 +35,11 @@ subordinada al diseño del PDF, sin sustituir los textos ni añadir acciones.
 **Ver ejemplo — comportamiento solicitado:** mostrar una explicación de por qué
 combinar diferentes tipos de caracteres y evitar datos personales ayuda a crear
 una contraseña más segura. El usuario no aportó el texto literal de esa explicación;
-la propuesta concreta se encuentra en A1.
+el texto final aprobado se encuentra en A1.
 
 **Consejo final:**
 
-«Utiliza una contraseña diferente para cada cuenta. Así, si alguien descubre una, las demás seguirán protegidas».
+«Utiliza una contraseña diferente para cada cuenta. Así reduces el riesgo de que una contraseña descubierta permita entrar en tus otras cuentas».
 
 **Iconografía sugerida:** candado, llave, escudo y símbolos de contraseña.
 
@@ -92,15 +92,17 @@ persona de su hogar; no usar publicaciones, fotografías o ubicación reales.
 
 «¡Felicidades! Has ganado un celular. Reclama tu premio hoy mismo ingresando tus datos en el siguiente enlace».
 
-**Dirección aportada:** `www.premio-regalo-ejemplo.com`.
-Se registra como texto inerte, sin enlace Markdown ni apertura externa. Su uso
-final se sustituiría por la propuesta A2 si el responsable la aprueba.
+**Dirección final aprobada (A2):** `www.premio-regalo.example`.
+Texto inerte, sin enlace Markdown ni apertura externa. Sustituye la dirección
+`.com` del mensaje original; no se abre ni comprueba ningún dominio.
 
 Identificar el mensaje como un **posible** intento de engaño.
 
 **Ver ejemplo — explicación:**
 
 «Este mensaje utiliza un premio inesperado y la urgencia para llamar tu atención. No abras el enlace ni ingreses información personal. Verifica la promoción directamente en la página oficial de la empresa».
+
+**Aclaración aprobada A3:** «HTTPS cifra la conexión, pero no garantiza que el sitio sea legítimo».
 
 **Consejo final:**
 
@@ -133,7 +135,9 @@ fotografías reales ni enlaces a una cuenta externa.
   publicaciones; envía mensajes solicitando dinero.
 
 Estas características describen el caso sintético; no son detecciones efectuadas
-por Priva. No concluir falsedad por el número de publicaciones (ver A4).
+por Priva.
+
+**Aclaración aprobada A4:** «Tener pocas publicaciones no demuestra que una cuenta sea falsa. Verifica la identidad por un canal que ya conozcas».
 
 **Ver ejemplo — explicación:**
 
@@ -146,12 +150,13 @@ por Priva. No concluir falsedad por el número de publicaciones (ver A4).
 La denuncia es una recomendación educativa: no incorpora un botón para denunciar,
 abrir otra app o actuar en nombre de la persona.
 
-## Ajustes concretos propuestos para revisión
+## Registro de ajustes A1–A5 aprobados
 
-No se sustituyen silenciosamente los textos del usuario. Estos ajustes completan
-los límites de CA-04.7–04.10; requieren aceptación antes de cerrar la revisión.
+El responsable respondió «si los apruebo» a los cinco ajustes presentados.
+Se aplican sin modificar los demás textos aportados y completan los límites
+de CA-04.7–04.10. La tabla conserva el motivo de cada decisión.
 
-| ID | Propuesta literal / comportamiento | Motivo |
+| ID | Texto o comportamiento aprobado | Motivo |
 | --- | --- | --- |
 | A1 | Explicación de contraseña: «Una contraseña larga y única es más difícil de adivinar. Combinar distintos caracteres puede ayudar, pero no basta si la clave es corta o predecible. Evitar nombres y fechas personales reduce las pistas que otras personas podrían conocer. No uses esta contraseña de ejemplo en tus cuentas». | Concretar la explicación solicitada, sin presentar la mezcla de caracteres como garantía. |
 | A2 | Mostrar `www.premio-regalo.example` como texto, sin enlace ni acción de copia/apertura. | Usar un dominio reservado para documentación en lugar de un .com que podría existir. |
@@ -159,13 +164,13 @@ los límites de CA-04.7–04.10; requieren aceptación antes de cerrar la revisi
 | A4 | Añadir al caso de perfil: «Tener pocas publicaciones no demuestra que una cuenta sea falsa. Verifica la identidad por un canal que ya conozcas». | Cumplir CA-04.8 sin eliminar la señal contextual aportada. |
 | A5 | Sustituir únicamente el cierre del consejo de contraseña por «Así reduces el riesgo de que una contraseña descubierta permita entrar en tus otras cuentas». | Evitar que «seguirán protegidas» se interprete como garantía absoluta. |
 
-## Revisión de fuentes pendiente
+## Revisión de fuentes
 
 El texto del usuario es la fuente editorial primaria, no una certificación técnica.
-El plan deberá contrastar los consejos con fuentes primarias identificables
-(por ejemplo, NIST/CISA para contraseñas y phishing y documentación IANA para
-`.example`), registrar URL, fecha de consulta, alcance y correspondencia por
-categoría. No se declaran fuentes consultadas ni textos finales aprobados aquí.
+El [registro de fuentes](fuentes-editoriales.md) distingue fuentes consultadas,
+alcance y accesos bloqueados. NIST se contrastó desde su repositorio oficial;
+no se declara revisada una fuente cuya descarga falló. La aprobación editorial
+del usuario no sustituye las comprobaciones pendientes para CA-04.10.
 
 ## Presentación e interacción
 
@@ -186,5 +191,7 @@ categoría. No se declaran fuentes consultadas ni textos finales aprobados aquí
 
 Confirmados por el usuario: cuatro categorías, acceso público según el alcance
 propuesto, textos aportados y conservación del diseño de wireframes.
-Pendientes: A1–A5, revisión documentada de fuentes y aprobación del plan posterior.
+A1–A5 aprobados explícitamente por «si los apruebo» el2026-11-04.
+Pendientes: completar el contraste de fuentes indicado en su registro y aprobar
+el plan técnico antes de generar tareas e implementar.
 No hay implementación, pruebas de producto ni aceptación de entrega en este artefacto.
