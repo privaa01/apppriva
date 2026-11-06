@@ -81,7 +81,7 @@ storage, Firestore, IA o logs.
 - [ ] T031 Validar API24/API36,320×720/412×915,texto100/200%, teclado, atrás, red, background y logout en `specs/006-cuestionario-temporal/validation/android-matrix.md`.
 - [ ] T032 Ejecutar TalkBack físico para aviso/progreso/grupo/selección/Continuar/pausa/error/salida en `specs/006-cuestionario-temporal/validation/accessibility.md`.
 - [ ] T033 Ejecutar protocolo con5 participantes40–65 para inicio, selección, revisión, temporalidad y pausa; guardar solo conteos agregados en `specs/006-cuestionario-temporal/validation/comprehension.md`.
-- [ ] T034 Consolidar RF/CA/SC→T001–T033→pruebas/resultados, limitaciones y frontera F07 en `specs/006-cuestionario-temporal/validation/traceability.md` y `delivery-review.md`.
+- [x] T034 Consolidar RF/CA/SC→T001–T033→pruebas/resultados, limitaciones y frontera F07 en `specs/006-cuestionario-temporal/validation/traceability.md` y `delivery-review.md`.
 - [ ] T035 Actualizar `specs/README.md`, solicitar aceptación explícita, hacer commit y sincronizar `work`; no cerrar F06 ni avanzar F07 con pendientes no aceptados.
 
 ## Dependencies & Execution Order
