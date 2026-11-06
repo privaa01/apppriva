@@ -4,6 +4,9 @@ import '../features/zyro/data/zyro_repository.dart';
 import '../features/navigation/application/navigation_controller.dart';
 import '../features/navigation/data/temporary_journey.dart';
 import '../features/navigation/data/destination_catalog.dart';
+import '../features/questionnaire/application/questionnaire_controller.dart';
+import '../features/questionnaire/data/bundled_question_bank_repository.dart';
+import '../features/questionnaire/data/platform_questionnaire_connectivity.dart';
 
 import 'package:flutter/material.dart';
 
@@ -44,8 +47,17 @@ class _PrivaAppState extends State<PrivaApp> with WidgetsBindingObserver {
   late TemporaryJourney _journey;
   late NavigationController _navigation;
   late ZyroController _zyro;
+  PlatformQuestionnaireConnectivity? _questionnaireConnectivity;
   void _createNavigation() {
-    _journey = widget.temporaryJourney ?? EmptyTemporaryJourney();
+    if (widget.temporaryJourney == null) {
+      _questionnaireConnectivity = PlatformQuestionnaireConnectivity();
+      _journey = QuestionnaireController(
+        BundledQuestionBankRepository(),
+        _questionnaireConnectivity!,
+      );
+    } else {
+      _journey = widget.temporaryJourney!;
+    }
     _navigation = NavigationController(widget.controller, _journey);
     _zyro = ZyroController(
       widget.zyroRepository ?? const UnavailableZyroRepository(),
@@ -80,6 +92,8 @@ class _PrivaAppState extends State<PrivaApp> with WidgetsBindingObserver {
       oldWidget.controller.removeListener(_syncZyro);
       _zyro.dispose();
       if (oldWidget.temporaryJourney == null) _journey.dispose();
+      _questionnaireConnectivity?.dispose();
+      _questionnaireConnectivity = null;
       _createNavigation();
     }
   }
@@ -94,6 +108,7 @@ class _PrivaAppState extends State<PrivaApp> with WidgetsBindingObserver {
     widget.controller.removeListener(_syncZyro);
     _zyro.dispose();
     if (widget.temporaryJourney == null) _journey.dispose();
+    _questionnaireConnectivity?.dispose();
     super.dispose();
   }
 
@@ -104,6 +119,9 @@ class _PrivaAppState extends State<PrivaApp> with WidgetsBindingObserver {
       controller: widget.controller,
       tipsRepository: widget.tipsRepository,
       zyroController: _zyro,
+      questionnaireController: _journey is QuestionnaireController
+          ? _journey as QuestionnaireController
+          : null,
       navigation: _navigation,
       destinationBuilder: widget.destinationBuilder,
       profileRepository: widget.profileRepository,

@@ -15,7 +15,7 @@ pruebas de reglas aplazadas explícitamente. El usuario autorizó avanzar a F02 
 F05 permanece abierto con35/45 tareas completadas; el responsable autorizó iniciar
 F06 manteniendo pendientes sus controles hospedados, Android físicos y humanos.
 F06 tiene spec, banco de30 preguntas y plan técnico aprobados el2026-11-05; tareas
-preparadas para revisión antes de implementar.
+aprobadas e implementación autorizada el2026-11-06.
 F07–F08 siguen en borrador.
 **Actualización:** 2026-11-05.
 
