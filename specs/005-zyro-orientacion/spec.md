@@ -22,8 +22,8 @@ específicas de eliminación/desactivación de plataformas no mostrarán pasos h
 que sus fuentes oficiales sean revisadas y aprobadas. La etiqueta visible será
 «Asistente Zyro», no «Chat IA», para no prometer IA generativa.
 
-El catálogo local incluye además una guía general de protección de cuentas,
-señales de perfiles falsos y variantes habituales de cada tema. Es contenido
+El catálogo local incluye además una guía general de protección de cuentas y
+variantes habituales de cada tema. Es contenido
 aprobado dentro de los temas admitidos, no una ampliación de alcance.
 
 ## Regla de acceso confirmada — 2026-10-26
@@ -56,18 +56,18 @@ Como usuario, quiero resolver dudas sobre privacidad y seguridad con explicacion
 - **CA-05.2:** Una consulta admitida obtiene orientación comprensible; las instrucciones se organizan en pasos cuando corresponde.
 - **CA-05.3:** Una plataforma sin guía verificada produce una explicación del límite, sin pasos inventados.
 - **CA-05.4:** Una consulta fuera de alcance o dañina recibe una respuesta de límite y una alternativa apropiada.
-- **CA-05.5:** Un fallo del servicio muestra opción de reintento sin duplicar mensajes por envíos repetidos.
+- **CA-05.5:** Una consulta no reconocida muestra un límite explícito y permite intentar otra consulta sin duplicar mensajes.
 - **CA-05.6:** El campo y el botón de envío permanecen visibles cuando se abre el teclado.
 
 **Prioridad:** P1 aprobada para el MVP local.
 **Independent Test:** ejecutar los criterios CA anteriores en las pantallas asignadas,
 con sus precondiciones de sesión y contenido, comprobando el resultado funcional
 sin exigir implementar otras historias conforme a esta especificación; las pruebas aún no se han ejecutado.
-**Recorrido:** Consulta → orientación breve o pasos verificados; consulta no sustentada/fuera de alcance → límite explícito; fallo → reintento sin duplicación.
+**Recorrido:** Consulta → orientación breve o pasos verificados; consulta no sustentada/fuera de alcance → límite explícito; nueva consulta → nueva respuesta local.
 
 ### Edge Cases
 
-Plataforma sin guía; petición de credenciales; consulta dañina; incertidumbre; proveedor caído; teclado ocultando envío; envíos repetidos.
+Plataforma sin guía; petición de credenciales; consulta dañina; incertidumbre; teclado ocultando envío; envíos repetidos.
 
 ## Requirements *(mandatory)*
 
@@ -115,15 +115,15 @@ no duplicación de responsabilidad; véase [el índice SDD](../README.md) para e
 7. Diferenciar eliminar y desactivar y explicar las consecuencias verificadas de cada opción.
 8. Mantener guías apoyadas en fuentes oficiales revisadas, con fecha de revisión y plataforma o versión aplicable cuando corresponda.
 9. Presentar las instrucciones dentro del chat, sin exigir abrir enlaces externos. Las referencias oficiales se conservan internamente para revisión y trazabilidad.
-10. Avisar al usuario que no comparta información sensible y explicar los límites de conservación del proveedor una vez seleccionado.
+10. Avisar al usuario que no comparta información sensible y explicar que la conversación local se descarta al salir.
 
 Mensaje de presentación propuesto: **«Soy Zyro, tu asistente para aprender sobre privacidad y seguridad digital. Te orientaré paso a paso».**
 
-El catálogo inicial de plataformas y el procedimiento de actualización están pendientes. La disponibilidad de una IA no sustituye la revisión de las guías.
+El catálogo inicial de plataformas y el procedimiento de actualización están pendientes. Zyro no usa IA generativa ni sustituye la revisión de las guías.
 
 ### Key Entities
 
-Mensaje, respuesta y guía con fuente oficial y fecha; conservación de mensajes por definir, distinta de la prohibición del cuestionario.
+Mensaje efímero, respuesta local y guía con fuente oficial y fecha; no existe historial.
 
 ## Success Criteria *(mandatory)*
 
@@ -142,7 +142,7 @@ no se guardarán respuestas ni resultados reales para demostrar cumplimiento.
 
 - Alcance vigente únicamente Android; Zyro local puede responder sin red después de iniciar la app.
 - Las imágenes son referencia visual: sus ejemplos y textos no aprueban reglas nuevas.
-- Acceso F01, navegación F03 y F08. Catálogo y proveedor pendientes; no se aprueba una plataforma por aparecer en un ejemplo.
+- Acceso F01, navegación F03 y F08. Catálogo editorial pendiente; no se aprueba una plataforma por aparecer en un ejemplo.
 - Aplican §§11–17 del spec: minimización, conservación justificada, seguridad,
   accesibilidad, estados de error y trazabilidad. No se presumen proveedores ni plazos.
 

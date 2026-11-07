@@ -12,39 +12,27 @@ class ZyroScreen extends StatefulWidget {
   State<ZyroScreen> createState() => _ZyroScreenState();
 }
 
-class _Message {
-  const _Message(this.text, this.user);
-  final String text;
-  final bool user;
-}
-
 class _ZyroScreenState extends State<ZyroScreen> {
-  final _controller = TextEditingController();
+  final _input = TextEditingController();
   final _guide = const LocalZyroGuide();
-  final _messages = <_Message>[
-    const _Message(
-      'Soy Zyro, tu asistente para aprender sobre privacidad y seguridad digital. '
-      'Te orientaré con información verificada.',
-      false,
-    ),
-  ];
-
-  @override
-  void dispose() {
-    _controller.dispose();
-    _messages.clear();
-    super.dispose();
-  }
+  final _messages = <({bool fromUser, String text})>[];
 
   void _send([String? prompt]) {
-    final text = (prompt ?? _controller.text).trim();
+    final text = (prompt ?? _input.text).trim();
     if (text.isEmpty) return;
     final reply = _guide.answer(text);
     setState(() {
-      _messages.add(_Message(text, true));
-      _messages.add(_Message(reply.text, false));
-      _controller.clear();
+      _messages.add((fromUser: true, text: text));
+      _messages.add((fromUser: false, text: reply.text));
+      _input.clear();
     });
+  }
+
+  @override
+  void dispose() {
+    _messages.clear();
+    _input.dispose();
+    super.dispose();
   }
 
   @override
@@ -52,119 +40,75 @@ class _ZyroScreenState extends State<ZyroScreen> {
     controller: widget.account,
     title: 'Asistente Zyro',
     navigationPath: '/chat',
-    heading: Row(
-      children: [
-        Image.asset(
-          'assets/images/zyro/zyro.png',
-          width: 84,
-          height: 84,
-          fit: BoxFit.contain,
-          semanticLabel: 'Zyro, asistente de Priva',
-        ),
-        const SizedBox(width: 16),
-        Expanded(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                'Asistente Zyro',
-                style: Theme.of(context).textTheme.headlineSmall
-                    ?.copyWith(fontWeight: FontWeight.bold),
-              ),
-              const Text('Orientación local de privacidad y seguridad'),
-            ],
-          ),
-        ),
-      ],
-    ),
     child: Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
-        Container(
-          padding: const EdgeInsets.all(16),
-          decoration: BoxDecoration(
-            color: const Color(0xfffff2c7),
-            borderRadius: BorderRadius.circular(18),
-          ),
-          child: const Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              ExcludeSemantics(child: Icon(Icons.privacy_tip_outlined)),
-              SizedBox(width: 12),
-              Expanded(
-                child: Text(
-                  'No compartas contraseñas, códigos, documentos ni datos privados. '
-                  'La conversación se borra al salir de esta pantalla.',
-                ),
-              ),
-            ],
-          ),
+        Image.asset(
+          'assets/images/zyro/zyro.png',
+          height: 140,
+          semanticLabel: 'Zyro, asistente educativo de Priva',
         ),
-        const SizedBox(height: 18),
-        Text('Temas rápidos', style: Theme.of(context).textTheme.titleMedium),
+        const Text(
+          'Soy Zyro, tu asistente local de privacidad y seguridad digital.',
+          textAlign: TextAlign.center,
+          style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+        ),
         const SizedBox(height: 8),
+        const Text(
+          'No compartas contraseñas, códigos de verificación ni datos privados. '
+          'La conversación se borra cuando sales de esta pantalla.',
+          textAlign: TextAlign.center,
+        ),
+        const SizedBox(height: 16),
         Wrap(
           spacing: 8,
           runSpacing: 8,
-          children: LocalZyroGuide.quickPrompts
-              .map(
-                (prompt) => ActionChip(
-                  key: ValueKey('zyro.quick.$prompt'),
-                  label: Text(prompt),
-                  onPressed: () => _send(prompt),
-                ),
-              )
-              .toList(growable: false),
+          children: [
+            for (final prompt in LocalZyroGuide.quickPrompts)
+              ActionChip(
+                key: ValueKey('zyro.quick.$prompt'),
+                label: Text(prompt),
+                onPressed: () => _send(prompt),
+              ),
+          ],
         ),
-        const SizedBox(height: 20),
-        ..._messages.map(
-          (message) => Align(
-            alignment: message.user
+        const SizedBox(height: 16),
+        for (final message in _messages)
+          Align(
+            alignment: message.fromUser
                 ? Alignment.centerRight
                 : Alignment.centerLeft,
             child: Semantics(
-              label: message.user ? 'Tu mensaje' : 'Respuesta de Zyro',
-              child: Container(
-                constraints: const BoxConstraints(maxWidth: 430),
-                margin: const EdgeInsets.only(bottom: 12),
-                padding: const EdgeInsets.all(16),
-                decoration: BoxDecoration(
-                  color: message.user
-                      ? Theme.of(context).colorScheme.primary
-                      : Colors.white,
-                  borderRadius: BorderRadius.circular(20),
-                ),
-                child: Text(
-                  message.text,
-                  style: TextStyle(
-                    color: message.user
-                        ? Theme.of(context).colorScheme.onPrimary
-                        : Theme.of(context).colorScheme.onSurface,
-                  ),
+              label: message.fromUser ? 'Tú' : 'Zyro',
+              child: Card(
+                color: message.fromUser
+                    ? Theme.of(context).colorScheme.primaryContainer
+                    : Theme.of(context).colorScheme.surfaceContainerHighest,
+                child: Padding(
+                  padding: const EdgeInsets.all(14),
+                  child: Text(message.text),
                 ),
               ),
             ),
           ),
-        ),
-        const SizedBox(height: 8),
+        const SizedBox(height: 16),
         TextField(
           key: const Key('zyro.input'),
-          controller: _controller,
-          minLines: 1,
-          maxLines: 4,
+          controller: _input,
           maxLength: 300,
+          maxLines: 3,
           textInputAction: TextInputAction.send,
           onSubmitted: (_) => _send(),
-          decoration: InputDecoration(
-            labelText: 'Escribe una consulta general',
+          decoration: const InputDecoration(
+            labelText: 'Escribe tu consulta',
             hintText: 'Ejemplo: ¿Cómo protejo mi cuenta?',
-            suffixIcon: IconButton(
-              key: const Key('zyro.send'),
-              tooltip: 'Enviar consulta',
-              onPressed: _send,
-              icon: const Icon(Icons.send_rounded),
-            ),
           ),
+        ),
+        FilledButton.icon(
+          key: const Key('zyro.send'),
+          onPressed: _send,
+          icon: const Icon(Icons.send),
+          label: const Text('Enviar'),
         ),
       ],
     ),

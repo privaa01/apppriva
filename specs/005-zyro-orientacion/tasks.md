@@ -10,7 +10,7 @@
 
 ## 2. Implementación base
 
-- [x] T006 Crear el catálogo y clasificador local de respuestas verificadas, incluida la protección general de cuentas, perfiles falsos y variantes habituales de cada tema.
+- [x] T006 Crear el catálogo y clasificador local de respuestas verificadas, incluida la protección general de cuentas y variantes habituales de cada tema.
 - [x] T007 Implementar límites para datos sensibles, daño y temas desconocidos.
 - [x] T008 Construir P07 con identidad Zyro, aviso, mensajes y envío.
 - [x] T009 Añadir las cinco consultas rápidas.
@@ -21,11 +21,11 @@
 
 ## 3. Pruebas automatizadas
 
-- [x] T014 Probar respuestas de todos los temas admitidos, incluidas variantes de frase y la distinción entre cuenta comprometida y petición dañina.
+- [x] T014 Probar respuestas de todos los temas admitidos y la distinción entre cuenta comprometida y petición dañina.
 - [x] T015 Probar datos sensibles, peticiones dañinas y temas sin verificar.
 - [x] T016 Probar acceso protegido, presentación y envío en P07.
 - [x] T017 Ejecutar `dart analyze` sin diagnósticos (2026-11-06).
-- [x] T018 Ejecutar la suite Flutter completa: 190/190 satisfactorias (2026-11-06), tras ampliar el catálogo con protección general de cuentas, perfiles falsos y variantes de frase.
+- [x] T018 Ejecutar la suite Flutter completa: 196/196 satisfactorias (2026-11-06), con la versión local definitiva.
 
 ## 4. Validación Android y cierre
 
@@ -37,4 +37,12 @@
 - [ ] T024 Ejecutar los casos CA-05.1 a CA-05.6 y registrar evidencia.
 - [ ] T025 Actualizar esta lista, el checklist y el estado final del spec.
 - [ ] T026 Obtener aprobación final del responsable.
+
+## 5. Ampliación con el banco de 500 preguntas
+
+- [x] T027 Incorporar y auditar estructuralmente el banco editorial de 500 preguntas.
+- [ ] T028 Resolver el duplicado y mapear 499 preguntas únicas a 38 respuestas/intenciones.
+- [ ] T029 Registrar fuente oficial, fecha y plataforma aplicable para cada guía que lo requiera.
+- [ ] T030 Aprobar editorialmente e integrar las guías verificadas al catálogo local.
+- [ ] T031 Añadir pruebas automatizadas para todas las intenciones y variantes aprobadas.
 

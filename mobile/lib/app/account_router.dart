@@ -1,10 +1,12 @@
 import '../features/tips/presentation/tips_catalog_screen.dart';
 import '../features/tips/presentation/tip_detail_screen.dart';
 import '../features/tips/data/tips_repository.dart';
+import '../features/zyro/presentation/zyro_screen.dart';
 import '../features/navigation/application/navigation_controller.dart';
 import '../features/navigation/data/destination_catalog.dart';
 import '../features/navigation/presentation/home_screen.dart';
-import '../features/zyro/presentation/zyro_screen.dart';
+import '../features/questionnaire/application/questionnaire_controller.dart';
+import '../features/questionnaire/presentation/questionnaire_screen.dart';
 
 import 'package:flutter/material.dart';
 
@@ -34,7 +36,9 @@ class AccountRouter {
     this.profileObserver,
     this.navigation,
     this.tipsRepository,
+    this.questionnaireController,
   });
+  final QuestionnaireController? questionnaireController;
   final TipsRepository? tipsRepository;
   final NavigationController? navigation;
   final AccountController controller;
@@ -64,6 +68,7 @@ class AccountRouter {
           observer: profileObserver,
           navigation: navigation,
           tipsRepository: tipsRepository,
+          questionnaireController: questionnaireController,
         );
     }
     return MaterialPageRoute<void>(
@@ -89,7 +94,9 @@ class _GuardedDestination extends StatelessWidget {
     this.observer,
     this.navigation,
     this.tipsRepository,
+    this.questionnaireController,
   });
+  final QuestionnaireController? questionnaireController;
   final TipsRepository? tipsRepository;
   final AccountController controller;
   final String path;
@@ -152,6 +159,16 @@ class _GuardedDestination extends StatelessWidget {
       }
       if (path == '/chat' && builder == null) {
         return ZyroScreen(account: controller);
+      }
+      if (path == '/questionnaire' &&
+          builder == null &&
+          questionnaireController != null &&
+          navigation != null) {
+        return QuestionnaireScreen(
+          account: controller,
+          controller: questionnaireController!,
+          navigation: navigation!,
+        );
       }
       if (path == '/profile' && profileRepository != null && builder == null) {
         return ProfileScreen(

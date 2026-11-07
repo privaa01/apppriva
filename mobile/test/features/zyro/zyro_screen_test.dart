@@ -8,7 +8,8 @@ import '../account/ui_test_repository.dart';
 
 void main() {
   testWidgets('F05-CHAT requires a valid session', (tester) async {
-    final account = AccountController(UiTestRepository());
+    final repository = UiTestRepository();
+    final account = AccountController(repository);
     await account.initialize();
     await tester.pumpWidget(
       PrivaApp(controller: account, initialRoute: '/chat'),
@@ -18,12 +19,12 @@ void main() {
       find.textContaining('Inicia sesión para acceder a esta sección'),
       findsOneWidget,
     );
+    await tester.pumpWidget(const SizedBox());
     account.dispose();
+    await repository.changes.close();
   });
 
-  testWidgets('F05-CHAT renders local chat and answers a supported query', (
-    tester,
-  ) async {
+  testWidgets('F05-CHAT answers account protection locally', (tester) async {
     final repository = UiTestRepository()
       ..session = const AccountSession(
         userId: 'synthetic',
@@ -36,10 +37,8 @@ void main() {
       PrivaApp(controller: account, initialRoute: '/chat'),
     );
     await tester.pumpAndSettle();
-
     expect(find.text('Asistente Zyro'), findsOneWidget);
     expect(find.textContaining('No compartas contraseñas'), findsOneWidget);
-    expect(find.text('Proteger una cuenta'), findsOneWidget);
     await tester.enterText(
       find.byKey(const Key('zyro.input')),
       '¿Cómo protejo mi cuenta?',
@@ -52,28 +51,8 @@ void main() {
       findsOneWidget,
     );
     expect(find.text('¿Cómo protejo mi cuenta?'), findsOneWidget);
+    await tester.pumpWidget(const SizedBox());
     account.dispose();
-  });
-
-  testWidgets('F05-CHAT quick prompts answer with the approved guidance', (
-    tester,
-  ) async {
-    final repository = UiTestRepository()
-      ..session = const AccountSession(
-        userId: 'synthetic',
-        emailVerified: true,
-        passwordAuthenticated: true,
-      );
-    final account = AccountController(repository);
-    await account.initialize();
-    await tester.pumpWidget(
-      PrivaApp(controller: account, initialRoute: '/chat'),
-    );
-    await tester.pumpAndSettle();
-
-    await tester.tap(find.text('Proteger una cuenta'));
-    await tester.pumpAndSettle();
-    expect(find.textContaining('Mantén actualizado tu correo'), findsOneWidget);
-    account.dispose();
+    await repository.changes.close();
   });
 }

@@ -2,6 +2,9 @@ import '../features/tips/data/tips_repository.dart';
 import '../features/navigation/application/navigation_controller.dart';
 import '../features/navigation/data/temporary_journey.dart';
 import '../features/navigation/data/destination_catalog.dart';
+import '../features/questionnaire/application/questionnaire_controller.dart';
+import '../features/questionnaire/data/bundled_question_bank_repository.dart';
+import '../features/questionnaire/data/platform_questionnaire_connectivity.dart';
 
 import 'package:flutter/material.dart';
 
@@ -39,8 +42,17 @@ class PrivaApp extends StatefulWidget {
 class _PrivaAppState extends State<PrivaApp> with WidgetsBindingObserver {
   late TemporaryJourney _journey;
   late NavigationController _navigation;
+  PlatformQuestionnaireConnectivity? _questionnaireConnectivity;
   void _createNavigation() {
-    _journey = widget.temporaryJourney ?? EmptyTemporaryJourney();
+    if (widget.temporaryJourney == null) {
+      _questionnaireConnectivity = PlatformQuestionnaireConnectivity();
+      _journey = QuestionnaireController(
+        BundledQuestionBankRepository(),
+        _questionnaireConnectivity!,
+      );
+    } else {
+      _journey = widget.temporaryJourney!;
+    }
     _navigation = NavigationController(widget.controller, _journey);
   }
 
@@ -58,6 +70,8 @@ class _PrivaAppState extends State<PrivaApp> with WidgetsBindingObserver {
         oldWidget.temporaryJourney != widget.temporaryJourney) {
       _navigation.dispose();
       if (oldWidget.temporaryJourney == null) _journey.dispose();
+      _questionnaireConnectivity?.dispose();
+      _questionnaireConnectivity = null;
       _createNavigation();
     }
   }
@@ -70,6 +84,7 @@ class _PrivaAppState extends State<PrivaApp> with WidgetsBindingObserver {
     WidgetsBinding.instance.removeObserver(this);
     _navigation.dispose();
     if (widget.temporaryJourney == null) _journey.dispose();
+    _questionnaireConnectivity?.dispose();
     super.dispose();
   }
 
@@ -79,6 +94,9 @@ class _PrivaAppState extends State<PrivaApp> with WidgetsBindingObserver {
     final router = AccountRouter(
       controller: widget.controller,
       tipsRepository: widget.tipsRepository,
+      questionnaireController: _journey is QuestionnaireController
+          ? _journey as QuestionnaireController
+          : null,
       navigation: _navigation,
       destinationBuilder: widget.destinationBuilder,
       profileRepository: widget.profileRepository,
