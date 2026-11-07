@@ -2,7 +2,7 @@
 
 **Branch:** `work` | **Date:** 2026-11-07 | **Spec:** [spec.md](spec.md)
 **Selección:** `SPECIFY_FEATURE_DIRECTORY=specs/007-resultados-repeticion`
-**Estado:** propuesta de plan; requiere aprobación antes de generar tareas.
+**Estado:** plan aprobado explícitamente por el responsable el 2026-11-07; tareas pendientes de aprobación.
 
 ## Summary
 
@@ -29,7 +29,8 @@ IA, telemetría, almacenamiento ni dependencia de cálculo.
 ## Constitution Check
 
 **Puerta previa:** aprobada para planificar. El spec y catálogo fueron aprobados el
-2026-11-07. F06 está cerrado. El plan no autoriza tareas ni implementación.
+2026-11-07. F06 está cerrado. El plan fue aprobado por separado el 2026-11-07;
+todavía no autoriza la implementación sin aprobar las tareas.
 
 | Principio | Control del plan |
 | --- | --- |
