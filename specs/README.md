@@ -18,8 +18,8 @@ F06 fue cerrado y aceptado por el responsable el 2026-11-07 con el banco actuali
 de 67 preguntas completas del PDF, 209 pruebas Flutter, análisis limpio y APK debug;
 las dispensas de integración física y estudio formal quedaron documentadas sin
 atribuirles ejecución.
-F07 está en revisión de spec: fórmula, rangos y estrategia de recomendaciones
-confirmados el 2026-11-07; falta aprobar integralmente el spec y su catálogo.
+F07 tiene spec y catálogo aprobados el 2026-11-07; el plan técnico está preparado
+y pendiente de aprobación antes de generar tareas.
 F08 sigue en borrador.
 **Actualización:** 2026-11-07.
 

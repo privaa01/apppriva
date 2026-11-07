@@ -2,7 +2,7 @@
 
 **Feature Branch**: `work` (rama actual; la funcionalidad se selecciona por directorio)
 **Created**: 2026-10-21
-**Status**: Review — decisiones de cálculo confirmadas el 2026-11-07; pendiente de aprobación integral del spec y catálogo.
+**Status**: Approved — spec y catálogo aprobados explícitamente por el responsable el 2026-11-07.
 **Separated**: 2026-10-26
 **Input**: Especificar esta funcionalidad a partir de PRIVA_MOBILE_SPEC.md, sus pantallas y las decisiones explícitas del usuario.
 **Fuentes**: [Spec original](../../docs/referencias/PRIVA_MOBILE_SPEC.md), [PDF](../../docs/referencias/app.pdf).
@@ -141,7 +141,7 @@ no se guardarán respuestas ni resultados reales para demostrar cumplimiento.
 
 ## Decisiones y aprobación pendientes
 
-PD-01 y PD-10 fueron resueltos en F06. PD-02 queda resuelto para F07 por las decisiones explícitas del 2026-11-07 sobre promedio simple, rangos completos y tres módulos prioritarios. Falta aprobar integralmente este spec y el catálogo editorial antes del plan. Las brechas de pantalla
+PD-01 y PD-10 fueron resueltos en F06. PD-02 queda resuelto para F07 por las decisiones explícitas del 2026-11-07 sobre promedio simple, rangos completos y tres módulos prioritarios. El spec y el catálogo fueron aprobados el 2026-11-07; el plan requiere aprobación separada. Las brechas de pantalla
 se resuelven en el registro del índice, sin modificar silenciosamente el original.
 Antes de `$speckit-plan`, resolver los pendientes aplicables y obtener aprobación explícita de la constitución y de este spec. Separar el documento no constituye esa aprobación.
 

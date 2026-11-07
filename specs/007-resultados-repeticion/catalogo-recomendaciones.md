@@ -1,7 +1,7 @@
 # Catálogo propuesto de recomendaciones — F07
 
 **Versión:** `result-recommendations-es-CO-1.0.0`. **Fecha:** 2026-11-07.
-**Estado:** propuesto; requiere aprobación editorial junto con el spec 007.
+**Estado:** aprobado editorialmente por el responsable el 2026-11-07.
 
 Las acciones se muestran solo para los tres módulos con mayor promedio. Son
 educativas, no garantizan protección y no solicitan credenciales ni ejecutan cambios.
