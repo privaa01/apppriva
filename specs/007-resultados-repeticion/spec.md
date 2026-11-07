@@ -2,7 +2,7 @@
 
 **Feature Branch**: `work` (rama actual; la funcionalidad se selecciona por directorio)
 **Created**: 2026-10-21
-**Status**: Draft — especificación funcional separada; pendiente de aprobación.
+**Status**: Review — decisiones de cálculo confirmadas el 2026-11-07; pendiente de aprobación integral del spec y catálogo.
 **Separated**: 2026-10-26
 **Input**: Especificar esta funcionalidad a partir de PRIVA_MOBILE_SPEC.md, sus pantallas y las decisiones explícitas del usuario.
 **Fuentes**: [Spec original](../../docs/referencias/PRIVA_MOBILE_SPEC.md), [PDF](../../docs/referencias/app.pdf).
@@ -33,9 +33,9 @@ No aprueba el resto del spec ni autoriza el cambio de etapa.
 
 Como usuario, quiero comprender el resultado y recibir acciones útiles.
 
-- **CA-07.1:** Solo después de diez respuestas se muestra el porcentaje calculado según la regla aprobada.
-- **CA-07.2:** Los valores de frontera 40 % y 80 % se clasifican como bajo y medio respectivamente.
-- **CA-07.3:** El resultado muestra nivel en texto, explicación, aviso orientativo y recomendaciones vinculadas a las respuestas.
+- **CA-07.1:** Solo después de diez respuestas se muestra el promedio simple de los diez porcentajes asociados a las opciones elegidas.
+- **CA-07.2:** El promedio exacto se clasifica: menor de 20 % bajo, desde 20 % y menor de 60 % medio, y desde 60 % alto; se presenta con un decimal solo cuando sea necesario.
+- **CA-07.3:** El resultado muestra porcentaje, nivel en texto, explicación, aviso orientativo y acciones revisadas para los tres módulos con mayor promedio.
 - **CA-07.4:** Repetir crea una nueva selección, sin prometer que todas las preguntas cambien.
 - **CA-07.5:** No existe historial persistente de respuestas o resultados, tampoco en registros técnicos.
 
@@ -47,7 +47,7 @@ sin exigir implementar otras historias conforme a esta especificación; las prue
 
 ### Edge Cases
 
-Resultado parcial; fronteras 40/80; 0 % confundido con protección garantizada; recomendaciones genéricas; persistencia en Perfil; repetición con preguntas coincidentes.
+Resultado parcial; fronteras 19/20 y 59/60; empate entre módulos; promedio con decimal; 0 % confundido con protección garantizada; persistencia en Perfil; repetición con preguntas coincidentes.
 
 ## Requirements *(mandatory)*
 
@@ -62,7 +62,7 @@ Resultado parcial; fronteras 40/80; 0 % confundido con protección garantizada; 
 
 P09 (PDF 3); repetición → P08 (PDF 7).
 
-**Brechas observadas:** «Tu diagnóstico»/«Vulnerabilidad media» deben sustituirse por orientación educativa sin garantía; falta aviso obligatorio, repetir y evidencia de recomendaciones asociadas. El 50 % del mockup es un ejemplo, no resultado real.
+**Brechas resueltas/propuestas:** «Tu diagnóstico» se sustituye por «Resultado orientativo» y no se presenta como garantía. El 50 % del mockup es solo ejemplo. P09 debe incluir aviso, nivel textual, tres módulos prioritarios, acciones revisadas y Repetir cuestionario.
 
 ### Reglas de la fuente aplicables
 
@@ -74,54 +74,37 @@ no duplicación de responsabilidad; véase [el índice SDD](../README.md) para e
 
 ### 9.1 Naturaleza de la evaluación
 
-El cuestionario evalúa conocimientos y decisiones declaradas ante situaciones de privacidad y seguridad. Una respuesta correcta no demuestra que el usuario aplique esa práctica. El resultado no es una medición de seguridad del dispositivo ni una probabilidad de filtración.
+El resultado resume respuestas declaradas y no mide el dispositivo ni predice una filtración. Aviso obligatorio: **«Este resultado es orientativo y se basa en tus respuestas. No mide la probabilidad real de que se filtren tus datos».**
 
-Aviso obligatorio: **«Este resultado es orientativo y se basa en tus respuestas. No mide la probabilidad real de que se filtren tus datos».**
+### 9.2 Entrada aprobada desde F06
 
-### 9.2 Banco de preguntas
+F07 recibe en RAM un `CompletedAttempt` con diez preguntas, exactamente dos de cada módulo, una selección por pregunta y el porcentaje 0–100 asociado a cada opción. No lee el asset por separado para reconstruir respuestas, no acepta intentos parciales y no envía contenido a IA o backend.
 
-- Cada intento contiene exactamente diez preguntas.
-- Se propone un banco inicial de al menos 30 preguntas; este tamaño y el contenido están pendientes de aprobación editorial.
-- Cada pregunta ofrece varias opciones y una sola respuesta correcta.
-- Cada registro contiene ID estable, versión, tema, enunciado, opciones con IDs estables, clave correcta, puntaje, explicación, recomendación, fuente y fecha de revisión.
-- Solo se seleccionan preguntas revisadas y activas. No se generan preguntas ni claves libremente durante el intento.
-- El banco debe cubrir contraseñas, autenticación, información compartida, enlaces y mensajes, perfiles, permisos y gestión de cuentas.
-- La disponibilidad pública de un cuestionario no implica permiso para copiarlo; deben verificarse condiciones de uso o redactar contenido propio sustentado en fuentes.
+### 9.3 Fórmula aprobada — 2026-11-07
 
-### 9.3 Aleatoriedad
+**Porcentaje orientativo = suma de los porcentajes de las diez opciones elegidas ÷ 10.**
 
-- Seleccionar diez preguntas sin repetición dentro del intento, con cobertura temática comparable.
-- Aleatorizar el orden de las preguntas y sus opciones sin alterar la clave asociada a cada ID.
-- Mantener preguntas y orden fijos mientras el intento esté activo.
-- Al repetir, realizar una nueva selección. Puede haber coincidencias entre intentos.
-- Como no se conserva historial, no se garantiza excluir todas las preguntas de intentos anteriores.
-- Si no hay suficientes preguntas válidas, no iniciar un cuestionario incompleto; mostrar un error recuperable.
+Todas las respuestas pesan igual. El cálculo usa el valor exacto; la interfaz muestra un decimal únicamente cuando el promedio no es entero. No se redondea antes de clasificar. Ejemplos: suma 375 → 37,5 %; suma 600 → 60 %.
 
-### 9.4 Interacción
-
-Mostrar «Pregunta X de 10», una pregunta por vista, opciones de selección única y Continuar. Seleccionar otra opción reemplaza la anterior. No avanzar sin respuesta. En la décima pregunta, el control indica que permite ver el resultado. Las claves o explicaciones no se revelan antes de terminar el intento.
-
-### 9.5 Puntaje y fórmula propuestos
-
-La propuesta inicial asigna igual peso a todas las preguntas: respuesta correcta = 0 puntos de riesgo; incorrecta = 1 punto. Esta regla es propia de Priva, no una ponderación atribuida a un banco externo, y requiere validación antes de aprobarse.
-
-**Porcentaje de riesgo orientativo = (respuestas incorrectas / 10) × 100.**
-
-Se calcula solo con las diez preguntas respondidas. No se divide entre un número variable de respuestas para emitir resultados parciales.
-
-| Porcentaje | Nivel |
+| Promedio exacto | Nivel |
 | --- | --- |
-| 0 % a 40 %, inclusive | Bajo |
-| Mayor que 40 % y hasta 80 %, inclusive | Medio |
-| Mayor que 80 % y hasta 100 %, inclusive | Alto |
+| 0 % ≤ promedio < 20 % | Bajo |
+| 20 % ≤ promedio < 60 % | Medio |
+| 60 % ≤ promedio ≤ 100 % | Alto |
 
-Con esta propuesta los valores son 0, 10, 20…100. Ejemplos: tres incorrectas = 30 %, bajo; seis incorrectas = 60 %, medio; nueve incorrectas = 90 %, alto. Cero no equivale a ausencia de riesgos reales.
+Estos rangos completan los huecos del PDF por decisión explícita del responsable. El porcentaje sigue siendo educativo; 0 % no garantiza ausencia de riesgo.
 
-Los umbrales son una regla educativa del producto, sin validación científica de probabilidad de filtración. Si se adoptan pesos distintos, se debe actualizar la fórmula, sus ejemplos y pruebas antes de implementar.
+### 9.4 Prioridad por módulo y empates
 
-### 9.6 Recomendaciones
+Se calcula también el promedio de las dos respuestas de cada módulo. P09 presenta los tres módulos con mayor promedio, en orden descendente. En empate se usa este orden estable: contraseñas; autenticación y acceso; redes y conectividad; phishing e ingeniería social; dispositivos y actualizaciones. El desempate solo ordena la presentación y no cambia el porcentaje ni el nivel.
 
-Relacionar cada respuesta incorrecta con su explicación y recomendación revisadas. Agrupar recomendaciones equivalentes. No mostrar una lista genérica como si fuera personalizada. Si todas las respuestas son correctas, mostrar consejos de mantenimiento. El resultado incluye porcentaje, nombre del nivel, explicación y acciones concretas, sin depender solo del color.
+### 9.5 Recomendaciones revisadas
+
+Cada módulo prioritario muestra su nombre y las acciones fijas aprobadas en `catalogo-recomendaciones.md`. No se afirma que una acción resuelva todos los riesgos ni se inventa una recomendación por respuesta. Los otros dos módulos no se muestran para evitar una pantalla extensa.
+
+### 9.6 Repetición
+
+«Repetir cuestionario» descarta primero el resultado y el intento completado y abre P08 con un intento nuevo. F06 realiza otra selección aleatoria; puede repetir preguntas y no se promete un banco completamente distinto. Doble toque no crea dos intentos.
 
 ### 9.7 Temporalidad e interrupciones
 
@@ -132,7 +115,7 @@ Relacionar cada respuesta incorrecta con su explicación y recomendación revisa
 - Al regresar, debe iniciarse un nuevo intento; no se restaura el anterior.
 - Reiniciar el cuestionario no significa cerrar automáticamente la sesión de cuenta.
 - Antes de empezar, informar que una interrupción obliga a responder nuevamente.
-- Propuesta ante pérdida de conexión en primer plano: suspender el avance, mantener el estado solo en memoria y permitir reintentar; si la app pasa a segundo plano, descartar el intento. Pendiente de validación del equipo.
+- Ante pérdida de conexión en primer plano, conservar el resultado solo en RAM; al pasar a segundo plano, descartar. Esta regla fue aprobada y aplicada en F06.
 
 ### Key Entities
 
@@ -142,7 +125,7 @@ Resultado y recomendaciones temporales; no historial, almacenamiento, analítica
 
 ### Measurable Outcomes
 
-CA-07.1 a CA-07.5 verificados una vez aprobada la regla; comprensión ≥80 % (§15), protocolo pendiente. No usar el cumplimiento de ejemplos propuestos como aprobación de PD-02.
+CA-07.1 a CA-07.5 verificados con fronteras 19/20 y 59/60, promedios enteros/decimales y empates; comprensión objetivo ≥80 % (§15), protocolo pendiente. Las metas no se presentan como resultados obtenidos.
 
 La evidencia de implementación y las mediciones aún no existen. Las metas del §15
 no son resultados obtenidos. Toda prueba usará datos sintéticos cuando corresponda;
@@ -150,16 +133,15 @@ no se guardarán respuestas ni resultados reales para demostrar cumplimiento.
 
 ## Assumptions
 
-- Se conserva Android/iOS, público de 40–65 años e internet obligatorio (§§1–3).
+- Android únicamente, mínimo API 24 vigente, público de 40–65 años e internet obligatorio.
 - Las imágenes son referencia visual: sus ejemplos y textos no aprueban reglas nuevas.
-- Depende del intento completo F06. Comparte reglas editoriales y privacidad; no puede validarse como cálculo final mientras PD-02 esté pendiente.
+- Depende del intento completo F06. Comparte sus reglas editoriales y de privacidad; no persiste ningún derivado.
 - Aplican §§11–17 del spec: minimización, conservación justificada, seguridad,
   accesibilidad, estados de error y trazabilidad. No se presumen proveedores ni plazos.
 
 ## Decisiones y aprobación pendientes
 
-Pendientes originales asociados: PD-01, PD-02, PD-10.
-Consultar sus condiciones de cierre en §18 del spec fuente. Las brechas de pantalla
+PD-01 y PD-10 fueron resueltos en F06. PD-02 queda resuelto para F07 por las decisiones explícitas del 2026-11-07 sobre promedio simple, rangos completos y tres módulos prioritarios. Falta aprobar integralmente este spec y el catálogo editorial antes del plan. Las brechas de pantalla
 se resuelven en el registro del índice, sin modificar silenciosamente el original.
 Antes de `$speckit-plan`, resolver los pendientes aplicables y obtener aprobación explícita de la constitución y de este spec. Separar el documento no constituye esa aprobación.
 
