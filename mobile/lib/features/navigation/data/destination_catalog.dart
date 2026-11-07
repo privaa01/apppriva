@@ -95,6 +95,8 @@ bool destinationAvailable(String path) => const {
   '/tips/links',
   '/tips/profiles',
   '/chat',
+  '/questionnaire',
+  '/results',
 }.contains(path);
 
 bool destinationAllowed(

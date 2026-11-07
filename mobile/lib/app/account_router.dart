@@ -7,6 +7,8 @@ import '../features/navigation/data/destination_catalog.dart';
 import '../features/navigation/presentation/home_screen.dart';
 import '../features/questionnaire/application/questionnaire_controller.dart';
 import '../features/questionnaire/presentation/questionnaire_screen.dart';
+import '../features/questionnaire/application/result_controller.dart';
+import '../features/questionnaire/presentation/result_screen.dart';
 
 import 'package:flutter/material.dart';
 
@@ -37,8 +39,10 @@ class AccountRouter {
     this.navigation,
     this.tipsRepository,
     this.questionnaireController,
+    this.resultController,
   });
   final QuestionnaireController? questionnaireController;
+  final ResultController? resultController;
   final TipsRepository? tipsRepository;
   final NavigationController? navigation;
   final AccountController controller;
@@ -69,6 +73,7 @@ class AccountRouter {
           navigation: navigation,
           tipsRepository: tipsRepository,
           questionnaireController: questionnaireController,
+          resultController: resultController,
         );
     }
     return MaterialPageRoute<void>(
@@ -95,8 +100,10 @@ class _GuardedDestination extends StatelessWidget {
     this.navigation,
     this.tipsRepository,
     this.questionnaireController,
+    this.resultController,
   });
   final QuestionnaireController? questionnaireController;
+  final ResultController? resultController;
   final TipsRepository? tipsRepository;
   final AccountController controller;
   final String path;
@@ -167,6 +174,18 @@ class _GuardedDestination extends StatelessWidget {
         return QuestionnaireScreen(
           account: controller,
           controller: questionnaireController!,
+          navigation: navigation!,
+        );
+      }
+      if (path == '/results' &&
+          builder == null &&
+          questionnaireController != null &&
+          resultController != null &&
+          navigation != null) {
+        return ResultScreen(
+          account: controller,
+          questionnaire: questionnaireController!,
+          controller: resultController!,
           navigation: navigation!,
         );
       }

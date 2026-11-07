@@ -27,3 +27,4 @@ flutter:
     - assets/images/zyro/
     - assets/content/tips-1.0.0.json
     - assets/content/questionnaire-2.0.0.json
+    - assets/content/result-recommendations-1.0.0.json

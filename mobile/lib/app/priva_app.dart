@@ -5,6 +5,8 @@ import '../features/navigation/data/destination_catalog.dart';
 import '../features/questionnaire/application/questionnaire_controller.dart';
 import '../features/questionnaire/data/bundled_question_bank_repository.dart';
 import '../features/questionnaire/data/platform_questionnaire_connectivity.dart';
+import '../features/questionnaire/application/result_controller.dart';
+import '../features/questionnaire/data/bundled_result_recommendation_repository.dart';
 
 import 'package:flutter/material.dart';
 
@@ -43,6 +45,7 @@ class _PrivaAppState extends State<PrivaApp> with WidgetsBindingObserver {
   late TemporaryJourney _journey;
   late NavigationController _navigation;
   PlatformQuestionnaireConnectivity? _questionnaireConnectivity;
+  ResultController? _result;
   void _createNavigation() {
     if (widget.temporaryJourney == null) {
       _questionnaireConnectivity = PlatformQuestionnaireConnectivity();
@@ -50,6 +53,10 @@ class _PrivaAppState extends State<PrivaApp> with WidgetsBindingObserver {
         BundledQuestionBankRepository(),
         _questionnaireConnectivity!,
       );
+      _result = ResultController(
+        _journey as QuestionnaireController,
+        BundledResultRecommendationRepository(),
+      )..initialize();
     } else {
       _journey = widget.temporaryJourney!;
     }
@@ -69,6 +76,8 @@ class _PrivaAppState extends State<PrivaApp> with WidgetsBindingObserver {
     if (oldWidget.controller != widget.controller ||
         oldWidget.temporaryJourney != widget.temporaryJourney) {
       _navigation.dispose();
+      _result?.dispose();
+      _result = null;
       if (oldWidget.temporaryJourney == null) _journey.dispose();
       _questionnaireConnectivity?.dispose();
       _questionnaireConnectivity = null;
@@ -83,6 +92,7 @@ class _PrivaAppState extends State<PrivaApp> with WidgetsBindingObserver {
   void dispose() {
     WidgetsBinding.instance.removeObserver(this);
     _navigation.dispose();
+    _result?.dispose();
     if (widget.temporaryJourney == null) _journey.dispose();
     _questionnaireConnectivity?.dispose();
     super.dispose();
@@ -97,6 +107,7 @@ class _PrivaAppState extends State<PrivaApp> with WidgetsBindingObserver {
       questionnaireController: _journey is QuestionnaireController
           ? _journey as QuestionnaireController
           : null,
+      resultController: _result,
       navigation: _navigation,
       destinationBuilder: widget.destinationBuilder,
       profileRepository: widget.profileRepository,
