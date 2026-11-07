@@ -4,6 +4,7 @@ import '../features/tips/data/tips_repository.dart';
 import '../features/navigation/application/navigation_controller.dart';
 import '../features/navigation/data/destination_catalog.dart';
 import '../features/navigation/presentation/home_screen.dart';
+import '../features/zyro/presentation/zyro_screen.dart';
 
 import 'package:flutter/material.dart';
 
@@ -149,6 +150,9 @@ class _GuardedDestination extends StatelessWidget {
       if (path == '/home' && builder == null) {
         return HomeScreen(account: controller);
       }
+      if (path == '/chat' && builder == null) {
+        return ZyroScreen(account: controller);
+      }
       if (path == '/profile' && profileRepository != null && builder == null) {
         return ProfileScreen(
           key: ValueKey(controller.state.session!.userId),
@@ -162,7 +166,7 @@ class _GuardedDestination extends StatelessWidget {
         '/tips' => 'Tips',
         '/home' => 'Inicio',
         '/profile' => 'Perfil',
-        '/chat' => 'Chat IA',
+        '/chat' => 'Asistente Zyro',
         '/questionnaire' => 'Cuestionario',
         '/results' => 'Resultados',
         _ => 'Priva',

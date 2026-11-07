@@ -47,7 +47,7 @@ void main() {
     expect(find.text('Inicio'), findsOneWidget);
     expect(find.text('Perfil'), findsOneWidget);
     expect(find.text('Tips'), findsOneWidget);
-    expect(find.text('Chat IA'), findsOneWidget);
+    expect(find.text('Zyro'), findsOneWidget);
     expect(find.text('Cuestionario'), findsOneWidget);
     await tester.enterText(
       find.byKey(const Key('signin.email')),

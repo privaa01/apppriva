@@ -2,10 +2,29 @@
 
 **Feature Branch**: `work` (rama actual; la funcionalidad se selecciona por directorio)
 **Created**: 2026-10-21
-**Status**: Draft — especificación funcional separada; pendiente de aprobación.
+**Status**: Aprobada para MVP local el 2026-11-06; implementación en curso.
 **Separated**: 2026-10-26
 **Input**: Especificar esta funcionalidad a partir de PRIVA_MOBILE_SPEC.md, sus pantallas y las decisiones explícitas del usuario.
 **Fuentes**: [Spec original](../../docs/referencias/PRIVA_MOBILE_SPEC.md), [PDF](../../docs/referencias/app.pdf).
+
+## Decisión aprobada — Zyro local sin historial (2026-11-06)
+
+El responsable aprobó implementar Zyro como asistente local con apariencia de chat,
+respuestas verificadas incluidas dentro de la aplicación y sin proveedor de IA
+externo. Los mensajes existen solo mientras la pantalla está abierta y se eliminan
+al salir, cerrar sesión o cerrar la aplicación. No se guardan en el dispositivo,
+Firebase, analítica o registros propios de F05.
+
+El MVP reconoce consultas generales sobre contraseñas, enlaces sospechosos,
+privacidad en redes y cuenta comprometida. También advierte ante datos sensibles,
+rechaza solicitudes dañinas y declara el límite para temas desconocidos. Las guías
+específicas de eliminación/desactivación de plataformas no mostrarán pasos hasta
+que sus fuentes oficiales sean revisadas y aprobadas. La etiqueta visible será
+«Asistente Zyro», no «Chat IA», para no prometer IA generativa.
+
+El catálogo local incluye además una guía general de protección de cuentas,
+señales de perfiles falsos y variantes habituales de cada tema. Es contenido
+aprobado dentro de los temas admitidos, no una ampliación de alcance.
 
 ## Regla de acceso confirmada — 2026-10-26
 
@@ -40,7 +59,7 @@ Como usuario, quiero resolver dudas sobre privacidad y seguridad con explicacion
 - **CA-05.5:** Un fallo del servicio muestra opción de reintento sin duplicar mensajes por envíos repetidos.
 - **CA-05.6:** El campo y el botón de envío permanecen visibles cuando se abre el teclado.
 
-**Prioridad:** pendiente de aprobación; la numeración es identificación, no orden de entrega.
+**Prioridad:** P1 aprobada para el MVP local.
 **Independent Test:** ejecutar los criterios CA anteriores en las pantallas asignadas,
 con sus precondiciones de sesión y contenido, comprobando el resultado funcional
 sin exigir implementar otras historias conforme a esta especificación; las pruebas aún no se han ejecutado.
@@ -57,6 +76,9 @@ Plataforma sin guía; petición de credenciales; consulta dañina; incertidumbre
 - **RF-07**: Permitir consultar a Zyro sobre privacidad y seguridad digital.
 - **RF-08**: Ofrecer instrucciones verificadas para eliminar o desactivar cuentas admitidas.
 - **RF-09**: Gestionar consultas fuera de alcance, incertidumbre y errores del chat.
+- **RF-09.a**: Mantener la conversación únicamente en memoria y descartarla al salir.
+- **RF-09.b**: Advertir que no se compartan contraseñas, códigos ni datos privados.
+- **RF-09.c**: No usar red, proveedor generativo, cuentas externas ni acciones automáticas.
 
 ### Asociación a pantallas
 
@@ -75,8 +97,9 @@ no duplicación de responsabilidad; véase [el índice SDD](../README.md) para e
 ### Temas admitidos
 
 - Contraseñas, autenticación y verificación en dos pasos.
+- Protección general de la cuenta y hábitos de seguridad.
 - Privacidad en redes sociales, permisos y exposición de información.
-- Señales de alerta en mensajes, enlaces y perfiles.
+- Señales de alerta en mensajes, enlaces y perfiles falsos.
 - Eliminación o desactivación de cuentas externas incluidas en un catálogo inicial.
 - Medidas iniciales ante una posible cuenta comprometida y orientación hacia canales oficiales.
 - Conceptos generales de protección de datos, sin asesoría legal individualizada.
@@ -106,7 +129,10 @@ Mensaje, respuesta y guía con fuente oficial y fecha; conservación de mensajes
 
 ### Measurable Outcomes
 
-CA-05.1 a CA-05.6 satisfechos; las consultas no verificadas no reciben rutas inventadas ni promesas de protección. Tiempos pendientes en PD-08.
+CA-05.1 a CA-05.6 satisfechos; 100% de consultas del catálogo de prueba obtienen la
+respuesta aprobada o un límite explícito; ninguna consulta no verificada recibe
+rutas inventadas; enviar y mostrar una respuesta local ofrece feedback visible en
+menos de 1 s en 20 repeticiones; salir y volver produce una conversación nueva.
 
 La evidencia de implementación y las mediciones aún no existen. Las metas del §15
 no son resultados obtenidos. Toda prueba usará datos sintéticos cuando corresponda;
@@ -114,18 +140,19 @@ no se guardarán respuestas ni resultados reales para demostrar cumplimiento.
 
 ## Assumptions
 
-- Se conserva Android/iOS, público de 40–65 años e internet obligatorio (§§1–3).
+- Alcance vigente únicamente Android; Zyro local puede responder sin red después de iniciar la app.
 - Las imágenes son referencia visual: sus ejemplos y textos no aprueban reglas nuevas.
 - Acceso F01, navegación F03 y F08. Catálogo y proveedor pendientes; no se aprueba una plataforma por aparecer en un ejemplo.
 - Aplican §§11–17 del spec: minimización, conservación justificada, seguridad,
   accesibilidad, estados de error y trazabilidad. No se presumen proveedores ni plazos.
 
-## Decisiones y aprobación pendientes
+## Decisiones resueltas y pendientes editoriales
 
-Pendientes originales asociados: PD-03, PD-05, PD-06, PD-08.
-Consultar sus condiciones de cierre en §18 del spec fuente. Las brechas de pantalla
-se resuelven en el registro del índice, sin modificar silenciosamente el original.
-Antes de `$speckit-plan`, resolver los pendientes aplicables y obtener aprobación explícita de la constitución y de este spec. Separar el documento no constituye esa aprobación.
+Resueltos para el MVP: asistente local, sin proveedor externo, sin historial, sin
+acciones externas y con respuesta inmediata local. PD-05/PD-06 no introducen nuevo
+tratamiento porque F05 no persiste ni transmite mensajes. PD-08 adopta feedback≤1s.
+PD-03 permanece abierto únicamente para añadir pasos concretos de plataformas; el
+MVP responde con límite explícito y puede planificarse sin esas guías.
 
 ## Alcance de plataforma vigente — 2026-10-28
 

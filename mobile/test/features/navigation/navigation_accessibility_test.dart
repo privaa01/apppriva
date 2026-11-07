@@ -22,7 +22,7 @@ void main() {
         'Inicio',
         'Perfil',
         'Tips',
-        'Chat IA',
+        'Zyro',
         'Cuestionario',
       ]) {
         expect(
@@ -71,7 +71,7 @@ void main() {
             'Inicio',
             'Perfil',
             'Tips',
-            'Chat IA',
+            'Zyro',
             'Cuestionario',
           ]) {
             final buttons = find.widgetWithText(TextButton, label);

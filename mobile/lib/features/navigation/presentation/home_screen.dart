@@ -48,8 +48,8 @@ class HomeScreen extends StatelessWidget {
             '/tips',
           ),
           tool(
-            'Chat IA',
-            'Consulta a Zyro sobre privacidad y seguridad',
+            'Asistente Zyro',
+            'Recibe orientación local sobre privacidad y seguridad',
             Icons.chat_bubble_outline,
             '/chat',
           ),

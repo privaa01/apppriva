@@ -170,11 +170,7 @@ class AccountScaffold extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       destination('Tips', Icons.push_pin_outlined, '/tips'),
-                      destination(
-                        'Chat IA',
-                        Icons.chat_bubble_outline,
-                        '/chat',
-                      ),
+                      destination('Zyro', Icons.chat_bubble_outline, '/chat'),
                       destination(
                         'Cuestionario',
                         Icons.quiz_outlined,

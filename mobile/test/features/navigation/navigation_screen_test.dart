@@ -71,7 +71,7 @@ void main() {
         findsOneWidget,
       );
       expect(
-        find.text('Consulta a Zyro sobre privacidad y seguridad'),
+        find.text('Recibe orientación local sobre privacidad y seguridad'),
         findsOneWidget,
       );
       expect(
