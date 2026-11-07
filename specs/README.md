@@ -11,8 +11,18 @@ seguridad aplicables a Android. No implica aprobación de otros specs ni entrega
 **Estado:** F01 cuenta con conformidad funcional comunicada por el usuario,
 69 pruebas locales satisfactorias y limitaciones de evidencia técnica conservadas;
 pruebas de reglas aplazadas explícitamente. El usuario autorizó avanzar a F02 el
-2026-10-29. F02, plan y ejecución autorizados el2026-10-29; cierre aprobado por el usuario el 2026-11-03, con 34/34 tareas registradas como completadas y limitaciones de evidencia conservadas en [la revisión de entrega](002-perfil-cuenta/validation/delivery-review.md). F03 fue aceptado para cierre por el usuario el 2026-11-04, con135 pruebas locales,17 de reglas y [limitaciones documentadas](003-inicio-navegacion/validation/closure-2026-11-04.md):29 tareas completas y6 parciales/aplazadas. F04 fue aceptada y cerrada el2026-11-05 con36/36 tareas, contenido fijo en la app, análisis limpio,180 pruebas satisfactorias y validación Motorola G22/Android12; el responsable aceptó explícitamente no generar APK nuevo ni ejecutar API24/API36. F05 fue aprobada para MVP local el 2026-11-06 y su implementación está en curso, con 18/26 tareas y 190 pruebas locales; faltan las validaciones Android y el cierre. F06–F08 siguen en borrador.
-**Actualización:** 2026-11-06.
+2026-10-29. F02, plan y ejecución autorizados el2026-10-29; cierre aprobado por el usuario el 2026-11-03, con 34/34 tareas registradas como completadas y limitaciones de evidencia conservadas en [la revisión de entrega](002-perfil-cuenta/validation/delivery-review.md). F03 fue aceptado para cierre por el usuario el 2026-11-04, con135 pruebas locales,17 de reglas y [limitaciones documentadas](003-inicio-navegacion/validation/closure-2026-11-04.md):29 tareas completas y6 parciales/aplazadas. F04 fue aceptada y cerrada el2026-11-05 con36/36 tareas, contenido fijo en la app, análisis limpio,180 pruebas satisfactorias y validación Motorola G22/Android12; el responsable aceptó explícitamente no generar APK nuevo ni ejecutar API24/API36.
+F05 permanece abierto con la implementación local elegida por el responsable,
+196 pruebas Flutter satisfactorias y el banco editorial de 500 preguntas recibido;
+faltan verificar e integrar sus guías y completar las validaciones Android.
+F06 fue cerrado y aceptado por el responsable el 2026-11-07 con el banco actualizado
+de 67 preguntas completas del PDF, 209 pruebas Flutter, análisis limpio y APK debug;
+las dispensas de integración física y estudio formal quedaron documentadas sin
+atribuirles ejecución.
+F07 tiene spec, catálogo y plan aprobados el 2026-11-07; sus 33 tareas están
+preparadas y pendientes de aprobación antes de implementar.
+F08 sigue en borrador.
+**Actualización:** 2026-11-07.
 
 Cada carpeta contiene `spec.md` y `checklists/requirements.md`, conforme a la estructura
 de Spec Kit. Los documentos se trasladaron desde `docs/descomposicion/` para mantener

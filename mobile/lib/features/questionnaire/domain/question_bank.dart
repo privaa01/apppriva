@@ -7,10 +7,10 @@ class QuestionBank {
     required List<Question> questions,
   }) : questions = List.unmodifiable(questions) {
     final ids = questions.map((question) => question.id).toSet();
-    if (contentVersion != 'question-bank-es-CO-1.0.0' ||
-        reviewedOn != '2026-11-05' ||
-        questions.length != 30 ||
-        ids.length != 30 ||
+    if (contentVersion != 'question-bank-es-CO-2.0.0' ||
+        reviewedOn != '2026-11-07' ||
+        questions.length != 67 ||
+        ids.length != 67 ||
         QuestionTopic.values.any(
           (topic) => !questions.any((question) => question.topic == topic),
         )) {

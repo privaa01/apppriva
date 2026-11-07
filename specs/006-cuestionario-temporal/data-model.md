@@ -4,34 +4,32 @@ Todos los objetos de intento son efímeros, no serializables y nunca se escriben
 
 ## QuestionBank
 
-`schemaVersion=1`, `contentVersion=questionnaire-1.0.0`, `status=approved`, fecha y
-30 `Question`. Validación atómica: campos exactos, IDs únicos, siete temas cerrados,
-30 activas y ningún texto obligatorio vacío.
+`schemaVersion=2`, `contentVersion=question-bank-es-CO-2.0.0`, `status=approved`, fecha y
+67 `Question`. Validación atómica: campos exactos, IDs únicos, cinco módulos cerrados,
+67 activas y ningún texto obligatorio vacío.
 
 ## Question
 
 | Campo | Regla |
 | --- | --- |
-| id | Q001–Q030 estable y único |
+| id | Q001–Q067 estable y único |
 | version | Entero1 |
-| topic | passwords, authentication, sharing, links, profiles, permissions o sessions |
+| topic | passwords, access, networks, phishing o devices |
 | prompt | Texto aprobado no vacío |
 | options | Exactamente3 `QuestionOption` con IDs A/B/C únicos |
-| correctOptionId | Pertenece a options; no se expone en P08 |
-| explanation/recommendation | Texto aprobado, reservado para F07 |
-| sourceIds | Lista no vacía de referencias editoriales |
-| reviewedOn/status | 2026-11-05 y `approved` |
+| options | Cada opción incluye `vulnerabilityPercent`, entero entre 0 y 100; no se muestra en P08 |
+| sourceIds | Lista no vacía con referencia al PDF aprobado |
+| reviewedOn/status | 2026-11-07 y `approved` |
 
 ## ActiveAttempt
 
 `generation`, `ownerUid` solo para aislamiento en memoria, lista fija de10 preguntas,
 índice0–9 y mapa `questionId→selectedOptionId`. Invariantes: diez IDs únicos,
-cobertura de siete temas, máximo dos por tema y opciones pertenecientes.
+cobertura de cinco módulos, exactamente dos por módulo y opciones pertenecientes.
 
 ## AttemptQuestion y CompletedAttempt
 
-`AttemptQuestion` referencia `Question` y option IDs reordenados; la clave conserva
-su ID. `CompletedAttempt` es snapshot inmutable en RAM con diez preguntas y diez
+`AttemptQuestion` referencia `Question` y option IDs reordenados; cada porcentaje permanece unido a su opción. `CompletedAttempt` es snapshot inmutable en RAM con diez preguntas y diez
 selecciones, disponible solo con generación/sesión vigente. F07 podrá leerlo; F06
 no calcula resultado. Se elimina junto con el intento.
 

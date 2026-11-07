@@ -18,10 +18,10 @@ class BundledQuestionBankRepository implements QuestionBankRepository {
     if (cached != null) return cached;
     try {
       final raw = await _bundle.loadString(
-        'assets/content/questionnaire-1.0.0.json',
+        'assets/content/questionnaire-2.0.0.json',
       );
       final json = jsonDecode(raw) as Map<String, dynamic>;
-      if (json['schemaVersion'] != 1 || json['status'] != 'approved') {
+      if (json['schemaVersion'] != 2 || json['status'] != 'approved') {
         throw const FormatException();
       }
       final rows = json['questions'] as List<dynamic>;
@@ -33,6 +33,7 @@ class BundledQuestionBankRepository implements QuestionBankRepository {
               return QuestionOption(
                 id: item['id'] as String,
                 text: item['text'] as String,
+                vulnerabilityPercent: item['vulnerabilityPercent'] as int,
               );
             })
             .toList();
@@ -42,9 +43,6 @@ class BundledQuestionBankRepository implements QuestionBankRepository {
           topic: QuestionTopic.parse(value['topic'] as String),
           prompt: value['prompt'] as String,
           options: options,
-          correctOptionId: value['correctOptionId'] as String,
-          explanation: value['explanation'] as String,
-          recommendation: value['recommendation'] as String,
           sourceIds: (value['sourceIds'] as List<dynamic>).cast<String>(),
         );
       }).toList();

@@ -7,9 +7,9 @@ import 'package:priva_mobile/features/questionnaire/domain/question.dart';
 import 'package:priva_mobile/features/questionnaire/domain/question_bank.dart';
 
 QuestionBank validBank() => QuestionBank(
-      contentVersion: 'question-bank-es-CO-1.0.0',
-      reviewedOn: '2026-11-05',
-      questions: List.generate(30, (index) {
+      contentVersion: 'question-bank-es-CO-2.0.0',
+      reviewedOn: '2026-11-07',
+      questions: List.generate(67, (index) {
         final number = index + 1;
         return Question(
           id: 'Q${number.toString().padLeft(3, '0')}',
@@ -17,13 +17,10 @@ QuestionBank validBank() => QuestionBank(
           topic: QuestionTopic.values[index % QuestionTopic.values.length],
           prompt: 'Situación ficticia $number',
           options: const [
-            QuestionOption(id: 'A', text: 'Opción A'),
-            QuestionOption(id: 'B', text: 'Opción B'),
-            QuestionOption(id: 'C', text: 'Opción C'),
+            QuestionOption(id: 'A', text: 'Opción A', vulnerabilityPercent: 5),
+            QuestionOption(id: 'B', text: 'Opción B', vulnerabilityPercent: 40),
+            QuestionOption(id: 'C', text: 'Opción C', vulnerabilityPercent: 90),
           ],
-          correctOptionId: 'B',
-          explanation: 'Explicación educativa.',
-          recommendation: 'Recomendación educativa.',
           sourceIds: const ['F04'],
         );
       }),

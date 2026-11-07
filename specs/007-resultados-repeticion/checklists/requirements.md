@@ -8,10 +8,10 @@
 - [x] Recorrido, casos límite, datos y dependencias identificados.
 - [x] Fuente y propuestas diferenciadas de decisiones aprobadas.
 - [x] Sin selección nueva de arquitectura, proveedor o plazos legales.
-- [ ] Resolver brechas de pantallas indicadas en el spec y registro general.
-- [ ] Cerrar los PD aplicables y criterios medibles aún pendientes.
-- [ ] Aprobar prioridad y límites de la funcionalidad.
-- [ ] Ratificar constitución y aprobar este alcance explícitamente.
+- [x] Resolver brechas de pantalla mediante resultado orientativo, aviso, tres módulos prioritarios y repetición propuestos para P09.
+- [x] Cerrar PD-02 con promedio simple, rangos completos y prioridad por módulos confirmados el 2026-11-07.
+- [x] Aprobar prioridad y límites de la funcionalidad el 2026-11-07.
+- [x] Ratificar constitución y aprobar este alcance explícitamente el 2026-11-07.
 - [ ] Ejecutar y aportar evidencia de aceptación (fase posterior).
 
 No está listo para planificación. Los escenarios y métricas copiados son requisitos,
