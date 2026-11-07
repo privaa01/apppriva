@@ -11,3 +11,11 @@
 
 La dependencia añadida fue únicamente `connectivity_plus 7.3.2`. El aviso de
 Gradle sobre una migración Kotlin futura no impide el build actual.
+
+## Revalidación del banco 2.0.0 — 2026-11-07
+
+- 67 preguntas completas y cinco módulos; Q068 excluida.
+- Porcentajes 0–100 ligados a cada opción tras la mezcla.
+- Análisis: 0 diagnósticos.
+- Flutter: 209/209 pruebas aprobadas.
+- APK Android debug: generado correctamente.

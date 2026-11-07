@@ -1,0 +1,1750 @@
+{
+  "schemaVersion": 2,
+  "contentVersion": "question-bank-es-CO-2.0.0",
+  "status": "approved",
+  "reviewedOn": "2026-11-07",
+  "questions": [
+    {
+      "id": "Q001",
+      "version": 1,
+      "topic": "passwords",
+      "prompt": "¿Qué longitud promedio tienen las contraseñas que utilizas para tus cuentas principales?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Más de 14 caracteres con combinación de números, símbolos y mayúsculas.",
+          "vulnerabilityPercent": 5
+        },
+        {
+          "id": "B",
+          "text": "Entre 8 y 12 caracteres variados.",
+          "vulnerabilityPercent": 25
+        },
+        {
+          "id": "C",
+          "text": "Menos de 8 caracteres o solo palabras simples.",
+          "vulnerabilityPercent": 85
+        }
+      ],
+      "sourceIds": [
+        "Banco de Preguntas: Evaluación de Seguridad Digital, 2026-11-07"
+      ]
+    },
+    {
+      "id": "Q002",
+      "version": 1,
+      "topic": "passwords",
+      "prompt": "¿Reutilizas la misma contraseña en múltiples sitios web o servicios?",
+      "options": [
+        {
+          "id": "A",
+          "text": "No, cada servicio posee una clave completamente única y aleatoria.",
+          "vulnerabilityPercent": 0
+        },
+        {
+          "id": "B",
+          "text": "Utilizo una base fija y le cambio solo un par de letras o números según el sitio.",
+          "vulnerabilityPercent": 50
+        },
+        {
+          "id": "C",
+          "text": "Sí, empleo exactamente la misma contraseña en casi todas mis cuentas.",
+          "vulnerabilityPercent": 95
+        }
+      ],
+      "sourceIds": [
+        "Banco de Preguntas: Evaluación de Seguridad Digital, 2026-11-07"
+      ]
+    },
+    {
+      "id": "Q003",
+      "version": 1,
+      "topic": "passwords",
+      "prompt": "¿Cómo almacenas o recuerdas tus contraseñas personales?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Utilizo un gestor de contraseñas cifrado (ej. Bitwarden, 1Password, KeePass).",
+          "vulnerabilityPercent": 5
+        },
+        {
+          "id": "B",
+          "text": "Las guardo en el gestor integrado del navegador sin clave maestra personal.",
+          "vulnerabilityPercent": 35
+        },
+        {
+          "id": "C",
+          "text": "Las anoto en cuadernos, notas adhesivas en la pantalla o documentos de texto sin clave.",
+          "vulnerabilityPercent": 90
+        }
+      ],
+      "sourceIds": [
+        "Banco de Preguntas: Evaluación de Seguridad Digital, 2026-11-07"
+      ]
+    },
+    {
+      "id": "Q004",
+      "version": 1,
+      "topic": "passwords",
+      "prompt": "¿Incluyes datos personales (fechas de nacimiento, nombres de mascotas, cédulas) en tus claves?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Nunca, utilizo cadenas aleatorias o frases de paso no vinculadas a mi vida personal.",
+          "vulnerabilityPercent": 0
+        },
+        {
+          "id": "B",
+          "text": "Ocasionalmente combino una palabra común con mi año de nacimiento.",
+          "vulnerabilityPercent": 60
+        },
+        {
+          "id": "C",
+          "text": "Sí, la mayoría incluye nombres propios, fechas significativas o mi documento de identidad.",
+          "vulnerabilityPercent": 90
+        }
+      ],
+      "sourceIds": [
+        "Banco de Preguntas: Evaluación de Seguridad Digital, 2026-11-07"
+      ]
+    },
+    {
+      "id": "Q005",
+      "version": 1,
+      "topic": "passwords",
+      "prompt": "¿Con qué frecuencia cambias las contraseñas de tus cuentas críticas (bancos, correos)?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Solo cuando detecto incidentes de seguridad o la plataforma notifica una filtración.",
+          "vulnerabilityPercent": 10
+        },
+        {
+          "id": "B",
+          "text": "Cada 3 a 6 meses de forma rutinaria.",
+          "vulnerabilityPercent": 20
+        },
+        {
+          "id": "C",
+          "text": "Nunca las cambio a menos que el sistema me obligue.",
+          "vulnerabilityPercent": 70
+        }
+      ],
+      "sourceIds": [
+        "Banco de Preguntas: Evaluación de Seguridad Digital, 2026-11-07"
+      ]
+    },
+    {
+      "id": "Q006",
+      "version": 1,
+      "topic": "passwords",
+      "prompt": "¿Qué haces si una plataforma te informa que tu contraseña ha sido filtrada en Internet?",
+      "options": [
+        {
+          "id": "A",
+          "text": "La cambio inmediatamente en ese sitio y en cualquier otro donde la haya reutilizado.",
+          "vulnerabilityPercent": 5
+        },
+        {
+          "id": "B",
+          "text": "La cambio únicamente en el sitio afectado días después.",
+          "vulnerabilityPercent": 45
+        },
+        {
+          "id": "C",
+          "text": "Ignoro la advertencia si mi cuenta sigue funcionando con normalidad.",
+          "vulnerabilityPercent": 95
+        }
+      ],
+      "sourceIds": [
+        "Banco de Preguntas: Evaluación de Seguridad Digital, 2026-11-07"
+      ]
+    },
+    {
+      "id": "Q007",
+      "version": 1,
+      "topic": "passwords",
+      "prompt": "¿Compartes tus claves de acceso con familiares, amigos o compañeros de trabajo?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Jamás comparto credenciales personales bajo ninguna circunstancia.",
+          "vulnerabilityPercent": 0
+        },
+        {
+          "id": "B",
+          "text": "Solo las comparto verbalmente o en persona con familiares directos.",
+          "vulnerabilityPercent": 30
+        },
+        {
+          "id": "C",
+          "text": "Las envío por chats de WhatsApp, mensajes de texto o correo electrónico.",
+          "vulnerabilityPercent": 85
+        }
+      ],
+      "sourceIds": [
+        "Banco de Preguntas: Evaluación de Seguridad Digital, 2026-11-07"
+      ]
+    },
+    {
+      "id": "Q008",
+      "version": 1,
+      "topic": "passwords",
+      "prompt": "¿Utilizas patrones de dibujo simples (ej. una \"L\" o una \"Z\") en la pantalla de bloqueo móvil?",
+      "options": [
+        {
+          "id": "A",
+          "text": "No, utilizo un código PIN largo de 6 dígitos o una contraseña alfanumérica.",
+          "vulnerabilityPercent": 5
+        },
+        {
+          "id": "B",
+          "text": "Utilizo un patrón complejo con múltiples intersecciones.",
+          "vulnerabilityPercent": 40
+        },
+        {
+          "id": "C",
+          "text": "Sí, utilizo un patrón simple visible a simple vista.",
+          "vulnerabilityPercent": 80
+        }
+      ],
+      "sourceIds": [
+        "Banco de Preguntas: Evaluación de Seguridad Digital, 2026-11-07"
+      ]
+    },
+    {
+      "id": "Q009",
+      "version": 1,
+      "topic": "passwords",
+      "prompt": "¿Proteges tu gestor de contraseñas principal con una clave maestra sólida e infalible?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Sí, con una frase de paso extensa y autenticación multifactor.",
+          "vulnerabilityPercent": 0
+        },
+        {
+          "id": "B",
+          "text": "Con una clave media, pero sin doble factor.",
+          "vulnerabilityPercent": 35
+        },
+        {
+          "id": "C",
+          "text": "No utilizo clave maestra o la tengo anotada en el mismo dispositivo.",
+          "vulnerabilityPercent": 95
+        }
+      ],
+      "sourceIds": [
+        "Banco de Preguntas: Evaluación de Seguridad Digital, 2026-11-07"
+      ]
+    },
+    {
+      "id": "Q010",
+      "version": 1,
+      "topic": "passwords",
+      "prompt": "¿Dejas la opción de \"Recordar contraseña\" activada en computadores compartidos o de uso público?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Nunca inicio sesión en dispositivos que no sean de mi propiedad.",
+          "vulnerabilityPercent": 0
+        },
+        {
+          "id": "B",
+          "text": "Cierro sesión, pero a veces olvido desmarcar la casilla de recordar credenciales.",
+          "vulnerabilityPercent": 60
+        },
+        {
+          "id": "C",
+          "text": "Sí, guardo mis claves para no tener que ingresarlas de nuevo.",
+          "vulnerabilityPercent": 100
+        }
+      ],
+      "sourceIds": [
+        "Banco de Preguntas: Evaluación de Seguridad Digital, 2026-11-07"
+      ]
+    },
+    {
+      "id": "Q011",
+      "version": 1,
+      "topic": "passwords",
+      "prompt": "¿Sueles incluir palabras del diccionario en español o inglés sin alteración en tus credenciales?",
+      "options": [
+        {
+          "id": "A",
+          "text": "No, combino palabras aleatorias inconexas o caracteres generados informáticamente.",
+          "vulnerabilityPercent": 5
+        },
+        {
+          "id": "B",
+          "text": "Reemplazo algunas letras por números (ej. \"A\" por \"4\", \"E\" por \"3\").",
+          "vulnerabilityPercent": 40
+        },
+        {
+          "id": "C",
+          "text": "Utilizo palabras completas del diccionario seguidas de un punto o número.",
+          "vulnerabilityPercent": 75
+        }
+      ],
+      "sourceIds": [
+        "Banco de Preguntas: Evaluación de Seguridad Digital, 2026-11-07"
+      ]
+    },
+    {
+      "id": "Q012",
+      "version": 1,
+      "topic": "passwords",
+      "prompt": "¿Qué haces con las contraseñas predeterminadas de fábrica de tus dispositivos (módems, cámaras)?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Las cambio inmediatamente durante la configuración inicial.",
+          "vulnerabilityPercent": 0
+        },
+        {
+          "id": "B",
+          "text": "Las cambio únicamente si el dispositivo me lo exige para continuar.",
+          "vulnerabilityPercent": 45
+        },
+        {
+          "id": "C",
+          "text": "Mantengo las claves por defecto (admin/admin, 1234, etc.).",
+          "vulnerabilityPercent": 100
+        }
+      ],
+      "sourceIds": [
+        "Banco de Preguntas: Evaluación de Seguridad Digital, 2026-11-07"
+      ]
+    },
+    {
+      "id": "Q013",
+      "version": 1,
+      "topic": "passwords",
+      "prompt": "¿Permites que otras personas utilicen tus usuarios o perfiles personales de trabajo o estudio?",
+      "options": [
+        {
+          "id": "A",
+          "text": "No, los accesos son estrictamente personales e intransferibles.",
+          "vulnerabilityPercent": 0
+        },
+        {
+          "id": "B",
+          "text": "Ocasionalmente para tareas puntuales bajo mi supervisión directa.",
+          "vulnerabilityPercent": 30
+        },
+        {
+          "id": "C",
+          "text": "Sí, presto mi cuenta a amigos o conocidos sin restricción.",
+          "vulnerabilityPercent": 80
+        }
+      ],
+      "sourceIds": [
+        "Banco de Preguntas: Evaluación de Seguridad Digital, 2026-11-07"
+      ]
+    },
+    {
+      "id": "Q014",
+      "version": 1,
+      "topic": "passwords",
+      "prompt": "¿Utilizas las preguntas de seguridad tradicionales (nombre de escuela, mascota) en tus cuentas?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Configuro respuestas falsas/aleatorias almacenadas en mi gestor de contraseñas.",
+          "vulnerabilityPercent": 5
+        },
+        {
+          "id": "B",
+          "text": "Respondo con datos reales de mi infancia.",
+          "vulnerabilityPercent": 65
+        },
+        {
+          "id": "C",
+          "text": "Pongo respuestas obvias que aparecen en mi perfil público de redes sociales.",
+          "vulnerabilityPercent": 90
+        }
+      ],
+      "sourceIds": [
+        "Banco de Preguntas: Evaluación de Seguridad Digital, 2026-11-07"
+      ]
+    },
+    {
+      "id": "Q015",
+      "version": 1,
+      "topic": "passwords",
+      "prompt": "¿Qué método de respaldo usas si pierdes el acceso a la contraseña de tu correo primario?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Claves de recuperación offline o token físico configurado previamente.",
+          "vulnerabilityPercent": 5
+        },
+        {
+          "id": "B",
+          "text": "Correo secundario o número celular actualizado.",
+          "vulnerabilityPercent": 20
+        },
+        {
+          "id": "C",
+          "text": "No tengo métodos de recuperación o los datos asociados son antiguos e inaccesibles.",
+          "vulnerabilityPercent": 85
+        }
+      ],
+      "sourceIds": [
+        "Banco de Preguntas: Evaluación de Seguridad Digital, 2026-11-07"
+      ]
+    },
+    {
+      "id": "Q016",
+      "version": 1,
+      "topic": "access",
+      "prompt": "¿Tienes activada la Verificación en Dos Pasos (2FA) en tu correo electrónico principal?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Sí, mediante aplicación autenticadora (Google Authenticator, Authy, etc.).",
+          "vulnerabilityPercent": 5
+        },
+        {
+          "id": "B",
+          "text": "Sí, pero recibo el código por SMS.",
+          "vulnerabilityPercent": 30
+        },
+        {
+          "id": "C",
+          "text": "No la tengo activada.",
+          "vulnerabilityPercent": 85
+        }
+      ],
+      "sourceIds": [
+        "Banco de Preguntas: Evaluación de Seguridad Digital, 2026-11-07"
+      ]
+    },
+    {
+      "id": "Q017",
+      "version": 1,
+      "topic": "access",
+      "prompt": "¿Utilizas autenticación biométrica (huella dactilar, reconocimiento facial) en tu móvil?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Sí, complementado con un código PIN de alta seguridad.",
+          "vulnerabilityPercent": 10
+        },
+        {
+          "id": "B",
+          "text": "Sí, pero con un PIN de respaldo débil (0000, 1234).",
+          "vulnerabilityPercent": 45
+        },
+        {
+          "id": "C",
+          "text": "No utilizo ningún tipo de bloqueo ni biometría.",
+          "vulnerabilityPercent": 95
+        }
+      ],
+      "sourceIds": [
+        "Banco de Preguntas: Evaluación de Seguridad Digital, 2026-11-07"
+      ]
+    },
+    {
+      "id": "Q018",
+      "version": 1,
+      "topic": "access",
+      "prompt": "¿Qué haces si recibes una notificación Push para autorizar un acceso que tú no solicitaste?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Rechazo la solicitud e inmediatamente cambio la contraseña de mi cuenta.",
+          "vulnerabilityPercent": 0
+        },
+        {
+          "id": "B",
+          "text": "Rechazo el acceso, pero no tomo medidas adicionales.",
+          "vulnerabilityPercent": 40
+        },
+        {
+          "id": "C",
+          "text": "Acepto la notificación por inercia o por error para cerrar la alerta.",
+          "vulnerabilityPercent": 100
+        }
+      ],
+      "sourceIds": [
+        "Banco de Preguntas: Evaluación de Seguridad Digital, 2026-11-07"
+      ]
+    },
+    {
+      "id": "Q019",
+      "version": 1,
+      "topic": "access",
+      "prompt": "¿Proteges tus aplicaciones financieras y bancarias con un token o factor de acceso propio?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Sí, solicitan biometría o clave dinámica independiente para cada transacción.",
+          "vulnerabilityPercent": 5
+        },
+        {
+          "id": "B",
+          "text": "Solo requieren la contraseña inicial del móvil.",
+          "vulnerabilityPercent": 50
+        },
+        {
+          "id": "C",
+          "text": "Quedan abiertas una vez desbloqueado el teléfono.",
+          "vulnerabilityPercent": 90
+        }
+      ],
+      "sourceIds": [
+        "Banco de Preguntas: Evaluación de Seguridad Digital, 2026-11-07"
+      ]
+    },
+    {
+      "id": "Q020",
+      "version": 1,
+      "topic": "access",
+      "prompt": "¿Guardas tus códigos de respaldo (Backup Codes) del factor de doble autenticación?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Guardados en un lugar físico seguro o dentro de una bóveda cifrada.",
+          "vulnerabilityPercent": 5
+        },
+        {
+          "id": "B",
+          "text": "En una captura de pantalla guardada en mi galería de fotos.",
+          "vulnerabilityPercent": 55
+        },
+        {
+          "id": "C",
+          "text": "No los guardo; si pierdo el móvil no puedo acceder a mis cuentas.",
+          "vulnerabilityPercent": 80
+        }
+      ],
+      "sourceIds": [
+        "Banco de Preguntas: Evaluación de Seguridad Digital, 2026-11-07"
+      ]
+    },
+    {
+      "id": "Q021",
+      "version": 1,
+      "topic": "access",
+      "prompt": "¿Inicias sesión en servicios web de terceros usando la función \"Continuar con Google/Facebook\"?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Evito hacerlo en sitios críticos y prefiero registros independientes con claves únicas.",
+          "vulnerabilityPercent": 15
+        },
+        {
+          "id": "B",
+          "text": "Lo hago con frecuencia si el sitio parece legítimo.",
+          "vulnerabilityPercent": 35
+        },
+        {
+          "id": "C",
+          "text": "Uso OAuth indiscriminadamente para cualquier página web o foro desconocido.",
+          "vulnerabilityPercent": 65
+        }
+      ],
+      "sourceIds": [
+        "Banco de Preguntas: Evaluación de Seguridad Digital, 2026-11-07"
+      ]
+    },
+    {
+      "id": "Q022",
+      "version": 1,
+      "topic": "access",
+      "prompt": "¿Revisas periódicamente la lista de dispositivos con sesión activa en tu correo y redes sociales?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Sí, al menos una vez al mes y cierro las sesiones no identificadas.",
+          "vulnerabilityPercent": 5
+        },
+        {
+          "id": "B",
+          "text": "Solo cuando noto comportamientos extraños en mis perfiles.",
+          "vulnerabilityPercent": 40
+        },
+        {
+          "id": "C",
+          "text": "Nunca he revisado qué dispositivos están conectados a mis cuentas.",
+          "vulnerabilityPercent": 85
+        }
+      ],
+      "sourceIds": [
+        "Banco de Preguntas: Evaluación de Seguridad Digital, 2026-11-07"
+      ]
+    },
+    {
+      "id": "Q023",
+      "version": 1,
+      "topic": "access",
+      "prompt": "¿Utilizas una llave de seguridad física (tipo YubiKey) para proteger cuentas críticas?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Sí, para mi correo principal y servicios esenciales.",
+          "vulnerabilityPercent": 0
+        },
+        {
+          "id": "B",
+          "text": "Conozco la tecnología, pero uso solo aplicaciones de autenticación.",
+          "vulnerabilityPercent": 15
+        },
+        {
+          "id": "C",
+          "text": "No sé qué es una llave de seguridad física.",
+          "vulnerabilityPercent": 60
+        }
+      ],
+      "sourceIds": [
+        "Banco de Preguntas: Evaluación de Seguridad Digital, 2026-11-07"
+      ]
+    },
+    {
+      "id": "Q024",
+      "version": 1,
+      "topic": "access",
+      "prompt": "¿Configuras el bloqueo automático de tu computador cuando te alejas de tu puesto de trabajo?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Sí, el bloqueo ocurre en menos de 2 minutos o uso la tecla de bloqueo instantáneo.",
+          "vulnerabilityPercent": 5
+        },
+        {
+          "id": "B",
+          "text": "Sí, pero el tiempo de espera supera los 15 minutos.",
+          "vulnerabilityPercent": 45
+        },
+        {
+          "id": "C",
+          "text": "No, dejo la pantalla desbloqueada en todo momento.",
+          "vulnerabilityPercent": 90
+        }
+      ],
+      "sourceIds": [
+        "Banco de Preguntas: Evaluación de Seguridad Digital, 2026-11-07"
+      ]
+    },
+    {
+      "id": "Q025",
+      "version": 1,
+      "topic": "access",
+      "prompt": "¿Usas SMS como único método para restablecer la contraseña de tus cuentas?",
+      "options": [
+        {
+          "id": "A",
+          "text": "No, utilizo correos de respaldo cifrados o aplicaciones autenticadoras.",
+          "vulnerabilityPercent": 10
+        },
+        {
+          "id": "B",
+          "text": "Sí, porque es el método estándar habilitado por mis plataformas.",
+          "vulnerabilityPercent": 50
+        },
+        {
+          "id": "C",
+          "text": "Sí, y no tengo PIN de protección en mi tarjeta SIM (riesgo de SIM Swapping).",
+          "vulnerabilityPercent": 95
+        }
+      ],
+      "sourceIds": [
+        "Banco de Preguntas: Evaluación de Seguridad Digital, 2026-11-07"
+      ]
+    },
+    {
+      "id": "Q026",
+      "version": 1,
+      "topic": "access",
+      "prompt": "¿Proteges tu tarjeta SIM del teléfono móvil con un código PIN personalizado?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Sí, cambié el PIN por defecto del operador telefónico.",
+          "vulnerabilityPercent": 5
+        },
+        {
+          "id": "B",
+          "text": "Mantengo el PIN de fábrica que venía en la tarjeta.",
+          "vulnerabilityPercent": 55
+        },
+        {
+          "id": "C",
+          "text": "Desactivé el código PIN de la SIM por comodidad.",
+          "vulnerabilityPercent": 90
+        }
+      ],
+      "sourceIds": [
+        "Banco de Preguntas: Evaluación de Seguridad Digital, 2026-11-07"
+      ]
+    },
+    {
+      "id": "Q027",
+      "version": 1,
+      "topic": "access",
+      "prompt": "¿Utilizas la función de \"Auto-completar\" para credenciales en sitios web no verificados?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Desactivo el autocompletado automático y requiero confirmación previa.",
+          "vulnerabilityPercent": 10
+        },
+        {
+          "id": "B",
+          "text": "Lo utilizo solo si el sitio web muestra un candado de conexión (HTTPS).",
+          "vulnerabilityPercent": 30
+        },
+        {
+          "id": "C",
+          "text": "Permito que el navegador llene cualquier formulario de login automáticamente.",
+          "vulnerabilityPercent": 75
+        }
+      ],
+      "sourceIds": [
+        "Banco de Preguntas: Evaluación de Seguridad Digital, 2026-11-07"
+      ]
+    },
+    {
+      "id": "Q028",
+      "version": 1,
+      "topic": "access",
+      "prompt": "¿Revisas y revocas los accesos de aplicaciones antiguas en tu cuenta de correo o redes?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Sí, audito los permisos de aplicaciones conectadas de forma periódica.",
+          "vulnerabilityPercent": 5
+        },
+        {
+          "id": "B",
+          "text": "Lo hago rara vez, solo cuando cambio de smartphone.",
+          "vulnerabilityPercent": 40
+        },
+        {
+          "id": "C",
+          "text": "Nunca he eliminado permisos de aplicaciones antiguas acumuladas durante años.",
+          "vulnerabilityPercent": 80
+        }
+      ],
+      "sourceIds": [
+        "Banco de Preguntas: Evaluación de Seguridad Digital, 2026-11-07"
+      ]
+    },
+    {
+      "id": "Q029",
+      "version": 1,
+      "topic": "access",
+      "prompt": "¿Qué haces si tu teléfono celular es robado o se extravía?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Bloqueo el dispositivo y la SIM remotamente de inmediato y cambio todas las claves.",
+          "vulnerabilityPercent": 5
+        },
+        {
+          "id": "B",
+          "text": "Solicito el bloqueo de la línea celular al día siguiente.",
+          "vulnerabilityPercent": 50
+        },
+        {
+          "id": "C",
+          "text": "Solo doy de baja el número cuando adquiero un nuevo teléfono.",
+          "vulnerabilityPercent": 95
+        }
+      ],
+      "sourceIds": [
+        "Banco de Preguntas: Evaluación de Seguridad Digital, 2026-11-07"
+      ]
+    },
+    {
+      "id": "Q030",
+      "version": 1,
+      "topic": "access",
+      "prompt": "¿Permites el inicio de sesión remoto a tu computador sin una confirmación explicita?",
+      "options": [
+        {
+          "id": "A",
+          "text": "El acceso remoto está completamente desactivado o estrictamente autenticado.",
+          "vulnerabilityPercent": 0
+        },
+        {
+          "id": "B",
+          "text": "Tengo instalado software de soporte remoto que requiere clave aleatoria temporal.",
+          "vulnerabilityPercent": 25
+        },
+        {
+          "id": "C",
+          "text": "Tengo clientes RDP o AnyDesk habilitados sin contraseña o de fácil acceso.",
+          "vulnerabilityPercent": 90
+        }
+      ],
+      "sourceIds": [
+        "Banco de Preguntas: Evaluación de Seguridad Digital, 2026-11-07"
+      ]
+    },
+    {
+      "id": "Q031",
+      "version": 1,
+      "topic": "networks",
+      "prompt": "¿Te conectas a redes Wi-Fi públicas y abiertas en plazas, aeropuertos o cafeterías?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Evito usarlas o me conecto únicamente usando una VPN confiable y cifrada.",
+          "vulnerabilityPercent": 10
+        },
+        {
+          "id": "B",
+          "text": "Las utilizo solo para consultar información pública (noticias), nunca banca o correos.",
+          "vulnerabilityPercent": 45
+        },
+        {
+          "id": "C",
+          "text": "Me conecto libremente e ingreso a mis cuentas personales y aplicaciones bancarias.",
+          "vulnerabilityPercent": 95
+        }
+      ],
+      "sourceIds": [
+        "Banco de Preguntas: Evaluación de Seguridad Digital, 2026-11-07"
+      ]
+    },
+    {
+      "id": "Q032",
+      "version": 1,
+      "topic": "networks",
+      "prompt": "¿Cómo está configurada la contraseña del Wi-Fi de tu hogar?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Cifrado WPA3 o WPA2-AES con una clave personalizada de más de 12 caracteres.",
+          "vulnerabilityPercent": 5
+        },
+        {
+          "id": "B",
+          "text": "Conservo la clave original provista por la etiqueta del router del operador.",
+          "vulnerabilityPercent": 50
+        },
+        {
+          "id": "C",
+          "text": "Mi red Wi-Fi no tiene contraseña o utiliza un cifrado obsoleto (WEP).",
+          "vulnerabilityPercent": 100
+        }
+      ],
+      "sourceIds": [
+        "Banco de Preguntas: Evaluación de Seguridad Digital, 2026-11-07"
+      ]
+    },
+    {
+      "id": "Q033",
+      "version": 1,
+      "topic": "networks",
+      "prompt": "¿Mantienes el Bluetooth activado permanentemente en tus dispositivos móviles?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Solo lo activo cuando voy a sincronizar un dispositivo y lo apago después.",
+          "vulnerabilityPercent": 5
+        },
+        {
+          "id": "B",
+          "text": "Permanece encendido pero mi dispositivo no está configurado como \"visible\".",
+          "vulnerabilityPercent": 30
+        },
+        {
+          "id": "C",
+          "text": "Siempre está activo y visible para cualquier dispositivo cercano.",
+          "vulnerabilityPercent": 70
+        }
+      ],
+      "sourceIds": [
+        "Banco de Preguntas: Evaluación de Seguridad Digital, 2026-11-07"
+      ]
+    },
+    {
+      "id": "Q034",
+      "version": 1,
+      "topic": "networks",
+      "prompt": "¿Realizas transacciones bancarias o compras en línea a través de redes celulares 4G/5G o Wi-Fi propio?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Únicamente desde mi red móvil de datos personal o mi red residencial segura.",
+          "vulnerabilityPercent": 5
+        },
+        {
+          "id": "B",
+          "text": "En cualquier Wi-Fi siempre que el sitio web tenga HTTPS.",
+          "vulnerabilityPercent": 35
+        },
+        {
+          "id": "C",
+          "text": "En cualquier red Wi-Fi pública disponible sin tomar precauciones.",
+          "vulnerabilityPercent": 90
+        }
+      ],
+      "sourceIds": [
+        "Banco de Preguntas: Evaluación de Seguridad Digital, 2026-11-07"
+      ]
+    },
+    {
+      "id": "Q035",
+      "version": 1,
+      "topic": "networks",
+      "prompt": "¿Has cambiado las credenciales de administración por defecto de tu enrutador (Router)?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Sí, cambié el usuario/clave predeterminado y desactivé la gestión remota.",
+          "vulnerabilityPercent": 0
+        },
+        {
+          "id": "B",
+          "text": "No las he cambiado pero la red Wi-Fi principal tiene clave fuerte.",
+          "vulnerabilityPercent": 40
+        },
+        {
+          "id": "C",
+          "text": "No sé cómo ingresar al panel del router ni he modificado los datos de fábrica.",
+          "vulnerabilityPercent": 85
+        }
+      ],
+      "sourceIds": [
+        "Banco de Preguntas: Evaluación de Seguridad Digital, 2026-11-07"
+      ]
+    },
+    {
+      "id": "Q036",
+      "version": 1,
+      "topic": "networks",
+      "prompt": "¿Sueles compartir la clave de la red Wi-Fi de tu casa con visitas o invitados?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Mantengo una \"Red de Invitados\" aislada de mis dispositivos personales y archivos.",
+          "vulnerabilityPercent": 5
+        },
+        {
+          "id": "B",
+          "text": "Comparto la clave principal de la red a personas de confianza.",
+          "vulnerabilityPercent": 40
+        },
+        {
+          "id": "C",
+          "text": "Doy la clave de la red principal a cualquier visitante sin restricción.",
+          "vulnerabilityPercent": 75
+        }
+      ],
+      "sourceIds": [
+        "Banco de Preguntas: Evaluación de Seguridad Digital, 2026-11-07"
+      ]
+    },
+    {
+      "id": "Q037",
+      "version": 1,
+      "topic": "networks",
+      "prompt": "¿Utilizas herramientas de VPN (Virtual Private Network) cuando trabajas desde redes externas?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Sí, siempre utilizo una VPN corporativa o un servicio personal auditado de pago.",
+          "vulnerabilityPercent": 5
+        },
+        {
+          "id": "B",
+          "text": "Ocasionalmente utilizo VPNs gratuitas promocionadas en la web.",
+          "vulnerabilityPercent": 55
+        },
+        {
+          "id": "C",
+          "text": "No utilizo VPN de ningún tipo.",
+          "vulnerabilityPercent": 75
+        }
+      ],
+      "sourceIds": [
+        "Banco de Preguntas: Evaluación de Seguridad Digital, 2026-11-07"
+      ]
+    },
+    {
+      "id": "Q038",
+      "version": 1,
+      "topic": "networks",
+      "prompt": "¿Qué haces si tu teléfono te pide conectarse automáticamente a una red Wi-Fi conocida pero sin cifrar?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Desactivo la opción de \"Conexión automática a redes abiertas\".",
+          "vulnerabilityPercent": 5
+        },
+        {
+          "id": "B",
+          "text": "Acepto la conexión si el nombre de la red me resulta familiar.",
+          "vulnerabilityPercent": 60
+        },
+        {
+          "id": "C",
+          "text": "Dejo que el teléfono se conecte a cualquier red abierta sin validar su autenticidad.",
+          "vulnerabilityPercent": 90
+        }
+      ],
+      "sourceIds": [
+        "Banco de Preguntas: Evaluación de Seguridad Digital, 2026-11-07"
+      ]
+    },
+    {
+      "id": "Q039",
+      "version": 1,
+      "topic": "networks",
+      "prompt": "¿Mantienes activada la función de transferencia de archivos por proximidad (AirDrop, Quick Share) permanentemente?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Configurado en \"Recepción desactivada\" o \"Solo contactos\".",
+          "vulnerabilityPercent": 5
+        },
+        {
+          "id": "B",
+          "text": "En opción \"Todos\", pero rechazo las transferencias no deseadas.",
+          "vulnerabilityPercent": 45
+        },
+        {
+          "id": "C",
+          "text": "Configurado para \"Todos\" sin supervisar los archivos recibidos.",
+          "vulnerabilityPercent": 80
+        }
+      ],
+      "sourceIds": [
+        "Banco de Preguntas: Evaluación de Seguridad Digital, 2026-11-07"
+      ]
+    },
+    {
+      "id": "Q040",
+      "version": 1,
+      "topic": "networks",
+      "prompt": "¿Verificas si los sitios web que visitas implementan protocolo seguro HTTPS (candado en la barra)?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Sí, y utilizo extensiones de navegador que fuerzan conexiones cifradas (HTTPS-Only).",
+          "vulnerabilityPercent": 0
+        },
+        {
+          "id": "B",
+          "text": "Me fijo en el candado solo si voy a ingresar datos de tarjetas o claves.",
+          "vulnerabilityPercent": 35
+        },
+        {
+          "id": "C",
+          "text": "No me fijo en la barra de direcciones ni en los certificados del sitio.",
+          "vulnerabilityPercent": 85
+        }
+      ],
+      "sourceIds": [
+        "Banco de Preguntas: Evaluación de Seguridad Digital, 2026-11-07"
+      ]
+    },
+    {
+      "id": "Q041",
+      "version": 1,
+      "topic": "networks",
+      "prompt": "¿Utilizas servidores DNS seguros o privados (Cloudflare, Quad9) en tus dispositivos?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Sí, tengo configurado DNS cifrado (DoH o DoT) en mis navegadores/equipos.",
+          "vulnerabilityPercent": 10
+        },
+        {
+          "id": "B",
+          "text": "Dejo los servidores DNS automáticos proporcionados por mi proveedor de Internet.",
+          "vulnerabilityPercent": 40
+        },
+        {
+          "id": "C",
+          "text": "No sé qué es un servidor DNS ni cómo afecta mi privacidad.",
+          "vulnerabilityPercent": 65
+        }
+      ],
+      "sourceIds": [
+        "Banco de Preguntas: Evaluación de Seguridad Digital, 2026-11-07"
+      ]
+    },
+    {
+      "id": "Q042",
+      "version": 1,
+      "topic": "networks",
+      "prompt": "¿Conectas tu smartphone a estaciones de carga USB públicas en lugares masivos (Juice Jacking)?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Nunca; utilizo mi propio adaptador a tomacorriente de pared o un Power Bank.",
+          "vulnerabilityPercent": 0
+        },
+        {
+          "id": "B",
+          "text": "Conecto el móvil utilizando un bloqueador de datos USB (\"USB Condom\").",
+          "vulnerabilityPercent": 5
+        },
+        {
+          "id": "C",
+          "text": "Conecto el cable directamente a los puertos USB públicos sin pensarlo.",
+          "vulnerabilityPercent": 85
+        }
+      ],
+      "sourceIds": [
+        "Banco de Preguntas: Evaluación de Seguridad Digital, 2026-11-07"
+      ]
+    },
+    {
+      "id": "Q043",
+      "version": 1,
+      "topic": "networks",
+      "prompt": "¿Mantienes deshabilitado el protocolo WPS (Wi-Fi Protected Setup) en el enrutador de tu hogar?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Sí, el WPS está completamente deshabilitado por motivos de vulnerabilidad conocida.",
+          "vulnerabilityPercent": 0
+        },
+        {
+          "id": "B",
+          "text": "Está activado, pero requiere presionar el botón físico del equipo.",
+          "vulnerabilityPercent": 35
+        },
+        {
+          "id": "C",
+          "text": "Está activo mediante un código PIN de 8 dígitos.",
+          "vulnerabilityPercent": 80
+        }
+      ],
+      "sourceIds": [
+        "Banco de Preguntas: Evaluación de Seguridad Digital, 2026-11-07"
+      ]
+    },
+    {
+      "id": "Q044",
+      "version": 1,
+      "topic": "networks",
+      "prompt": "¿Desconectas el Wi-Fi y los Datos Móviles de tu teléfono cuando no necesitas conectividad?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Sí, para evitar rastreo y conexiones involuntarias cuando duermo o estoy fuera.",
+          "vulnerabilityPercent": 5
+        },
+        {
+          "id": "B",
+          "text": "Solo desconecto la antena Wi-Fi fuera de casa.",
+          "vulnerabilityPercent": 30
+        },
+        {
+          "id": "C",
+          "text": "Dejo todas las antenas de transmisión activas las 24 horas.",
+          "vulnerabilityPercent": 55
+        }
+      ],
+      "sourceIds": [
+        "Banco de Preguntas: Evaluación de Seguridad Digital, 2026-11-07"
+      ]
+    },
+    {
+      "id": "Q045",
+      "version": 1,
+      "topic": "networks",
+      "prompt": "¿Permites el descubrimiento de tu equipo en redes locales a las que te conectas de forma temporal?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Configuro la red como \"Pública\" para ocultar mi equipo a otros dispositivos de la red.",
+          "vulnerabilityPercent": 5
+        },
+        {
+          "id": "B",
+          "text": "Lo mantengo como red privada por defecto.",
+          "vulnerabilityPercent": 45
+        },
+        {
+          "id": "C",
+          "text": "Comparto carpetas e impresoras abiertamente en cualquier red donde me conecte.",
+          "vulnerabilityPercent": 90
+        }
+      ],
+      "sourceIds": [
+        "Banco de Preguntas: Evaluación de Seguridad Digital, 2026-11-07"
+      ]
+    },
+    {
+      "id": "Q046",
+      "version": 1,
+      "topic": "phishing",
+      "prompt": "¿Qué haces si recibes un correo del banco pidiéndote confirmar tu clave por un problema de cuenta?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Identifico el correo como intento de phishing, no hago clic y llamo directamente al banco.",
+          "vulnerabilityPercent": 0
+        },
+        {
+          "id": "B",
+          "text": "Hago clic en el enlace para verificar si la dirección URL coincide con la oficial.",
+          "vulnerabilityPercent": 50
+        },
+        {
+          "id": "C",
+          "text": "Ingreso al enlace y lleno el formulario con mis datos para evitar que bloqueen mi cuenta.",
+          "vulnerabilityPercent": 100
+        }
+      ],
+      "sourceIds": [
+        "Banco de Preguntas: Evaluación de Seguridad Digital, 2026-11-07"
+      ]
+    },
+    {
+      "id": "Q047",
+      "version": 1,
+      "topic": "phishing",
+      "prompt": "¿Verificas la dirección del remitente (el domino después del @) en los correos entrantes?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Siempre inspecciono el dominio del remitente y cabeceras antes de interactuar.",
+          "vulnerabilityPercent": 5
+        },
+        {
+          "id": "B",
+          "text": "Solo miro el nombre visible que aparece en el buzón.",
+          "vulnerabilityPercent": 60
+        },
+        {
+          "id": "C",
+          "text": "Abro los correos y sus archivos adjuntos sin fijarme en quién los envía.",
+          "vulnerabilityPercent": 95
+        }
+      ],
+      "sourceIds": [
+        "Banco de Preguntas: Evaluación de Seguridad Digital, 2026-11-07"
+      ]
+    },
+    {
+      "id": "Q048",
+      "version": 1,
+      "topic": "phishing",
+      "prompt": "¿Abres archivos adjuntos en correos de remitentes desconocidos (facturas, citaciones, premios)?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Nunca abro archivos no solicitados o los escaneo antes en entornos aislados.",
+          "vulnerabilityPercent": 0
+        },
+        {
+          "id": "B",
+          "text": "Los abro si el asunto parece urgente o de origen oficial (ej. DIAN, Policía).",
+          "vulnerabilityPercent": 70
+        },
+        {
+          "id": "C",
+          "text": "Abro cualquier ejecutable o PDF adjunto para comprobar de qué se trata.",
+          "vulnerabilityPercent": 100
+        }
+      ],
+      "sourceIds": [
+        "Banco de Preguntas: Evaluación de Seguridad Digital, 2026-11-07"
+      ]
+    },
+    {
+      "id": "Q049",
+      "version": 1,
+      "topic": "phishing",
+      "prompt": "¿Cómo reaccionas ante mensajes SMS o de WhatsApp que prometen premios o subsidios del gobierno?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Los elimino inmediatamente y reporto la línea como spam o fraude.",
+          "vulnerabilityPercent": 0
+        },
+        {
+          "id": "B",
+          "text": "Reenvío el mensaje a mis contactos para comprobar si a ellos también les llegó.",
+          "vulnerabilityPercent": 65
+        },
+        {
+          "id": "C",
+          "text": "Hago clic en el enlace e ingreso mis datos personales para reclamar el beneficio.",
+          "vulnerabilityPercent": 100
+        }
+      ],
+      "sourceIds": [
+        "Banco de Preguntas: Evaluación de Seguridad Digital, 2026-11-07"
+      ]
+    },
+    {
+      "id": "Q050",
+      "version": 1,
+      "topic": "phishing",
+      "prompt": "¿Qué haces si un conocido te pide dinero urgente por WhatsApp argumentando una emergencia?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Lo llamo por teléfono tradicional o busco una vía alternativa para verificar su voz.",
+          "vulnerabilityPercent": 0
+        },
+        {
+          "id": "B",
+          "text": "Le pido datos adicionales por el mismo chat antes de considerar realizar una transferencia.",
+          "vulnerabilityPercent": 45
+        },
+        {
+          "id": "C",
+          "text": "Le transfiero de inmediato al número de cuenta que me indique por el chat.",
+          "vulnerabilityPercent": 95
+        }
+      ],
+      "sourceIds": [
+        "Banco de Preguntas: Evaluación de Seguridad Digital, 2026-11-07"
+      ]
+    },
+    {
+      "id": "Q051",
+      "version": 1,
+      "topic": "phishing",
+      "prompt": "¿Sueles pasar el cursor sobre los enlaces (sin hacer clic) para ver la URL real antes de abrir?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Sí, es una práctica habitual de verificación que realizo siempre.",
+          "vulnerabilityPercent": 5
+        },
+        {
+          "id": "B",
+          "text": "Solo cuando el contenido del mensaje me genera sospechas.",
+          "vulnerabilityPercent": 35
+        },
+        {
+          "id": "C",
+          "text": "No, hago clic directamente sobre el texto en azul o los botones de enlace.",
+          "vulnerabilityPercent": 85
+        }
+      ],
+      "sourceIds": [
+        "Banco de Preguntas: Evaluación de Seguridad Digital, 2026-11-07"
+      ]
+    },
+    {
+      "id": "Q052",
+      "version": 1,
+      "topic": "phishing",
+      "prompt": "¿Prestas atención a las fallas de ortografía o gramática en correos aparentemente corporativos?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Sí, las fallas de redacción son un indicador claro de alerta para no interactuar.",
+          "vulnerabilityPercent": 10
+        },
+        {
+          "id": "B",
+          "text": "Noto los errores pero no les doy mayor importancia si tienen logos oficiales.",
+          "vulnerabilityPercent": 55
+        },
+        {
+          "id": "C",
+          "text": "No acostumbro a leer con detenimiento el texto de los mensajes.",
+          "vulnerabilityPercent": 80
+        }
+      ],
+      "sourceIds": [
+        "Banco de Preguntas: Evaluación de Seguridad Digital, 2026-11-07"
+      ]
+    },
+    {
+      "id": "Q053",
+      "version": 1,
+      "topic": "phishing",
+      "prompt": "¿Has recibido capacitación o leído sobre las técnicas de ingeniería social y Phishing?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Sí, me mantengo informado constantemente sobre nuevas modalidades de estafa digital.",
+          "vulnerabilityPercent": 5
+        },
+        {
+          "id": "B",
+          "text": "He visto información básica en redes sociales o noticias.",
+          "vulnerabilityPercent": 35
+        },
+        {
+          "id": "C",
+          "text": "No conozco los conceptos de ingeniería social ni cómo operan los cibercriminales.",
+          "vulnerabilityPercent": 85
+        }
+      ],
+      "sourceIds": [
+        "Banco de Preguntas: Evaluación de Seguridad Digital, 2026-11-07"
+      ]
+    },
+    {
+      "id": "Q054",
+      "version": 1,
+      "topic": "phishing",
+      "prompt": "¿Qué haces si recibes una llamada telefónica solicitando un código de verificación que llegó a tu móvil?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Cuelgo de inmediato; los códigos de verificación son personales e intocables.",
+          "vulnerabilityPercent": 0
+        },
+        {
+          "id": "B",
+          "text": "Pido que la persona se identifique formalmente antes de considerar dictárselo.",
+          "vulnerabilityPercent": 70
+        },
+        {
+          "id": "C",
+          "text": "Entrego el código si la persona afirma ser un técnico de la compañía telefónica o banco.",
+          "vulnerabilityPercent": 100
+        }
+      ],
+      "sourceIds": [
+        "Banco de Preguntas: Evaluación de Seguridad Digital, 2026-11-07"
+      ]
+    },
+    {
+      "id": "Q055",
+      "version": 1,
+      "topic": "phishing",
+      "prompt": "¿Utilizas extensiones o herramientas en tu navegador para detectar y bloquear sitios de Phishing?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Sí, cuento con bloqueadores de contenido malicioso y protección Web activa.",
+          "vulnerabilityPercent": 5
+        },
+        {
+          "id": "B",
+          "text": "Confío exclusivamente en los filtros nativos del navegador sin extensiones extra.",
+          "vulnerabilityPercent": 25
+        },
+        {
+          "id": "C",
+          "text": "Desactivo las protecciones del navegador si me impiden ver una página.",
+          "vulnerabilityPercent": 85
+        }
+      ],
+      "sourceIds": [
+        "Banco de Preguntas: Evaluación de Seguridad Digital, 2026-11-07"
+      ]
+    },
+    {
+      "id": "Q056",
+      "version": 1,
+      "topic": "phishing",
+      "prompt": "¿Publicas fotos de tus pasabordos de viaje, tarjetas de identificación o entradas a eventos?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Nunca comparto documentación que contenga datos de identificación o códigos QR/barras.",
+          "vulnerabilityPercent": 0
+        },
+        {
+          "id": "B",
+          "text": "Cubro parcialmente el nombre pero dejo visibles los códigos.",
+          "vulnerabilityPercent": 50
+        },
+        {
+          "id": "C",
+          "text": "Publico las imágenes completas para mostrar mis actividades en redes sociales.",
+          "vulnerabilityPercent": 90
+        }
+      ],
+      "sourceIds": [
+        "Banco de Preguntas: Evaluación de Seguridad Digital, 2026-11-07"
+      ]
+    },
+    {
+      "id": "Q057",
+      "version": 1,
+      "topic": "phishing",
+      "prompt": "¿Cómo reaccionas ante anuncios de internet que advierten que \"Tu computador tiene 5 virus\"?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Cierro la pestaña inmediatamente mediante combinación de teclas sin presionar el anuncio.",
+          "vulnerabilityPercent": 0
+        },
+        {
+          "id": "B",
+          "text": "Cierro la ventana haciendo clic en la \"X\" del mismo anuncio de alerta.",
+          "vulnerabilityPercent": 35
+        },
+        {
+          "id": "C",
+          "text": "Hago clic en \"Limpiar ahora\" para descargar el programa que me recomiendan.",
+          "vulnerabilityPercent": 95
+        }
+      ],
+      "sourceIds": [
+        "Banco de Preguntas: Evaluación de Seguridad Digital, 2026-11-07"
+      ]
+    },
+    {
+      "id": "Q058",
+      "version": 1,
+      "topic": "phishing",
+      "prompt": "¿Verificas la procedencia de correos con ofertas laborales excesivamente atractivas o pago en cripto?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Investigo la empresa en canales oficiales y nunca pago por procesos de selección.",
+          "vulnerabilityPercent": 5
+        },
+        {
+          "id": "B",
+          "text": "Respondo para pedir más información pero con precaución.",
+          "vulnerabilityPercent": 45
+        },
+        {
+          "id": "C",
+          "text": "Envío inmediatamente mi hoja de vida completa con todos mis datos personales.",
+          "vulnerabilityPercent": 85
+        }
+      ],
+      "sourceIds": [
+        "Banco de Preguntas: Evaluación de Seguridad Digital, 2026-11-07"
+      ]
+    },
+    {
+      "id": "Q059",
+      "version": 1,
+      "topic": "phishing",
+      "prompt": "¿Sueles responder a llamadas automáticas (robocalls) que piden presionar un número para \"confirmar\"?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Cuelgo inmediatamente sin presionar ningún dígito en el teclado.",
+          "vulnerabilityPercent": 0
+        },
+        {
+          "id": "B",
+          "text": "Presiono las opciones para hablar con un asesor y solicitar que me retiren de la lista.",
+          "vulnerabilityPercent": 40
+        },
+        {
+          "id": "C",
+          "text": "Sigo todas las instrucciones de la grabación.",
+          "vulnerabilityPercent": 80
+        }
+      ],
+      "sourceIds": [
+        "Banco de Preguntas: Evaluación de Seguridad Digital, 2026-11-07"
+      ]
+    },
+    {
+      "id": "Q060",
+      "version": 1,
+      "topic": "phishing",
+      "prompt": "¿Qué haces si recibes una solicitud de amistad de una persona que ya tienes agregada en redes?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Contacto a la persona por fuera de la red para alertarla de una posible suplantación.",
+          "vulnerabilityPercent": 0
+        },
+        {
+          "id": "B",
+          "text": "Ignoro la solicitud sin tomar acciones adicionales.",
+          "vulnerabilityPercent": 20
+        },
+        {
+          "id": "C",
+          "text": "Acepto la solicitud pensando que creó una cuenta secundaria o perdió la anterior.",
+          "vulnerabilityPercent": 85
+        }
+      ],
+      "sourceIds": [
+        "Banco de Preguntas: Evaluación de Seguridad Digital, 2026-11-07"
+      ]
+    },
+    {
+      "id": "Q061",
+      "version": 1,
+      "topic": "devices",
+      "prompt": "¿Mantienes el sistema operativo de tu computador y teléfono móvil actualizado a la última versión?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Sí, tengo activadas las actualizaciones automáticas de seguridad.",
+          "vulnerabilityPercent": 5
+        },
+        {
+          "id": "B",
+          "text": "Actualizo manualmente cada 2 o 3 meses cuando recuerdo hacerlo.",
+          "vulnerabilityPercent": 40
+        },
+        {
+          "id": "C",
+          "text": "Pospongo o desactivo permanentemente las actualizaciones del sistema.",
+          "vulnerabilityPercent": 90
+        }
+      ],
+      "sourceIds": [
+        "Banco de Preguntas: Evaluación de Seguridad Digital, 2026-11-07"
+      ]
+    },
+    {
+      "id": "Q062",
+      "version": 1,
+      "topic": "devices",
+      "prompt": "¿Tienes un software antivirus/antimalware activo y actualizado en tu computador?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Sí, utilizo una solución antivirus reconocida con protección en tiempo real activada.",
+          "vulnerabilityPercent": 5
+        },
+        {
+          "id": "B",
+          "text": "Utilizo solo la protección básica nativa pero rara vez ejecuto un escaneo completo.",
+          "vulnerabilityPercent": 25
+        },
+        {
+          "id": "C",
+          "text": "No tengo antivirus o desactivé el firewall para instalar programas pirateados.",
+          "vulnerabilityPercent": 95
+        }
+      ],
+      "sourceIds": [
+        "Banco de Preguntas: Evaluación de Seguridad Digital, 2026-11-07"
+      ]
+    },
+    {
+      "id": "Q063",
+      "version": 1,
+      "topic": "devices",
+      "prompt": "¿Descargas programas, aplicaciones o archivos desde páginas no oficiales o mediante Torrents?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Jamás; descargo únicamente desde las tiendas oficiales (App Store, Google Play) o webs oficiales.",
+          "vulnerabilityPercent": 0
+        },
+        {
+          "id": "B",
+          "text": "Ocasionalmente descargo archivos en repositorios alternativos si tienen buenas valoraciones.",
+          "vulnerabilityPercent": 55
+        },
+        {
+          "id": "C",
+          "text": "Descargo frecuentemente software crackeado, activadores de Windows o APKs modificadas.",
+          "vulnerabilityPercent": 100
+        }
+      ],
+      "sourceIds": [
+        "Banco de Preguntas: Evaluación de Seguridad Digital, 2026-11-07"
+      ]
+    },
+    {
+      "id": "Q064",
+      "version": 1,
+      "topic": "devices",
+      "prompt": "¿Qué haces si encuentras una memoria USB o disco externo tirado en el suelo o en una oficina?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Nunca la conecto a mis dispositivos por el riesgo de software malicioso ejecutado al instante.",
+          "vulnerabilityPercent": 0
+        },
+        {
+          "id": "B",
+          "text": "La entregó al personal de seguridad sin conectarla.",
+          "vulnerabilityPercent": 0
+        },
+        {
+          "id": "C",
+          "text": "La conecto a mi computador personal para revisar qué archivos contiene y buscar a su dueño.",
+          "vulnerabilityPercent": 100
+        }
+      ],
+      "sourceIds": [
+        "Banco de Preguntas: Evaluación de Seguridad Digital, 2026-11-07"
+      ]
+    },
+    {
+      "id": "Q065",
+      "version": 1,
+      "topic": "devices",
+      "prompt": "¿Cuentas con el cifrado de disco completo (BitLocker o FileVault) activado en tu computador portatil?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Sí, mi disco duro principal está completamente cifrado.",
+          "vulnerabilityPercent": 0
+        },
+        {
+          "id": "B",
+          "text": "No estoy seguro si está activado por defecto en mi equipo.",
+          "vulnerabilityPercent": 45
+        },
+        {
+          "id": "C",
+          "text": "No utilizo cifrado; cualquiera que extraiga el disco de mi portátil puede leer la información.",
+          "vulnerabilityPercent": 85
+        }
+      ],
+      "sourceIds": [
+        "Banco de Preguntas: Evaluación de Seguridad Digital, 2026-11-07"
+      ]
+    },
+    {
+      "id": "Q066",
+      "version": 1,
+      "topic": "devices",
+      "prompt": "¿Revisas los permisos que solicitan las aplicaciones móviles al momento de instalarlas?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Sí, deniego permisos innecesarios (ej. acceso a contactos/ubicación para una calculadora).",
+          "vulnerabilityPercent": 5
+        },
+        {
+          "id": "B",
+          "text": "Reviso los permisos solo en aplicaciones que parecen sospechosas.",
+          "vulnerabilityPercent": 35
+        },
+        {
+          "id": "C",
+          "text": "Acepto todos los permisos requeridos sin leer para poder usar la app rápido.",
+          "vulnerabilityPercent": 85
+        }
+      ],
+      "sourceIds": [
+        "Banco de Preguntas: Evaluación de Seguridad Digital, 2026-11-07"
+      ]
+    },
+    {
+      "id": "Q067",
+      "version": 1,
+      "topic": "devices",
+      "prompt": "¿Realizas Jailbreak (iOS) o Rooting (Android) a tus dispositivos móviles?",
+      "options": [
+        {
+          "id": "A",
+          "text": "No, mantengo el sistema operativo de fábrica intacto para conservar sus defensas.",
+          "vulnerabilityPercent": 0
+        },
+        {
+          "id": "B",
+          "text": "Tuve el equipo alterado en el pasado pero actualmente uso el sistema oficial.",
+          "vulnerabilityPercent": 20
+        },
+        {
+          "id": "C",
+          "text": "Sí, mi dispositivo tiene Root/Jailbreak para modificar funciones avanzadas.",
+          "vulnerabilityPercent": 90
+        }
+      ],
+      "sourceIds": [
+        "Banco de Preguntas: Evaluación de Seguridad Digital, 2026-11-07"
+      ]
+    }
+  ]
+}

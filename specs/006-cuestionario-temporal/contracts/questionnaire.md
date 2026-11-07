@@ -2,21 +2,20 @@
 
 ## C-Q06-01 — Banco local
 
-El repositorio carga `questionnaire-1.0.0.json`, valida el banco completo y devuelve
+El repositorio carga `questionnaire-2.0.0.json`, valida el banco completo y devuelve
 contenido aprobado o `invalid/unavailable`. Rechaza parcial, versión desconocida,
-IDs repetidos, clave ausente, campos extra o menos de30 entradas. No registra contenido.
+IDs repetidos, porcentaje ausente/fuera de 0–100, campos extra o un total distinto de 67 entradas. No registra contenido.
 
 ## C-Q06-02 — Creación del intento
 
 `start(ownerUid)` exige sesión válida, banco y conectividad. Produce diez preguntas
-distintas, siete temas y máximo dos por tema; mezcla conservando IDs. Una fuente
+distintas, cinco módulos y exactamente dos por módulo; mezcla conservando IDs. Una fuente
 aleatoria inyectada permite pruebas. Solicitudes concurrentes no crean dos intentos.
 
 ## C-Q06-03 — Respuesta y revisión
 
 `select(questionId, optionId)` acepta solo pregunta visible/opción perteneciente y
-reemplaza selección. `next()` no avanza sin selección; `previous()` revisa. No revela
-clave/explicación. En índice9, completar exige diez selecciones y crea snapshot RAM.
+reemplaza selección. `next()` no avanza sin selección; `previous()` revisa. No revela porcentajes. En índice9, completar exige diez selecciones y crea snapshot RAM.
 
 ## C-Q06-04 — Temporalidad
 

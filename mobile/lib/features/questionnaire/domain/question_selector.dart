@@ -19,7 +19,7 @@ class QuestionSelector {
       grouped[topic] = candidates;
     }
     final extraTopics = QuestionTopic.values.toList()..shuffle(_random);
-    for (final topic in extraTopics.take(3)) {
+    for (final topic in extraTopics) {
       selected.add(grouped[topic]!.removeLast());
     }
     selected.shuffle(_random);

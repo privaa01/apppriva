@@ -1,80 +1,98 @@
-# Banco editorial propuesto — F06
+# Banco editorial aprobado — F06
 
-**Versión propuesta:** `question-bank-es-CO-1.0.0`. **Fecha:** 2026-11-05.
-**Estado:** aprobado editorialmente por el responsable el 2026-11-05.
+**Versión:** `question-bank-es-CO-2.0.0`. **Fecha:** 2026-11-07.
+**Estado:** aprobado por el responsable mediante «utiliza solo esas».
 
-Contenido original de Priva basado en las fuentes ya contrastadas de F04 y en la
-guía aprobada de Instagram, Facebook y Google de F05. Cada registro tiene tres
-opciones con IDs estables y una sola clave. Explicaciones y recomendaciones se
-ocultan hasta terminar. Una respuesta no demuestra la conducta real de una persona.
+Fuente editorial: `Banco de Preguntas - Evaluacion de Seguridad Digital.pdf`. El PDF contiene 67 preguntas completas; la pregunta 68 se excluye porque su opción C no tiene porcentaje. No se inventan las preguntas 69–100 anunciadas pero ausentes.
 
-## Contraseñas
+## Gestión de contraseñas y credenciales
 
-| ID | Situación y opciones | Clave | Explicación / recomendación | Fuente |
+| ID | Pregunta | A | B | C |
 | --- | --- | --- | --- | --- |
-| Q001 | Misma contraseña en correo y red social. `A` Mantenerla; `B` usar una diferente en cada cuenta; `C` cambiar solo el usuario. | B | Una clave única evita que una clave descubierta abra otras cuentas. Usa una diferente por servicio. | F04 N1/F4/G1, P03 |
-| Q002 | Crear contraseña. `A` frase larga recordable y no predecible; `B` nombre y nacimiento; `C` `12345678`. | A | Longitud y memorabilidad ayudan; evita datos personales y secuencias comunes. | F04 N1/F4, P03/A1 |
-| Q003 | Usar mascota y nacimiento. `A` usarlos; `B` publicarlos; `C` evitarlos porque pueden conocerse. | C | Los datos personales ofrecen pistas. Evita nombres y fechas evidentes. | F04 P03/A1 |
-| Q004 | Una clave reutilizada quedó expuesta. `A` cambiarla donde fue reutilizada; `B` esperar; `C` cambiar la foto. | A | La reutilización permite probar la clave en otros servicios. Crea claves diferentes. | F04 G1, P03/A5 |
-| Q005 | Supuesto soporte pide tu contraseña. `A` enviarla por su logotipo; `B` no compartirla y buscar el canal oficial; `C` enviar la mitad. | B | Un logotipo no prueba identidad. Nunca compartas la clave. | F04 G1/F1; guía F05 |
+| Q001 | ¿Qué longitud promedio tienen las contraseñas que utilizas para tus cuentas principales? | Más de 14 caracteres con combinación de números, símbolos y mayúsculas. (5 %) | Entre 8 y 12 caracteres variados. (25 %) | Menos de 8 caracteres o solo palabras simples. (85 %) |
+| Q002 | ¿Reutilizas la misma contraseña en múltiples sitios web o servicios? | No, cada servicio posee una clave completamente única y aleatoria. (0 %) | Utilizo una base fija y le cambio solo un par de letras o números según el sitio. (50 %) | Sí, empleo exactamente la misma contraseña en casi todas mis cuentas. (95 %) |
+| Q003 | ¿Cómo almacenas o recuerdas tus contraseñas personales? | Utilizo un gestor de contraseñas cifrado (ej. Bitwarden, 1Password, KeePass). (5 %) | Las guardo en el gestor integrado del navegador sin clave maestra personal. (35 %) | Las anoto en cuadernos, notas adhesivas en la pantalla o documentos de texto sin clave. (90 %) |
+| Q004 | ¿Incluyes datos personales (fechas de nacimiento, nombres de mascotas, cédulas) en tus claves? | Nunca, utilizo cadenas aleatorias o frases de paso no vinculadas a mi vida personal. (0 %) | Ocasionalmente combino una palabra común con mi año de nacimiento. (60 %) | Sí, la mayoría incluye nombres propios, fechas significativas o mi documento de identidad. (90 %) |
+| Q005 | ¿Con qué frecuencia cambias las contraseñas de tus cuentas críticas (bancos, correos)? | Solo cuando detecto incidentes de seguridad o la plataforma notifica una filtración. (10 %) | Cada 3 a 6 meses de forma rutinaria. (20 %) | Nunca las cambio a menos que el sistema me obligue. (70 %) |
+| Q006 | ¿Qué haces si una plataforma te informa que tu contraseña ha sido filtrada en Internet? | La cambio inmediatamente en ese sitio y en cualquier otro donde la haya reutilizado. (5 %) | La cambio únicamente en el sitio afectado días después. (45 %) | Ignoro la advertencia si mi cuenta sigue funcionando con normalidad. (95 %) |
+| Q007 | ¿Compartes tus claves de acceso con familiares, amigos o compañeros de trabajo? | Jamás comparto credenciales personales bajo ninguna circunstancia. (0 %) | Solo las comparto verbalmente o en persona con familiares directos. (30 %) | Las envío por chats de WhatsApp, mensajes de texto o correo electrónico. (85 %) |
+| Q008 | ¿Utilizas patrones de dibujo simples (ej. una "L" o una "Z") en la pantalla de bloqueo móvil? | No, utilizo un código PIN largo de 6 dígitos o una contraseña alfanumérica. (5 %) | Utilizo un patrón complejo con múltiples intersecciones. (40 %) | Sí, utilizo un patrón simple visible a simple vista. (80 %) |
+| Q009 | ¿Proteges tu gestor de contraseñas principal con una clave maestra sólida e infalible? | Sí, con una frase de paso extensa y autenticación multifactor. (0 %) | Con una clave media, pero sin doble factor. (35 %) | No utilizo clave maestra o la tengo anotada en el mismo dispositivo. (95 %) |
+| Q010 | ¿Dejas la opción de "Recordar contraseña" activada en computadores compartidos o de uso público? | Nunca inicio sesión en dispositivos que no sean de mi propiedad. (0 %) | Cierro sesión, pero a veces olvido desmarcar la casilla de recordar credenciales. (60 %) | Sí, guardo mis claves para no tener que ingresarlas de nuevo. (100 %) |
+| Q011 | ¿Sueles incluir palabras del diccionario en español o inglés sin alteración en tus credenciales? | No, combino palabras aleatorias inconexas o caracteres generados informáticamente. (5 %) | Reemplazo algunas letras por números (ej. "A" por "4", "E" por "3"). (40 %) | Utilizo palabras completas del diccionario seguidas de un punto o número. (75 %) |
+| Q012 | ¿Qué haces con las contraseñas predeterminadas de fábrica de tus dispositivos (módems, cámaras)? | Las cambio inmediatamente durante la configuración inicial. (0 %) | Las cambio únicamente si el dispositivo me lo exige para continuar. (45 %) | Mantengo las claves por defecto (admin/admin, 1234, etc.). (100 %) |
+| Q013 | ¿Permites que otras personas utilicen tus usuarios o perfiles personales de trabajo o estudio? | No, los accesos son estrictamente personales e intransferibles. (0 %) | Ocasionalmente para tareas puntuales bajo mi supervisión directa. (30 %) | Sí, presto mi cuenta a amigos o conocidos sin restricción. (80 %) |
+| Q014 | ¿Utilizas las preguntas de seguridad tradicionales (nombre de escuela, mascota) en tus cuentas? | Configuro respuestas falsas/aleatorias almacenadas en mi gestor de contraseñas. (5 %) | Respondo con datos reales de mi infancia. (65 %) | Pongo respuestas obvias que aparecen en mi perfil público de redes sociales. (90 %) |
+| Q015 | ¿Qué método de respaldo usas si pierdes el acceso a la contraseña de tu correo primario? | Claves de recuperación offline o token físico configurado previamente. (5 %) | Correo secundario o número celular actualizado. (20 %) | No tengo métodos de recuperación o los datos asociados son antiguos e inaccesibles. (85 %) |
 
-## Autenticación y recuperación
+## Autenticación y control de acceso
 
-| ID | Situación y opciones | Clave | Explicación / recomendación | Fuente |
+| ID | Pregunta | A | B | C |
 | --- | --- | --- | --- | --- |
-| Q006 | Cuenta permite verificación en dos pasos. `A` activarla; `B` publicar la clave; `C` desactivar alertas. | A | Añade una comprobación cuando corresponde. Actívala desde la configuración oficial. | Guía F05 2.B/3.B/4.B |
-| Q007 | Elegir segundo paso. `A` autenticadora o llave cuando esté disponible; `B` compartir códigos; `C` ninguno. | A | La guía prioriza métodos resistentes al phishing frente a SMS cuando estén disponibles. | Guía F05, recomendaciones/4.B |
-| Q008 | Recibes códigos de recuperación. `A` publicarlos; `B` enviarlos a un desconocido; `C` guardarlos sin compartir. | C | Pueden permitir recuperar o acceder a la cuenta. Guárdalos de forma segura. | Guía F05 2.B/3.B/4.B |
-| Q009 | Revisar correo y teléfono de recuperación. `A` confirmar que son tuyos y actuales; `B` usar cualquier contacto; `C` publicarlos. | A | Los medios deben estar bajo control del titular. Corrige los desconocidos. | Guía F05, recomendaciones/5 |
-| Q010 | Alerta de acceso desconocido. `A` ignorar; `B` revisar y cerrar desde configuración oficial; `C` responder con la clave. | B | Revisa sin compartir credenciales; cambia clave y recuperación si corresponde. | Guía F05 5 |
+| Q016 | ¿Tienes activada la Verificación en Dos Pasos (2FA) en tu correo electrónico principal? | Sí, mediante aplicación autenticadora (Google Authenticator, Authy, etc.). (5 %) | Sí, pero recibo el código por SMS. (30 %) | No la tengo activada. (85 %) |
+| Q017 | ¿Utilizas autenticación biométrica (huella dactilar, reconocimiento facial) en tu móvil? | Sí, complementado con un código PIN de alta seguridad. (10 %) | Sí, pero con un PIN de respaldo débil (0000, 1234). (45 %) | No utilizo ningún tipo de bloqueo ni biometría. (95 %) |
+| Q018 | ¿Qué haces si recibes una notificación Push para autorizar un acceso que tú no solicitaste? | Rechazo la solicitud e inmediatamente cambio la contraseña de mi cuenta. (0 %) | Rechazo el acceso, pero no tomo medidas adicionales. (40 %) | Acepto la notificación por inercia o por error para cerrar la alerta. (100 %) |
+| Q019 | ¿Proteges tus aplicaciones financieras y bancarias con un token o factor de acceso propio? | Sí, solicitan biometría o clave dinámica independiente para cada transacción. (5 %) | Solo requieren la contraseña inicial del móvil. (50 %) | Quedan abiertas una vez desbloqueado el teléfono. (90 %) |
+| Q020 | ¿Guardas tus códigos de respaldo (Backup Codes) del factor de doble autenticación? | Guardados en un lugar físico seguro o dentro de una bóveda cifrada. (5 %) | En una captura de pantalla guardada en mi galería de fotos. (55 %) | No los guardo; si pierdo el móvil no puedo acceder a mis cuentas. (80 %) |
+| Q021 | ¿Inicias sesión en servicios web de terceros usando la función "Continuar con Google/Facebook"? | Evito hacerlo en sitios críticos y prefiero registros independientes con claves únicas. (15 %) | Lo hago con frecuencia si el sitio parece legítimo. (35 %) | Uso OAuth indiscriminadamente para cualquier página web o foro desconocido. (65 %) |
+| Q022 | ¿Revisas periódicamente la lista de dispositivos con sesión activa en tu correo y redes sociales? | Sí, al menos una vez al mes y cierro las sesiones no identificadas. (5 %) | Solo cuando noto comportamientos extraños en mis perfiles. (40 %) | Nunca he revisado qué dispositivos están conectados a mis cuentas. (85 %) |
+| Q023 | ¿Utilizas una llave de seguridad física (tipo YubiKey) para proteger cuentas críticas? | Sí, para mi correo principal y servicios esenciales. (0 %) | Conozco la tecnología, pero uso solo aplicaciones de autenticación. (15 %) | No sé qué es una llave de seguridad física. (60 %) |
+| Q024 | ¿Configuras el bloqueo automático de tu computador cuando te alejas de tu puesto de trabajo? | Sí, el bloqueo ocurre en menos de 2 minutos o uso la tecla de bloqueo instantáneo. (5 %) | Sí, pero el tiempo de espera supera los 15 minutos. (45 %) | No, dejo la pantalla desbloqueada en todo momento. (90 %) |
+| Q025 | ¿Usas SMS como único método para restablecer la contraseña de tus cuentas? | No, utilizo correos de respaldo cifrados o aplicaciones autenticadoras. (10 %) | Sí, porque es el método estándar habilitado por mis plataformas. (50 %) | Sí, y no tengo PIN de protección en mi tarjeta SIM (riesgo de SIM Swapping). (95 %) |
+| Q026 | ¿Proteges tu tarjeta SIM del teléfono móvil con un código PIN personalizado? | Sí, cambié el PIN por defecto del operador telefónico. (5 %) | Mantengo el PIN de fábrica que venía en la tarjeta. (55 %) | Desactivé el código PIN de la SIM por comodidad. (90 %) |
+| Q027 | ¿Utilizas la función de "Auto-completar" para credenciales en sitios web no verificados? | Desactivo el autocompletado automático y requiero confirmación previa. (10 %) | Lo utilizo solo si el sitio web muestra un candado de conexión (HTTPS). (30 %) | Permito que el navegador llene cualquier formulario de login automáticamente. (75 %) |
+| Q028 | ¿Revisas y revocas los accesos de aplicaciones antiguas en tu cuenta de correo o redes? | Sí, audito los permisos de aplicaciones conectadas de forma periódica. (5 %) | Lo hago rara vez, solo cuando cambio de smartphone. (40 %) | Nunca he eliminado permisos de aplicaciones antiguas acumuladas durante años. (80 %) |
+| Q029 | ¿Qué haces si tu teléfono celular es robado o se extravía? | Bloqueo el dispositivo y la SIM remotamente de inmediato y cambio todas las claves. (5 %) | Solicito el bloqueo de la línea celular al día siguiente. (50 %) | Solo doy de baja el número cuando adquiero un nuevo teléfono. (95 %) |
+| Q030 | ¿Permites el inicio de sesión remoto a tu computador sin una confirmación explicita? | El acceso remoto está completamente desactivado o estrictamente autenticado. (0 %) | Tengo instalado software de soporte remoto que requiere clave aleatoria temporal. (25 %) | Tengo clientes RDP o AnyDesk habilitados sin contraseña o de fácil acceso. (90 %) |
 
-## Información compartida y privacidad
+## Redes, Wi-Fi y conectividad
 
-| ID | Situación y opciones | Clave | Explicación / recomendación | Fuente |
+| ID | Pregunta | A | B | C |
 | --- | --- | --- | --- | --- |
-| Q011 | Publicar vacaciones y casa sola. `A` ubicación en tiempo real; `B` dirección; `C` esperar a regresar. | C | La ausencia y ubicación exponen información. Evita publicarlas en tiempo real. | F04 F2a/P04 |
-| Q012 | Cambias audiencia futura en Facebook. `A` cambia todo lo antiguo; `B` revisar también publicaciones antiguas y etiquetas; `C` elimina amigos. | B | La audiencia futura no necesariamente modifica contenido anterior. | Guía F05 3.A |
-| Q013 | Fotografía muestra un documento. `A` no publicarla o retirar datos; `B` añadir ubicación; `C` hacerla pública. | A | Los documentos contienen información que no necesita exponerse. | F04 F2a/P04 |
-| Q014 | Antes de compartir una foto. `A` revisar volumen; `B` revisar quién puede verla; `C` cambiar fondo. | B | La audiencia permite decidir con quién se comparte. | F04 F2a; guía F05 2.A/3.A |
-| Q015 | Activaste Cuenta privada en Instagram. `A` todo queda invisible; `B` garantiza protección; `C` seguidores requieren aprobación, pero nombre y foto pueden verse. | C | Limita contenido, pero no vuelve invisible todo el perfil ni garantiza protección. | Guía F05 2.A |
+| Q031 | ¿Te conectas a redes Wi-Fi públicas y abiertas en plazas, aeropuertos o cafeterías? | Evito usarlas o me conecto únicamente usando una VPN confiable y cifrada. (10 %) | Las utilizo solo para consultar información pública (noticias), nunca banca o correos. (45 %) | Me conecto libremente e ingreso a mis cuentas personales y aplicaciones bancarias. (95 %) |
+| Q032 | ¿Cómo está configurada la contraseña del Wi-Fi de tu hogar? | Cifrado WPA3 o WPA2-AES con una clave personalizada de más de 12 caracteres. (5 %) | Conservo la clave original provista por la etiqueta del router del operador. (50 %) | Mi red Wi-Fi no tiene contraseña o utiliza un cifrado obsoleto (WEP). (100 %) |
+| Q033 | ¿Mantienes el Bluetooth activado permanentemente en tus dispositivos móviles? | Solo lo activo cuando voy a sincronizar un dispositivo y lo apago después. (5 %) | Permanece encendido pero mi dispositivo no está configurado como "visible". (30 %) | Siempre está activo y visible para cualquier dispositivo cercano. (70 %) |
+| Q034 | ¿Realizas transacciones bancarias o compras en línea a través de redes celulares 4G/5G o Wi-Fi propio? | Únicamente desde mi red móvil de datos personal o mi red residencial segura. (5 %) | En cualquier Wi-Fi siempre que el sitio web tenga HTTPS. (35 %) | En cualquier red Wi-Fi pública disponible sin tomar precauciones. (90 %) |
+| Q035 | ¿Has cambiado las credenciales de administración por defecto de tu enrutador (Router)? | Sí, cambié el usuario/clave predeterminado y desactivé la gestión remota. (0 %) | No las he cambiado pero la red Wi-Fi principal tiene clave fuerte. (40 %) | No sé cómo ingresar al panel del router ni he modificado los datos de fábrica. (85 %) |
+| Q036 | ¿Sueles compartir la clave de la red Wi-Fi de tu casa con visitas o invitados? | Mantengo una "Red de Invitados" aislada de mis dispositivos personales y archivos. (5 %) | Comparto la clave principal de la red a personas de confianza. (40 %) | Doy la clave de la red principal a cualquier visitante sin restricción. (75 %) |
+| Q037 | ¿Utilizas herramientas de VPN (Virtual Private Network) cuando trabajas desde redes externas? | Sí, siempre utilizo una VPN corporativa o un servicio personal auditado de pago. (5 %) | Ocasionalmente utilizo VPNs gratuitas promocionadas en la web. (55 %) | No utilizo VPN de ningún tipo. (75 %) |
+| Q038 | ¿Qué haces si tu teléfono te pide conectarse automáticamente a una red Wi-Fi conocida pero sin cifrar? | Desactivo la opción de "Conexión automática a redes abiertas". (5 %) | Acepto la conexión si el nombre de la red me resulta familiar. (60 %) | Dejo que el teléfono se conecte a cualquier red abierta sin validar su autenticidad. (90 %) |
+| Q039 | ¿Mantienes activada la función de transferencia de archivos por proximidad (AirDrop, Quick Share) permanentemente? | Configurado en "Recepción desactivada" o "Solo contactos". (5 %) | En opción "Todos", pero rechazo las transferencias no deseadas. (45 %) | Configurado para "Todos" sin supervisar los archivos recibidos. (80 %) |
+| Q040 | ¿Verificas si los sitios web que visitas implementan protocolo seguro HTTPS (candado en la barra)? | Sí, y utilizo extensiones de navegador que fuerzan conexiones cifradas (HTTPS-Only). (0 %) | Me fijo en el candado solo si voy a ingresar datos de tarjetas o claves. (35 %) | No me fijo en la barra de direcciones ni en los certificados del sitio. (85 %) |
+| Q041 | ¿Utilizas servidores DNS seguros o privados (Cloudflare, Quad9) en tus dispositivos? | Sí, tengo configurado DNS cifrado (DoH o DoT) en mis navegadores/equipos. (10 %) | Dejo los servidores DNS automáticos proporcionados por mi proveedor de Internet. (40 %) | No sé qué es un servidor DNS ni cómo afecta mi privacidad. (65 %) |
+| Q042 | ¿Conectas tu smartphone a estaciones de carga USB públicas en lugares masivos (Juice Jacking)? | Nunca; utilizo mi propio adaptador a tomacorriente de pared o un Power Bank. (0 %) | Conecto el móvil utilizando un bloqueador de datos USB ("USB Condom"). (5 %) | Conecto el cable directamente a los puertos USB públicos sin pensarlo. (85 %) |
+| Q043 | ¿Mantienes deshabilitado el protocolo WPS (Wi-Fi Protected Setup) en el enrutador de tu hogar? | Sí, el WPS está completamente deshabilitado por motivos de vulnerabilidad conocida. (0 %) | Está activado, pero requiere presionar el botón físico del equipo. (35 %) | Está activo mediante un código PIN de 8 dígitos. (80 %) |
+| Q044 | ¿Desconectas el Wi-Fi y los Datos Móviles de tu teléfono cuando no necesitas conectividad? | Sí, para evitar rastreo y conexiones involuntarias cuando duermo o estoy fuera. (5 %) | Solo desconecto la antena Wi-Fi fuera de casa. (30 %) | Dejo todas las antenas de transmisión activas las 24 horas. (55 %) |
+| Q045 | ¿Permites el descubrimiento de tu equipo en redes locales a las que te conectas de forma temporal? | Configuro la red como "Pública" para ocultar mi equipo a otros dispositivos de la red. (5 %) | Lo mantengo como red privada por defecto. (45 %) | Comparto carpetas e impresoras abiertamente en cualquier red donde me conecte. (90 %) |
 
-## Enlaces y mensajes
+## Phishing, correo e ingeniería social
 
-| ID | Situación y opciones | Clave | Explicación / recomendación | Fuente |
+| ID | Pregunta | A | B | C |
 | --- | --- | --- | --- | --- |
-| Q016 | Premio inesperado exige datos. `A` abrir por urgencia; `B` no abrir y verificar por canal oficial; `C` reenviar. | B | Premio y urgencia son señales de engaño. Verifica por un canal conocido. | F04 F1/G1/P05 |
-| Q017 | Enlace pide contraseña y datos bancarios. `A` no ingresarlos; `B` ingresarlos por sus colores; `C` probar una clave real. | A | La apariencia no prueba identidad. Entra directamente al servicio oficial. | F04 F1/G1/P05 |
-| Q018 | Mensaje amenaza bloqueo en diez minutos. `A` responder con código; `B` abrir enlace; `C` entrar a la app oficial. | C | Revisa la alerta sin depender del enlace recibido. | F04 F1; guía F05 |
-| Q019 | Alguien pide un código de verificación. `A` compartirlo; `B` no compartirlo aunque diga ser soporte; `C` publicar captura. | B | El código puede completar un acceso. Nunca lo compartas. | Guía F05, portada/5 |
-| Q020 | Enlace anuncia un problema grave. `A` revisar desde la app oficial; `B` entregar credenciales; `C` ignorar todas las alertas. | A | La alerta puede revisarse sin usar el enlace ni entregar datos. | F04 F1/G1; guía F05 |
+| Q046 | ¿Qué haces si recibes un correo del banco pidiéndote confirmar tu clave por un problema de cuenta? | Identifico el correo como intento de phishing, no hago clic y llamo directamente al banco. (0 %) | Hago clic en el enlace para verificar si la dirección URL coincide con la oficial. (50 %) | Ingreso al enlace y lleno el formulario con mis datos para evitar que bloqueen mi cuenta. (100 %) |
+| Q047 | ¿Verificas la dirección del remitente (el domino después del @) en los correos entrantes? | Siempre inspecciono el dominio del remitente y cabeceras antes de interactuar. (5 %) | Solo miro el nombre visible que aparece en el buzón. (60 %) | Abro los correos y sus archivos adjuntos sin fijarme en quién los envía. (95 %) |
+| Q048 | ¿Abres archivos adjuntos en correos de remitentes desconocidos (facturas, citaciones, premios)? | Nunca abro archivos no solicitados o los escaneo antes en entornos aislados. (0 %) | Los abro si el asunto parece urgente o de origen oficial (ej. DIAN, Policía). (70 %) | Abro cualquier ejecutable o PDF adjunto para comprobar de qué se trata. (100 %) |
+| Q049 | ¿Cómo reaccionas ante mensajes SMS o de WhatsApp que prometen premios o subsidios del gobierno? | Los elimino inmediatamente y reporto la línea como spam o fraude. (0 %) | Reenvío el mensaje a mis contactos para comprobar si a ellos también les llegó. (65 %) | Hago clic en el enlace e ingreso mis datos personales para reclamar el beneficio. (100 %) |
+| Q050 | ¿Qué haces si un conocido te pide dinero urgente por WhatsApp argumentando una emergencia? | Lo llamo por teléfono tradicional o busco una vía alternativa para verificar su voz. (0 %) | Le pido datos adicionales por el mismo chat antes de considerar realizar una transferencia. (45 %) | Le transfiero de inmediato al número de cuenta que me indique por el chat. (95 %) |
+| Q051 | ¿Sueles pasar el cursor sobre los enlaces (sin hacer clic) para ver la URL real antes de abrir? | Sí, es una práctica habitual de verificación que realizo siempre. (5 %) | Solo cuando el contenido del mensaje me genera sospechas. (35 %) | No, hago clic directamente sobre el texto en azul o los botones de enlace. (85 %) |
+| Q052 | ¿Prestas atención a las fallas de ortografía o gramática en correos aparentemente corporativos? | Sí, las fallas de redacción son un indicador claro de alerta para no interactuar. (10 %) | Noto los errores pero no les doy mayor importancia si tienen logos oficiales. (55 %) | No acostumbro a leer con detenimiento el texto de los mensajes. (80 %) |
+| Q053 | ¿Has recibido capacitación o leído sobre las técnicas de ingeniería social y Phishing? | Sí, me mantengo informado constantemente sobre nuevas modalidades de estafa digital. (5 %) | He visto información básica en redes sociales o noticias. (35 %) | No conozco los conceptos de ingeniería social ni cómo operan los cibercriminales. (85 %) |
+| Q054 | ¿Qué haces si recibes una llamada telefónica solicitando un código de verificación que llegó a tu móvil? | Cuelgo de inmediato; los códigos de verificación son personales e intocables. (0 %) | Pido que la persona se identifique formalmente antes de considerar dictárselo. (70 %) | Entrego el código si la persona afirma ser un técnico de la compañía telefónica o banco. (100 %) |
+| Q055 | ¿Utilizas extensiones o herramientas en tu navegador para detectar y bloquear sitios de Phishing? | Sí, cuento con bloqueadores de contenido malicioso y protección Web activa. (5 %) | Confío exclusivamente en los filtros nativos del navegador sin extensiones extra. (25 %) | Desactivo las protecciones del navegador si me impiden ver una página. (85 %) |
+| Q056 | ¿Publicas fotos de tus pasabordos de viaje, tarjetas de identificación o entradas a eventos? | Nunca comparto documentación que contenga datos de identificación o códigos QR/barras. (0 %) | Cubro parcialmente el nombre pero dejo visibles los códigos. (50 %) | Publico las imágenes completas para mostrar mis actividades en redes sociales. (90 %) |
+| Q057 | ¿Cómo reaccionas ante anuncios de internet que advierten que "Tu computador tiene 5 virus"? | Cierro la pestaña inmediatamente mediante combinación de teclas sin presionar el anuncio. (0 %) | Cierro la ventana haciendo clic en la "X" del mismo anuncio de alerta. (35 %) | Hago clic en "Limpiar ahora" para descargar el programa que me recomiendan. (95 %) |
+| Q058 | ¿Verificas la procedencia de correos con ofertas laborales excesivamente atractivas o pago en cripto? | Investigo la empresa en canales oficiales y nunca pago por procesos de selección. (5 %) | Respondo para pedir más información pero con precaución. (45 %) | Envío inmediatamente mi hoja de vida completa con todos mis datos personales. (85 %) |
+| Q059 | ¿Sueles responder a llamadas automáticas (robocalls) que piden presionar un número para "confirmar"? | Cuelgo inmediatamente sin presionar ningún dígito en el teclado. (0 %) | Presiono las opciones para hablar con un asesor y solicitar que me retiren de la lista. (40 %) | Sigo todas las instrucciones de la grabación. (80 %) |
+| Q060 | ¿Qué haces si recibes una solicitud de amistad de una persona que ya tienes agregada en redes? | Contacto a la persona por fuera de la red para alertarla de una posible suplantación. (0 %) | Ignoro la solicitud sin tomar acciones adicionales. (20 %) | Acepto la solicitud pensando que creó una cuenta secundaria o perdió la anterior. (85 %) |
 
-## Perfiles y suplantación
+## Dispositivos, antivirus y actualizaciones
 
-| ID | Situación y opciones | Clave | Explicación / recomendación | Fuente |
+| ID | Pregunta | A | B | C |
 | --- | --- | --- | --- | --- |
-| Q021 | Perfil con pocas publicaciones. `A` es falso con certeza; `B` esa señal no basta; `C` es soporte oficial. | B | Una señal aislada no demuestra fraude. Verifica por otro canal. | F04 P06/A4 |
-| Q022 | Perfil conocido pide dinero inesperadamente. `A` enviarlo; `B` compartir datos; `C` verificar identidad por otro medio. | C | La cuenta puede estar suplantada o comprometida. | F04 F3a/P06 |
-| Q023 | Fotos parecen copiadas. `A` evitar datos y verificar identidad; `B` acusar públicamente; `C` enviar documentos. | A | Es una señal de precaución, no un diagnóstico. Limita la interacción. | F04 F3a/P06 |
-| Q024 | Perfil verificado como suplantación. `A` pedir a Priva eliminarlo; `B` denunciar en la red y evitar interacción; `C` entrar a la cuenta. | B | Priva orienta y no actúa en cuentas externas. Usa herramientas oficiales. | F04 F3a/P06 |
-
-## Permisos, conexiones y actividad
-
-| ID | Situación y opciones | Clave | Explicación / recomendación | Fuente |
-| --- | --- | --- | --- | --- |
-| Q025 | App sin uso conserva acceso a Facebook. `A` retirar acceso; `B` dar más permisos; `C` publicar clave. | A | Retirar conexiones innecesarias reduce accesos sin finalidad. | Guía F05 3.D |
-| Q026 | Retiras acceso de una app externa. `A` todos sus datos se borran siempre; `B` revisar también su sitio o cuenta; `C` cambia tu clave automáticamente. | B | El tercero puede conservar datos en su propio servicio. | Guía F05 3.D |
-| Q027 | App conserva fotos/contactos sin necesitarlos. `A` mantener todo; `B` añadir ubicación; `C` retirar el permiso innecesario. | C | Los permisos deben corresponder a una finalidad actual. | F04 F2a |
-| Q028 | Decidir cuánto guarda Google cierta actividad. `A` revisar Datos y privacidad; `B` usar la cámara; `C` publicarlo. | A | Los controles permiten revisar, pausar o eliminar categorías disponibles. | Guía F05 4.D |
-
-## Sesiones y dispositivos
-
-| ID | Situación y opciones | Clave | Explicación / recomendación | Fuente |
-| --- | --- | --- | --- | --- |
-| Q029 | Aparece una sesión desconocida. `A` dejarla; `B` cerrarla y revisar clave/recuperación; `C` enviarle un código. | B | Puede indicar acceso ajeno. Ciérrala desde la configuración oficial. | Guía F05 2.C/3.C/4.C/5 |
-| Q030 | Vendiste un dispositivo con sesión Google. `A` cerrar sesión en Tus dispositivos; `B` compartir acceso; `C` desactivar alertas. | A | Un equipo que ya no controlas no necesita una sesión activa. | Guía F05 4.C |
-
-## Revisión requerida
-
-El responsable aprobó el banco completo el 2026-11-05 con «apruebo». Cambios futuros
-se propondrán por ID y requerirán una nueva revisión. El plan convertirá esta versión
-aprobada a un recurso local inmutable.
+| Q061 | ¿Mantienes el sistema operativo de tu computador y teléfono móvil actualizado a la última versión? | Sí, tengo activadas las actualizaciones automáticas de seguridad. (5 %) | Actualizo manualmente cada 2 o 3 meses cuando recuerdo hacerlo. (40 %) | Pospongo o desactivo permanentemente las actualizaciones del sistema. (90 %) |
+| Q062 | ¿Tienes un software antivirus/antimalware activo y actualizado en tu computador? | Sí, utilizo una solución antivirus reconocida con protección en tiempo real activada. (5 %) | Utilizo solo la protección básica nativa pero rara vez ejecuto un escaneo completo. (25 %) | No tengo antivirus o desactivé el firewall para instalar programas pirateados. (95 %) |
+| Q063 | ¿Descargas programas, aplicaciones o archivos desde páginas no oficiales o mediante Torrents? | Jamás; descargo únicamente desde las tiendas oficiales (App Store, Google Play) o webs oficiales. (0 %) | Ocasionalmente descargo archivos en repositorios alternativos si tienen buenas valoraciones. (55 %) | Descargo frecuentemente software crackeado, activadores de Windows o APKs modificadas. (100 %) |
+| Q064 | ¿Qué haces si encuentras una memoria USB o disco externo tirado en el suelo o en una oficina? | Nunca la conecto a mis dispositivos por el riesgo de software malicioso ejecutado al instante. (0 %) | La entregó al personal de seguridad sin conectarla. (0 %) | La conecto a mi computador personal para revisar qué archivos contiene y buscar a su dueño. (100 %) |
+| Q065 | ¿Cuentas con el cifrado de disco completo (BitLocker o FileVault) activado en tu computador portatil? | Sí, mi disco duro principal está completamente cifrado. (0 %) | No estoy seguro si está activado por defecto en mi equipo. (45 %) | No utilizo cifrado; cualquiera que extraiga el disco de mi portátil puede leer la información. (85 %) |
+| Q066 | ¿Revisas los permisos que solicitan las aplicaciones móviles al momento de instalarlas? | Sí, deniego permisos innecesarios (ej. acceso a contactos/ubicación para una calculadora). (5 %) | Reviso los permisos solo en aplicaciones que parecen sospechosas. (35 %) | Acepto todos los permisos requeridos sin leer para poder usar la app rápido. (85 %) |
+| Q067 | ¿Realizas Jailbreak (iOS) o Rooting (Android) a tus dispositivos móviles? | No, mantengo el sistema operativo de fábrica intacto para conservar sus defensas. (0 %) | Tuve el equipo alterado en el pasado pero actualmente uso el sistema oficial. (20 %) | Sí, mi dispositivo tiene Root/Jailbreak para modificar funciones avanzadas. (90 %) |
