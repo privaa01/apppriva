@@ -2,7 +2,7 @@
 
 **Feature Branch**: `work` (rama actual; la funcionalidad se selecciona por directorio)
 **Created**: 2026-10-21
-**Status**: Approved — banco sustituido por 67 preguntas completas del PDF el 2026-11-07.
+**Status**: Completed — cierre y verificación funcional aprobados por el responsable el 2026-11-07.
 **Separated**: 2026-10-26
 **Input**: Especificar esta funcionalidad a partir de PRIVA_MOBILE_SPEC.md, sus pantallas y las decisiones explícitas del usuario.
 **Fuentes**: [Spec original](../../docs/referencias/PRIVA_MOBILE_SPEC.md), [PDF](../../docs/referencias/app.pdf).
@@ -178,3 +178,14 @@ prepara únicamente para Android (mínimo API24 del plan); iOS, VoiceOver y Xcod
 quedan fuera del alcance actual. Las menciones anteriores a ambas plataformas
 son históricas. Se mantienen todos los requisitos funcionales, de privacidad y
 seguridad aplicables a Android. No implica aprobación de otros specs ni entrega.
+
+## Cierre aprobado — 2026-11-07
+
+El responsable confirmó la verificación del banco actualizado de 67 preguntas y
+ordenó cerrar F06 mediante «apruebo lo que había que verificar». Se acepta el
+recorrido Android observado, incluida la variación de preguntas y la correspondencia
+entre enunciados y opciones. La ejecución automatizada `integration_test` sin un
+dispositivo conectado y el estudio formal con cinco participantes se cierran como
+dispensas explícitamente aceptadas, sin afirmar que fueron ejecutados. La validación
+TalkBack ya había sido confirmada por el responsable. F07 conserva la responsabilidad
+de aprobar la fórmula, los intervalos pendientes y la presentación del resultado.

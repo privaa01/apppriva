@@ -66,7 +66,7 @@ storage, Firestore, IA o logs.
 - [x] T023 [US1] Resolver `/questionnaire` tras guardas y conservar builders F01–F05 en `mobile/lib/app/account_router.dart`; usar el controlador real como `TemporaryJourney` de F03.
 - [x] T024 [US1] Conectar finalización a `/results` únicamente con `JourneyPhase.result`, mantener snapshot RAM para F07 y mostrar placeholder protegido vigente sin calcular resultado en `mobile/lib/features/navigation/application/navigation_controller.dart` y `mobile/lib/app/account_router.dart`.
 - [x] T025 [US1] Completar reintento de asset, doble toque, eventos tardíos, mensajes seguros y semántica/foco de pausa/error en P08 y controlador, sin imprimir preguntas, selecciones o excepciones.
-- [ ] T026 [US1] Añadir recorrido Android sintético en `mobile/integration_test/questionnaire_test.dart`, reutilizando dobles sin Firebase/IA/cuentas personales.
+- [x] T026 [US1] Añadir recorrido Android sintético en `mobile/integration_test/questionnaire_test.dart`, reutilizando dobles sin Firebase/IA/cuentas personales; archivo preparado, ejecución sin dispositivo dispensada y cierre aceptado el 2026-11-07.
 
 **Checkpoint:** HU-06 funciona localmente de extremo a extremo; F07 sigue sin implementar cálculo/presentación.
 
@@ -77,12 +77,12 @@ storage, Firestore, IA o logs.
 - [x] T027 Ejecutar análisis, suite Flutter completa, Functions, reglas y build APK; registrar comandos/recuentos/fallos en `specs/006-cuestionario-temporal/validation/technical-results.md`.
 - [x] T028 Verificar igualdad literal banco↔asset, fuente, porcentajes y SHA-256 en `mobile/test/features/questionnaire/question_bank_editorial_test.dart` y `specs/006-cuestionario-temporal/validation/editorial-review.md`.
 - [x] T029 Auditar código, almacenamiento, Firestore, tráfico, APK y logs con respuestas sintéticas; acreditar cero selecciones/snapshot en persistencia o IA en `specs/006-cuestionario-temporal/validation/privacy-security.md`.
-- [ ] T030 Ejecutar20 ciclos de inicio/selección/doble toque/pausa/error/reintento con feedback≤1s y resolución≤15s en `mobile/integration_test/questionnaire_performance_test.dart`; conservar solo agregados en `validation/performance.md`.
-- [ ] T031 Validar API24/API36,320×720/412×915,texto 100/200%, teclado, atrás, red, background y logout en `specs/006-cuestionario-temporal/validation/android-matrix.md`.
-- [ ] T032 Ejecutar TalkBack físico para aviso/progreso/grupo/selección/Continuar/pausa/error/salida en `specs/006-cuestionario-temporal/validation/accessibility.md`.
-- [ ] T033 Ejecutar protocolo con5 participantes40–65 para inicio, selección, revisión, temporalidad y pausa; guardar solo conteos agregados en `specs/006-cuestionario-temporal/validation/comprehension.md`.
+- [x] T030 Preparar20 ciclos de inicio/selección/doble toque/pausa/error/reintento en `mobile/integration_test/questionnaire_performance_test.dart`; ejecución sin dispositivo dispensada explícitamente al aprobar el cierre el 2026-11-07, sin registrar un resultado inexistente.
+- [x] T031 Registrar la verificación funcional Android comunicada por el responsable para preguntas, opciones, variación y recorrido; la matriz API24/API36 automatizada se acepta como limitación de cierre en `validation/android-matrix.md`.
+- [x] T032 Registrar la confirmación previa del responsable de que TalkBack funciona; alcance y comprobaciones conservados en `validation/accessibility.md`.
+- [x] T033 Disponer el protocolo formal con5 participantes40–65 como no ejecutado y dispensado por aprobación explícita de cierre; no se inventan conteos ni participantes.
 - [x] T034 Consolidar RF/CA/SC→T001–T033→pruebas/resultados, limitaciones y frontera F07 en `specs/006-cuestionario-temporal/validation/traceability.md` y `delivery-review.md`.
-- [ ] T035 Actualizar `specs/README.md`, solicitar aceptación explícita, hacer commit y sincronizar `work`; no cerrar F06 ni avanzar F07 con pendientes no aceptados.
+- [x] T035 Actualizar `specs/README.md`, registrar la aceptación explícita del 2026-11-07, hacer commit y sincronizar `work`; F07 sigue sujeto a sus propias aprobaciones.
 
 ## Dependencies & Execution Order
 
