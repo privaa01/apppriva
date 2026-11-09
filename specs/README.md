@@ -20,7 +20,10 @@ claro 2.0.1 fue aprobada el 2026-11-09 con 232 pruebas Flutter y porcentajes int
 F07 fue cerrado y aceptado el 2026-11-09: cálculo, recomendaciones y repetición
 locales; 20/20 ciclos y 5/5 participantes comunicados como satisfactorios, TalkBack
 en Motorola G22/Android12 y limitaciones API24/API36/APK conservadas sin inventar evidencia.
-F08 sigue en borrador.
+F08 fue cerrada y aceptada el 2026-11-09: cuatro tamaños persistentes, aviso y
+reintento seguro, contenido local disponible sin conexión, TalkBack, matriz
+API24/API36 y rendimiento confirmados por el responsable; 241 pruebas Flutter
+satisfactorias y análisis sin diagnósticos.
 **Actualización:** 2026-11-09.
 
 Cada carpeta contiene `spec.md` y `checklists/requirements.md`, conforme a la estructura
@@ -54,9 +57,9 @@ identificadores, no prioridades ni una aprobación del orden de implementación.
 - Priva no pide teléfono. No se presupone recuperación por SMS.
 - Cuestionario y resultados son temporales, sin persistencia ni envío de respuestas a IA.
 - F05 resolvió la retención del chat para el MVP: conversación solo en memoria, sin
-  proveedor externo ni historial. Fórmula propuesta, proveedores y demás PD de F06–F08
-  conservan su estado pendiente. Esta separación no selecciona tecnologías ni aprueba
-  reglas propuestas.
+  proveedor externo ni historial. Los pendientes aplicables de F06–F08 quedaron
+  resueltos en sus specs cerrados; cualquier ampliación futura requiere nuevo control
+  de cambios. Esta separación no selecciona tecnologías ni aprueba reglas nuevas.
 
 ## Cómo trabajar con Spec Kit
 

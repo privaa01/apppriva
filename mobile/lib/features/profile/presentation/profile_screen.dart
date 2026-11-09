@@ -10,6 +10,8 @@ import '../application/profile_controller.dart';
 import '../application/profile_state.dart';
 import '../data/profile_repository.dart';
 import '../data/deletion_contact_service.dart';
+import '../../accessibility/application/text_scale_controller.dart';
+import '../../accessibility/application/text_scale_preset.dart';
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({
@@ -18,11 +20,13 @@ class ProfileScreen extends StatefulWidget {
     required this.repository,
     required this.contact,
     this.observer,
+    this.textScaleController,
   });
   final AccountController account;
   final ProfileRepository repository;
   final DeletionContactService contact;
   final RouteObserver<PageRoute<dynamic>>? observer;
+  final TextScaleController? textScaleController;
   @override
   State<ProfileScreen> createState() => _ProfileScreenState();
 }
@@ -201,6 +205,46 @@ class _ProfileScreenState extends State<ProfileScreen> with RouteAware {
                         : () => _profile.load(),
                     child: const Text('Volver a consultar el perfil'),
                   ),
+                if (widget.textScaleController != null) ...[
+                  const SizedBox(height: 24),
+                  Semantics(
+                    header: true,
+                    child: Text(
+                      'Tamaño del texto',
+                      style: Theme.of(context).textTheme.titleMedium
+                          ?.copyWith(fontWeight: FontWeight.bold),
+                    ),
+                  ),
+                  const SizedBox(height: 8),
+                  const Text('Elige el tamaño que te resulte más cómodo.'),
+                  const SizedBox(height: 8),
+                  AnimatedBuilder(
+                    animation: widget.textScaleController!,
+                    builder: (context, _) => RadioGroup<TextScalePreset>(
+                      groupValue: widget.textScaleController!.preset,
+                      onChanged: (value) {
+                        if (value != null) {
+                          unawaited(widget.textScaleController!.select(value));
+                        }
+                      },
+                      child: Column(
+                        children: [
+                          for (final preset in TextScalePreset.values)
+                            RadioListTile<TextScalePreset>(
+                              key: Key('profile.textScale.${preset.name}'),
+                              value: preset,
+                              title: Text(preset.label),
+                            ),
+                        ],
+                      ),
+                    ),
+                  ),
+                  if (widget.textScaleController!.message != null)
+                    Semantics(
+                      liveRegion: true,
+                      child: Text(widget.textScaleController!.message!),
+                    ),
+                ],
                 const SizedBox(height: 24),
                 TextButton(
                   key: const Key('profile.delete.info'),

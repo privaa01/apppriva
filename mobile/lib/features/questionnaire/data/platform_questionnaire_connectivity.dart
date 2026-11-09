@@ -4,11 +4,30 @@ import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/foundation.dart';
 
 import '../application/questionnaire_connectivity.dart';
+import '../../connectivity/application/connectivity_controller.dart';
+
+class SharedQuestionnaireConnectivity extends ChangeNotifier
+    implements QuestionnaireConnectivity {
+  SharedQuestionnaireConnectivity(this.controller) {
+    controller.addListener(_changed);
+  }
+  final ConnectivityController controller;
+  @override
+  bool get available => controller.available;
+  @override
+  Future<void> initialize() => controller.initialize();
+  void _changed() => notifyListeners();
+  @override
+  void dispose() {
+    controller.removeListener(_changed);
+    super.dispose();
+  }
+}
 
 class PlatformQuestionnaireConnectivity extends ChangeNotifier
     implements QuestionnaireConnectivity {
   PlatformQuestionnaireConnectivity({Connectivity? connectivity})
-      : _connectivity = connectivity ?? Connectivity();
+    : _connectivity = connectivity ?? Connectivity();
   bool _started = false;
   @override
   Future<void> initialize() async {
@@ -24,6 +43,7 @@ class PlatformQuestionnaireConnectivity extends ChangeNotifier
       // Keep the conservative initial state when the platform is unavailable.
     }
   }
+
   final Connectivity _connectivity;
   StreamSubscription<List<ConnectivityResult>>? _subscription;
   bool _available = true;

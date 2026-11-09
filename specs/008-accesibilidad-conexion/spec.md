@@ -2,10 +2,20 @@
 
 **Feature Branch**: `work` (rama actual; la funcionalidad se selecciona por directorio)
 **Created**: 2026-10-21
-**Status**: Draft — especificación funcional separada; pendiente de aprobación.
+**Status**: Closed — implemented, tested and explicitly accepted by the responsible user on 2026-11-09.
 **Separated**: 2026-10-26
 **Input**: Especificar esta funcionalidad a partir de PRIVA_MOBILE_SPEC.md, sus pantallas y las decisiones explícitas del usuario.
 **Fuentes**: [Spec original](../../docs/referencias/PRIVA_MOBILE_SPEC.md), [PDF](../../docs/referencias/app.pdf).
+
+## Clarifications
+
+### Session 2026-11-09
+
+- Q: Cuando una persona cambie el tamaño del texto desde Perfil, ¿la aplicación debe recordar esa elección después de cerrarse o cerrar sesión? → A: Recordar el tamaño en el dispositivo, incluso después de cerrar la app o la sesión.
+- Q: ¿Qué opciones de tamaño de texto debe mostrar Priva dentro de Perfil? → A: Pequeño 90 %, Normal 100 %, Grande 125 % y Muy grande 150 %.
+- Q: Cuando se pierda Internet durante una operación, ¿cómo debe recuperarse la aplicación sin duplicar acciones? → A: Mostrar aviso, detener la operación y permitir reintentar manualmente cuando vuelva Internet.
+- Q: ¿Qué partes de Priva deben seguir funcionando cuando no haya Internet? → A: Tips y Zyro local siguen funcionando; solo se bloquean las operaciones que realmente necesitan Internet.
+- Q: ¿Qué nivel mínimo de contraste deben cumplir textos y controles para facilitar la lectura? → A: Contraste mínimo 4.5:1 para texto normal y 3:1 para texto grande y controles.
 
 ## Regla de acceso confirmada — 2026-10-26
 
@@ -37,7 +47,7 @@ Como usuario, quiero leer cómodamente y comprender los errores de conexión.
 - **CA-08.2:** Los colores se mantienen y los estados se distinguen también mediante texto o etiquetas.
 - **CA-08.3:** Sin conexión se muestra un aviso y, al recuperarla, el reintento no duplica registros ni envíos.
 
-**Prioridad:** pendiente de aprobación; la numeración es identificación, no orden de entrega.
+**Prioridad:** P1 aprobada para implementación transversal en Android.
 **Independent Test:** ejecutar los criterios CA anteriores en las pantallas asignadas,
 con sus precondiciones de sesión y contenido, comprobando el resultado funcional
 sin exigir implementar otras historias conforme a esta especificación; las pruebas aún no se han ejecutado.
@@ -45,14 +55,16 @@ sin exigir implementar otras historias conforme a esta especificación; las prue
 
 ### Edge Cases
 
-Texto grande; lector de pantalla; contraste insuficiente; teclado; tamaños móviles; solicitudes repetidas; desconexión con cuestionario activo.
+Texto grande; lector de pantalla; contraste insuficiente; teclado; tamaños móviles; solicitudes repetidas; doble toque en Reintentar; conexión que vuelve durante un reintento; desconexión con cuestionario activo.
 
 ## Requirements *(mandatory)*
 
 ### Functional Requirements
 
-- **RF-16**: Permitir ajustar el tamaño del texto manteniendo la paleta definida.
+- **RF-16**: Permitir ajustar el tamaño del texto desde Perfil mediante cuatro opciones: Pequeño 90 %, Normal 100 %, Grande 125 % y Muy grande 150 %. Normal es el valor inicial. Recordar la elección localmente en el dispositivo, incluso después de cerrar la app o la sesión, sin asociarla a la cuenta ni sincronizarla, y mantener la paleta definida.
 - **RF-17**: Mostrar aviso de falta de conexión y permitir reintentar sin duplicar operaciones.
+- **RF-17.a**: Ante una pérdida de Internet, detener la operación afectada, explicar qué ocurrió y ofrecer reintento manual cuando la conexión regrese. No reenviar automáticamente registros, cambios ni envíos.
+- **RF-17.b**: Mantener disponibles sin Internet los Tips y el asistente Zyro local. Bloquear y mostrar recuperación solo en operaciones que requieren red; no crear una cola oculta para enviarlas posteriormente.
 
 ### Asociación a pantallas
 
@@ -71,10 +83,10 @@ no duplicación de responsabilidad; véase [el índice SDD](../README.md) para e
 | ID | Requisito verificable o decisión pendiente |
 | --- | --- |
 | RNF-01 | Lenguaje comprensible para el público objetivo; validar con usuarios de 40 a 65 años. |
-| RNF-02 | Permitir aumentar texto sin recortes, solapamientos ni controles inaccesibles; rango y tamaños de prueba por fijar. |
+| RNF-02 | Permitir Pequeño 90 %, Normal 100 %, Grande 125 % y Muy grande 150 % sin recortes, solapamientos ni controles inaccesibles. |
 | RNF-03 | Controles con etiquetas accesibles, orden de foco coherente y resultados entendibles sin color; validar con lectores de pantalla. |
-| RNF-04 | Mantener paleta visual definida y comprobar contraste suficiente; valores de aceptación por fijar antes de cerrar diseño. |
-| RNF-05 | Ajustarse a distintos tamaños de móviles Android e iOS; matriz de dispositivos y versiones mínimas pendiente. |
+| RNF-04 | Mantener la paleta visual y comprobar contraste mínimo 4.5:1 para texto normal y 3:1 para texto grande y controles. |
+| RNF-05 | Ajustarse a Android API24 y API36 en 320×720 y 412×915 dp; iOS permanece fuera del alcance vigente. |
 | RNF-06 | Mostrar teclado al enfocar un campo editable y evitar que cubra mensaje o envío. |
 | RNF-07 | Requerir internet y mostrar estados de carga, error y reintento. No se ofrece modo sin conexión. |
 | RNF-08 | Aplicar temporalidad y controles de privacidad de las secciones 9 y 11. |
@@ -119,13 +131,13 @@ Definir tamaño de muestra, denominador y condiciones antes de medir. No present
 
 ### Key Entities
 
-Preferencia de lectura cuya persistencia no está definida; estado de conexión sin copiar respuestas del cuestionario.
+Preferencia de lectura local, no personal y persistente en el dispositivo; estado de conexión sin copiar respuestas del cuestionario.
 
 ## Success Criteria *(mandatory)*
 
 ### Measurable Outcomes
 
-CA-08.1 a CA-08.3 satisfechos; tareas sin ayuda ≥70 % (§15); matriz móvil, rango de texto, contraste y tiempos pendientes.
+CA-08.1 a CA-08.3 satisfechos; las pantallas y acciones esenciales permanecen operables al 90 %, 100 %, 125 % y 150 %; contraste mínimo 4.5:1 para texto normal y 3:1 para texto grande/controles; matriz Android API24/API36 en 320×720 y 412×915; tareas sin ayuda ≥70 % (§15). Los presupuestos de tiempo se fijan en el plan.
 
 La evidencia de implementación y las mediciones aún no existen. Las metas del §15
 no son resultados obtenidos. Toda prueba usará datos sintéticos cuando corresponda;
@@ -133,15 +145,19 @@ no se guardarán respuestas ni resultados reales para demostrar cumplimiento.
 
 ## Assumptions
 
-- Se conserva Android/iOS, público de 40–65 años e internet obligatorio (§§1–3).
+- Se conserva Android como plataforma vigente y el público de 40–65 años. Internet es obligatorio solo para las operaciones remotas; Tips y Zyro local permanecen disponibles sin conexión.
 - Las imágenes son referencia visual: sus ejemplos y textos no aprueban reglas nuevas.
 - Aplica a F01–F07; no reemplaza sus criterios. PD-10 debe resolverse antes de cerrar el comportamiento del cuestionario ante red.
 - Aplican §§11–17 del spec: minimización, conservación justificada, seguridad,
   accesibilidad, estados de error y trazabilidad. No se presumen proveedores ni plazos.
 
-## Decisiones y aprobación pendientes
+## Decisiones y aprobación
 
-Pendientes originales asociados: PD-07, PD-08, PD-10.
+PD-07 queda resuelto con Android API24/API36 y 320×720/412×915 dp. PD-08 queda
+resuelto con cuatro tamaños de texto y los umbrales de contraste aprobados. PD-10
+conserva la regla aprobada en F06: una pérdida de conexión en primer plano pausa el
+cuestionario en RAM; pasar a segundo plano lo descarta. Las demás operaciones remotas
+se detienen y requieren reintento manual; Tips y Zyro local continúan disponibles.
 Consultar sus condiciones de cierre en §18 del spec fuente. Las brechas de pantalla
 se resuelven en el registro del índice, sin modificar silenciosamente el original.
 Antes de `$speckit-plan`, resolver los pendientes aplicables y obtener aprobación explícita de la constitución y de este spec. Separar el documento no constituye esa aprobación.

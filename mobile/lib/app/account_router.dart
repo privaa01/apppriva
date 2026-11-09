@@ -15,6 +15,7 @@ import 'package:flutter/material.dart';
 import '../features/profile/data/profile_repository.dart';
 import '../features/profile/data/deletion_contact_service.dart';
 import '../features/profile/presentation/profile_screen.dart';
+import '../features/accessibility/application/text_scale_controller.dart';
 
 import '../features/account/application/account_controller.dart';
 import '../features/account/application/account_state.dart';
@@ -40,6 +41,7 @@ class AccountRouter {
     this.tipsRepository,
     this.questionnaireController,
     this.resultController,
+    this.textScaleController,
   });
   final QuestionnaireController? questionnaireController;
   final ResultController? resultController;
@@ -50,6 +52,7 @@ class AccountRouter {
   final ProfileRepository? profileRepository;
   final DeletionContactService? deletionContactService;
   final RouteObserver<PageRoute<dynamic>>? profileObserver;
+  final TextScaleController? textScaleController;
   Route<dynamic> onGenerateRoute(RouteSettings settings) {
     final path = settings.name ?? '/signin';
     Widget child;
@@ -74,6 +77,7 @@ class AccountRouter {
           tipsRepository: tipsRepository,
           questionnaireController: questionnaireController,
           resultController: resultController,
+          textScaleController: textScaleController,
         );
     }
     return MaterialPageRoute<void>(
@@ -101,6 +105,7 @@ class _GuardedDestination extends StatelessWidget {
     this.tipsRepository,
     this.questionnaireController,
     this.resultController,
+    this.textScaleController,
   });
   final QuestionnaireController? questionnaireController;
   final ResultController? resultController;
@@ -112,6 +117,7 @@ class _GuardedDestination extends StatelessWidget {
   final DeletionContactService? contact;
   final RouteObserver<PageRoute<dynamic>>? observer;
   final NavigationController? navigation;
+  final TextScaleController? textScaleController;
   @override
   Widget build(BuildContext context) => AnimatedBuilder(
     animation: navigation == null
@@ -196,6 +202,7 @@ class _GuardedDestination extends StatelessWidget {
           repository: profileRepository!,
           contact: contact ?? PlatformDeletionContactService(),
           observer: observer,
+          textScaleController: textScaleController,
         );
       }
       final title = switch (path) {

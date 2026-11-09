@@ -18,6 +18,10 @@ import 'features/account/application/account_controller.dart';
 import 'features/account/data/account_repository.dart';
 import 'features/account/data/firebase_account_repository.dart';
 import 'features/account/data/unavailable_account_repository.dart';
+import 'features/accessibility/application/text_scale_controller.dart';
+import 'features/accessibility/data/shared_preferences_text_scale.dart';
+import 'features/accessibility/data/text_scale_preferences.dart';
+import 'features/connectivity/application/connectivity_controller.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -54,9 +58,22 @@ Future<void> main() async {
     }
   }
   final controller = AccountController(repository, allowTestPolicy: false);
+  TextScalePreferences textScalePreferences;
+  try {
+    textScalePreferences = await SharedPreferencesTextScale.create();
+  } catch (_) {
+    // Platform channels are unavailable in some safe bootstrap environments.
+    textScalePreferences = MemoryTextScalePreferences();
+  }
+  final textScale = TextScaleController(textScalePreferences);
+  await textScale.initialize();
+  final connectivity = ConnectivityController();
+  await connectivity.initialize();
   runApp(
     PrivaApp(
       controller: controller,
+      textScaleController: textScale,
+      connectivityController: connectivity,
       testMode: false,
       profileRepository: profileRepository,
       tipsRepository: tipsRepository,
