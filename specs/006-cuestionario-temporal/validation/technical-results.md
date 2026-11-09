@@ -19,3 +19,10 @@ Gradle sobre una migración Kotlin futura no impide el build actual.
 - Análisis: 0 diagnósticos.
 - Flutter: 209/209 pruebas aprobadas.
 - APK Android debug: generado correctamente.
+
+# Revalidación de lenguaje claro — 2026-11-09
+
+- `flutter analyze`: sin diagnósticos.
+- Pruebas específicas de cuestionario y resultados: 33/33 satisfactorias.
+- Suite Flutter completa: 232/232 satisfactoria.
+- Comparación editorial: 67 IDs, temas, opciones A/B/C y porcentajes sin cambios.

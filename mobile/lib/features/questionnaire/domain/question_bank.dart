@@ -7,8 +7,8 @@ class QuestionBank {
     required List<Question> questions,
   }) : questions = List.unmodifiable(questions) {
     final ids = questions.map((question) => question.id).toSet();
-    if (contentVersion != 'question-bank-es-CO-2.0.0' ||
-        reviewedOn != '2026-11-07' ||
+    if (contentVersion != 'question-bank-es-CO-2.0.1' ||
+        reviewedOn != '2026-11-09' ||
         questions.length != 67 ||
         ids.length != 67 ||
         QuestionTopic.values.any(
@@ -38,7 +38,7 @@ class AttemptQuestion {
 
 class ActiveAttempt {
   ActiveAttempt({required List<AttemptQuestion> questions, this.index = 0})
-      : questions = List.unmodifiable(questions) {
+    : questions = List.unmodifiable(questions) {
     if (questions.length != 10 || index < 0 || index >= questions.length) {
       throw ArgumentError('Intento no válido.');
     }
@@ -59,14 +59,13 @@ class ActiveAttempt {
     return ActiveAttempt(questions: questions, index: index + 1);
   }
 
-  ActiveAttempt previous() => index == 0
-      ? this
-      : ActiveAttempt(questions: questions, index: index - 1);
+  ActiveAttempt previous() =>
+      index == 0 ? this : ActiveAttempt(questions: questions, index: index - 1);
 }
 
 class CompletedAttempt {
   CompletedAttempt({required List<AttemptQuestion> questions})
-      : questions = List.unmodifiable(questions) {
+    : questions = List.unmodifiable(questions) {
     if (questions.length != 10 ||
         questions.any((question) => question.selectedOptionId == null)) {
       throw ArgumentError('El intento está incompleto.');

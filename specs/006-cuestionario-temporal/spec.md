@@ -2,7 +2,7 @@
 
 **Feature Branch**: `work` (rama actual; la funcionalidad se selecciona por directorio)
 **Created**: 2026-10-21
-**Status**: Completed — cierre y verificación funcional aprobados por el responsable el 2026-11-07.
+**Status**: Revisión editorial de lenguaje claro autorizada el 2026-11-09; validación final pendiente.
 **Separated**: 2026-10-26
 **Input**: Especificar esta funcionalidad a partir de PRIVA_MOBILE_SPEC.md, sus pantallas y las decisiones explícitas del usuario.
 **Fuentes**: [Spec original](../../docs/referencias/PRIVA_MOBILE_SPEC.md), [PDF](../../docs/referencias/app.pdf).
@@ -77,6 +77,14 @@ y presentación del resultado pertenecen a F07.
    cerrar sesión o terminar la app lo descarta inmediatamente.
 5. Antes de comenzar se informa que las respuestas no se guardan y que una
    interrupción obliga a iniciar un intento nuevo.
+
+### Revisión de lenguaje claro — 2026-11-09
+
+El responsable autorizó simplificar los enunciados y opciones que resultaban
+complejos para personas de 40 a 60 años. La revisión `2.0.1` sustituye tecnicismos
+por explicaciones cotidianas cuando es posible y explica brevemente los términos
+que deben conservarse. Permanecen intactos los 67 IDs, cinco módulos, opciones
+A/B/C y porcentajes de vulnerabilidad; no cambia la selección ni el cálculo de F07.
 
 ### Reglas de la fuente aplicables
 

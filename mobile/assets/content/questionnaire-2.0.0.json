@@ -1,14 +1,14 @@
 {
   "schemaVersion": 2,
-  "contentVersion": "question-bank-es-CO-2.0.0",
+  "contentVersion": "question-bank-es-CO-2.0.1",
   "status": "approved",
-  "reviewedOn": "2026-11-07",
+  "reviewedOn": "2026-11-09",
   "questions": [
     {
       "id": "Q001",
       "version": 1,
       "topic": "passwords",
-      "prompt": "¿Qué longitud promedio tienen las contraseñas que utilizas para tus cuentas principales?",
+      "prompt": "¿Cuántos caracteres tienen normalmente tus contraseñas principales?",
       "options": [
         {
           "id": "A",
@@ -34,11 +34,11 @@
       "id": "Q002",
       "version": 1,
       "topic": "passwords",
-      "prompt": "¿Reutilizas la misma contraseña en múltiples sitios web o servicios?",
+      "prompt": "¿Usas la misma contraseña en varias cuentas o páginas?",
       "options": [
         {
           "id": "A",
-          "text": "No, cada servicio posee una clave completamente única y aleatoria.",
+          "text": "No. Uso una contraseña diferente y difícil de adivinar en cada cuenta.",
           "vulnerabilityPercent": 0
         },
         {
@@ -48,7 +48,7 @@
         },
         {
           "id": "C",
-          "text": "Sí, empleo exactamente la misma contraseña en casi todas mis cuentas.",
+          "text": "Sí. Uso exactamente la misma contraseña en casi todas mis cuentas.",
           "vulnerabilityPercent": 95
         }
       ],
@@ -60,16 +60,16 @@
       "id": "Q003",
       "version": 1,
       "topic": "passwords",
-      "prompt": "¿Cómo almacenas o recuerdas tus contraseñas personales?",
+      "prompt": "¿Cómo guardas o recuerdas tus contraseñas?",
       "options": [
         {
           "id": "A",
-          "text": "Utilizo un gestor de contraseñas cifrado (ej. Bitwarden, 1Password, KeePass).",
+          "text": "Uso una aplicación segura para guardar contraseñas, como Bitwarden, 1Password o KeePass.",
           "vulnerabilityPercent": 5
         },
         {
           "id": "B",
-          "text": "Las guardo en el gestor integrado del navegador sin clave maestra personal.",
+          "text": "Las guardo en el navegador, sin una contraseña principal que las proteja.",
           "vulnerabilityPercent": 35
         },
         {
@@ -86,11 +86,11 @@
       "id": "Q004",
       "version": 1,
       "topic": "passwords",
-      "prompt": "¿Incluyes datos personales (fechas de nacimiento, nombres de mascotas, cédulas) en tus claves?",
+      "prompt": "¿Usas datos personales, como fechas, mascotas o cédula, en tus contraseñas?",
       "options": [
         {
           "id": "A",
-          "text": "Nunca, utilizo cadenas aleatorias o frases de paso no vinculadas a mi vida personal.",
+          "text": "Nunca. Uso palabras o caracteres que no tienen relación con mi vida personal.",
           "vulnerabilityPercent": 0
         },
         {
@@ -112,11 +112,11 @@
       "id": "Q005",
       "version": 1,
       "topic": "passwords",
-      "prompt": "¿Con qué frecuencia cambias las contraseñas de tus cuentas críticas (bancos, correos)?",
+      "prompt": "¿Cuándo cambias las contraseñas de cuentas importantes, como el banco o el correo?",
       "options": [
         {
           "id": "A",
-          "text": "Solo cuando detecto incidentes de seguridad o la plataforma notifica una filtración.",
+          "text": "Cuando noto un problema de seguridad o el servicio avisa que hubo un robo de datos.",
           "vulnerabilityPercent": 10
         },
         {
@@ -164,11 +164,11 @@
       "id": "Q007",
       "version": 1,
       "topic": "passwords",
-      "prompt": "¿Compartes tus claves de acceso con familiares, amigos o compañeros de trabajo?",
+      "prompt": "¿Compartes tus contraseñas con familiares, amigos o compañeros?",
       "options": [
         {
           "id": "A",
-          "text": "Jamás comparto credenciales personales bajo ninguna circunstancia.",
+          "text": "Nunca comparto mis contraseñas.",
           "vulnerabilityPercent": 0
         },
         {
@@ -190,16 +190,16 @@
       "id": "Q008",
       "version": 1,
       "topic": "passwords",
-      "prompt": "¿Utilizas patrones de dibujo simples (ej. una \"L\" o una \"Z\") en la pantalla de bloqueo móvil?",
+      "prompt": "¿Usas un dibujo fácil, como una L o una Z, para desbloquear el celular?",
       "options": [
         {
           "id": "A",
-          "text": "No, utilizo un código PIN largo de 6 dígitos o una contraseña alfanumérica.",
+          "text": "No. Uso un PIN de 6 dígitos o una contraseña con letras y números.",
           "vulnerabilityPercent": 5
         },
         {
           "id": "B",
-          "text": "Utilizo un patrón complejo con múltiples intersecciones.",
+          "text": "Uso un dibujo difícil, con varios cruces.",
           "vulnerabilityPercent": 40
         },
         {
@@ -216,21 +216,21 @@
       "id": "Q009",
       "version": 1,
       "topic": "passwords",
-      "prompt": "¿Proteges tu gestor de contraseñas principal con una clave maestra sólida e infalible?",
+      "prompt": "¿Proteges la aplicación donde guardas tus contraseñas con una contraseña principal segura?",
       "options": [
         {
           "id": "A",
-          "text": "Sí, con una frase de paso extensa y autenticación multifactor.",
+          "text": "Sí. Uso una frase larga y verificación en dos pasos.",
           "vulnerabilityPercent": 0
         },
         {
           "id": "B",
-          "text": "Con una clave media, pero sin doble factor.",
+          "text": "Uso una contraseña de longitud media, sin verificación en dos pasos.",
           "vulnerabilityPercent": 35
         },
         {
           "id": "C",
-          "text": "No utilizo clave maestra o la tengo anotada en el mismo dispositivo.",
+          "text": "No uso una contraseña principal o la tengo anotada en el mismo dispositivo.",
           "vulnerabilityPercent": 95
         }
       ],
@@ -268,11 +268,11 @@
       "id": "Q011",
       "version": 1,
       "topic": "passwords",
-      "prompt": "¿Sueles incluir palabras del diccionario en español o inglés sin alteración en tus credenciales?",
+      "prompt": "¿Usas palabras comunes y completas en tus contraseñas?",
       "options": [
         {
           "id": "A",
-          "text": "No, combino palabras aleatorias inconexas o caracteres generados informáticamente.",
+          "text": "No. Combino palabras que no tienen relación o caracteres creados al azar.",
           "vulnerabilityPercent": 5
         },
         {
@@ -320,16 +320,16 @@
       "id": "Q013",
       "version": 1,
       "topic": "passwords",
-      "prompt": "¿Permites que otras personas utilicen tus usuarios o perfiles personales de trabajo o estudio?",
+      "prompt": "¿Dejas que otras personas usen tus cuentas personales, de trabajo o de estudio?",
       "options": [
         {
           "id": "A",
-          "text": "No, los accesos son estrictamente personales e intransferibles.",
+          "text": "No. Mis cuentas son solo para mi uso.",
           "vulnerabilityPercent": 0
         },
         {
           "id": "B",
-          "text": "Ocasionalmente para tareas puntuales bajo mi supervisión directa.",
+          "text": "A veces, para una tarea concreta y mientras estoy presente.",
           "vulnerabilityPercent": 30
         },
         {
@@ -372,11 +372,11 @@
       "id": "Q015",
       "version": 1,
       "topic": "passwords",
-      "prompt": "¿Qué método de respaldo usas si pierdes el acceso a la contraseña de tu correo primario?",
+      "prompt": "¿Cómo recuperarías tu correo principal si olvidas la contraseña?",
       "options": [
         {
           "id": "A",
-          "text": "Claves de recuperación offline o token físico configurado previamente.",
+          "text": "Con códigos de recuperación guardados fuera de internet o una llave de seguridad.",
           "vulnerabilityPercent": 5
         },
         {
@@ -398,11 +398,11 @@
       "id": "Q016",
       "version": 1,
       "topic": "access",
-      "prompt": "¿Tienes activada la Verificación en Dos Pasos (2FA) en tu correo electrónico principal?",
+      "prompt": "¿Tu correo principal te pide un segundo código además de la contraseña?",
       "options": [
         {
           "id": "A",
-          "text": "Sí, mediante aplicación autenticadora (Google Authenticator, Authy, etc.).",
+          "text": "Sí. Recibo el código en una aplicación como Google Authenticator o Authy.",
           "vulnerabilityPercent": 5
         },
         {
@@ -424,11 +424,11 @@
       "id": "Q017",
       "version": 1,
       "topic": "access",
-      "prompt": "¿Utilizas autenticación biométrica (huella dactilar, reconocimiento facial) en tu móvil?",
+      "prompt": "¿Usas la huella o el reconocimiento facial para desbloquear el celular?",
       "options": [
         {
           "id": "A",
-          "text": "Sí, complementado con un código PIN de alta seguridad.",
+          "text": "Sí, y también tengo un PIN difícil de adivinar.",
           "vulnerabilityPercent": 10
         },
         {
@@ -450,7 +450,7 @@
       "id": "Q018",
       "version": 1,
       "topic": "access",
-      "prompt": "¿Qué haces si recibes una notificación Push para autorizar un acceso que tú no solicitaste?",
+      "prompt": "¿Qué haces si aparece una solicitud de ingreso a tu cuenta que no reconoces?",
       "options": [
         {
           "id": "A",
@@ -464,7 +464,7 @@
         },
         {
           "id": "C",
-          "text": "Acepto la notificación por inercia o por error para cerrar la alerta.",
+          "text": "La acepto sin revisar, solo para cerrar el aviso.",
           "vulnerabilityPercent": 100
         }
       ],
@@ -476,11 +476,11 @@
       "id": "Q019",
       "version": 1,
       "topic": "access",
-      "prompt": "¿Proteges tus aplicaciones financieras y bancarias con un token o factor de acceso propio?",
+      "prompt": "¿Tus aplicaciones bancarias piden una protección adicional para entrar o hacer pagos?",
       "options": [
         {
           "id": "A",
-          "text": "Sí, solicitan biometría o clave dinámica independiente para cada transacción.",
+          "text": "Sí. Piden mi huella, rostro o un código diferente para cada pago.",
           "vulnerabilityPercent": 5
         },
         {
@@ -502,11 +502,11 @@
       "id": "Q020",
       "version": 1,
       "topic": "access",
-      "prompt": "¿Guardas tus códigos de respaldo (Backup Codes) del factor de doble autenticación?",
+      "prompt": "¿Guardas en un lugar seguro los códigos para recuperar tus cuentas?",
       "options": [
         {
           "id": "A",
-          "text": "Guardados en un lugar físico seguro o dentro de una bóveda cifrada.",
+          "text": "Sí. Los guardo en un lugar físico seguro o en una aplicación protegida.",
           "vulnerabilityPercent": 5
         },
         {
@@ -528,11 +528,11 @@
       "id": "Q021",
       "version": 1,
       "topic": "access",
-      "prompt": "¿Inicias sesión en servicios web de terceros usando la función \"Continuar con Google/Facebook\"?",
+      "prompt": "¿Usas el botón \"Continuar con Google o Facebook\" para entrar a otras páginas?",
       "options": [
         {
           "id": "A",
-          "text": "Evito hacerlo en sitios críticos y prefiero registros independientes con claves únicas.",
+          "text": "Lo evito en sitios importantes y creo una cuenta con una contraseña diferente.",
           "vulnerabilityPercent": 15
         },
         {
@@ -542,7 +542,7 @@
         },
         {
           "id": "C",
-          "text": "Uso OAuth indiscriminadamente para cualquier página web o foro desconocido.",
+          "text": "Lo uso en cualquier página, incluso si no la conozco.",
           "vulnerabilityPercent": 65
         }
       ],
@@ -554,11 +554,11 @@
       "id": "Q022",
       "version": 1,
       "topic": "access",
-      "prompt": "¿Revisas periódicamente la lista de dispositivos con sesión activa en tu correo y redes sociales?",
+      "prompt": "¿Revisas qué celulares o computadores tienen abierta tu cuenta?",
       "options": [
         {
           "id": "A",
-          "text": "Sí, al menos una vez al mes y cierro las sesiones no identificadas.",
+          "text": "Sí, al menos una vez al mes, y cierro las sesiones que no reconozco.",
           "vulnerabilityPercent": 5
         },
         {
@@ -580,7 +580,7 @@
       "id": "Q023",
       "version": 1,
       "topic": "access",
-      "prompt": "¿Utilizas una llave de seguridad física (tipo YubiKey) para proteger cuentas críticas?",
+      "prompt": "¿Usas una llave de seguridad física, como YubiKey, para proteger cuentas importantes?",
       "options": [
         {
           "id": "A",
@@ -632,11 +632,11 @@
       "id": "Q025",
       "version": 1,
       "topic": "access",
-      "prompt": "¿Usas SMS como único método para restablecer la contraseña de tus cuentas?",
+      "prompt": "¿El mensaje de texto es tu única forma de recuperar una cuenta?",
       "options": [
         {
           "id": "A",
-          "text": "No, utilizo correos de respaldo cifrados o aplicaciones autenticadoras.",
+          "text": "No. También uso un correo de respaldo seguro o una aplicación de códigos.",
           "vulnerabilityPercent": 10
         },
         {
@@ -646,7 +646,7 @@
         },
         {
           "id": "C",
-          "text": "Sí, y no tengo PIN de protección en mi tarjeta SIM (riesgo de SIM Swapping).",
+          "text": "Sí, y mi tarjeta SIM no tiene un PIN de protección.",
           "vulnerabilityPercent": 95
         }
       ],
@@ -684,11 +684,11 @@
       "id": "Q027",
       "version": 1,
       "topic": "access",
-      "prompt": "¿Utilizas la función de \"Auto-completar\" para credenciales en sitios web no verificados?",
+      "prompt": "¿Dejas que el navegador escriba tus contraseñas automáticamente en páginas que no conoces?",
       "options": [
         {
           "id": "A",
-          "text": "Desactivo el autocompletado automático y requiero confirmación previa.",
+          "text": "No. Pido que el navegador me confirme antes de llenar los datos.",
           "vulnerabilityPercent": 10
         },
         {
@@ -698,7 +698,7 @@
         },
         {
           "id": "C",
-          "text": "Permito que el navegador llene cualquier formulario de login automáticamente.",
+          "text": "Dejo que el navegador llene automáticamente cualquier formulario de ingreso.",
           "vulnerabilityPercent": 75
         }
       ],
@@ -710,11 +710,11 @@
       "id": "Q028",
       "version": 1,
       "topic": "access",
-      "prompt": "¿Revisas y revocas los accesos de aplicaciones antiguas en tu cuenta de correo o redes?",
+      "prompt": "¿Quitas el acceso de aplicaciones antiguas que ya no usas?",
       "options": [
         {
           "id": "A",
-          "text": "Sí, audito los permisos de aplicaciones conectadas de forma periódica.",
+          "text": "Sí. Reviso con frecuencia qué aplicaciones tienen permiso para entrar.",
           "vulnerabilityPercent": 5
         },
         {
@@ -762,11 +762,11 @@
       "id": "Q030",
       "version": 1,
       "topic": "access",
-      "prompt": "¿Permites el inicio de sesión remoto a tu computador sin una confirmación explicita?",
+      "prompt": "¿Alguien puede conectarse a tu computador desde otro lugar sin que tú lo confirmes?",
       "options": [
         {
           "id": "A",
-          "text": "El acceso remoto está completamente desactivado o estrictamente autenticado.",
+          "text": "No. La conexión desde otro lugar está desactivada o pide una protección segura.",
           "vulnerabilityPercent": 0
         },
         {
@@ -776,7 +776,7 @@
         },
         {
           "id": "C",
-          "text": "Tengo clientes RDP o AnyDesk habilitados sin contraseña o de fácil acceso.",
+          "text": "Tengo programas como RDP o AnyDesk activos, sin contraseña segura.",
           "vulnerabilityPercent": 90
         }
       ],
@@ -792,7 +792,7 @@
       "options": [
         {
           "id": "A",
-          "text": "Evito usarlas o me conecto únicamente usando una VPN confiable y cifrada.",
+          "text": "Las evito o uso una conexión privada y confiable, llamada VPN.",
           "vulnerabilityPercent": 10
         },
         {
@@ -814,11 +814,11 @@
       "id": "Q032",
       "version": 1,
       "topic": "networks",
-      "prompt": "¿Cómo está configurada la contraseña del Wi-Fi de tu hogar?",
+      "prompt": "¿Cómo proteges el Wi-Fi de tu casa?",
       "options": [
         {
           "id": "A",
-          "text": "Cifrado WPA3 o WPA2-AES con una clave personalizada de más de 12 caracteres.",
+          "text": "Uso seguridad WPA3 o WPA2 y una contraseña propia de más de 12 caracteres.",
           "vulnerabilityPercent": 5
         },
         {
@@ -828,7 +828,7 @@
         },
         {
           "id": "C",
-          "text": "Mi red Wi-Fi no tiene contraseña o utiliza un cifrado obsoleto (WEP).",
+          "text": "Mi Wi-Fi no tiene contraseña o usa la protección antigua WEP.",
           "vulnerabilityPercent": 100
         }
       ],
@@ -866,11 +866,11 @@
       "id": "Q034",
       "version": 1,
       "topic": "networks",
-      "prompt": "¿Realizas transacciones bancarias o compras en línea a través de redes celulares 4G/5G o Wi-Fi propio?",
+      "prompt": "¿Qué conexión usas para hacer pagos o compras por internet?",
       "options": [
         {
           "id": "A",
-          "text": "Únicamente desde mi red móvil de datos personal o mi red residencial segura.",
+          "text": "Uso los datos de mi celular o el Wi-Fi seguro de mi casa.",
           "vulnerabilityPercent": 5
         },
         {
@@ -892,11 +892,11 @@
       "id": "Q035",
       "version": 1,
       "topic": "networks",
-      "prompt": "¿Has cambiado las credenciales de administración por defecto de tu enrutador (Router)?",
+      "prompt": "¿Cambiaste el usuario y la contraseña que traía de fábrica el aparato del Wi-Fi?",
       "options": [
         {
           "id": "A",
-          "text": "Sí, cambié el usuario/clave predeterminado y desactivé la gestión remota.",
+          "text": "Sí. Cambié el usuario y la contraseña, y desactivé el control desde fuera de casa.",
           "vulnerabilityPercent": 0
         },
         {
@@ -906,7 +906,7 @@
         },
         {
           "id": "C",
-          "text": "No sé cómo ingresar al panel del router ni he modificado los datos de fábrica.",
+          "text": "No sé cómo entrar a la configuración y nunca cambié los datos de fábrica.",
           "vulnerabilityPercent": 85
         }
       ],
@@ -944,16 +944,16 @@
       "id": "Q037",
       "version": 1,
       "topic": "networks",
-      "prompt": "¿Utilizas herramientas de VPN (Virtual Private Network) cuando trabajas desde redes externas?",
+      "prompt": "¿Usas una conexión privada llamada VPN cuando trabajas en un Wi-Fi que no es tuyo?",
       "options": [
         {
           "id": "A",
-          "text": "Sí, siempre utilizo una VPN corporativa o un servicio personal auditado de pago.",
+          "text": "Sí. Uso la VPN de mi empresa o un servicio de pago confiable.",
           "vulnerabilityPercent": 5
         },
         {
           "id": "B",
-          "text": "Ocasionalmente utilizo VPNs gratuitas promocionadas en la web.",
+          "text": "A veces uso una VPN gratuita que encuentro en internet.",
           "vulnerabilityPercent": 55
         },
         {
@@ -970,7 +970,7 @@
       "id": "Q038",
       "version": 1,
       "topic": "networks",
-      "prompt": "¿Qué haces si tu teléfono te pide conectarse automáticamente a una red Wi-Fi conocida pero sin cifrar?",
+      "prompt": "¿Qué haces si tu celular quiere conectarse solo a un Wi-Fi abierto?",
       "options": [
         {
           "id": "A",
@@ -984,7 +984,7 @@
         },
         {
           "id": "C",
-          "text": "Dejo que el teléfono se conecte a cualquier red abierta sin validar su autenticidad.",
+          "text": "Dejo que el celular se conecte a cualquier red abierta sin comprobarla.",
           "vulnerabilityPercent": 90
         }
       ],
@@ -996,7 +996,7 @@
       "id": "Q039",
       "version": 1,
       "topic": "networks",
-      "prompt": "¿Mantienes activada la función de transferencia de archivos por proximidad (AirDrop, Quick Share) permanentemente?",
+      "prompt": "¿Mantienes AirDrop o Quick Share listo para recibir archivos todo el tiempo?",
       "options": [
         {
           "id": "A",
@@ -1010,7 +1010,7 @@
         },
         {
           "id": "C",
-          "text": "Configurado para \"Todos\" sin supervisar los archivos recibidos.",
+          "text": "Lo dejo en \"Todos\" y no reviso los archivos que llegan.",
           "vulnerabilityPercent": 80
         }
       ],
@@ -1022,11 +1022,11 @@
       "id": "Q040",
       "version": 1,
       "topic": "networks",
-      "prompt": "¿Verificas si los sitios web que visitas implementan protocolo seguro HTTPS (candado en la barra)?",
+      "prompt": "¿Revisas si una página muestra el candado de conexión segura?",
       "options": [
         {
           "id": "A",
-          "text": "Sí, y utilizo extensiones de navegador que fuerzan conexiones cifradas (HTTPS-Only).",
+          "text": "Sí, y mi navegador intenta usar siempre una conexión segura.",
           "vulnerabilityPercent": 0
         },
         {
@@ -1036,7 +1036,7 @@
         },
         {
           "id": "C",
-          "text": "No me fijo en la barra de direcciones ni en los certificados del sitio.",
+          "text": "No reviso la dirección ni el candado de la página.",
           "vulnerabilityPercent": 85
         }
       ],
@@ -1048,16 +1048,16 @@
       "id": "Q041",
       "version": 1,
       "topic": "networks",
-      "prompt": "¿Utilizas servidores DNS seguros o privados (Cloudflare, Quad9) en tus dispositivos?",
+      "prompt": "¿Cambiaste la configuración de internet para usar un servicio DNS privado, como Cloudflare o Quad9?",
       "options": [
         {
           "id": "A",
-          "text": "Sí, tengo configurado DNS cifrado (DoH o DoT) en mis navegadores/equipos.",
+          "text": "Sí. Configuré un DNS privado y protegido en mis equipos.",
           "vulnerabilityPercent": 10
         },
         {
           "id": "B",
-          "text": "Dejo los servidores DNS automáticos proporcionados por mi proveedor de Internet.",
+          "text": "Uso la configuración automática de mi empresa de internet.",
           "vulnerabilityPercent": 40
         },
         {
@@ -1074,16 +1074,16 @@
       "id": "Q042",
       "version": 1,
       "topic": "networks",
-      "prompt": "¿Conectas tu smartphone a estaciones de carga USB públicas en lugares masivos (Juice Jacking)?",
+      "prompt": "¿Conectas tu celular directamente a puertos USB públicos para cargarlo?",
       "options": [
         {
           "id": "A",
-          "text": "Nunca; utilizo mi propio adaptador a tomacorriente de pared o un Power Bank.",
+          "text": "Nunca. Uso mi cargador conectado a la pared o una batería portátil.",
           "vulnerabilityPercent": 0
         },
         {
           "id": "B",
-          "text": "Conecto el móvil utilizando un bloqueador de datos USB (\"USB Condom\").",
+          "text": "Uso un adaptador USB que permite cargar, pero bloquea el paso de datos.",
           "vulnerabilityPercent": 5
         },
         {
@@ -1100,11 +1100,11 @@
       "id": "Q043",
       "version": 1,
       "topic": "networks",
-      "prompt": "¿Mantienes deshabilitado el protocolo WPS (Wi-Fi Protected Setup) en el enrutador de tu hogar?",
+      "prompt": "¿Tienes apagada la función WPS del aparato del Wi-Fi de tu casa?",
       "options": [
         {
           "id": "A",
-          "text": "Sí, el WPS está completamente deshabilitado por motivos de vulnerabilidad conocida.",
+          "text": "Sí. La función WPS está completamente apagada.",
           "vulnerabilityPercent": 0
         },
         {
@@ -1126,7 +1126,7 @@
       "id": "Q044",
       "version": 1,
       "topic": "networks",
-      "prompt": "¿Desconectas el Wi-Fi y los Datos Móviles de tu teléfono cuando no necesitas conectividad?",
+      "prompt": "¿Apagas el Wi-Fi o los datos del celular cuando no los necesitas?",
       "options": [
         {
           "id": "A",
@@ -1135,12 +1135,12 @@
         },
         {
           "id": "B",
-          "text": "Solo desconecto la antena Wi-Fi fuera de casa.",
+          "text": "Solo apago el Wi-Fi cuando estoy fuera de casa.",
           "vulnerabilityPercent": 30
         },
         {
           "id": "C",
-          "text": "Dejo todas las antenas de transmisión activas las 24 horas.",
+          "text": "Dejo el Wi-Fi y los datos encendidos todo el tiempo.",
           "vulnerabilityPercent": 55
         }
       ],
@@ -1152,11 +1152,11 @@
       "id": "Q045",
       "version": 1,
       "topic": "networks",
-      "prompt": "¿Permites el descubrimiento de tu equipo en redes locales a las que te conectas de forma temporal?",
+      "prompt": "¿Permites que otros equipos vean tu computador cuando usas un Wi-Fi temporal?",
       "options": [
         {
           "id": "A",
-          "text": "Configuro la red como \"Pública\" para ocultar mi equipo a otros dispositivos de la red.",
+          "text": "Marco la red como \"Pública\" para que otros equipos no vean mi computador.",
           "vulnerabilityPercent": 5
         },
         {
@@ -1178,16 +1178,16 @@
       "id": "Q046",
       "version": 1,
       "topic": "phishing",
-      "prompt": "¿Qué haces si recibes un correo del banco pidiéndote confirmar tu clave por un problema de cuenta?",
+      "prompt": "¿Qué haces si un correo que parece del banco te pide confirmar tu contraseña?",
       "options": [
         {
           "id": "A",
-          "text": "Identifico el correo como intento de phishing, no hago clic y llamo directamente al banco.",
+          "text": "No abro el enlace y llamo al banco usando su número oficial.",
           "vulnerabilityPercent": 0
         },
         {
           "id": "B",
-          "text": "Hago clic en el enlace para verificar si la dirección URL coincide con la oficial.",
+          "text": "Abro el enlace para comprobar si la dirección se parece a la oficial.",
           "vulnerabilityPercent": 50
         },
         {
@@ -1204,11 +1204,11 @@
       "id": "Q047",
       "version": 1,
       "topic": "phishing",
-      "prompt": "¿Verificas la dirección del remitente (el domino después del @) en los correos entrantes?",
+      "prompt": "¿Revisas la dirección completa de quien te envía un correo?",
       "options": [
         {
           "id": "A",
-          "text": "Siempre inspecciono el dominio del remitente y cabeceras antes de interactuar.",
+          "text": "Siempre reviso la dirección, especialmente lo que aparece después del signo @.",
           "vulnerabilityPercent": 5
         },
         {
@@ -1230,11 +1230,11 @@
       "id": "Q048",
       "version": 1,
       "topic": "phishing",
-      "prompt": "¿Abres archivos adjuntos en correos de remitentes desconocidos (facturas, citaciones, premios)?",
+      "prompt": "¿Abres archivos que llegan por correo de personas que no conoces?",
       "options": [
         {
           "id": "A",
-          "text": "Nunca abro archivos no solicitados o los escaneo antes en entornos aislados.",
+          "text": "No abro archivos que no pedí.",
           "vulnerabilityPercent": 0
         },
         {
@@ -1244,7 +1244,7 @@
         },
         {
           "id": "C",
-          "text": "Abro cualquier ejecutable o PDF adjunto para comprobar de qué se trata.",
+          "text": "Abro cualquier archivo o PDF para ver de qué se trata.",
           "vulnerabilityPercent": 100
         }
       ],
@@ -1308,7 +1308,7 @@
       "id": "Q051",
       "version": 1,
       "topic": "phishing",
-      "prompt": "¿Sueles pasar el cursor sobre los enlaces (sin hacer clic) para ver la URL real antes de abrir?",
+      "prompt": "¿Antes de abrir un enlace en el computador, pones el cursor encima para ver su dirección real?",
       "options": [
         {
           "id": "A",
@@ -1334,11 +1334,11 @@
       "id": "Q052",
       "version": 1,
       "topic": "phishing",
-      "prompt": "¿Prestas atención a las fallas de ortografía o gramática en correos aparentemente corporativos?",
+      "prompt": "¿Desconfías de un correo de empresa si tiene errores de escritura?",
       "options": [
         {
           "id": "A",
-          "text": "Sí, las fallas de redacción son un indicador claro de alerta para no interactuar.",
+          "text": "Sí. Los errores son una señal de alerta y no respondo ni abro enlaces.",
           "vulnerabilityPercent": 10
         },
         {
@@ -1360,11 +1360,11 @@
       "id": "Q053",
       "version": 1,
       "topic": "phishing",
-      "prompt": "¿Has recibido capacitación o leído sobre las técnicas de ingeniería social y Phishing?",
+      "prompt": "¿Has aprendido a reconocer engaños digitales por mensajes, correos o llamadas?",
       "options": [
         {
           "id": "A",
-          "text": "Sí, me mantengo informado constantemente sobre nuevas modalidades de estafa digital.",
+          "text": "Sí. Me informo sobre nuevas formas de estafa digital.",
           "vulnerabilityPercent": 5
         },
         {
@@ -1374,7 +1374,7 @@
         },
         {
           "id": "C",
-          "text": "No conozco los conceptos de ingeniería social ni cómo operan los cibercriminales.",
+          "text": "No conozco cómo funcionan estos engaños digitales.",
           "vulnerabilityPercent": 85
         }
       ],
@@ -1390,7 +1390,7 @@
       "options": [
         {
           "id": "A",
-          "text": "Cuelgo de inmediato; los códigos de verificación son personales e intocables.",
+          "text": "Cuelgo de inmediato. Los códigos son personales y no se comparten.",
           "vulnerabilityPercent": 0
         },
         {
@@ -1412,16 +1412,16 @@
       "id": "Q055",
       "version": 1,
       "topic": "phishing",
-      "prompt": "¿Utilizas extensiones o herramientas en tu navegador para detectar y bloquear sitios de Phishing?",
+      "prompt": "¿Tu navegador tiene activa alguna protección contra páginas falsas?",
       "options": [
         {
           "id": "A",
-          "text": "Sí, cuento con bloqueadores de contenido malicioso y protección Web activa.",
+          "text": "Sí. Tengo activa la protección contra páginas y archivos peligrosos.",
           "vulnerabilityPercent": 5
         },
         {
           "id": "B",
-          "text": "Confío exclusivamente en los filtros nativos del navegador sin extensiones extra.",
+          "text": "Uso solamente la protección que trae el navegador.",
           "vulnerabilityPercent": 25
         },
         {
@@ -1490,7 +1490,7 @@
       "id": "Q058",
       "version": 1,
       "topic": "phishing",
-      "prompt": "¿Verificas la procedencia de correos con ofertas laborales excesivamente atractivas o pago en cripto?",
+      "prompt": "¿Compruebas quién envía una oferta de trabajo demasiado buena o que promete pago en criptomonedas?",
       "options": [
         {
           "id": "A",
@@ -1516,7 +1516,7 @@
       "id": "Q059",
       "version": 1,
       "topic": "phishing",
-      "prompt": "¿Sueles responder a llamadas automáticas (robocalls) que piden presionar un número para \"confirmar\"?",
+      "prompt": "¿Qué haces con una llamada grabada que te pide marcar un número para confirmar algo?",
       "options": [
         {
           "id": "A",
@@ -1594,21 +1594,21 @@
       "id": "Q062",
       "version": 1,
       "topic": "devices",
-      "prompt": "¿Tienes un software antivirus/antimalware activo y actualizado en tu computador?",
+      "prompt": "¿Tienes el antivirus activo y actualizado en tu computador?",
       "options": [
         {
           "id": "A",
-          "text": "Sí, utilizo una solución antivirus reconocida con protección en tiempo real activada.",
+          "text": "Sí. Uso un antivirus conocido que revisa el equipo todo el tiempo.",
           "vulnerabilityPercent": 5
         },
         {
           "id": "B",
-          "text": "Utilizo solo la protección básica nativa pero rara vez ejecuto un escaneo completo.",
+          "text": "Uso la protección que trae el equipo, pero casi nunca hago una revisión completa.",
           "vulnerabilityPercent": 25
         },
         {
           "id": "C",
-          "text": "No tengo antivirus o desactivé el firewall para instalar programas pirateados.",
+          "text": "No tengo antivirus o apagué la protección para instalar programas no oficiales.",
           "vulnerabilityPercent": 95
         }
       ],
@@ -1620,7 +1620,7 @@
       "id": "Q063",
       "version": 1,
       "topic": "devices",
-      "prompt": "¿Descargas programas, aplicaciones o archivos desde páginas no oficiales o mediante Torrents?",
+      "prompt": "¿Descargas programas o archivos desde páginas que no son oficiales?",
       "options": [
         {
           "id": "A",
@@ -1629,12 +1629,12 @@
         },
         {
           "id": "B",
-          "text": "Ocasionalmente descargo archivos en repositorios alternativos si tienen buenas valoraciones.",
+          "text": "A veces descargo desde otras páginas si tienen buenos comentarios.",
           "vulnerabilityPercent": 55
         },
         {
           "id": "C",
-          "text": "Descargo frecuentemente software crackeado, activadores de Windows o APKs modificadas.",
+          "text": "Descargo programas pirateados o aplicaciones modificadas.",
           "vulnerabilityPercent": 100
         }
       ],
@@ -1650,12 +1650,12 @@
       "options": [
         {
           "id": "A",
-          "text": "Nunca la conecto a mis dispositivos por el riesgo de software malicioso ejecutado al instante.",
+          "text": "No la conecto porque puede contener programas peligrosos.",
           "vulnerabilityPercent": 0
         },
         {
           "id": "B",
-          "text": "La entregó al personal de seguridad sin conectarla.",
+          "text": "La entrego al personal de seguridad sin conectarla.",
           "vulnerabilityPercent": 0
         },
         {
@@ -1672,11 +1672,11 @@
       "id": "Q065",
       "version": 1,
       "topic": "devices",
-      "prompt": "¿Cuentas con el cifrado de disco completo (BitLocker o FileVault) activado en tu computador portatil?",
+      "prompt": "¿Tu computador protege los archivos del disco con BitLocker, FileVault u otra función similar?",
       "options": [
         {
           "id": "A",
-          "text": "Sí, mi disco duro principal está completamente cifrado.",
+          "text": "Sí. Los archivos del disco están protegidos.",
           "vulnerabilityPercent": 0
         },
         {
@@ -1686,7 +1686,7 @@
         },
         {
           "id": "C",
-          "text": "No utilizo cifrado; cualquiera que extraiga el disco de mi portátil puede leer la información.",
+          "text": "No uso esa protección. Si sacan el disco, podrían leer mis archivos.",
           "vulnerabilityPercent": 85
         }
       ],
@@ -1724,11 +1724,11 @@
       "id": "Q067",
       "version": 1,
       "topic": "devices",
-      "prompt": "¿Realizas Jailbreak (iOS) o Rooting (Android) a tus dispositivos móviles?",
+      "prompt": "¿Has modificado el sistema de tu celular para quitar las restricciones de fábrica?",
       "options": [
         {
           "id": "A",
-          "text": "No, mantengo el sistema operativo de fábrica intacto para conservar sus defensas.",
+          "text": "No. Mantengo el sistema original para conservar su protección.",
           "vulnerabilityPercent": 0
         },
         {
@@ -1738,7 +1738,7 @@
         },
         {
           "id": "C",
-          "text": "Sí, mi dispositivo tiene Root/Jailbreak para modificar funciones avanzadas.",
+          "text": "Sí. Modifiqué el sistema con root o jailbreak.",
           "vulnerabilityPercent": 90
         }
       ],

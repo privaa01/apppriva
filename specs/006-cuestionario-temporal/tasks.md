@@ -123,3 +123,10 @@ repetición de F07. No marcar pruebas Android/humanas como aprobadas si se omite
 
 Total:35 tareas. HU-06:15 tareas `[US1]` (T012–T026). Setup/fundamento:11.
 Validación/cierre:9. Todas tienen checkbox, ID, etiqueta cuando aplica y ruta concreta.
+
+## Phase 5: Revisión editorial de lenguaje claro
+
+- [x] T036 Autorizar la simplificación de preguntas y opciones complejas para personas de 40 a 60 años (2026-11-09).
+- [x] T037 Publicar el banco local `2.0.1` con lenguaje cotidiano, conservando IDs, temas, opciones y porcentajes.
+- [x] T038 Probar estructura, porcentajes, versión y ausencia de tecnicismos no explicados en los enunciados revisados (33/33 pruebas F06, 232/232 suite completa y análisis sin diagnósticos, 2026-11-09).
+- [ ] T039 Validar visualmente una muestra de las preguntas revisadas y registrar la aprobación final del responsable.

@@ -1,7 +1,13 @@
 # Banco editorial aprobado — F06
 
-**Versión:** `question-bank-es-CO-2.0.0`. **Fecha:** 2026-11-07.
+**Versión original:** `question-bank-es-CO-2.0.0`. **Fecha:** 2026-11-07.
 **Estado:** aprobado por el responsable mediante «utiliza solo esas».
+
+**Revisión de lenguaje claro:** `question-bank-es-CO-2.0.1`, autorizada el
+2026-11-09. La tabla siguiente conserva el texto original para trazabilidad. El
+contenido vigente de la aplicación está en
+`mobile/assets/content/questionnaire-2.0.0.json`: simplifica enunciados y opciones
+difíciles, sin cambiar IDs, temas, opciones A/B/C ni porcentajes.
 
 Fuente editorial: `Banco de Preguntas - Evaluacion de Seguridad Digital.pdf`. El PDF contiene 67 preguntas completas; la pregunta 68 se excluye porque su opción C no tiene porcentaje. No se inventan las preguntas 69–100 anunciadas pero ausentes.
 

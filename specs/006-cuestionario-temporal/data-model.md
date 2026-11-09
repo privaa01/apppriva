@@ -4,7 +4,7 @@ Todos los objetos de intento son efímeros, no serializables y nunca se escriben
 
 ## QuestionBank
 
-`schemaVersion=2`, `contentVersion=question-bank-es-CO-2.0.0`, `status=approved`, fecha y
+`schemaVersion=2`, `contentVersion=question-bank-es-CO-2.0.1`, `status=approved`, fecha y
 67 `Question`. Validación atómica: campos exactos, IDs únicos, cinco módulos cerrados,
 67 activas y ningún texto obligatorio vacío.
 
@@ -19,7 +19,7 @@ Todos los objetos de intento son efímeros, no serializables y nunca se escriben
 | options | Exactamente3 `QuestionOption` con IDs A/B/C únicos |
 | options | Cada opción incluye `vulnerabilityPercent`, entero entre 0 y 100; no se muestra en P08 |
 | sourceIds | Lista no vacía con referencia al PDF aprobado |
-| reviewedOn/status | 2026-11-07 y `approved` |
+| reviewedOn/status | 2026-11-09 y `approved` |
 
 ## ActiveAttempt
 

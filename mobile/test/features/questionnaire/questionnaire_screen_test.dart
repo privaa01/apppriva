@@ -12,7 +12,9 @@ import 'questionnaire_test_fixtures.dart';
 void main() {
   for (final size in [const Size(320, 720), const Size(412, 915)]) {
     for (final scale in [1.0, 2.0]) {
-      testWidgets('P08 funciona a ${size.width} y texto $scale', (tester) async {
+      testWidgets('P08 funciona a ${size.width} y texto $scale', (
+        tester,
+      ) async {
         tester.view.physicalSize = size;
         tester.view.devicePixelRatio = 1;
         addTearDown(tester.view.resetPhysicalSize);
@@ -30,9 +32,8 @@ void main() {
             temporaryJourney: questionnaire,
             initialRoute: '/questionnaire',
             builder: (context, child) => MediaQuery(
-              data: MediaQuery.of(context).copyWith(
-                textScaler: TextScaler.linear(scale),
-              ),
+              data: MediaQuery.of(context)
+                  .copyWith(textScaler: TextScaler.linear(scale)),
               child: child!,
             ),
           ),
