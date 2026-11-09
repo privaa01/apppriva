@@ -23,6 +23,25 @@ void main() {
     );
   });
 
+  test('F05-GUIDE every main question returns useful guidance', () {
+    for (final question in LocalZyroGuide.quickPrompts) {
+      final reply = guide.answer(question);
+      expect(reply.kind, ZyroReplyKind.guidance, reason: question);
+      expect(reply.text, isNot(contains('No tengo una guía')));
+    }
+  });
+
+  test('F05-GUIDE every categorized question returns useful guidance', () {
+    expect(LocalZyroGuide.questionCategories, hasLength(5));
+    for (final category in LocalZyroGuide.questionCategories) {
+      expect(category.questions, hasLength(10), reason: category.name);
+      for (final question in category.questions) {
+        final reply = guide.answer(question);
+        expect(reply.kind, ZyroReplyKind.guidance, reason: question);
+      }
+    }
+  });
+
   test('F05-GUIDE refuses sensitive data and harmful requests', () {
     expect(
       guide.answer('Mi contraseña es ejemplo123').kind,

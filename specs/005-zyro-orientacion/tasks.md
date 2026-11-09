@@ -13,7 +13,7 @@
 - [x] T006 Crear el catálogo y clasificador local de respuestas verificadas, incluida la protección general de cuentas y variantes habituales de cada tema.
 - [x] T007 Implementar límites para datos sensibles, daño y temas desconocidos.
 - [x] T008 Construir P07 con identidad Zyro, aviso, mensajes y envío.
-- [x] T009 Añadir las cinco consultas rápidas.
+- [x] T009 Mostrar cinco preguntas principales que siempre devuelven orientación útil.
 - [x] T010 Mantener la conversación exclusivamente en memoria.
 - [x] T011 Integrar `/chat` con la guarda de sesión y `AccountScaffold`.
 - [x] T012 Habilitar Zyro en Inicio y navegación inferior.
@@ -25,7 +25,7 @@
 - [x] T015 Probar datos sensibles, peticiones dañinas y temas sin verificar.
 - [x] T016 Probar acceso protegido, presentación y envío en P07.
 - [x] T017 Ejecutar `dart analyze` sin diagnósticos (2026-11-06).
-- [x] T018 Ejecutar la suite Flutter completa: 196/196 satisfactorias (2026-11-06), con la versión local definitiva.
+- [x] T018 Ejecutar la suite Flutter completa: 199/199 satisfactorias (2026-11-09), con la versión local y su menú por categorías.
 
 ## 4. Validación Android y cierre
 
@@ -43,6 +43,12 @@
 - [x] T027 Incorporar y auditar estructuralmente el banco editorial de 500 preguntas.
 - [ ] T028 Resolver el duplicado y mapear 499 preguntas únicas a 38 respuestas/intenciones.
 - [ ] T029 Registrar fuente oficial, fecha y plataforma aplicable para cada guía que lo requiera.
-- [ ] T030 Aprobar editorialmente e integrar las guías verificadas al catálogo local.
-- [ ] T031 Añadir pruebas automatizadas para todas las intenciones y variantes aprobadas.
+- [ ] T030 Aprobar editorialmente e integrar las guías verificadas al catálogo local y al menú por categorías.
+- [ ] T031 Añadir pruebas automatizadas para todas las intenciones, preguntas y categorías aprobadas.
+
+## 6. Menú inicial de preguntas verificadas
+
+- [x] T032 Mostrar selector de categoría y pregunta con 50 consultas que reciben orientación local (10 por categoría).
+- [x] T033 Bloquear el envío del selector hasta elegir una pregunta válida.
+- [x] T034 Probar que todas las preguntas del menú reciben orientación y que el recorrido funciona en P07.
 

@@ -16,6 +16,8 @@ class _ZyroScreenState extends State<ZyroScreen> {
   final _input = TextEditingController();
   final _guide = const LocalZyroGuide();
   final _messages = <({bool fromUser, String text})>[];
+  ZyroQuestionCategory? _selectedCategory;
+  String? _selectedQuestion;
 
   void _send([String? prompt]) {
     final text = (prompt ?? _input.text).trim();
@@ -71,6 +73,59 @@ class _ZyroScreenState extends State<ZyroScreen> {
                 onPressed: () => _send(prompt),
               ),
           ],
+        ),
+        const SizedBox(height: 20),
+        Text(
+          'Explora preguntas por categoría',
+          style: Theme.of(context).textTheme.titleMedium
+              ?.copyWith(fontWeight: FontWeight.bold),
+        ),
+        const SizedBox(height: 8),
+        DropdownButtonFormField<ZyroQuestionCategory>(
+          key: const Key('zyro.category'),
+          initialValue: _selectedCategory,
+          isExpanded: true,
+          decoration: const InputDecoration(labelText: 'Categoría'),
+          hint: const Text('Elige una categoría'),
+          items: [
+            for (final category in LocalZyroGuide.questionCategories)
+              DropdownMenuItem(
+                value: category,
+                child: Text(category.name, overflow: TextOverflow.ellipsis),
+              ),
+          ],
+          onChanged: (category) => setState(() {
+            _selectedCategory = category;
+            _selectedQuestion = null;
+          }),
+        ),
+        const SizedBox(height: 12),
+        DropdownButtonFormField<String>(
+          key: const Key('zyro.question'),
+          initialValue: _selectedQuestion,
+          isExpanded: true,
+          decoration: const InputDecoration(labelText: 'Pregunta'),
+          hint: const Text('Elige una pregunta'),
+          items: [
+            for (final question
+                in _selectedCategory?.questions ?? const <String>[])
+              DropdownMenuItem(
+                value: question,
+                child: Text(question, overflow: TextOverflow.ellipsis),
+              ),
+          ],
+          onChanged: _selectedCategory == null
+              ? null
+              : (question) => setState(() => _selectedQuestion = question),
+        ),
+        const SizedBox(height: 12),
+        FilledButton.tonalIcon(
+          key: const Key('zyro.askSelected'),
+          onPressed: _selectedQuestion == null
+              ? null
+              : () => _send(_selectedQuestion),
+          icon: const Icon(Icons.question_answer_outlined),
+          label: const Text('Preguntar a Zyro'),
         ),
         const SizedBox(height: 16),
         for (final message in _messages)
