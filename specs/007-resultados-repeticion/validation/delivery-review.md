@@ -7,14 +7,16 @@ los tres módulos prioritarios. El resultado se descarta antes de repetir y nunc
 se persiste ni se envía.
 
 La validación automatizada de la rama integrada terminó sin fallos: análisis
-limpio, 218 pruebas Flutter y 17 pruebas de reglas. F07 no usa Functions y no se
+limpio, 232 pruebas Flutter y 17 pruebas de reglas. F07 no usa Functions y no se
 añadieron dependencias.
 
-## Pendientes de aceptación
+## Aceptación final
 
-- Recorrido, rendimiento, API24/API36 y TalkBack en Android físico.
-- Protocolo de comprensión con cinco participantes de 40 a 65 años.
-- Generación del APK, aplazada hasta que el responsable la solicite.
+- Recorrido y TalkBack aprobados en Motorola G22/Android 12.
+- Rendimiento comunicado: 20/20 ciclos satisfactorios.
+- Comprensión comunicada: 5/5 participantes satisfactorios.
+- API24/API36 físicos y APK adicional: no ejecutados, aceptados como limitación.
 
-Estos pendientes no se declaran ejecutados. F07 no queda formalmente cerrado ni
-se avanza a F08 hasta que el responsable verifique o acepte sus limitaciones.
+El responsable confirmó el cierre el 2026-11-09. Las ejecuciones comunicadas se
+distinguen de las observadas por Codex y no se atribuye evidencia API24/API36 o APK
+que no existe. F07 queda formalmente cerrada.

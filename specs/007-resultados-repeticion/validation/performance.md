@@ -4,6 +4,8 @@
 de carga, diez respuestas, cálculo, doble toque y descarte. Comprueba feedback
 menor a un segundo y duración agregada menor a quince segundos.
 
-**Estado:** preparado, no ejecutado. El runner solo dispone de Linux, plataforma
-que este proyecto no publica, y Flutter informó `No supported devices connected`.
-No se inventan tiempos ni resultados. Debe ejecutarse en un Android conectado.
+**Resultado agregado comunicado por el responsable (2026-11-09):** 20/20 ciclos
+satisfactorios dentro de los límites definidos, sin pausas ni errores reportados.
+No se conservaron tiempos individuales, respuestas ni resultados personales. La
+ejecución no fue observada desde este entorno y se registra como evidencia comunicada,
+no como medición producida por el runner de Codex.

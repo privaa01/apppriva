@@ -12,16 +12,16 @@ seguridad aplicables a Android. No implica aprobación de otros specs ni entrega
 69 pruebas locales satisfactorias y limitaciones de evidencia técnica conservadas;
 pruebas de reglas aplazadas explícitamente. El usuario autorizó avanzar a F02 el
 2026-10-29. F02, plan y ejecución autorizados el2026-10-29; cierre aprobado por el usuario el 2026-11-03, con 34/34 tareas registradas como completadas y limitaciones de evidencia conservadas en [la revisión de entrega](002-perfil-cuenta/validation/delivery-review.md). F03 fue aceptado para cierre por el usuario el 2026-11-04, con135 pruebas locales,17 de reglas y [limitaciones documentadas](003-inicio-navegacion/validation/closure-2026-11-04.md):29 tareas completas y6 parciales/aplazadas. F04 fue aceptada y cerrada el2026-11-05 con36/36 tareas, contenido fijo en la app, análisis limpio,180 pruebas satisfactorias y validación Motorola G22/Android12; el responsable aceptó explícitamente no generar APK nuevo ni ejecutar API24/API36.
-F05 permanece abierto con la implementación local elegida por el responsable,
-196 pruebas Flutter satisfactorias y el banco editorial de 500 preguntas recibido;
-faltan verificar e integrar sus guías y completar las validaciones Android.
-F06 fue cerrado y aceptado por el responsable el 2026-11-07 con el banco actualizado
-de 67 preguntas completas del PDF, 209 pruebas Flutter, análisis limpio y APK debug;
-las dispensas de integración física y estudio formal quedaron documentadas sin
-atribuirles ejecución.
-F07 tiene spec, catálogo y plan aprobados. Su implementación y validación automatizada están completas; quedan verificaciones físicas/humanas y el APK solicitado para más adelante.
+F05 fue cerrado y aceptado el 2026-11-09 con Zyro local, coincidencia flexible,
+231 pruebas Flutter y validación Motorola G22/Android12; la ampliación del banco
+completo permanece como backlog futuro fuera del MVP.
+F06 fue cerrado y aceptado con el banco de 67 preguntas; la revisión de lenguaje
+claro 2.0.1 fue aprobada el 2026-11-09 con 232 pruebas Flutter y porcentajes intactos.
+F07 fue cerrado y aceptado el 2026-11-09: cálculo, recomendaciones y repetición
+locales; 20/20 ciclos y 5/5 participantes comunicados como satisfactorios, TalkBack
+en Motorola G22/Android12 y limitaciones API24/API36/APK conservadas sin inventar evidencia.
 F08 sigue en borrador.
-**Actualización:** 2026-11-07.
+**Actualización:** 2026-11-09.
 
 Cada carpeta contiene `spec.md` y `checklists/requirements.md`, conforme a la estructura
 de Spec Kit. Los documentos se trasladaron desde `docs/descomposicion/` para mantener

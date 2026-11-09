@@ -2,7 +2,7 @@
 
 **Feature Branch**: `work` (rama actual; la funcionalidad se selecciona por directorio)
 **Created**: 2026-10-21
-**Status**: Approved — spec y catálogo aprobados explícitamente por el responsable el 2026-11-07.
+**Status**: Completed — implementación, validación y cierre aprobados por el responsable el 2026-11-09.
 **Separated**: 2026-10-26
 **Input**: Especificar esta funcionalidad a partir de PRIVA_MOBILE_SPEC.md, sus pantallas y las decisiones explícitas del usuario.
 **Fuentes**: [Spec original](../../docs/referencias/PRIVA_MOBILE_SPEC.md), [PDF](../../docs/referencias/app.pdf).
@@ -39,7 +39,7 @@ Como usuario, quiero comprender el resultado y recibir acciones útiles.
 - **CA-07.4:** Repetir crea una nueva selección, sin prometer que todas las preguntas cambien.
 - **CA-07.5:** No existe historial persistente de respuestas o resultados, tampoco en registros técnicos.
 
-**Prioridad:** pendiente de aprobación; la numeración es identificación, no orden de entrega.
+**Prioridad:** P1 aprobada para el alcance local de F07.
 **Independent Test:** ejecutar los criterios CA anteriores en las pantallas asignadas,
 con sus precondiciones de sesión y contenido, comprobando el resultado funcional
 sin exigir implementar otras historias conforme a esta especificación; las pruebas aún no se han ejecutado.
@@ -125,11 +125,12 @@ Resultado y recomendaciones temporales; no historial, almacenamiento, analítica
 
 ### Measurable Outcomes
 
-CA-07.1 a CA-07.5 verificados con fronteras 19/20 y 59/60, promedios enteros/decimales y empates; comprensión objetivo ≥80 % (§15), protocolo pendiente. Las metas no se presentan como resultados obtenidos.
+CA-07.1 a CA-07.5 verificados con fronteras 19/20 y 59/60, promedios enteros/decimales y empates. La comprensión comunicada fue 5/5 participantes satisfactorios, superior al objetivo de 80 %.
 
-La evidencia de implementación y las mediciones aún no existen. Las metas del §15
-no son resultados obtenidos. Toda prueba usará datos sintéticos cuando corresponda;
-no se guardarán respuestas ni resultados reales para demostrar cumplimiento.
+La evidencia automatizada vigente registra 232/232 pruebas Flutter y análisis sin
+diagnósticos. El responsable comunicó 20/20 ciclos de rendimiento y 5/5 participantes
+satisfactorios; solo se conservan conteos agregados. No se guardan respuestas ni
+resultados personales para demostrar cumplimiento.
 
 ## Assumptions
 
@@ -139,7 +140,7 @@ no se guardarán respuestas ni resultados reales para demostrar cumplimiento.
 - Aplican §§11–17 del spec: minimización, conservación justificada, seguridad,
   accesibilidad, estados de error y trazabilidad. No se presumen proveedores ni plazos.
 
-## Decisiones y aprobación pendientes
+## Decisiones y aprobación
 
 PD-01 y PD-10 fueron resueltos en F06. PD-02 queda resuelto para F07 por las decisiones explícitas del 2026-11-07 sobre promedio simple, rangos completos y tres módulos prioritarios. El spec y el catálogo fueron aprobados el 2026-11-07; el plan requiere aprobación separada. Las brechas de pantalla
 se resuelven en el registro del índice, sin modificar silenciosamente el original.
@@ -152,3 +153,13 @@ prepara únicamente para Android (mínimo API24 del plan); iOS, VoiceOver y Xcod
 quedan fuera del alcance actual. Las menciones anteriores a ambas plataformas
 son históricas. Se mantienen todos los requisitos funcionales, de privacidad y
 seguridad aplicables a Android. No implica aprobación de otros specs ni entrega.
+
+## Cierre aprobado — 2026-11-09
+
+El responsable confirmó que el resultado, la repetición y las validaciones finales
+funcionaron correctamente. Reportó 20/20 repeticiones de rendimiento satisfactorias
+y una prueba de comprensión satisfactoria con cinco participantes de 40 a 65 años;
+solo se conservan esos conteos agregados. También confirmó TalkBack y el recorrido
+en Motorola G22 con Android 12. Las ejecuciones físicas específicas en API24/API36
+no se realizaron y se conservan como limitación aceptada, sin atribuir evidencia
+inexistente. El APK adicional continúa dispensado por la decisión previa del responsable.

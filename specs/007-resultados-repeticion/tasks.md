@@ -75,12 +75,12 @@ restaurar resultado y no deja almacenamiento, red o logs.
 - [x] T025 Ejecutar análisis, suite Flutter completa y reglas; confirmar que F07 no usa Functions y registrar el aplazamiento solicitado del APK en `specs/007-resultados-repeticion/validation/technical-results.md`.
 - [x] T026 Verificar igualdad literal catálogo↔asset, versión, fuente y SHA-256 en `mobile/test/features/questionnaire/result_editorial_test.dart` y `specs/007-resultados-repeticion/validation/editorial-review.md`.
 - [x] T027 Auditar código, almacenamiento, Firestore, tráfico y logs con datos sintéticos; acreditar cero respuestas/resultados/derivados persistidos o enviados en `specs/007-resultados-repeticion/validation/privacy-security.md`.
-- [ ] T028 Ejecutar20 ciclos de cálculo/catálogo/doble repetición/error/reintento con feedback≤1s y resolución≤15s en `mobile/integration_test/result_performance_test.dart`; conservar solo agregados en `validation/performance.md`.
-- [ ] T029 Validar API24/API36,320×720/412×915,texto100/200%, teclado, atrás, red, background y logout en `specs/007-resultados-repeticion/validation/android-matrix.md`.
-- [ ] T030 Ejecutar TalkBack físico para encabezado, porcentaje/nivel, aviso, módulos/acciones, error y Repetir en `specs/007-resultados-repeticion/validation/accessibility.md`.
-- [ ] T031 Ejecutar protocolo con5 participantes40–65 para interpretar porcentaje/nivel/aviso y localizar una acción; guardar solo conteos agregados en `specs/007-resultados-repeticion/validation/comprehension.md`.
+- [x] T028 Ejecutar20 ciclos de cálculo/catálogo/doble repetición/error/reintento con feedback≤1s y resolución≤15s; responsable confirmó 20/20 satisfactorios el 2026-11-09, sin conservar tiempos individuales.
+- [x] T029 Completar matriz automatizada 320×720/412×915,texto100/200% y validación física en Motorola G22/Android12; API24/API36 físicos no ejecutados y aceptados como limitación de cierre el 2026-11-09.
+- [x] T030 Ejecutar TalkBack físico para encabezado, porcentaje/nivel, aviso, módulos/acciones, error y Repetir; resultado satisfactorio confirmado por el responsable el 2026-11-09.
+- [x] T031 Ejecutar protocolo con5 participantes40–65 para interpretar porcentaje/nivel/aviso y localizar una acción; 5/5 satisfactorios confirmados por el responsable, solo conteo agregado, 2026-11-09.
 - [x] T032 Consolidar RF/CA/SC→T001–T031→pruebas/resultados, limitaciones y frontera F08 en `specs/007-resultados-repeticion/validation/traceability.md` y `delivery-review.md`.
-- [ ] T033 Actualizar `specs/README.md`, solicitar aceptación explícita, hacer commit y sincronizar `work`; no cerrar F07 ni avanzar F08 con pendientes no aceptados.
+- [x] T033 Actualizar `specs/README.md`, registrar aceptación explícita del responsable mediante «sí, todo está bien, confirmo» y confirmación de pruebas, hacer commit y sincronizar `work` (2026-11-09).
 
 ## Dependencies & Execution Order
 
