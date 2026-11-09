@@ -2,7 +2,7 @@
 
 **Feature Branch**: `work` (rama actual; la funcionalidad se selecciona por directorio)
 **Created**: 2026-10-21
-**Status**: Revisión editorial de lenguaje claro autorizada el 2026-11-09; validación final pendiente.
+**Status**: Completed — revisión de lenguaje claro 2.0.1 validada y aprobada por el responsable el 2026-11-09.
 **Separated**: 2026-10-26
 **Input**: Especificar esta funcionalidad a partir de PRIVA_MOBILE_SPEC.md, sus pantallas y las decisiones explícitas del usuario.
 **Fuentes**: [Spec original](../../docs/referencias/PRIVA_MOBILE_SPEC.md), [PDF](../../docs/referencias/app.pdf).
@@ -85,6 +85,8 @@ complejos para personas de 40 a 60 años. La revisión `2.0.1` sustituye tecnici
 por explicaciones cotidianas cuando es posible y explica brevemente los términos
 que deben conservarse. Permanecen intactos los 67 IDs, cinco módulos, opciones
 A/B/C y porcentajes de vulnerabilidad; no cambia la selección ni el cálculo de F07.
+El responsable confirmó la validación visual final mediante «confirma el pendiente»
+el 2026-11-09, después de revisar la versión sincronizada.
 
 ### Reglas de la fuente aplicables
 
