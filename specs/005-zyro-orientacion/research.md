@@ -40,3 +40,12 @@ El clasificador reconoce variantes habituales de cada tema (por ejemplo, «prote
 mi cuenta», «me hackearon» o «perfil falso»). Las guías con pasos concretos de una
 plataforma siguen bloqueadas hasta revisar sus fuentes oficiales.
 
+### Coincidencia flexible local
+
+Cuando las reglas directas no reconocen una consulta, se comparan sus palabras
+significativas con las 50 preguntas verificadas. Se reutiliza la respuesta de la
+pregunta más cercana solo si comparte al menos dos coincidencias ponderadas y supera
+un umbral conservador. Los controles de datos sensibles y solicitudes dañinas se
+ejecutan antes de esta comparación. Se descartan una IA generativa y la similitud
+remota porque transmitirían el mensaje y producirían resultados menos verificables.
+

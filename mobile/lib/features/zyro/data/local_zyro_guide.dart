@@ -235,6 +235,10 @@ class LocalZyroGuide {
         ZyroReplyKind.unverified,
       );
     }
+    final similarQuestion = _findSimilarCatalogQuestion(query);
+    if (similarQuestion != null && _normalize(similarQuestion) != query) {
+      return answer(similarQuestion);
+    }
     return const ZyroReply(
       'No tengo una guía verificada para esa consulta. Puedo orientarte sobre '
       'protección de cuentas, contraseñas, enlaces sospechosos, privacidad en redes, '
@@ -245,6 +249,108 @@ class LocalZyroGuide {
 
   bool _containsAny(String value, List<String> terms) =>
       terms.any(value.contains);
+
+  String? _findSimilarCatalogQuestion(String query) {
+    final queryTokens = _meaningfulTokens(query);
+    if (queryTokens.length < 2) return null;
+
+    String? closest;
+    var bestScore = 0.0;
+    var bestMatchedWeight = 0.0;
+    for (final category in questionCategories) {
+      for (final question in category.questions) {
+        final candidateTokens = _meaningfulTokens(_normalize(question));
+        var matchedWeight = 0.0;
+        for (final token in queryTokens) {
+          var tokenWeight = 0.0;
+          for (final candidate in candidateTokens) {
+            final weight = _tokenMatchWeight(token, candidate);
+            if (weight > tokenWeight) tokenWeight = weight;
+          }
+          matchedWeight += tokenWeight;
+        }
+        final queryCoverage = matchedWeight / queryTokens.length;
+        final candidateCoverage = matchedWeight / candidateTokens.length;
+        final score = (queryCoverage * 0.65) + (candidateCoverage * 0.35);
+        if (score > bestScore) {
+          bestScore = score;
+          bestMatchedWeight = matchedWeight;
+          closest = question;
+        }
+      }
+    }
+
+    return bestScore >= 0.48 && bestMatchedWeight >= 1.6 ? closest : null;
+  }
+
+  List<String> _meaningfulTokens(String value) => value
+      .split(RegExp(r'[^a-z0-9]+'))
+      .where((token) => token.length >= 3 && !_stopWords.contains(token))
+      .toList(growable: false);
+
+  double _tokenMatchWeight(String left, String right) {
+    if (left == right) return 1;
+    if (left.length >= 5 &&
+        right.length >= 5 &&
+        _editDistance(left, right) <= 1) {
+      return 0.8;
+    }
+    return 0;
+  }
+
+  int _editDistance(String left, String right) {
+    var previous = List<int>.generate(right.length + 1, (index) => index);
+    for (var leftIndex = 1; leftIndex <= left.length; leftIndex++) {
+      final current = List<int>.filled(right.length + 1, 0);
+      current[0] = leftIndex;
+      for (var rightIndex = 1; rightIndex <= right.length; rightIndex++) {
+        final substitution =
+            previous[rightIndex - 1] +
+            (left.codeUnitAt(leftIndex - 1) == right.codeUnitAt(rightIndex - 1)
+                ? 0
+                : 1);
+        current[rightIndex] = _minimum(
+          current[rightIndex - 1] + 1,
+          previous[rightIndex] + 1,
+          substitution,
+        );
+      }
+      previous = current;
+    }
+    return previous.last;
+  }
+
+  int _minimum(int first, int second, int third) {
+    final pairMinimum = first < second ? first : second;
+    return pairMinimum < third ? pairMinimum : third;
+  }
+
+  static const _stopWords = <String>{
+    'como',
+    'que',
+    'para',
+    'una',
+    'uno',
+    'unos',
+    'unas',
+    'con',
+    'por',
+    'del',
+    'las',
+    'los',
+    'mis',
+    'mas',
+    'debo',
+    'puedo',
+    'hago',
+    'hacer',
+    'esta',
+    'este',
+    'esto',
+    'tiene',
+    'tener',
+    'quien',
+  };
 
   String _normalize(String value) {
     var result = value.toLowerCase().trim();

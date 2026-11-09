@@ -2,7 +2,7 @@
 
 **Feature Branch**: `work` (rama actual; la funcionalidad se selecciona por directorio)
 **Created**: 2026-10-21
-**Status**: Aprobada para MVP local el 2026-11-06; implementación en curso.
+**Status**: MVP local implementado, validado y aprobado el 2026-11-09.
 **Separated**: 2026-10-26
 **Input**: Especificar esta funcionalidad a partir de PRIVA_MOBILE_SPEC.md, sus pantallas y las decisiones explícitas del usuario.
 **Fuentes**: [Spec original](../../docs/referencias/PRIVA_MOBILE_SPEC.md), [PDF](../../docs/referencias/app.pdf).
@@ -53,7 +53,7 @@ No aprueba el resto del spec ni autoriza el cambio de etapa.
 Como usuario, quiero resolver dudas sobre privacidad y seguridad con explicaciones sencillas.
 
 - **CA-05.1:** El chat muestra la identidad Zyro, su función, campo de mensaje y control de envío.
-- **CA-05.2:** Una consulta admitida obtiene orientación comprensible; las instrucciones se organizan en pasos cuando corresponde.
+- **CA-05.2:** Una consulta admitida obtiene orientación comprensible aunque su redacción no sea idéntica a la pregunta del catálogo; Zyro selecciona localmente una pregunta suficientemente parecida y las instrucciones se organizan en pasos cuando corresponde.
 - **CA-05.3:** Una plataforma sin guía verificada produce una explicación del límite, sin pasos inventados.
 - **CA-05.4:** Una consulta fuera de alcance o dañina recibe una respuesta de límite y una alternativa apropiada.
 - **CA-05.5:** Una consulta no reconocida muestra un límite explícito y permite intentar otra consulta sin duplicar mensajes.
@@ -79,6 +79,7 @@ Plataforma sin guía; petición de credenciales; consulta dañina; incertidumbre
 - **RF-09.a**: Mantener la conversación únicamente en memoria y descartarla al salir.
 - **RF-09.b**: Advertir que no se compartan contraseñas, códigos ni datos privados.
 - **RF-09.c**: No usar red, proveedor generativo, cuentas externas ni acciones automáticas.
+- **RF-09.d**: Comparar localmente las consultas no exactas con el catálogo verificado y reutilizar una respuesta solo cuando superen un umbral conservador de similitud; si no lo superan, declarar el límite.
 
 ### Asociación a pantallas
 
@@ -134,9 +135,11 @@ respuesta aprobada o un límite explícito; ninguna consulta no verificada recib
 rutas inventadas; enviar y mostrar una respuesta local ofrece feedback visible en
 menos de 1 s en 20 repeticiones; salir y volver produce una conversación nueva.
 
-La evidencia de implementación y las mediciones aún no existen. Las metas del §15
-no son resultados obtenidos. Toda prueba usará datos sintéticos cuando corresponda;
-no se guardarán respuestas ni resultados reales para demostrar cumplimiento.
+La evidencia automatizada registra 231/231 pruebas satisfactorias, análisis sin
+diagnósticos y 20 respuestas locales por debajo de un segundo. El responsable
+confirmó en Motorola G22 con Android 12 el recorrido visual, TalkBack, teclado,
+modo avión, coincidencia flexible y descarte de la conversación al salir. Las
+pruebas automatizadas usan datos sintéticos y F05 no guarda mensajes ni resultados.
 
 ## Assumptions
 

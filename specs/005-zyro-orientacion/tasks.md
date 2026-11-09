@@ -25,30 +25,38 @@
 - [x] T015 Probar datos sensibles, peticiones dañinas y temas sin verificar.
 - [x] T016 Probar acceso protegido, presentación y envío en P07.
 - [x] T017 Ejecutar `dart analyze` sin diagnósticos (2026-11-06).
-- [x] T018 Ejecutar la suite Flutter completa: 199/199 satisfactorias (2026-11-09), con la versión local y su menú por categorías.
+- [x] T018 Ejecutar la suite Flutter completa: 231/231 satisfactorias (2026-11-09), con la versión local, su menú por categorías y coincidencia flexible.
 
 ## 4. Validación Android y cierre
 
-- [ ] T019 Revisar visualmente P07 en Motorola G22 con Android 12.
-- [ ] T020 Verificar TalkBack: orden, etiquetas y acciones comprensibles.
-- [ ] T021 Confirmar campo y envío visibles/utilizables con el teclado abierto.
-- [ ] T022 Confirmar modo avión y ausencia de historial al volver a P07.
-- [ ] T023 Medir 20 respuestas locales, todas con feedback menor a 1 s.
-- [ ] T024 Ejecutar los casos CA-05.1 a CA-05.6 y registrar evidencia.
-- [ ] T025 Actualizar esta lista, el checklist y el estado final del spec.
-- [ ] T026 Obtener aprobación final del responsable.
+- [x] T019 Revisar visualmente P07 en Motorola G22 con Android 12 (aprobado por el responsable, 2026-11-09).
+- [x] T020 Verificar TalkBack: orden, etiquetas y acciones comprensibles (aprobado por el responsable, 2026-11-09).
+- [x] T021 Confirmar campo y envío visibles/utilizables con el teclado abierto (aprobado por el responsable, 2026-11-09).
+- [x] T022 Confirmar modo avión y ausencia de historial al volver a P07 (aprobado por el responsable, 2026-11-09).
+- [x] T023 Medir 20 respuestas locales, todas con feedback menor a 1 s (prueba automatizada, 2026-11-09).
+- [x] T024 Ejecutar los casos CA-05.1 a CA-05.6 y registrar evidencia (automatizada y manual, 2026-11-09).
+- [x] T025 Actualizar esta lista, el checklist y el estado final del spec (2026-11-09).
+- [x] T026 Obtener aprobación final del responsable (confirmación explícita, 2026-11-09).
 
-## 5. Ampliación con el banco de 500 preguntas
+## 5. Banco editorial
 
-- [x] T027 Incorporar y auditar estructuralmente el banco editorial de 500 preguntas.
-- [ ] T028 Resolver el duplicado y mapear 499 preguntas únicas a 38 respuestas/intenciones.
-- [ ] T029 Registrar fuente oficial, fecha y plataforma aplicable para cada guía que lo requiera.
-- [ ] T030 Aprobar editorialmente e integrar las guías verificadas al catálogo local y al menú por categorías.
-- [ ] T031 Añadir pruebas automatizadas para todas las intenciones, preguntas y categorías aprobadas.
+- [x] T027 Incorporar y auditar estructuralmente el banco editorial de 500 preguntas. Su ampliación completa queda fuera del MVP y se conserva en `backlog.md`.
 
 ## 6. Menú inicial de preguntas verificadas
 
 - [x] T032 Mostrar selector de categoría y pregunta con 50 consultas que reciben orientación local (10 por categoría).
 - [x] T033 Bloquear el envío del selector hasta elegir una pregunta válida.
 - [x] T034 Probar que todas las preguntas del menú reciben orientación y que el recorrido funciona en P07.
+
+## Phase 7: Convergence
+
+- [x] T035 Probar consulta desconocida seguida de consulta admitida y confirmar un solo mensaje de usuario y una sola respuesta por envío, según CA-05.5 (2026-11-09).
+- [x] T036 Probar P07 en 320×720 y 412×915, texto 100/200 %, controles etiquetados y campo/envío utilizables con teclado simulado, según CA-05.6 y Constitución V (2026-11-09).
+- [x] T037 Medir 20 respuestas locales y registrar que todas ofrecen feedback en menos de 1 s, según Success Criteria y T023 (2026-11-09).
+
+## 8. Coincidencia flexible de consultas
+
+- [x] T038 Ampliar CA-05.2 para aceptar frases suficientemente parecidas a las preguntas verificadas sin usar red ni IA generativa.
+- [x] T039 Implementar selección local de la pregunta más cercana con umbral seguro, después de los controles de datos sensibles y daño.
+- [x] T040 Probar paráfrasis admitidas, errores menores, consultas ambiguas y temas fuera de alcance.
 
